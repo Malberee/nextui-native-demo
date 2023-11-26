@@ -6,7 +6,7 @@ export type Radius = RadiusName | number
 export type Size = SizeName | number
 
 export interface AvatarProps {
-  source: ImageSourcePropType
+  source?: ImageSourcePropType
   color?: ColorName
   radius?: Radius
   size?: Size

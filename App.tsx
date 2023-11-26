@@ -12,8 +12,10 @@ export default function App() {
         size="lg"
         radius="full"
         color="danger"
-        isBordered
+        name="Max"
         source={{ uri: 'https://i.pravatar.cc/150?u=a04258114e29026708c' }}
+        isBordered
+        isDisabled
       />
     </View>
   )

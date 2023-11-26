@@ -37,12 +37,32 @@ export const AvatarWrapper = styled.View<AvatarWrapperProps>(
       border-radius: ${getRadius(radius)}px;
       border-width: ${isBordered ? 2 : 0}px;
       border-color: ${getColor()};
+      opacity: ${isDisabled ? 0.5 : 1};
+
+      overflow: hidden;
+    `
+  },
+)
+
+export const AvatarInner = styled.View<Pick<AvatarProps, 'radius'>>(
+  ({ radius = 'full' }) => {
+    return css`
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      width: 100%;
+      height: 100%;
+
+      border-radius: ${getRadius(radius)}px;
+
+      background-color: ${palette['default']};
     `
   },
 )
 
 export const AvatarImage = styled.Image<Pick<AvatarProps, 'radius'>>(
-  ({ radius = 'md' }) => {
+  ({ radius = 'full' }) => {
     return css`
       width: 100%;
       height: 100%;

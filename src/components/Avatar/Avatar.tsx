@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
-import { Image } from 'react-native'
+import { Text } from 'react-native'
 import { AvatarProps } from './Avatar.types'
-import { AvatarWrapper, AvatarImage } from './Avatar.styled'
+import { AvatarWrapper, AvatarInner, AvatarImage } from './Avatar.styled'
 
 const Avatar: FC<AvatarProps> = ({
   source,
@@ -22,7 +22,13 @@ const Avatar: FC<AvatarProps> = ({
       isDisabled={isDisabled}
       isBordered={isBordered}
     >
-      <AvatarImage source={source} radius={radius} />
+      <AvatarInner radius={radius}>
+        {source ? (
+          <AvatarImage source={source} radius={radius} />
+        ) : (
+          <Text>{name}</Text>
+        )}
+      </AvatarInner>
     </AvatarWrapper>
   )
 }
