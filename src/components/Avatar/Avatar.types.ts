@@ -15,11 +15,12 @@ export interface AvatarProps {
   fallback?: ReactNode
   isBordered?: boolean
   isDisabled?: boolean
+  isGrid?: boolean
   index?: number
+  isInGroup?: boolean
 }
 
 export interface AvatarWrapperProps
   extends Omit<AvatarProps, 'source' | 'name' | 'icon' | 'fallback'> {
   isInGroup: boolean
-  index: number
 }

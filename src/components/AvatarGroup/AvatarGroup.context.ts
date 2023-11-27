@@ -2,7 +2,7 @@ import { createContext, useContext } from 'react'
 import { AvatarGroupProps } from './AvatarGroup.types'
 
 export const AvatarGroupContext = createContext<
-  Omit<AvatarGroupProps, 'children' | 'isGrid' | 'renderCount'>
+  Omit<AvatarGroupProps, 'children' | 'renderCount'>
 >({})
 
 export const useAvatarGroup = () => {

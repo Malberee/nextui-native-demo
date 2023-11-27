@@ -1,57 +1,35 @@
 import React, { FC } from 'react'
 import { Text } from 'react-native'
 import { AvatarProps } from './Avatar.types'
-import { AvatarWrapper, AvatarOutline, AvatarImage } from './Avatar.styled'
+import {
+  AvatarWrapper,
+  AvatarInner,
+  AvatarOutline,
+  AvatarImage,
+} from './Avatar.styled'
 import { useAvatarGroup } from '../AvatarGroup/AvatarGroup.context'
+import { AvatarContext } from './Avatar.context'
 
-const Avatar: FC<AvatarProps> = ({
-  source,
-  color: colorProp,
-  radius: radiusProp,
-  size: sizeProp,
-  name,
-  icon,
-  fallback,
-  isBordered: isBorderedProp,
-  isDisabled: isDisabledProp,
-  index,
-}) => {
-  const avatarGroup = useAvatarGroup()
-
-  const props = {
-    size: sizeProp || avatarGroup?.size,
-    color: colorProp || avatarGroup?.color,
-    radius: radiusProp || avatarGroup?.radius,
-    isDisabled:
-      typeof isDisabledProp === 'undefined'
-        ? avatarGroup?.isDisabled
-        : isDisabledProp,
-    isBordered:
-      typeof isBorderedProp === 'undefined'
-        ? avatarGroup?.isBordered
-        : isBorderedProp,
-  }
-  const { size, color, radius, isDisabled, isBordered } = props
+const Avatar: FC<AvatarProps> = ({ source, name, icon, ...props }) => {
+  const isBordered =
+    (typeof props.isBordered === 'undefined' && useAvatarGroup().isBordered) ||
+    props.isBordered
 
   return (
-    <AvatarWrapper
-      size={size}
-      isDisabled={isDisabled}
-      radius={radius}
-      isInGroup={true}
-      index={index}
-    >
-      {source ? (
-        <AvatarImage source={source} radius={radius} />
-      ) : icon ? (
-        icon
-      ) : (
-        <Text>{name}</Text>
-      )}
-      {isBordered && (
-        <AvatarOutline color={color} radius={radius} size={size} />
-      )}
-    </AvatarWrapper>
+    <AvatarContext.Provider value={props}>
+      <AvatarWrapper>
+        <AvatarInner>
+          {source ? (
+            <AvatarImage source={source} />
+          ) : icon ? (
+            icon
+          ) : (
+            <Text>{name}</Text>
+          )}
+        </AvatarInner>
+        {isBordered && <AvatarOutline />}
+      </AvatarWrapper>
+    </AvatarContext.Provider>
   )
 }
 

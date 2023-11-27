@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar'
 import Icon from 'react-native-vector-icons/Entypo'
-import { StyleSheet, View } from 'react-native'
+import { StyleSheet, View, Text } from 'react-native'
 
 import { Avatar, AvatarGroup } from './src'
 
@@ -8,16 +8,23 @@ export default function App() {
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      <AvatarGroup isBordered color="danger" max={3}>
+      <AvatarGroup
+        isBordered
+        color="warning"
+        max={3}
+        total={10}
+        renderCount={(count) => <Text>+{count} others</Text>}
+      >
         <Avatar
+          isBordered={false}
           source={{ uri: 'https://i.pravatar.cc/150?u=a04258114e29026708c' }}
         />
         <Avatar
+          isBordered={false}
+          color="primary"
           source={{ uri: 'https://i.pravatar.cc/150?u=a04258114e29026708c' }}
         />
-        <Avatar
-          source={{ uri: 'https://i.pravatar.cc/150?u=a04258114e29026708c' }}
-        />
+        <Avatar name="Max" />
         <Avatar
           source={{ uri: 'https://i.pravatar.cc/150?u=a04258114e29026708c' }}
         />

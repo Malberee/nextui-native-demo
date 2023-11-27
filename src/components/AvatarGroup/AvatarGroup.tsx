@@ -12,7 +12,7 @@ const AvatarGroup: FC<AvatarGroupProps> = ({
   size,
   color,
   radius,
-  isGrid,
+  isGrid = false,
   isDisabled,
   isBordered,
   renderCount,
@@ -21,22 +21,28 @@ const AvatarGroup: FC<AvatarGroupProps> = ({
   const limitedChildren = childrens?.slice(0, max)
 
   return (
-    <AvatarGroupWrapper isGrid={isGrid}>
-      <AvatarGroupContext.Provider
-        value={{ size, color, radius, isDisabled, isBordered }}
-      >
+    <AvatarGroupContext.Provider
+      value={{ size, color, radius, isDisabled, isBordered, isGrid }}
+    >
+      <AvatarGroupWrapper isGrid={isGrid}>
         {React.Children.map(limitedChildren, (child, index) =>
-          React.cloneElement(child as ReactElement, { index }),
+          React.cloneElement(child as ReactElement, { index, isInGroup: true }),
         )}
-      </AvatarGroupContext.Provider>
-      {childrens.length > 1 && (
-        <Avatar
-          name={`+${childrens.length - limitedChildren.length}`}
-          isBordered
-          index={limitedChildren.length}
-        />
-      )}
-    </AvatarGroupWrapper>
+        {renderCount
+          ? renderCount(total || childrens.length - limitedChildren.length)
+          : childrens.length - limitedChildren.length > 0 && (
+              <Avatar
+                name={
+                  total
+                    ? `+${total}`
+                    : `+${childrens.length - limitedChildren.length}`
+                }
+                index={limitedChildren.length}
+                isInGroup
+              />
+            )}
+      </AvatarGroupWrapper>
+    </AvatarGroupContext.Provider>
   )
 }
 
