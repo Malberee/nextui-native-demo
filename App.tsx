@@ -13,11 +13,13 @@ export default function App() {
         color="warning"
         max={3}
         total={10}
-        renderCount={(count) => <Text>+{count} others</Text>}
+        isGrid
+        // renderCount={(count) => <Text>+{count} others</Text>}
       >
         <Avatar
           isBordered={false}
-          source={{ uri: 'https://i.pravatar.cc/150?u=a04258114e29026708c' }}
+          // source={{ uri: 'https://i.pravatar.cc/150?u=a04258114e29026708c' }}
+          icon={<Icon name="camera" size={24} color="white" />}
         />
         <Avatar
           isBordered
