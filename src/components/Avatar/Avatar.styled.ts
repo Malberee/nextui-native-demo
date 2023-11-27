@@ -23,7 +23,7 @@ const getSize = (size: Size) => {
 }
 
 export const AvatarWrapper = styled.View<AvatarWrapperProps>(
-  ({ radius = 'full', size = 'md', isDisabled }) => {
+  ({ radius = 'full', size = 'md', isDisabled, isInGroup, index }) => {
     return css`
       position: relative;
       width: ${getSize(size)}px;
@@ -36,6 +36,9 @@ export const AvatarWrapper = styled.View<AvatarWrapperProps>(
 
       opacity: ${isDisabled ? 0.5 : 1};
       background-color: ${getColor('default')};
+      z-index: 1;
+
+      left: ${isInGroup && index !== 0 ? -24 * index : 0}px;
     `
   },
 )
@@ -65,7 +68,6 @@ export const AvatarOutline = styled.View<
     border-color: ${getColor(color)};
     border-width: 2px;
     border-radius: ${getRadius(radius) + 2}px;
-
-    background-color: white;
+    z-index: -1;
   `
 })

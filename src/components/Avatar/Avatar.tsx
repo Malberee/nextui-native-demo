@@ -14,6 +14,7 @@ const Avatar: FC<AvatarProps> = ({
   fallback,
   isBordered: isBorderedProp,
   isDisabled: isDisabledProp,
+  index,
 }) => {
   const avatarGroup = useAvatarGroup()
 
@@ -26,14 +27,20 @@ const Avatar: FC<AvatarProps> = ({
         ? avatarGroup?.isDisabled
         : isDisabledProp,
     isBordered:
-      typeof isDisabledProp === 'undefined'
+      typeof isBorderedProp === 'undefined'
         ? avatarGroup?.isBordered
         : isBorderedProp,
   }
   const { size, color, radius, isDisabled, isBordered } = props
 
   return (
-    <AvatarWrapper size={size} isDisabled={isDisabled} radius={radius}>
+    <AvatarWrapper
+      size={size}
+      isDisabled={isDisabled}
+      radius={radius}
+      isInGroup={true}
+      index={index}
+    >
       {source ? (
         <AvatarImage source={source} radius={radius} />
       ) : icon ? (

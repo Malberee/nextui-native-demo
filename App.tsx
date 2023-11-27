@@ -8,22 +8,18 @@ export default function App() {
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      <AvatarGroup isBordered isGrid color="danger">
+      <AvatarGroup isBordered color="danger" max={3}>
         <Avatar
           source={{ uri: 'https://i.pravatar.cc/150?u=a04258114e29026708c' }}
         />
         <Avatar
           source={{ uri: 'https://i.pravatar.cc/150?u=a04258114e29026708c' }}
-          color="success"
-          radius="lg"
-          size="lg"
         />
         <Avatar
           source={{ uri: 'https://i.pravatar.cc/150?u=a04258114e29026708c' }}
-          color="warning"
-          radius="md"
-          isBordered={false}
-          isDisabled={false}
+        />
+        <Avatar
+          source={{ uri: 'https://i.pravatar.cc/150?u=a04258114e29026708c' }}
         />
       </AvatarGroup>
       {/* <Avatar

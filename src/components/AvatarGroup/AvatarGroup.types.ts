@@ -1,10 +1,9 @@
 import { ReactNode } from 'react'
-import { AvatarProps, Radius, Size } from '../Avatar/Avatar.types'
-import { ColorName } from '../../types'
+import { AvatarProps } from '../Avatar/Avatar.types'
 
 export interface AvatarGroupProps
   extends Omit<AvatarProps, 'source' | 'icon' | 'fallback'> {
-  children: ReactNode
+  children: ReactNode[] | ReactNode
   max?: number
   total?: number
   isGrid?: boolean

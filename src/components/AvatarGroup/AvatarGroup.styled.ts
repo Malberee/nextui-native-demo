@@ -5,10 +5,10 @@ export const AvatarGroupWrapper = styled.View<
   Pick<AvatarGroupProps, 'max' | 'total' | 'isGrid'>
 >(({ isGrid }) => {
   return css`
+    position: relative;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     gap: 16px;
-    width: 100px;
   `
 })
