@@ -1,7 +1,8 @@
 import styled, { css } from 'styled-components/native'
-import { AvatarWrapperProps, AvatarProps, Radius } from './Avatar.types'
+import { AvatarWrapperProps, AvatarProps, Radius, Size } from './Avatar.types'
 import { sizes, radii } from './Avatar.constants'
 import { palette } from '../../theme'
+import { ColorName } from '../../types'
 
 const getRadius = (radius: Radius) => {
   if (typeof radius === 'string') {
@@ -10,53 +11,35 @@ const getRadius = (radius: Radius) => {
   return radius
 }
 
+const getColor = (color: ColorName) => {
+  return palette[color] || palette['default']
+}
+
+const getSize = (size: Size) => {
+  if (typeof size === 'string') {
+    return sizes[size]
+  }
+  return size
+}
+
 export const AvatarWrapper = styled.View<AvatarWrapperProps>(
   ({
-    color = 'default',
     radius = 'full',
     size = 'md',
-    isBordered,
     isDisabled,
   }) => {
-    const getSize = () => {
-      if (typeof size === 'string') {
-        return sizes[size]
-      }
-      return size
-    }
-
-    const getColor = () => {
-      return palette[color] || palette['default']
-    }
-
     return css`
-      width: ${getSize()}px;
-      height: ${getSize()}px;
-      padding: ${isBordered ? 2 : 0}px;
+      position: relative;
+      width: ${getSize(size)}px;
+      height: ${getSize(size)}px;
+      border-radius: ${getRadius(radius) - 2}px;
 
-      border-radius: ${getRadius(radius)}px;
-      border-width: ${isBordered ? 2 : 0}px;
-      border-color: ${getColor()};
-      opacity: ${isDisabled ? 0.5 : 1};
-
-      overflow: hidden;
-    `
-  },
-)
-
-export const AvatarInner = styled.View<Pick<AvatarProps, 'radius'>>(
-  ({ radius = 'full' }) => {
-    return css`
       display: flex;
       justify-content: center;
       align-items: center;
 
-      width: 100%;
-      height: 100%;
-
-      border-radius: ${getRadius(radius)}px;
-
-      background-color: ${palette['default']};
+      opacity: ${isDisabled ? 0.5 : 1};
+      background-color: ${getColor('default')};
     `
   },
 )
@@ -71,3 +54,20 @@ export const AvatarImage = styled.Image<Pick<AvatarProps, 'radius'>>(
     `
   },
 )
+
+export const AvatarOutline = styled.View<
+  Pick<AvatarProps, 'color' | 'radius' | 'size'>
+>(({ color = 'default', radius = 'full', size = 'md' }) => {
+  return css`
+    position: absolute;
+    left: -4px;
+    bottom: -4px;
+
+    width: ${getSize(size) + 8}px;
+    height: ${getSize(size) + 8}px;
+
+    border-color: ${getColor(color)};
+    border-width: 2px;
+    border-radius: ${getRadius(radius) + 2}px;
+  `
+})

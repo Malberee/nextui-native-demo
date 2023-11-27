@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import { Text } from 'react-native'
 import { AvatarProps } from './Avatar.types'
-import { AvatarWrapper, AvatarInner, AvatarImage } from './Avatar.styled'
+import { AvatarWrapper, AvatarOutline, AvatarImage } from './Avatar.styled'
 
 const Avatar: FC<AvatarProps> = ({
   source,
@@ -15,20 +15,17 @@ const Avatar: FC<AvatarProps> = ({
   isDisabled,
 }) => {
   return (
-    <AvatarWrapper
-      color={color}
-      radius={radius}
-      size={size}
-      isDisabled={isDisabled}
-      isBordered={isBordered}
-    >
-      <AvatarInner radius={radius}>
-        {source ? (
-          <AvatarImage source={source} radius={radius} />
-        ) : (
-          <Text>{name}</Text>
-        )}
-      </AvatarInner>
+    <AvatarWrapper size={size} isDisabled={isDisabled} radius={radius}>
+      {source ? (
+        <AvatarImage source={source} radius={radius} />
+      ) : icon ? (
+        icon
+      ) : (
+        <Text>{name}</Text>
+      )}
+      {isBordered && (
+        <AvatarOutline color={color} radius={radius} size={size} />
+      )}
     </AvatarWrapper>
   )
 }
