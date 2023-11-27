@@ -11,11 +11,11 @@ export default function App() {
       <Avatar
         size="lg"
         radius="full"
-        color="danger"
+        color="success"
         name="Max"
         source={{ uri: 'https://i.pravatar.cc/150?u=a04258114e29026708c' }}
         isBordered
-        isDisabled
+        // isDisabled
       />
     </View>
   )

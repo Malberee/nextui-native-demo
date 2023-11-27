@@ -67,7 +67,7 @@ export const AvatarImage = styled.Image<Pick<AvatarProps, 'radius'>>(
       width: 100%;
       height: 100%;
 
-      border-radius: ${getRadius(radius)}px;
+      border-radius: ${getRadius(radius) - 2}px;
     `
   },
 )
