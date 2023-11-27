@@ -23,11 +23,7 @@ const getSize = (size: Size) => {
 }
 
 export const AvatarWrapper = styled.View<AvatarWrapperProps>(
-  ({
-    radius = 'full',
-    size = 'md',
-    isDisabled,
-  }) => {
+  ({ radius = 'full', size = 'md', isDisabled }) => {
     return css`
       position: relative;
       width: ${getSize(size)}px;
@@ -49,8 +45,8 @@ export const AvatarImage = styled.Image<Pick<AvatarProps, 'radius'>>(
     return css`
       width: 100%;
       height: 100%;
-
       border-radius: ${getRadius(radius) - 2}px;
+      z-index: 1;
     `
   },
 )
@@ -69,5 +65,7 @@ export const AvatarOutline = styled.View<
     border-color: ${getColor(color)};
     border-width: 2px;
     border-radius: ${getRadius(radius) + 2}px;
+
+    background-color: white;
   `
 })
