@@ -20,7 +20,8 @@ export default function App() {
           source={{ uri: 'https://i.pravatar.cc/150?u=a04258114e29026708c' }}
         />
         <Avatar
-          isBordered={false}
+          isBordered
+          isDisabled
           color="primary"
           source={{ uri: 'https://i.pravatar.cc/150?u=a04258114e29026708c' }}
         />
@@ -29,7 +30,7 @@ export default function App() {
           source={{ uri: 'https://i.pravatar.cc/150?u=a04258114e29026708c' }}
         />
       </AvatarGroup>
-      {/* <Avatar
+      <Avatar
         size="lg"
         radius="lg"
         color="warning"
@@ -38,7 +39,7 @@ export default function App() {
         icon={<Icon name="camera" size={30} />}
         isBordered
         // isDisabled
-      /> */}
+      />
     </View>
   )
 }

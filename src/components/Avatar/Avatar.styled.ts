@@ -50,7 +50,7 @@ export const AvatarWrapper = styled.View(() => {
 
 export const AvatarInner = styled.View(() => {
   const props = { ...useAvatarGroup(), ...useAvatar() }
-  const { radius = 'full', color = 'default' } = props
+  const { radius = 'full', color = 'default', isDisabled } = props
 
   return css`
     height: 100%;
@@ -61,8 +61,7 @@ export const AvatarInner = styled.View(() => {
     justify-content: center;
     align-items: center;
 
-    background-color: ${getColor(color)};
-    color: ${color === 'default' ? '#000000' : '#ffffff'};
+    background-color: ${isDisabled ? 'transparent' : getColor(color)};
   `
 })
 
