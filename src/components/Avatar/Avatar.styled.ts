@@ -41,7 +41,7 @@ export const AvatarInner = styled.View(() => {
     justify-content: center;
     align-items: center;
 
-    background-color: ${isDisabled ? 'transparent' : getColor(color)};
+    background-color: ${getColor(color)};
   `
 })
 

@@ -6,16 +6,16 @@ import { sizes } from './Badge.constants'
 import { Placement, Shape } from './Badge.types'
 import { SizeName } from '../../types'
 
-const getPlacement = (
-  placement: Placement,
-  size: SizeName | number,
-  shape: Shape,
-) => {
+const getPlacement = (placement: Placement, width: number, shape: Shape) => {
   const placements = placement.split('-')
 
   return `
-    ${placements[0]}: -${getSize(sizes, size) / (shape === 'circle' ? 3 : 2)}px;
-    ${placements[1]}: -${getSize(sizes, size) / (shape === 'circle' ? 3 : 2)}px;
+    ${placements[0]}: -${
+      getSize(sizes, width) / (shape === 'circle' ? 6 : 4)
+    }px;
+    ${placements[1]}: -${
+      getSize(sizes, width) / (shape === 'circle' ? 6 : 2.5)
+    }px;
   `
 }
 
@@ -25,17 +25,19 @@ export const BadgeWrapper = styled.View`
 
 export const BadgeOutline = styled.View(() => {
   const {
+    width = 0,
     size = 'md',
     showOutline = true,
     shape = 'circle',
     placement = 'top-right',
+    isDot,
   } = useBadge()
   return css`
     position: absolute;
-    ${getPlacement(placement, size, shape)}
+    ${getPlacement(placement, width, shape)}
 
-    min-width: ${getSize(sizes, size) + 2}px;
-    min-height: ${getSize(sizes, size) + 2}px;
+    min-width: ${getSize(sizes, isDot ? 12 : size) + 2}px;
+    min-height: ${getSize(sizes, isDot ? 12 : size) + 2}px;
     border-radius: 9999px;
     padding: 2px;
 

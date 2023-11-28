@@ -13,8 +13,8 @@ export default function App() {
           color="danger"
           content="new"
           size="md"
-          placement="top-right"
-          shape="circle"
+          placement="bottom-left"
+          shape="rectangle"
         >
           <Avatar
             size={50}
@@ -27,12 +27,7 @@ export default function App() {
             // isDisabled
           />
         </Badge>
-        <Badge
-          content="5"
-          size="md"
-          placement="bottom-right"
-          shape="circle"
-        >
+        <Badge content="new" size="md" placement="bottom-right" shape="circle">
           <Avatar
             size={50}
             radius="full"
@@ -41,6 +36,35 @@ export default function App() {
             icon={<Icon name="camera" size={30} color="white" />}
             isBordered
             // isDisabled
+          />
+        </Badge>
+        <Badge
+          color="danger"
+          content="new"
+          size="md"
+          placement="top-left"
+          shape="rectangle"
+        >
+          <Avatar
+            size={50}
+            radius="lg"
+            color="success"
+            name="Max"
+            // source={{ uri: 'https://i.pravatar.cc/150?u=a04258114e29026708c' }}
+            icon={<Icon name="camera" size={30} color="white" />}
+            isBordered
+            // isDisabled
+          />
+        </Badge>
+        <Badge content="n" size="md" placement="bottom-right" color='success' shape="circle" isDot>
+          <Avatar
+            size={50}
+            radius="full"
+            name="Max"
+            // source={{ uri: 'https://i.pravatar.cc/150?u=a04258114e29026708c' }}
+            icon={<Icon name="camera" size={30} color="white" />}
+            isBordered
+            isDisabled
           />
         </Badge>
       </AvatarGroup>
