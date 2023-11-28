@@ -1,5 +1,4 @@
 import React, { FC } from 'react'
-import { Text } from 'react-native'
 import { AvatarProps } from './Avatar.types'
 import {
   AvatarWrapper,
@@ -9,18 +8,15 @@ import {
   Name,
 } from './Avatar.styled'
 import { useAvatarGroup } from '../AvatarGroup/AvatarGroup.context'
-import { useBadge } from '../Badge/Badge.context'
 import { AvatarContext } from './Avatar.context'
 
 const Avatar: FC<AvatarProps> = ({ source, name, icon, ...props }) => {
-  const {index, isInGroup} = useBadge()
-
   const isBordered =
     (typeof props.isBordered === 'undefined' && useAvatarGroup().isBordered) ||
     props.isBordered
 
   return (
-    <AvatarContext.Provider value={{ index, isInGroup, ...props }}>
+    <AvatarContext.Provider value={{ source, ...props }}>
       <AvatarWrapper>
         <AvatarInner>
           {source ? (

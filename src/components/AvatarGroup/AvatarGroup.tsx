@@ -12,7 +12,7 @@ const AvatarGroup: FC<AvatarGroupProps> = ({
   size,
   color,
   radius,
-  isGrid = false,
+  isGrid,
   isDisabled,
   isBordered,
   renderCount,

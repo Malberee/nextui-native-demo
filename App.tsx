@@ -8,7 +8,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      <AvatarGroup color="primary" isGrid>
+      <AvatarGroup color="primary">
         <Badge
           color="danger"
           content={<Icon name="check" size={8} color="white" />}
@@ -28,14 +28,20 @@ export default function App() {
             // isDisabled
           />
         </Badge>
-        <Badge content="new" size="md" placement="bottom-right" shape="circle">
+        <Badge
+          content="New"
+          color="warning"
+          size="md"
+          placement="bottom-right"
+          shape="circle"
+        >
           <Avatar
             size={50}
             radius="full"
             name="Max"
-            // source={{ uri: 'https://i.pravatar.cc/150?u=a04258114e29026708c' }}
+            source={{ uri: 'https://i.pravatar.cc/150?u=a04258114e29026708c' }}
             icon={<Icon name="camera" size={30} color="white" />}
-            isBordered
+            // isBordered
             // isDisabled
           />
         </Badge>
@@ -51,10 +57,10 @@ export default function App() {
             radius="lg"
             color="success"
             name="Max"
-            // source={{ uri: 'https://i.pravatar.cc/150?u=a04258114e29026708c' }}
+            source={{ uri: 'https://i.pravatar.cc/150?u=a04258114e29026708c' }}
             icon={<Icon name="camera" size={30} color="white" />}
             isBordered
-            // isDisabled
+            isDisabled
           />
         </Badge>
         <Badge
@@ -68,6 +74,7 @@ export default function App() {
           <Avatar
             size={50}
             radius="full"
+            color="secondary"
             name="Max"
             // source={{ uri: 'https://i.pravatar.cc/150?u=a04258114e29026708c' }}
             icon={<Icon name="camera" size={30} color="white" />}
