@@ -22,7 +22,15 @@ const AvatarGroup: FC<AvatarGroupProps> = ({
 
   return (
     <AvatarGroupContext.Provider
-      value={{ size, color, radius, isDisabled, isBordered, isGrid }}
+      value={{
+        size,
+        color,
+        radius,
+        isDisabled,
+        isBordered,
+        isGrid,
+        isInGroup: true,
+      }}
     >
       <AvatarGroupWrapper isGrid={isGrid}>
         {React.Children.map(limitedChildren, (child, index) =>

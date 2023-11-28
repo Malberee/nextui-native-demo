@@ -9,15 +9,18 @@ import {
   Name,
 } from './Avatar.styled'
 import { useAvatarGroup } from '../AvatarGroup/AvatarGroup.context'
+import { useBadge } from '../Badge/Badge.context'
 import { AvatarContext } from './Avatar.context'
 
 const Avatar: FC<AvatarProps> = ({ source, name, icon, ...props }) => {
+  const {index, isInGroup} = useBadge()
+
   const isBordered =
     (typeof props.isBordered === 'undefined' && useAvatarGroup().isBordered) ||
     props.isBordered
 
   return (
-    <AvatarContext.Provider value={props}>
+    <AvatarContext.Provider value={{ index, isInGroup, ...props }}>
       <AvatarWrapper>
         <AvatarInner>
           {source ? (

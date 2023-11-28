@@ -8,13 +8,14 @@ export default function App() {
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      <AvatarGroup color="primary">
+      <AvatarGroup color="primary" isGrid>
         <Badge
           color="danger"
-          content="new"
+          content={<Icon name="check" size={8} color="white" />}
           size="md"
           placement="bottom-left"
           shape="rectangle"
+          isDot
         >
           <Avatar
             size={50}
@@ -56,7 +57,14 @@ export default function App() {
             // isDisabled
           />
         </Badge>
-        <Badge content="n" size="md" placement="bottom-right" color='success' shape="circle" isDot>
+        <Badge
+          content="n"
+          size="md"
+          placement="bottom-right"
+          color="success"
+          shape="circle"
+          isDot
+        >
           <Avatar
             size={50}
             radius="full"

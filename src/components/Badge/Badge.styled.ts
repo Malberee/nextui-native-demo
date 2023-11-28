@@ -19,9 +19,7 @@ const getPlacement = (placement: Placement, width: number, shape: Shape) => {
   `
 }
 
-export const BadgeWrapper = styled.View`
-  position: relative;
-`
+export const BadgeWrapper = styled.View``
 
 export const BadgeOutline = styled.View(() => {
   const {

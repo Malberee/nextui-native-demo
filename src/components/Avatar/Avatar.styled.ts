@@ -24,7 +24,7 @@ export const AvatarWrapper = styled.View(() => {
     opacity: ${isDisabled ? 0.5 : 1};
     background-color: ${getColor('default')};
 
-    left: ${!isGrid && isInGroup && index !== 0 && index ? -24 * index : 0}px;
+    left: ${!isGrid && isInGroup && index ? -24 * index : 0}px;
   `
 })
 
