@@ -3,7 +3,7 @@ import {
   BadgeWrapper,
   BadgeOutline,
   BadgeInner,
-  BadgeText,
+  BadgeContent,
 } from './Badge.styled'
 
 import { BadgeProps } from './Badge.types'
@@ -27,7 +27,13 @@ const Badge: FC<BadgeProps> = ({ children, content, ...props }) => {
         {children}
         <BadgeOutline onLayout={onLayout}>
           <BadgeInner>
-            {!props.isDot && <BadgeText>{content}</BadgeText>}
+            {!props.isDot && (
+              <BadgeContent>
+                {props.isOneChar && typeof content === 'string'
+                  ? content.charAt(0)
+                  : content}
+              </BadgeContent>
+            )}
           </BadgeInner>
         </BadgeOutline>
       </BadgeWrapper>

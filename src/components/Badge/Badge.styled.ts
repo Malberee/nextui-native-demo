@@ -11,7 +11,7 @@ const getPlacement = (placement: Placement, width: number, shape: Shape) => {
 
   return `
     ${placements[0]}: -${
-      getSize(sizes, width) / (shape === 'circle' ? 6 : 4)
+      getSize(sizes, width) / (shape === 'circle' ? 6 : 2.5)
     }px;
     ${placements[1]}: -${
       getSize(sizes, width) / (shape === 'circle' ? 6 : 2.5)
@@ -29,13 +29,18 @@ export const BadgeOutline = styled.View(() => {
     shape = 'circle',
     placement = 'top-right',
     isDot,
+    isOneChar,
   } = useBadge()
   return css`
     position: absolute;
     ${getPlacement(placement, width, shape)}
 
-    min-width: ${getSize(sizes, isDot ? 12 : size) + 2}px;
-    min-height: ${getSize(sizes, isDot ? 12 : size) + 2}px;
+    ${isOneChar ? 'width:' : 'min-width:'} ${getSize(sizes, isDot ? 12 : size) +
+    2}px;
+    ${isOneChar ? 'height:' : 'min-height:'} ${getSize(
+      sizes,
+      isDot ? 12 : size,
+    ) + 2}px;
     border-radius: 9999px;
     padding: 2px;
 
@@ -63,12 +68,12 @@ export const BadgeInner = styled.View(() => {
   `
 })
 
-export const BadgeText = styled.Text(() => {
+export const BadgeContent = styled.Text(() => {
   const { size = 'md' } = useBadge()
 
   return css`
     font-size: ${size === 'sm' ? 12 : 14}px;
-    line-height: ${size === 'sm' ? 14 : 16}px;
+    line-height: ${size === 'sm' ? 14 : 17}px;
     color: #ffffff;
   `
 })

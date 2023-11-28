@@ -47,7 +47,8 @@ export default function App() {
         </Badge>
         <Badge
           color="danger"
-          content="new"
+          content="55"
+          isOneChar
           size="md"
           placement="top-left"
           shape="rectangle"
