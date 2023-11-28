@@ -6,6 +6,7 @@ import {
   AvatarInner,
   AvatarOutline,
   AvatarImage,
+  Name,
 } from './Avatar.styled'
 import { useAvatarGroup } from '../AvatarGroup/AvatarGroup.context'
 import { AvatarContext } from './Avatar.context'
@@ -24,7 +25,7 @@ const Avatar: FC<AvatarProps> = ({ source, name, icon, ...props }) => {
           ) : icon ? (
             icon
           ) : (
-            <Text>{name}</Text>
+            <Name>{name}</Name>
           )}
         </AvatarInner>
         {isBordered && <AvatarOutline />}

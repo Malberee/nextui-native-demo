@@ -12,7 +12,6 @@ const getPlacement = (
   shape: Shape,
 ) => {
   const placements = placement.split('-')
-  console.log(placements)
 
   return `
     ${placements[0]}: -${getSize(sizes, size) / (shape === 'circle' ? 3 : 2)}px;
@@ -29,14 +28,14 @@ export const BadgeOutline = styled.View(() => {
     size = 'md',
     showOutline = true,
     shape = 'circle',
-    placement = 'bottom-right',
+    placement = 'top-right',
   } = useBadge()
   return css`
     position: absolute;
     ${getPlacement(placement, size, shape)}
 
-    width: ${getSize(sizes, size) + 2}px;
-    height: ${getSize(sizes, size) + 2}px;
+    min-width: ${getSize(sizes, size) + 2}px;
+    min-height: ${getSize(sizes, size) + 2}px;
     border-radius: 9999px;
     padding: 2px;
 
@@ -50,6 +49,10 @@ export const BadgeInner = styled.View(() => {
   return css`
     width: 100%;
     height: 100%;
+    padding-top: 1px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 1px;
     border-radius: 9999px;
 
     display: flex;
@@ -65,7 +68,7 @@ export const BadgeText = styled.Text(() => {
 
   return css`
     font-size: ${size === 'sm' ? 12 : 14}px;
-    line-height: ${size === 'sm' ? 14 : 18}px;
+    line-height: ${size === 'sm' ? 14 : 16}px;
     color: #ffffff;
   `
 })

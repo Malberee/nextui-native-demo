@@ -35,7 +35,7 @@ export const AvatarInner = styled.View(() => {
   return css`
     height: 100%;
     width: 100%;
-    border-radius: ${getRadius(radii, radius)}px;
+    border-radius: ${getRadius(radii, radius) - 4}px;
 
     display: flex;
     justify-content: center;
@@ -52,7 +52,7 @@ export const AvatarImage = styled.Image(() => {
   return css`
     width: 100%;
     height: 100%;
-    border-radius: ${getRadius(radii, radius) - 2}px;
+    border-radius: ${getRadius(radii, radius) - 4}px;
   `
 })
 
@@ -70,9 +70,13 @@ export const AvatarOutline = styled.View(() => {
 
     border-color: ${getColor(color)};
     border-width: 2px;
-    border-radius: ${getRadius(radii, radius) + 2}px;
+    border-radius: ${getRadius(radii, radius)}px;
     z-index: -1;
 
     background-color: #ffffff;
   `
 })
+
+export const Name = styled.Text`
+  color: #ffffff;
+`

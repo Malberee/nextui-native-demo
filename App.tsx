@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar'
 import Icon from 'react-native-vector-icons/Entypo'
-import { StyleSheet, View, Text } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 
 import { Avatar, AvatarGroup, Badge } from './src'
 
@@ -9,14 +9,36 @@ export default function App() {
     <View style={styles.container}>
       <StatusBar style="auto" />
       <AvatarGroup color="primary">
-        <Badge color="danger" content={5} size="sm">
+        <Badge
+          color="danger"
+          content="new"
+          size="md"
+          placement="top-right"
+          shape="circle"
+        >
           <Avatar
-            size="md"
-            radius="full"
-            color="danger"
+            size={50}
+            radius="lg"
+            color="success"
             name="Max"
             // source={{ uri: 'https://i.pravatar.cc/150?u=a04258114e29026708c' }}
-            // icon={<Icon name="camera" size={30} />}
+            icon={<Icon name="camera" size={30} color="white" />}
+            isBordered
+            // isDisabled
+          />
+        </Badge>
+        <Badge
+          content="5"
+          size="md"
+          placement="bottom-right"
+          shape="circle"
+        >
+          <Avatar
+            size={50}
+            radius="full"
+            name="Max"
+            // source={{ uri: 'https://i.pravatar.cc/150?u=a04258114e29026708c' }}
+            icon={<Icon name="camera" size={30} color="white" />}
             isBordered
             // isDisabled
           />
