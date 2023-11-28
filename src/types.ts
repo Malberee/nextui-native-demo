@@ -7,12 +7,12 @@ export type ColorName =
   | 'danger'
 
 export type RadiusName = 'none' | 'sm' | 'md' | 'lg' | 'full'
-export type Radius = {
+export type Radii = {
   [key in RadiusName]: number
 }
 
 export type SizeName = 'sm' | 'md' | 'lg'
-export type Size = {
+export type Sizes = {
   [key in SizeName]: number
 }
 
@@ -24,3 +24,6 @@ export type VariantName =
   | 'flat'
   | 'ghost'
   | 'shadow'
+export type Variants = {
+  [key in VariantName]: string
+}

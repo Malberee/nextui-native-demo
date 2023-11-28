@@ -11,8 +11,5 @@ export const AvatarGroupWrapper = styled.View<
     flex-wrap: ${isGrid ? 'wrap' : 'nowrap'};
     flex-direction: row;
     gap: 16px;
-    border-width: 3px;
-    border-color: red;
-    width: 150px;
   `
 })

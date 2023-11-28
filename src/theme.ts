@@ -2,7 +2,7 @@ type Palette = {
   [key: string]: string
 }
 
-export const palette = {
+export const palette: Palette  = {
   // layout
   background: '#FFFFFF',
   foreground: '#11181C',

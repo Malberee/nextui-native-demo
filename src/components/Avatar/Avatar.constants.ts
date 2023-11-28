@@ -1,12 +1,12 @@
-import { Radius, Size } from '../../types'
+import { Radii, Sizes } from '../../types'
 
-export const sizes: Size = {
+export const sizes: Sizes = {
   sm: 32,
   md: 40,
   lg: 56,
 }
 
-export const radii: Radius = {
+export const radii: Radii = {
   none: 0,
   sm: 8,
   md: 12,

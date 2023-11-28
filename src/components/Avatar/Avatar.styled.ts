@@ -1,28 +1,8 @@
 import styled, { css } from 'styled-components/native'
-import { AvatarWrapperProps, AvatarProps, Radius, Size } from './Avatar.types'
-import { sizes, radii } from './Avatar.constants'
-import { palette } from '../../theme'
-import { ColorName } from '../../types'
 import { useAvatar } from './Avatar.context'
 import { useAvatarGroup } from '../AvatarGroup/AvatarGroup.context'
-
-const getRadius = (radius: Radius) => {
-  if (typeof radius === 'string') {
-    return radii[radius]
-  }
-  return radius
-}
-
-const getColor = (color: ColorName) => {
-  return palette[color] || palette['default']
-}
-
-const getSize = (size: Size) => {
-  if (typeof size === 'string') {
-    return sizes[size]
-  }
-  return size
-}
+import { sizes, radii } from './Avatar.constants'
+import { getSize, getRadius, getColor } from '../../utils'
 
 export const AvatarWrapper = styled.View(() => {
   const props = { ...useAvatarGroup(), ...useAvatar() }
@@ -37,9 +17,9 @@ export const AvatarWrapper = styled.View(() => {
 
   return css`
     position: relative;
-    width: ${getSize(size)}px;
-    height: ${getSize(size)}px;
-    border-radius: ${getRadius(radius) - 2}px;
+    width: ${getSize(sizes, size)}px;
+    height: ${getSize(sizes, size)}px;
+    border-radius: ${getRadius(radii, radius) - 2}px;
 
     opacity: ${isDisabled ? 0.5 : 1};
     background-color: ${getColor('default')};
@@ -55,7 +35,7 @@ export const AvatarInner = styled.View(() => {
   return css`
     height: 100%;
     width: 100%;
-    border-radius: ${getRadius(radius)}px;
+    border-radius: ${getRadius(radii, radius)}px;
 
     display: flex;
     justify-content: center;
@@ -72,7 +52,7 @@ export const AvatarImage = styled.Image(() => {
   return css`
     width: 100%;
     height: 100%;
-    border-radius: ${getRadius(radius) - 2}px;
+    border-radius: ${getRadius(radii, radius) - 2}px;
   `
 })
 
@@ -85,12 +65,12 @@ export const AvatarOutline = styled.View(() => {
     left: -4px;
     bottom: -4px;
 
-    width: ${getSize(size) + 8}px;
-    height: ${getSize(size) + 8}px;
+    width: ${getSize(sizes, size) + 8}px;
+    height: ${getSize(sizes, size) + 8}px;
 
     border-color: ${getColor(color)};
     border-width: 2px;
-    border-radius: ${getRadius(radius) + 2}px;
+    border-radius: ${getRadius(radii, radius) + 2}px;
     z-index: -1;
 
     background-color: #ffffff;
