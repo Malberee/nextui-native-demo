@@ -22,9 +22,13 @@ export type SizeName =
   | '4xl'
   | '5xl'
   | 'full'
-export type Sizes = {
-  [key in SizeName]: number
-}
+export type Sizes =
+  | {
+      [key in SizeName]: number
+    }
+  | {
+      [key in Pick<SizeName, 'sm' | 'md' | 'lg'>]: number
+    }
 
 export type VariantName =
   | 'solid'

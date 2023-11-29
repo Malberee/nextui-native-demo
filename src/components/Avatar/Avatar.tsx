@@ -13,14 +13,14 @@ import { AvatarContext } from './hooks/useAvatarContext'
 
 const Avatar: FC<AvatarProps> = forwardRef((props, ref) => {
   const { source, name, icon, isDisabled, isBordered, ...avatarProps } =
-    useAvatarProps(props)
+    useAvatarProps(props)  
 
   useImperativeHandle(ref, () => {
     return { isDisabled }
   })
 
   return (
-    <AvatarContext.Provider value={avatarProps}>
+    <AvatarContext.Provider value={{ source, isDisabled, isBordered, ...avatarProps }}>
       <AvatarWrapper>
         <AvatarInner>
           {source ? (
