@@ -1,18 +1,14 @@
 import { ReactNode } from 'react'
-import { ImageSourcePropType } from 'react-native'
 import { ColorName, RadiusName, SizeName } from '../../types'
 
 export interface AvatarProps {
-  source?: ImageSourcePropType
+  source?: string
   color?: ColorName
-  radius?: RadiusName | number
-  size?: SizeName | number
-  name?: string
+  radius?: RadiusName
+  size?: Pick<SizeName, 'sm' | 'md' | 'lg'>
   icon?: ReactNode
   fallback?: ReactNode
   isBordered?: boolean
   isDisabled?: boolean
-  isGrid?: boolean
-  index?: number
-  isInGroup?: boolean
+  showFallback?: boolean
 }

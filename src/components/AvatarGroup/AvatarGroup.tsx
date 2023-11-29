@@ -1,6 +1,6 @@
-import React, { FC, ReactElement } from 'react'
-import { AvatarGroupWrapper } from './AvatarGroup.styled'
-import Avatar from '../Avatar'
+import React, { FC } from 'react'
+import { Text } from 'react-native'
+import { AvatarGroupWrapper, AvatarWrapper } from './AvatarGroup.styled'
 
 import { AvatarGroupProps } from './AvatarGroup.types'
 import { AvatarGroupContext } from './hooks/useAvatarGroupContext'
@@ -13,36 +13,17 @@ const AvatarGroup: FC<AvatarGroupProps> = ({
   renderCount,
   ...props
 }) => {
-  const childrens = React.Children.toArray(children)
-  const limitedChildren = childrens?.slice(0, max)
+  const childArray = React.Children.toArray(children) as React.ReactElement[]
+  const limitedChildArray = childArray?.slice(0, max)
 
   return (
-    <AvatarGroupContext.Provider
-      value={{
-        isGrid,
-        isInGroup: true,
-        ...props,
-      }}
-    >
-      <AvatarGroupWrapper isGrid={isGrid}>
-        {React.Children.map(limitedChildren, (child, index) =>
-          React.cloneElement(child as ReactElement, {
-            index,
-          }),
-        )}
-        {renderCount
-          ? renderCount(total || childrens.length - limitedChildren.length)
-          : childrens.length - limitedChildren.length > 0 && (
-              <Avatar
-                name={
-                  total
-                    ? `+${total}`
-                    : `+${childrens.length - limitedChildren.length}`
-                }
-                index={limitedChildren.length}
-                isInGroup
-              />
-            )}
+    <AvatarGroupContext.Provider value={{ isInGroup: true, ...props }}>
+      <AvatarGroupWrapper>
+        {limitedChildArray?.map((child, index) => (
+          <AvatarWrapper index={index}>
+            {React.cloneElement(child)}
+          </AvatarWrapper>
+        ))}
       </AvatarGroupWrapper>
     </AvatarGroupContext.Provider>
   )

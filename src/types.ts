@@ -11,7 +11,17 @@ export type Radii = {
   [key in RadiusName]: number
 }
 
-export type SizeName = 'sm' | 'md' | 'lg'
+export type SizeName =
+  | 'xs'
+  | 'sm'
+  | 'md'
+  | 'lg'
+  | 'xl'
+  | '2xl'
+  | '3xl'
+  | '4xl'
+  | '5xl'
+  | 'full'
 export type Sizes = {
   [key in SizeName]: number
 }
