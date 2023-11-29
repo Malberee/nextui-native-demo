@@ -13,14 +13,14 @@ import { useBadgeProps } from './hooks/useBadgeProps'
 
 const Badge: FC<BadgeProps> = ({ children, content, ...props }) => {
   const [width, setWidth] = useState(0)
+  const [hasLayoutOccurred, setHasLayoutOccurred] = useState(false)
   const childRef = useRef<{ isDisabled: boolean }>(null)
-  let hasLayoutOccurred = false
   const badgeProps = useBadgeProps({ width, ...props })
 
   const onLayout = (e: LayoutChangeEvent) => {
     if (!hasLayoutOccurred) {
       setWidth(e.nativeEvent.layout.width)
-      hasLayoutOccurred = true
+      setHasLayoutOccurred(true)
     }
   }
 

@@ -8,15 +8,34 @@ export default function App() {
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      <AvatarGroup color="primary" size="md" isBordered>
-        <Avatar
-          // source={{ uri: 'https://i.pravatar.cc/150?u=a04258114e29026302d' }}
-          icon={<Icon name="user" size={24} color="white" />}
-        />
-        <Badge color="danger" size="sm">
+      <AvatarGroup color="primary" size="md" isBordered isGrid>
+        <Badge
+          color="danger"
+          size="sm"
+          content="5"
+          isOneChar
+          shape="circle"
+          isDot
+          placement="bottom-right"
+          showOutline
+        >
           <Avatar
             color="warning"
             source={{ uri: 'https://i.pravatar.cc/150?u=a04258114e29026302d' }}
+          />
+        </Badge>
+        <Badge
+          content="new"
+          // isOneChar
+          color="danger"
+          placement="bottom-right"
+          shape="rectangle"
+          showOutline
+        >
+          <Avatar
+            // source={{ uri: 'https://i.pravatar.cc/150?u=a04258114e29026302d' }}
+            radius="md"
+            icon={<Icon name="user" size={24} color="white" />}
           />
         </Badge>
       </AvatarGroup>
