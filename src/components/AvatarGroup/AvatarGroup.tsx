@@ -17,7 +17,7 @@ const AvatarGroup: FC<AvatarGroupProps> = ({
   const limitedChildArray = childArray?.slice(0, max)
 
   return (
-    <AvatarGroupContext.Provider value={{ isInGroup: true, ...props }}>
+    <AvatarGroupContext.Provider value={props}>
       <AvatarGroupWrapper>
         {limitedChildArray?.map((child, index) => (
           <AvatarWrapper index={index}>

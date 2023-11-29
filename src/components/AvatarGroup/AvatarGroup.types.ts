@@ -17,6 +17,4 @@ export interface AvatarGroupContextProps
   extends Pick<
     AvatarProps,
     'size' | 'color' | 'radius' | 'isDisabled' | 'isBordered'
-  > {
-  isInGroup?: boolean
-}
+  > {}
