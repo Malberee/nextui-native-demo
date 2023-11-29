@@ -8,8 +8,8 @@ export default function App() {
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      <AvatarGroup>
-        <Text>fdfdf</Text>
+      <AvatarGroup color="primary">
+        <Avatar color="secondary" />
       </AvatarGroup>
       <Divider />
       <Code content="npm install @malberee/nextui-native" color="secondary" />

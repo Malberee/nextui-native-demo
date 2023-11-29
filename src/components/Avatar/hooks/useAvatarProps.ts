@@ -3,7 +3,7 @@ import { AvatarProps } from '../Avatar.types'
 
 export const useAvatarProps = (props: AvatarProps) => {
   const groupContext = useAvatarGroupContext()
-  const isInGroup = !!groupContext
+  const isInGroup = !!Object.keys(groupContext).length
 
   const {
     source,

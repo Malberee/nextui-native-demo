@@ -1,6 +1,9 @@
 import styled, { css } from 'styled-components/native'
+import { useAvatarContext } from './hooks/useAvatarContext'
 
 export const AvatarWrapper = styled.View(() => {
+  const { radius } = useAvatarContext()
+
   return css``
 })
 

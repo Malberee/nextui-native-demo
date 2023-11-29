@@ -20,7 +20,7 @@ const AvatarGroup: FC<AvatarGroupProps> = ({
     <AvatarGroupContext.Provider value={props}>
       <AvatarGroupWrapper>
         {limitedChildArray?.map((child, index) => (
-          <AvatarWrapper index={index}>
+          <AvatarWrapper index={index} key={Date.now()}>
             {React.cloneElement(child)}
           </AvatarWrapper>
         ))}
