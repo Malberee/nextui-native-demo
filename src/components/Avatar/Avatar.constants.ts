@@ -1,6 +1,6 @@
 import { Radii, Sizes } from '../../types'
 
-export const sizes: Sizes = {
+export const sizes: Pick<Sizes, 'sm' | 'md' | 'lg'> = {
   sm: 32,
   md: 40,
   lg: 56,
