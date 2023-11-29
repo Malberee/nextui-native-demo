@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components/native'
-import { useBadge } from './Badge.context'
-import { useAvatarGroup } from '../AvatarGroup/AvatarGroup.context'
+import { useBadgeContext } from './hooks/useBadgeContext'
+import { useAvatarGroupContext } from '../AvatarGroup/hooks/useAvatarGroupContext'
 import { getColor, getSize } from '../../utils'
 import { sizes } from './Badge.constants'
 import { Placement, Shape } from './Badge.types'
@@ -19,7 +19,8 @@ const getPlacement = (placement: Placement, width: number, shape: Shape) => {
   `
 }
 
-export const BadgeWrapper = styled.View``
+export const BadgeWrapper = styled.View`
+`
 
 export const BadgeOutline = styled.View(() => {
   const {
@@ -31,7 +32,7 @@ export const BadgeOutline = styled.View(() => {
     isDot,
     isOneChar,
     isDisabled,
-  } = useBadge()
+  } = useBadgeContext()
   return css`
     position: absolute;
     ${getPlacement(placement, width, shape)}
@@ -51,7 +52,10 @@ export const BadgeOutline = styled.View(() => {
 })
 
 export const BadgeInner = styled.View(() => {
-  const { color = 'default' } = { ...useAvatarGroup(), ...useBadge() }
+  const { color = 'default', variant = 'solid' } = {
+    ...useAvatarGroupContext(),
+    ...useBadgeContext(),
+  }
 
   return css`
     width: 100%;
@@ -71,7 +75,7 @@ export const BadgeInner = styled.View(() => {
 })
 
 export const BadgeContent = styled.Text(() => {
-  const { size = 'md' } = useBadge()
+  const { size = 'md' } = useBadgeContext()
 
   return css`
     font-size: ${size === 'sm' ? 12 : 14}px;

@@ -10,6 +10,7 @@ export type Shape = 'circle' | 'rectangle'
 
 export interface BadgeProps {
   children: ReactNode
+  index?: number
   content?: string | number | ReactNode
   variant?: VariantName
   color?: ColorName
@@ -23,4 +24,5 @@ export interface BadgeProps {
   isDot?: boolean
   width?: number
   isDisabled?: boolean
+  isInGroup?: boolean
 }

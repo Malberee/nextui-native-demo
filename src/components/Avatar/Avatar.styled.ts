@@ -1,11 +1,10 @@
 import styled, { css } from 'styled-components/native'
-import { useAvatar } from './Avatar.context'
-import { useAvatarGroup } from '../AvatarGroup/AvatarGroup.context'
+import { useAvatarContext } from './hooks/useAvatarContext'
 import { sizes, radii } from './Avatar.constants'
 import { getSize, getRadius, getColor } from '../../utils'
 
 export const AvatarWrapper = styled.View(() => {
-  const props = { ...useAvatarGroup(), ...useAvatar() }
+  const props = useAvatarContext()
   const {
     radius = 'full',
     size = 'md',
@@ -29,7 +28,7 @@ export const AvatarWrapper = styled.View(() => {
 })
 
 export const AvatarInner = styled.View(() => {
-  const props = { ...useAvatarGroup(), ...useAvatar() }
+  const props = useAvatarContext()
   const { radius = 'full', color = 'default', isDisabled, source } = props
 
   return css`
@@ -46,7 +45,7 @@ export const AvatarInner = styled.View(() => {
 })
 
 export const AvatarImage = styled.Image(() => {
-  const props = { ...useAvatarGroup(), ...useAvatar() }
+  const props = useAvatarContext()
   const { radius = 'full' } = props
 
   return css`
@@ -57,7 +56,7 @@ export const AvatarImage = styled.Image(() => {
 })
 
 export const AvatarOutline = styled.View(() => {
-  const props = { ...useAvatarGroup(), ...useAvatar() }
+  const props = useAvatarContext()
   const { color = 'default', radius = 'full', size = 'md' } = props
 
   return css`

@@ -3,7 +3,7 @@ import { AvatarGroupWrapper } from './AvatarGroup.styled'
 import Avatar from '../Avatar'
 
 import { AvatarGroupProps } from './AvatarGroup.types'
-import { AvatarGroupContext } from './AvatarGroup.context'
+import { AvatarGroupContext } from './hooks/useAvatarGroupContext'
 
 const AvatarGroup: FC<AvatarGroupProps> = ({
   children,
@@ -28,7 +28,6 @@ const AvatarGroup: FC<AvatarGroupProps> = ({
         {React.Children.map(limitedChildren, (child, index) =>
           React.cloneElement(child as ReactElement, {
             index,
-            isInGroup: true,
           }),
         )}
         {renderCount

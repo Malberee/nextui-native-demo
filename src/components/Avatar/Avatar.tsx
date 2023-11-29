@@ -7,8 +7,8 @@ import {
   AvatarImage,
   Name,
 } from './Avatar.styled'
-import { AvatarContext } from './Avatar.context'
-import { useAvatarProps } from './useAvatar'
+import { AvatarContext } from './hooks/useAvatarContext'
+import { useAvatarProps } from './hooks/useAvatarProps'
 
 const Avatar: FC<AvatarProps> = forwardRef((props, ref) => {
   const { source, name, icon, ...avatarProps } = useAvatarProps(props)

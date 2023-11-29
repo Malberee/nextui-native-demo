@@ -1,4 +1,4 @@
-import { Radii, Sizes } from '../../types'
+import { Sizes } from '../../types'
 
 export const sizes: Sizes = {
   sm: 16,

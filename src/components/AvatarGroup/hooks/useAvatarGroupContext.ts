@@ -1,10 +1,10 @@
 import { createContext, useContext } from 'react'
-import { AvatarGroupProps } from './AvatarGroup.types'
+import { AvatarGroupProps } from '../AvatarGroup.types'
 
 export const AvatarGroupContext = createContext<
   Omit<AvatarGroupProps, 'children' | 'renderCount'>
 >({})
 
-export const useAvatarGroup = () => {
+export const useAvatarGroupContext = () => {
   return useContext(AvatarGroupContext)
 }

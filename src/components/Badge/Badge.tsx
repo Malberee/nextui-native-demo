@@ -7,8 +7,9 @@ import {
 } from './Badge.styled'
 
 import { BadgeProps } from './Badge.types'
-import { BadgeContext } from './Badge.context'
+import { BadgeContext } from './hooks/useBadgeContext'
 import { LayoutChangeEvent } from 'react-native'
+import { useAvatarGroupContext } from '../AvatarGroup/hooks/useAvatarGroupContext'
 
 const Badge: FC<BadgeProps> = ({ children, content, ...props }) => {
   const [width, setWidth] = useState(0)
@@ -22,12 +23,22 @@ const Badge: FC<BadgeProps> = ({ children, content, ...props }) => {
     }
   }
 
+  const isInGroup = useAvatarGroupContext().isInGroup
+
   return (
     <BadgeContext.Provider
-      value={{ isDisabled: childRef.current?.isDisabled, width, ...props }}
+      value={{
+        isInGroup,
+        isDisabled: childRef.current?.isDisabled,
+        width,
+        ...props,
+      }}
     >
       <BadgeWrapper>
-        {React.cloneElement(children as React.ReactElement, { ref: childRef })}
+        {React.cloneElement(children as React.ReactElement, {
+          index: props.index,
+          ref: childRef,
+        })}
         <BadgeOutline onLayout={onLayout}>
           <BadgeInner>
             {!props.isDot && (

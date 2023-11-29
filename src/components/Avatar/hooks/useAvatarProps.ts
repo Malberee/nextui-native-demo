@@ -1,12 +1,13 @@
-import { useAvatarGroup } from '../AvatarGroup/AvatarGroup.context'
-import { AvatarProps } from './Avatar.types'
+import { useAvatarGroupContext } from '../../AvatarGroup/hooks/useAvatarGroupContext'
+import { AvatarProps } from '../Avatar.types'
 
 export const useAvatarProps = (props: AvatarProps) => {
-  const groupContext = useAvatarGroup()
+  const groupContext = useAvatarGroupContext()
   const isInGroup = !!groupContext
 
   const {
     source,
+    index,
     color = groupContext?.color ?? 'default',
     radius = groupContext?.radius ?? 'full',
     size = groupContext?.size ?? 'md',
@@ -19,6 +20,7 @@ export const useAvatarProps = (props: AvatarProps) => {
 
   return {
     source,
+    index,
     color,
     radius,
     size,
@@ -28,5 +30,6 @@ export const useAvatarProps = (props: AvatarProps) => {
     isBordered,
     isDisabled,
     isInGroup,
+    isGrid: groupContext?.isGrid,
   }
 }

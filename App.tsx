@@ -8,7 +8,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      <AvatarGroup color="primary" isDisabled>
+      <AvatarGroup color="primary" isGrid>
         <Badge
           color="danger"
           content={<Icon name="check" size={8} color="white" />}
@@ -29,7 +29,7 @@ export default function App() {
           />
         </Badge>
         <Badge
-          color='success'
+          color="success"
           content={<Icon name="check" size={8} color="white" />}
           size="md"
           placement="bottom-right"
