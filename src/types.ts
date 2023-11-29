@@ -5,16 +5,29 @@ export type ColorName =
   | 'success'
   | 'warning'
   | 'danger'
-
 export type RadiusName = 'none' | 'sm' | 'md' | 'lg' | 'full'
 export type Radii = {
   [key in RadiusName]: number
 }
 
-export type SizeName = 'sm' | 'md' | 'lg'
-export type Sizes = {
-  [key in SizeName]: number
-}
+export type SizeName =
+  | 'xs'
+  | 'sm'
+  | 'md'
+  | 'lg'
+  | 'xl'
+  | '2xl'
+  | '3xl'
+  | '4xl'
+  | '5xl'
+  | 'full'
+export type Sizes =
+  | {
+      [key in SizeName]: number
+    }
+  | {
+      [key in Pick<SizeName, 'sm' | 'md' | 'lg'>]: number
+    }
 
 export type VariantName =
   | 'solid'
@@ -27,7 +40,6 @@ export type VariantName =
 export type Variants = {
   [key in VariantName]: string
 }
-
 export type ColorScale = {
   50: string
   100: string
@@ -42,7 +54,6 @@ export type ColorScale = {
   foreground: string // contrast color
   DEFAULT: string
 }
-
 export type BaseColors = {
   background: ColorScale // the page background color
   foreground: ColorScale // the page text color
@@ -54,7 +65,6 @@ export type BaseColors = {
   content3: ColorScale
   content4: ColorScale
 }
-
 // brand colors
 export type ThemeColors = BaseColors & {
   default: ColorScale

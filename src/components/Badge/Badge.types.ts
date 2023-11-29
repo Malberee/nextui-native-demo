@@ -1,16 +1,15 @@
 import { ReactNode } from 'react'
 import { ColorName, SizeName, VariantName } from '../../types'
 
+export type Shape = 'circle' | 'rectangle'
 export type Placement =
   | 'top-right'
   | 'top-left'
   | 'bottom-right'
   | 'bottom-left'
-export type Shape = 'circle' | 'rectangle'
 
 export interface BadgeProps {
   children: ReactNode
-  index?: number
   content?: string | number | ReactNode
   variant?: VariantName
   color?: ColorName
@@ -22,7 +21,10 @@ export interface BadgeProps {
   isInvisible?: boolean
   isOneChar?: boolean
   isDot?: boolean
-  width?: number
+}
+
+export interface BadgeContextProps
+  extends Omit<BadgeProps, 'children' | 'content'> {
   isDisabled?: boolean
-  isInGroup?: boolean
+  width?: number
 }

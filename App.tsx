@@ -8,42 +8,68 @@ export default function App() {
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      <AvatarGroup color="primary" isGrid>
-        <Badge
-          color="danger"
-          content={<Icon name="check" size={8} color="white" />}
-          size="md"
-          placement="bottom-left"
-          shape="rectangle"
-          isDot
-        >
+      <AvatarGroup color="danger" size="md" isBordered>
+        <Badge isDot placement="bottom-left" shape="circle" color="success">
           <Avatar
-            size={50}
-            radius="lg"
-            color="success"
-            name="Max"
-            // source={{ uri: 'https://i.pravatar.cc/150?u=a04258114e29026708c' }}
-            icon={<Icon name="camera" size={30} color="white" />}
-            isBordered
-            // isDisabled
+            source={{ uri: 'https://i.pravatar.cc/150?u=a04258114e29026708c' }}
+            isBordered={false}
           />
         </Badge>
+        <Badge isDot placement="bottom-left" shape="circle" color="success">
+          <Avatar
+            isDisabled
+            icon={<Icon name="home" size={20} color="white" />}
+            color="secondary"
+          />
+        </Badge>
+        <Avatar
+          source={{ uri: 'https://i.pravatar.cc/300?u=a042581f4e290267072' }}
+          color="primary"
+        />
         <Badge
-          color="success"
-          content={<Icon name="check" size={8} color="white" />}
-          size="md"
-          placement="bottom-right"
+          placement="top-right"
           shape="circle"
-          isDot
+          color="danger"
+          content="5"
+          isOneChar
+          size="md"
         >
           <Avatar
-            size={50}
-            // radius="lg"
-            name="Max"
+            color="warning"
+            source={{ uri: 'https://i.pravatar.cc/150?u=a04258a2462d826712d' }}
+          />
+        </Badge>
+      </AvatarGroup>
+      <Divider />
+      <AvatarGroup color="danger" size="md" isBordered isGrid>
+        <Badge isDot placement="bottom-left" shape="circle" color="success">
+          <Avatar
             source={{ uri: 'https://i.pravatar.cc/150?u=a04258114e29026708c' }}
-            icon={<Icon name="camera" size={30} color="white" />}
-            isBordered
-            isDisabled={false}
+            isBordered={false}
+          />
+        </Badge>
+        <Badge isDot placement="bottom-left" shape="circle" color="success">
+          <Avatar
+            isDisabled
+            icon={<Icon name="home" size={20} color="white" />}
+            color="secondary"
+          />
+        </Badge>
+        <Avatar
+          source={{ uri: 'https://i.pravatar.cc/300?u=a042581f4e290267072' }}
+          color="primary"
+        />
+        <Badge
+          placement="top-right"
+          shape="circle"
+          color="danger"
+          content="5"
+          isOneChar
+          size="md"
+        >
+          <Avatar
+            color="warning"
+            source={{ uri: 'https://i.pravatar.cc/150?u=a04258a2462d826712d' }}
           />
         </Badge>
       </AvatarGroup>

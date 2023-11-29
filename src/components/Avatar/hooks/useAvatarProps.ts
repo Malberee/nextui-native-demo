@@ -3,33 +3,23 @@ import { AvatarProps } from '../Avatar.types'
 
 export const useAvatarProps = (props: AvatarProps) => {
   const groupContext = useAvatarGroupContext()
-  const isInGroup = !!groupContext
+  const isInGroup = !!Object.keys(groupContext).length
 
   const {
-    source,
-    index,
     color = groupContext?.color ?? 'default',
     radius = groupContext?.radius ?? 'full',
     size = groupContext?.size ?? 'md',
-    name,
-    icon,
-    fallback,
     isBordered = groupContext?.isBordered ?? false,
     isDisabled = groupContext?.isDisabled ?? false,
   } = props
 
   return {
-    source,
-    index,
+    ...props,
     color,
     radius,
     size,
-    name,
-    icon,
-    fallback,
     isBordered,
     isDisabled,
     isInGroup,
-    isGrid: groupContext?.isGrid,
   }
 }

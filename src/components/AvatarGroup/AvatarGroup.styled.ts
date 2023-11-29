@@ -1,15 +1,25 @@
 import styled, { css } from 'styled-components/native'
-import { AvatarGroupProps } from './AvatarGroup.types'
+import {
+  AvatarGroupWrapperProps,
+  AvatarWrapperProps,
+} from './AvatarGroup.types'
 
-export const AvatarGroupWrapper = styled.View<
-  Pick<AvatarGroupProps, 'max' | 'total' | 'isGrid'>
->(({ isGrid }) => {
-  return css`
-    position: relative;
-    display: flex;
-    align-items: center;
-    flex-wrap: ${isGrid ? 'wrap' : 'nowrap'};
-    flex-direction: row;
-    gap: 16px;
-  `
-})
+export const AvatarGroupWrapper = styled.View<AvatarGroupWrapperProps>(
+  ({ isGrid }) => {
+    return css`
+      display: flex;
+      flex-direction: row;
+      flex-wrap: ${isGrid ? 'wrap' : 'nowrap'};
+      gap: 16px;
+    `
+  },
+)
+
+export const AvatarWrapper = styled.View<AvatarWrapperProps>(
+  ({ index, isGrid }) => {
+    return css`
+      position: relative;
+      left: ${!isGrid && index ? -24 * index : 0}px;
+    `
+  },
+)

@@ -6,13 +6,12 @@ export interface AvatarProps {
   source?: ImageSourcePropType
   color?: ColorName
   radius?: RadiusName | number
-  size?: SizeName | number
+  size?: Extract<SizeName, 'sm' | 'md' | 'lg'> | number
   name?: string
   icon?: ReactNode
   fallback?: ReactNode
   isBordered?: boolean
   isDisabled?: boolean
-  isGrid?: boolean
-  index?: number
+  showFallback?: boolean
   isInGroup?: boolean
 }
