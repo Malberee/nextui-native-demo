@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar'
 import Icon from 'react-native-vector-icons/Entypo'
 import { StyleSheet, View } from 'react-native'
 
-import { Avatar, AvatarGroup, Badge } from './src'
+import { Avatar, AvatarGroup, Badge, Divider } from './src'
 
 export default function App() {
   return (
@@ -47,6 +47,7 @@ export default function App() {
           />
         </Badge>
       </AvatarGroup>
+      <Divider />
     </View>
   )
 }
