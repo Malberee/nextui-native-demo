@@ -11,10 +11,10 @@ export const getPlacement = (
 
   return `
     ${placements[0]}: -${
-      getSize(sizes, width) / (shape === 'circle' ? 6 : 4)
+      getSize(sizes, width) / (shape === 'circle' ? 4 : 4)
     }px;
     ${placements[1]}: -${
-      getSize(sizes, width) / (shape === 'circle' ? 6 : 2.5)
+      getSize(sizes, width) / (shape === 'circle' ? 4 : 2.5)
     }px;
   `
 }

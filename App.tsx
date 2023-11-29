@@ -8,34 +8,35 @@ export default function App() {
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      <AvatarGroup color="primary" size="md" isBordered isGrid>
+      <AvatarGroup color="danger" size="md" isBordered>
+        <Badge isDot placement="bottom-left" shape="circle" color="success">
+          <Avatar
+            source={{ uri: 'https://i.pravatar.cc/150?u=a04258114e29026708c' }}
+            isBordered={false}
+          />
+        </Badge>
+        <Badge isDot placement="bottom-left" shape="circle" color="success">
+          <Avatar
+            isDisabled
+            icon={<Icon name="home" size={20} color="white" />}
+            color="secondary"
+          />
+        </Badge>
+        <Avatar
+          source={{ uri: 'https://i.pravatar.cc/300?u=a042581f4e290267072' }}
+          color="primary"
+        />
         <Badge
+          placement="top-right"
+          shape="circle"
           color="danger"
-          size="sm"
           content="5"
           isOneChar
-          shape="circle"
-          isDot
-          placement="bottom-right"
-          showOutline
+          size="md"
         >
           <Avatar
             color="warning"
-            source={{ uri: 'https://i.pravatar.cc/150?u=a04258114e29026302d' }}
-          />
-        </Badge>
-        <Badge
-          content="new"
-          // isOneChar
-          color="danger"
-          placement="bottom-right"
-          shape="rectangle"
-          showOutline
-        >
-          <Avatar
-            // source={{ uri: 'https://i.pravatar.cc/150?u=a04258114e29026302d' }}
-            radius="md"
-            icon={<Icon name="user" size={24} color="white" />}
+            source={{ uri: 'https://i.pravatar.cc/150?u=a04258a2462d826712d' }}
           />
         </Badge>
       </AvatarGroup>
