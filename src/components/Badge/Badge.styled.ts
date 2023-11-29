@@ -30,6 +30,7 @@ export const BadgeOutline = styled.View(() => {
     placement = 'top-right',
     isDot,
     isOneChar,
+    isDisabled,
   } = useBadge()
   return css`
     position: absolute;
@@ -45,6 +46,7 @@ export const BadgeOutline = styled.View(() => {
     padding: 2px;
 
     background-color: ${showOutline ? '#ffffff' : 'transparent'};
+    opacity: ${isDisabled ? 0.5 : 1};
   `
 })
 

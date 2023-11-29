@@ -9,13 +9,9 @@ const AvatarGroup: FC<AvatarGroupProps> = ({
   children,
   max,
   total,
-  size,
-  color,
-  radius,
   isGrid,
-  isDisabled,
-  isBordered,
   renderCount,
+  ...props
 }) => {
   const childrens = React.Children.toArray(children)
   const limitedChildren = childrens?.slice(0, max)
@@ -23,18 +19,17 @@ const AvatarGroup: FC<AvatarGroupProps> = ({
   return (
     <AvatarGroupContext.Provider
       value={{
-        size,
-        color,
-        radius,
-        isDisabled,
-        isBordered,
         isGrid,
         isInGroup: true,
+        ...props,
       }}
     >
       <AvatarGroupWrapper isGrid={isGrid}>
         {React.Children.map(limitedChildren, (child, index) =>
-          React.cloneElement(child as ReactElement, { index, isInGroup: true }),
+          React.cloneElement(child as ReactElement, {
+            index,
+            isInGroup: true,
+          }),
         )}
         {renderCount
           ? renderCount(total || childrens.length - limitedChildren.length)

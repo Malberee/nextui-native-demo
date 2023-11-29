@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, useImperativeHandle, forwardRef } from 'react'
 import { AvatarProps } from './Avatar.types'
 import {
   AvatarWrapper,
@@ -7,16 +7,18 @@ import {
   AvatarImage,
   Name,
 } from './Avatar.styled'
-import { useAvatarGroup } from '../AvatarGroup/AvatarGroup.context'
 import { AvatarContext } from './Avatar.context'
+import { useAvatarProps } from './useAvatar'
 
-const Avatar: FC<AvatarProps> = ({ source, name, icon, ...props }) => {
-  const isBordered =
-    (typeof props.isBordered === 'undefined' && useAvatarGroup().isBordered) ||
-    props.isBordered
+const Avatar: FC<AvatarProps> = forwardRef((props, ref) => {
+  const { source, name, icon, ...avatarProps } = useAvatarProps(props)
+
+  useImperativeHandle(ref, () => {
+    return { isDisabled: avatarProps.isDisabled }
+  })
 
   return (
-    <AvatarContext.Provider value={{ source, ...props }}>
+    <AvatarContext.Provider value={{ source, ...avatarProps }}>
       <AvatarWrapper>
         <AvatarInner>
           {source ? (
@@ -27,10 +29,10 @@ const Avatar: FC<AvatarProps> = ({ source, name, icon, ...props }) => {
             <Name>{name}</Name>
           )}
         </AvatarInner>
-        {isBordered && <AvatarOutline />}
+        {avatarProps.isBordered && <AvatarOutline />}
       </AvatarWrapper>
     </AvatarContext.Provider>
   )
-}
+})
 
 export default Avatar

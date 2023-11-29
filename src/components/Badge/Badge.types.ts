@@ -22,4 +22,5 @@ export interface BadgeProps {
   isOneChar?: boolean
   isDot?: boolean
   width?: number
+  isDisabled?: boolean
 }
