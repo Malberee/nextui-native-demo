@@ -1,8 +1,8 @@
 import { StatusBar } from 'expo-status-bar'
 import Icon from 'react-native-vector-icons/Entypo'
-import { StyleSheet, View } from 'react-native'
+import { StyleSheet, View, Text } from 'react-native'
 
-import { Avatar, AvatarGroup, Badge, Divider } from './src'
+import { Avatar, AvatarGroup, Badge, Divider, Code } from './src'
 
 export default function App() {
   return (
@@ -48,6 +48,7 @@ export default function App() {
         </Badge>
       </AvatarGroup>
       <Divider />
+      <Code content="npm install @malberee/nextui-native" color="secondary" />
     </View>
   )
 }

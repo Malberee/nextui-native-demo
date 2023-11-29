@@ -19,8 +19,7 @@ const getPlacement = (placement: Placement, width: number, shape: Shape) => {
   `
 }
 
-export const BadgeWrapper = styled.View`
-`
+export const BadgeWrapper = styled.View``
 
 export const BadgeOutline = styled.View(() => {
   const {
@@ -60,10 +59,7 @@ export const BadgeInner = styled.View(() => {
   return css`
     width: 100%;
     height: 100%;
-    padding-top: 1px;
-    padding-left: 5px;
-    padding-right: 5px;
-    padding-bottom: 1px;
+    padding: 1px 5px 1px 5px;
     border-radius: 9999px;
 
     display: flex;
