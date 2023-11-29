@@ -6,25 +6,18 @@ export const useAvatarProps = (props: AvatarProps) => {
   const isInGroup = !!Object.keys(groupContext).length
 
   const {
-    source,
     color = groupContext?.color ?? 'default',
     radius = groupContext?.radius ?? 'full',
     size = groupContext?.size ?? 'md',
-    name,
-    icon,
-    fallback,
     isBordered = groupContext?.isBordered ?? false,
     isDisabled = groupContext?.isDisabled ?? false,
   } = props
 
   return {
-    source,
+    ...props,
     color,
     radius,
     size,
-    name,
-    icon,
-    fallback,
     isBordered,
     isDisabled,
     isInGroup,

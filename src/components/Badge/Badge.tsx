@@ -1,14 +1,48 @@
-import React, { FC } from 'react'
-import { Text } from 'react-native'
-import { BadgeWrapper } from './Badge.styled'
+import React, { FC, useState, useRef } from 'react'
+import { LayoutChangeEvent } from 'react-native'
+import {
+  BadgeWrapper,
+  BadgeOutline,
+  BadgeInner,
+  BadgeContent,
+} from './Badge.styled'
 
 import { BadgeProps } from './Badge.types'
+import { BadgeContext } from './hooks/useBadgeContext'
+import { useBadgeProps } from './hooks/useBadgeProps'
 
-const Badge: FC<BadgeProps> = () => {
+const Badge: FC<BadgeProps> = ({ children, content, ...props }) => {
+  const [width, setWidth] = useState(0)
+  const childRef = useRef<{ isDisabled: boolean }>(null)
+  let hasLayoutOccurred = false
+  const badgeProps = useBadgeProps({ width, ...props })
+
+  const onLayout = (e: LayoutChangeEvent) => {
+    if (!hasLayoutOccurred) {
+      setWidth(e.nativeEvent.layout.width)
+      hasLayoutOccurred = true
+    }
+  }
+
   return (
-    <BadgeWrapper>
-      <Text>Button Component</Text>
-    </BadgeWrapper>
+    <BadgeContext.Provider
+      value={{ isDisabled: childRef.current?.isDisabled, width, ...badgeProps }}
+    >
+      <BadgeWrapper>
+        {React.cloneElement(children as React.ReactElement, { ref: childRef })}
+        <BadgeOutline onLayout={onLayout}>
+          <BadgeInner>
+            {!props.isDot && (
+              <BadgeContent>
+                {props.isOneChar && typeof content === 'string'
+                  ? content.charAt(0)
+                  : content}
+              </BadgeContent>
+            )}
+          </BadgeInner>
+        </BadgeOutline>
+      </BadgeWrapper>
+    </BadgeContext.Provider>
   )
 }
 

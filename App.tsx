@@ -13,9 +13,12 @@ export default function App() {
           // source={{ uri: 'https://i.pravatar.cc/150?u=a04258114e29026302d' }}
           icon={<Icon name="user" size={24} color="white" />}
         />
-        <Avatar
-          source={{ uri: 'https://i.pravatar.cc/150?u=a04258114e29026302d' }}
-        />
+        <Badge color="danger" size="sm">
+          <Avatar
+            color="warning"
+            source={{ uri: 'https://i.pravatar.cc/150?u=a04258114e29026302d' }}
+          />
+        </Badge>
       </AvatarGroup>
       <Divider />
       <Code content="npm install @malberee/nextui-native" color="secondary" />
