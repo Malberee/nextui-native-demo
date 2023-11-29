@@ -18,9 +18,9 @@ const AvatarGroup: FC<AvatarGroupProps> = ({
 
   return (
     <AvatarGroupContext.Provider value={props}>
-      <AvatarGroupWrapper>
+      <AvatarGroupWrapper isGrid={isGrid}>
         {limitedChildArray?.map((child, index) => (
-          <AvatarWrapper index={index} key={index}>
+          <AvatarWrapper index={index} isGrid={isGrid} key={index}>
             {React.cloneElement(child)}
           </AvatarWrapper>
         ))}

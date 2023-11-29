@@ -18,3 +18,12 @@ export interface AvatarGroupContextProps
     AvatarProps,
     'size' | 'color' | 'radius' | 'isDisabled' | 'isBordered'
   > {}
+
+export interface AvatarGroupWrapperProps {
+  isGrid?: boolean
+}
+
+export interface AvatarWrapperProps {
+  index: number
+  isGrid?: boolean
+}
