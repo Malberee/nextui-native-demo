@@ -27,8 +27,10 @@ export const AvatarInner = styled.View(() => {
     display: flex;
     justify-content: center;
     align-items: center;
+
     height: 100%;
     width: 100%;
+
     background-color: ${isDisabled && source ? 'transparent' : getColor(color)};
     border-radius: ${getRadius(radii, radius)}px;
   `
@@ -55,8 +57,10 @@ export const AvatarOutline = styled.View(() => {
     position: absolute;
     top: -4px;
     left: -4px;
+
     width: ${getSize(sizes, size) + 8}px;
     height: ${getSize(sizes, size) + 8}px;
+
     background-color: #ffffff;
     border-color: ${getColor(color)};
     border-width: 2px;
