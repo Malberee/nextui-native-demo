@@ -3,6 +3,14 @@ export type Radii = {
   [key in RadiusName]: number
 }
 
+export type ColorName =
+  | 'default'
+  | 'primary'
+  | 'secondary'
+  | 'success'
+  | 'warning'
+  | 'danger'
+
 export type SizeName =
   | 'xs'
   | 'sm'
@@ -14,10 +22,10 @@ export type SizeName =
   | '4xl'
   | '5xl'
   | 'full'
-type CommonSizes = {
+export type CommonSizes = {
   [key in SizeName]: number
 }
-type RestrictedSizes = {
+export type RestrictedSizes = {
   [key in Extract<SizeName, 'sm' | 'md' | 'lg'>]: number
 }
 export type Sizes = RestrictedSizes | CommonSizes

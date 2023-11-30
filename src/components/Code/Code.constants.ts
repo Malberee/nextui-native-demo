@@ -3,8 +3,8 @@ import { Radii, Sizes } from '../../types'
 export const radii: Radii = {
   none: 0,
   sm: 8,
-  md: 1,
-  lg: 1,
+  md: 12,
+  lg: 14,
   full: 9999,
 }
 

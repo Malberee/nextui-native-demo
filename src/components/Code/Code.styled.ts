@@ -18,11 +18,12 @@ export const CodeWrapper = styled.View<Pick<CodeProps, 'color' | 'radius'>>(
 )
 
 export const CodeContent = styled.Text<Pick<CodeProps, 'size' | 'color'>>(
-  ({ size = 'md', color = 'default' }) => {
+  ({ size = 'md', color = 'white' }) => {
     const { colors } = useColors()
-    
+
     return css`
       font-size: ${getSize(sizes, size)}px;
+      line-height: ${size === 'sm' ? 20 : size === 'md' ? 24 : 28}px;
       color: ${colors[color]};
     `
   },

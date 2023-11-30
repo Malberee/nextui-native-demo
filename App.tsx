@@ -95,7 +95,7 @@ export default function App() {
           </Badge>
         </AvatarGroup>
         <Divider />
-        <Code content="npm install @malberee/nextui-native" color="secondary" />
+        <Code content="npm install @malberee/nextui-native" />
       </Container>
     </ThemeProvider>
   )

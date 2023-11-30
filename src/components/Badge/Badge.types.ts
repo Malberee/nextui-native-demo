@@ -9,7 +9,7 @@ export interface BadgeProps {
   content?: string | number | ReactNode
   variant?: VariantName
   color?: ColorName
-  size?: SizeName | number
+  size?: Extract<SizeName, 'sm' | 'md' | 'lg'> | number
   shape?: Shape
   placement?: Placement
   showOutline?: boolean
