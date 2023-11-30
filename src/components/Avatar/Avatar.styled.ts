@@ -65,7 +65,7 @@ export const AvatarOutline = styled.View(() => {
     width: ${getSize(sizes, size) + 8}px;
     height: ${getSize(sizes, size) + 8}px;
 
-    background-color: #ffffff;
+    background-color: ${colors.background};
     border-color: ${colors[color]};
     border-width: 2px;
     border-radius: ${getRadius(radii, radius) + 4}px;

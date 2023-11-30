@@ -14,13 +14,13 @@ export type SizeName =
   | '4xl'
   | '5xl'
   | 'full'
-export type Sizes =
-  | {
-      [key in SizeName]: number
-    }
-  | {
-      [key in Extract<SizeName, 'sm' | 'md' | 'lg'>]: number
-    }
+type CommonSizes = {
+  [key in SizeName]: number
+}
+type RestrictedSizes = {
+  [key in Extract<SizeName, 'sm' | 'md' | 'lg'>]: number
+}
+export type Sizes = RestrictedSizes | CommonSizes
 
 export type VariantName =
   | 'solid'

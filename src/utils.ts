@@ -7,7 +7,7 @@ export const getRadius = (radii: Radii, radius: RadiusName | number) => {
   return radius
 }
 
-export const getSize = (sizes: Sizes, size: SizeName | number) => {
+export const getSize = (sizes: Sizes, size: keyof Sizes | number) => {
   if (typeof size === 'string') {
     return sizes[size]
   }
