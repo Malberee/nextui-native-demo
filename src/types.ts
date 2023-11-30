@@ -1,10 +1,3 @@
-export type ColorName =
-  | 'default'
-  | 'primary'
-  | 'secondary'
-  | 'success'
-  | 'warning'
-  | 'danger'
 export type RadiusName = 'none' | 'sm' | 'md' | 'lg' | 'full'
 export type Radii = {
   [key in RadiusName]: number
@@ -26,7 +19,7 @@ export type Sizes =
       [key in SizeName]: number
     }
   | {
-      [key in Pick<SizeName, 'sm' | 'md' | 'lg'>]: number
+      [key in Extract<SizeName, 'sm' | 'md' | 'lg'>]: number
     }
 
 export type VariantName =

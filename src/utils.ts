@@ -1,15 +1,10 @@
-import { ColorName, Sizes, Radii, RadiusName, SizeName } from './types'
-import { palette } from './theme'
+import { Sizes, Radii, RadiusName, SizeName } from './types'
 
 export const getRadius = (radii: Radii, radius: RadiusName | number) => {
   if (typeof radius === 'string') {
     return radii[radius]
   }
   return radius
-}
-
-export const getColor = (color: ColorName) => {
-  return palette[color] || palette['default']
 }
 
 export const getSize = (sizes: Sizes, size: SizeName | number) => {

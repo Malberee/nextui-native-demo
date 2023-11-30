@@ -1,8 +1,9 @@
 import styled, { css } from 'styled-components/native'
 import { useBadgeContext } from './hooks/useBadgeContext'
 import { getPlacement } from './utils'
-import { getColor, getSize } from '../../utils'
+import { getSize } from '../../utils'
 import { sizes } from './Badge.constants'
+import useColors from '../ThemeProvider/hooks/useColors'
 
 export const BadgeWrapper = styled.View``
 
@@ -36,6 +37,7 @@ export const BadgeOutline = styled.View(() => {
 
 export const BadgeInner = styled.View(() => {
   const { color = 'default', variant = 'solid' } = useBadgeContext()
+  const { colors } = useColors()
 
   return css`
     width: 100%;
@@ -45,7 +47,7 @@ export const BadgeInner = styled.View(() => {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: ${getColor(color)};
+    background-color: ${colors[color]};
   `
 })
 export const BadgeContent = styled.Text(() => {

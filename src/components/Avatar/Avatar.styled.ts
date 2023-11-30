@@ -1,16 +1,18 @@
 import styled, { css } from 'styled-components/native'
 import { useAvatarContext } from './hooks/useAvatarContext'
-import { getColor, getRadius, getSize } from '../../utils'
+import { getRadius, getSize } from '../../utils'
 import { radii, sizes } from './Avatar.constants'
+import useColors from '../ThemeProvider/hooks/useColors'
 
 export const AvatarWrapper = styled.View(() => {
   const { radius = 'full', size = 'md', isDisabled } = useAvatarContext()
+  const { colors } = useColors()
 
   return css`
     height: ${getSize(sizes, size)}px;
     width: ${getSize(sizes, size)}px;
     opacity: ${isDisabled ? 0.5 : 1};
-    background-color: ${getColor('default')};
+    background-color: ${colors.default};
     border-radius: ${getRadius(radii, radius)}px;
   `
 })
@@ -22,6 +24,7 @@ export const AvatarInner = styled.View(() => {
     isDisabled,
     source,
   } = useAvatarContext()
+  const { colors } = useColors()
 
   return css`
     display: flex;
@@ -31,7 +34,7 @@ export const AvatarInner = styled.View(() => {
     height: 100%;
     width: 100%;
 
-    background-color: ${isDisabled && source ? 'transparent' : getColor(color)};
+    background-color: ${isDisabled && source ? 'transparent' : colors[color]};
     border-radius: ${getRadius(radii, radius)}px;
   `
 })
@@ -52,6 +55,7 @@ export const Name = styled.Text(() => {
 
 export const AvatarOutline = styled.View(() => {
   const { color = 'default', radius = 'full', size = 'md' } = useAvatarContext()
+  const { colors } = useColors()
 
   return css`
     position: absolute;
@@ -62,7 +66,7 @@ export const AvatarOutline = styled.View(() => {
     height: ${getSize(sizes, size) + 8}px;
 
     background-color: #ffffff;
-    border-color: ${getColor(color)};
+    border-color: ${colors[color]};
     border-width: 2px;
     border-radius: ${getRadius(radii, radius) + 4}px;
     z-index: -1;
