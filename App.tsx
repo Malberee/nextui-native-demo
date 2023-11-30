@@ -12,6 +12,7 @@ import {
   Divider,
   Code,
   Button,
+  ButtonGroup,
 } from './src'
 
 const Container = styled.View(() => {
@@ -105,7 +106,24 @@ export default function App() {
         <Divider />
         <Code content="npm install @malberee/nextui-native" color="success" />
         <Divider />
-        <Button>Submit</Button>
+        <ButtonGroup
+          color="secondary"
+          size="lg"
+          radius="lg"
+          variant="flat"
+          fullWidth
+        >
+          <Button color="success" isDisabled>
+            Submit
+          </Button>
+          <Button color="primary">Submit</Button>
+        </ButtonGroup>
+        <ButtonGroup color="secondary" size="lg" radius="lg">
+          <Button color="danger" variant='faded'>
+            Submit
+          </Button>
+          <Button color="warning">Submit</Button>
+        </ButtonGroup>
       </Container>
     </ThemeProvider>
   )

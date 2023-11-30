@@ -2,11 +2,11 @@ import React, { FC } from 'react'
 import { ButtonWrapper, ButtonText } from './Button.styled'
 
 import { ButtonProps } from './Button.types'
-import { useAvatarProps } from '../Avatar/hooks/useAvatarProps'
 import { ButtonContext } from './hooks/useButtonContext'
+import { useButtonProps } from './hooks/useButtonProps'
 
 const Button: FC<ButtonProps> = ({ children, ...props }) => {
-  const buttonProps = useAvatarProps(props)
+  const buttonProps = useButtonProps(props)
 
   return (
     <ButtonContext.Provider value={buttonProps}>

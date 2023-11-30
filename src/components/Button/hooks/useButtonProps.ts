@@ -9,7 +9,7 @@ export const useButtonProps = (props: Omit<ButtonProps, 'children'>) => {
     variant = groupContext?.variant ?? 'solid',
     color = groupContext?.color ?? 'default',
     size = groupContext?.size ?? 'md',
-    radius = groupContext?.radius ?? 'xl',
+    radius = groupContext?.radius ?? 'md',
     fullWidth = groupContext?.fullWidth ?? false,
     isDisabled = groupContext?.isDisabled ?? false,
   } = props
