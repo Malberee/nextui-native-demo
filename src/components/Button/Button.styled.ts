@@ -8,26 +8,61 @@ import { radii } from './Button.constants'
 const getVariantStyles = (variant: VariantName, color: ColorName) => {
   const { colors } = useColors()
 
-  if (variant === 'solid') {
-    return `
-            background-color: ${colors[color]};
-        `
-  }
-  if (variant === 'flat') {
-    return `
+  switch (variant) {
+    case 'flat':
+      return `
             background-color: ${colors[color]}25;
         `
-  }
-  if (variant === 'faded') {
-    return `
+      break
+    case 'faded':
+      return `
             background-color: ${colors.default100};
             border-color: ${colors.default200};
             border-width: 2px;
         `
+      break
+    case 'bordered':
+      return `
+            border-color: ${colors[color]};
+            border-width: 2px;
+        `
+      break
+    case 'light':
+      return
+      break
+    default:
+      return `
+            background-color: ${colors[color]};
+        `
+      break
   }
 }
 
-export const ButtonWrapper = styled.TouchableOpacity(() => {
+const getRadii = (
+  isInGroup: boolean,
+  isFirst: boolean,
+  isLast: boolean,
+  radius: number,
+) => {
+  if (isInGroup) {
+    if (isFirst) {
+      return `
+        border-top-left-radius: ${radius}px;
+        border-bottom-left-radius: ${radius}px;
+      `
+    }
+    if (isLast) {
+      return `
+        border-top-right-radius: ${radius}px;
+        border-bottom-right-radius: ${radius}px;
+      `
+    }
+    return ''
+  }
+  return `border-radius: ${radius}px;`
+}
+
+export const ButtonWrapper = styled.Pressable(() => {
   const {
     radius = 'md',
     color = 'default',
@@ -35,31 +70,44 @@ export const ButtonWrapper = styled.TouchableOpacity(() => {
     variant = 'solid',
     fullWidth,
     isDisabled,
+    isIconOnly,
+    isInGroup = false,
+    isFirst = false,
+    isLast = false,
   } = useButtonContext()
-  const { colors } = useColors()
+
+  console.log(size)
 
   return css`
     display: flex;
     justify-content: center;
+    flex-direction: row;
     align-items: center;
-    box-sizing: content-box;
+    flex-grow: ${isInGroup && fullWidth ? 1 : 0};
+    gap: 8px;
 
     height: ${size === 'sm' ? 32 : size === 'md' ? 40 : 48}px;
-    padding: 0 ${size === 'sm' ? 12 : size === 'md' ? 16 : 24}px;
+    ${isIconOnly && `width: ${size === 'sm' ? 32 : size === 'md' ? 40 : 48}px`};
+    min-width: ${!isInGroup && fullWidth ? '100%' : 'auto'};
+    padding: 0
+      ${isIconOnly ? 0 : size === 'sm' ? 12 : size === 'md' ? 16 : 24}px;
 
     ${getVariantStyles(variant, color)}
-    border-radius: ${getRadius(radii, radius)}px;
+    ${getRadii(isInGroup, isFirst, isLast, getRadius(radii, radius))}
 
     opacity: ${isDisabled ? 0.5 : 1};
+    overflow: hidden;
   `
 })
 
-export const ButtonText = styled.Text(() => {
+export const ButtonContent = styled.Text(() => {
   const { color = 'default', variant = 'solid' } = useButtonContext()
 
   const { colors } = useColors()
 
   return css`
-    color: ${variant === 'flat' ? colors[color] : getTextColor(color)};
+    color: ${variant === 'solid' || variant === 'shadow'
+      ? getTextColor(color)
+      : colors[color]};
   `
 })

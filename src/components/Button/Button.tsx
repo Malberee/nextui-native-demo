@@ -1,21 +1,33 @@
 import React, { FC } from 'react'
-import { ButtonWrapper, ButtonText } from './Button.styled'
+import { ButtonWrapper, ButtonContent } from './Button.styled'
 
 import { ButtonProps } from './Button.types'
 import { ButtonContext } from './hooks/useButtonContext'
 import { useButtonProps } from './hooks/useButtonProps'
+import { getTextColor } from '../../utils'
+import useColors from '../ThemeProvider/hooks/useColors'
 
-const Button: FC<ButtonProps> = ({ children, ...props }) => {
-  const buttonProps = useButtonProps(props)
+const Button: FC<ButtonProps> = ({ children, onPress, ...props }) => {
+  const { startContent, endContent, isIconOnly, ...buttonProps } =
+    useButtonProps(props)
+  const { colors } = useColors()
 
   return (
-    <ButtonContext.Provider value={buttonProps}>
-      <ButtonWrapper>
-        {typeof children === 'string' ? (
-          <ButtonText>{children}</ButtonText>
-        ) : (
-          children
-        )}
+    <ButtonContext.Provider value={{ isIconOnly, ...buttonProps }}>
+      <ButtonWrapper
+        onPress={onPress}
+        android_ripple={{
+          color: `${
+            buttonProps.variant === 'solid' || buttonProps.variant === 'shadow'
+              ? `${getTextColor(buttonProps.color)}40`
+              : `${colors[buttonProps.color]}30`
+          }`,
+          foreground: true,
+        }}
+      >
+        {!isIconOnly && startContent}
+        <ButtonContent>{children}</ButtonContent>
+        {!isIconOnly && endContent}
       </ButtonWrapper>
     </ButtonContext.Provider>
   )

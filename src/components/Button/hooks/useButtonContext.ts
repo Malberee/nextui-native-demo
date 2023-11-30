@@ -1,8 +1,8 @@
 import { createContext, useContext } from 'react'
-import { ButtonProps } from '../Button.types'
+import { ButtonContextProps } from '../Button.types'
 
-export const ButtonContext = createContext<Omit<ButtonProps, 'children'>>({})
+export const ButtonContext = createContext<ButtonContextProps>({})
 
 export const useButtonContext = () => {
-  return useContext<Omit<ButtonProps, 'children'>>(ButtonContext)
+  return useContext<ButtonContextProps>(ButtonContext)
 }

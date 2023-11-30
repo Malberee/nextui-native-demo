@@ -22,5 +22,6 @@ export const useButtonProps = (props: Omit<ButtonProps, 'children'>) => {
     radius,
     fullWidth,
     isDisabled,
+    isInGroup,
   }
 }

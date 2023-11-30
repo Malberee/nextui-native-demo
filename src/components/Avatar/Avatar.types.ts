@@ -13,5 +13,4 @@ export interface AvatarProps {
   isBordered?: boolean
   isDisabled?: boolean
   showFallback?: boolean
-  isInGroup?: boolean
 }

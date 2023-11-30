@@ -18,6 +18,12 @@ export interface ButtonProps {
   disableRipple?: boolean
   disableAnimation?: boolean
 
-    // events
-    
+  // events
+  onPress?: () => void
+}
+
+export interface ButtonContextProps extends Omit<ButtonProps, 'children'> {
+  isInGroup?: boolean
+  isFirst?: boolean
+  isLast?: boolean
 }

@@ -3,7 +3,6 @@ import { AvatarProps } from '../Avatar.types'
 
 export const useAvatarProps = (props: AvatarProps) => {
   const groupContext = useAvatarGroupContext()
-  const isInGroup = !!Object.keys(groupContext).length
 
   const {
     color = groupContext?.color ?? 'default',
@@ -20,6 +19,5 @@ export const useAvatarProps = (props: AvatarProps) => {
     size,
     isBordered,
     isDisabled,
-    isInGroup,
   }
 }

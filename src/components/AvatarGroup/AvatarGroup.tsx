@@ -1,5 +1,4 @@
 import React, { FC } from 'react'
-import { Text } from 'react-native'
 import { AvatarGroupWrapper, AvatarWrapper } from './AvatarGroup.styled'
 
 import { AvatarGroupProps } from './AvatarGroup.types'
@@ -18,7 +17,7 @@ const AvatarGroup: FC<AvatarGroupProps> = ({
   return (
     <AvatarGroupContext.Provider value={props}>
       <AvatarGroupWrapper isGrid={isGrid}>
-        {limitedChildArray?.map((child, index) => (
+        {limitedChildArray.map((child, index) => (
           <AvatarWrapper index={index} isGrid={isGrid} key={index}>
             {React.cloneElement(child)}
           </AvatarWrapper>
