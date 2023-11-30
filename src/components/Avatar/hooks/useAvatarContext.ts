@@ -4,5 +4,5 @@ import { AvatarProps } from '../Avatar.types'
 export const AvatarContext = createContext<AvatarProps>({})
 
 export const useAvatarContext = () => {
-  return useContext(AvatarContext)
+  return useContext<AvatarProps>(AvatarContext)
 }

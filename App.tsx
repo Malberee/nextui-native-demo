@@ -1,10 +1,18 @@
 import { StatusBar } from 'expo-status-bar'
+import { Text } from 'react-native'
 import styled, { css } from 'styled-components/native'
 import Icon from 'react-native-vector-icons/Entypo'
-import { StyleSheet, View, Text } from 'react-native'
 import useColors from './src/components/ThemeProvider/hooks/useColors'
 
-import { ThemeProvider, Avatar, AvatarGroup, Badge, Divider, Code } from './src'
+import {
+  ThemeProvider,
+  Avatar,
+  AvatarGroup,
+  Badge,
+  Divider,
+  Code,
+  Button,
+} from './src'
 
 const Container = styled.View(() => {
   const { colors } = useColors()
@@ -95,7 +103,9 @@ export default function App() {
           </Badge>
         </AvatarGroup>
         <Divider />
-        <Code content="npm install @malberee/nextui-native" />
+        <Code content="npm install @malberee/nextui-native" color="success" />
+        <Divider />
+        <Button>Submit</Button>
       </Container>
     </ThemeProvider>
   )
