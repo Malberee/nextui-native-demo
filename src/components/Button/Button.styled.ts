@@ -76,8 +76,6 @@ export const ButtonWrapper = styled.Pressable(() => {
     isLast = false,
   } = useButtonContext()
 
-  console.log(size)
-
   return css`
     display: flex;
     justify-content: center;
