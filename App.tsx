@@ -14,6 +14,7 @@ import {
   Button,
   ButtonGroup,
   User,
+  Chip,
 } from './src'
 
 const Container = styled.View(() => {
@@ -126,35 +127,19 @@ export default function App() {
           variant="flat"
           fullWidth
         >
-          <Button color="success" onPressIn={(e) => console.log('pressIn')}>
+          <Button color="success" variant="solid">
             Submit
           </Button>
           <Button color="warning">Submit</Button>
-          <Button color="primary">Submit</Button>
-          <Button color="danger">Submit</Button>
-        </ButtonGroup>
-        {/* <ButtonGroup color="secondary" size="lg" radius="lg">
+          <Button color="primary" variant="bordered">
+            Submit
+          </Button>
           <Button color="danger" variant="faded">
             Submit
           </Button>
-          <Button color="warning">Submit</Button>
         </ButtonGroup>
-        <ButtonGroup color="secondary" size="lg" radius="lg">
-          <Button color="danger" variant="bordered">
-            Submit
-          </Button>
-          <Button color="danger" variant="light">
-            Submit
-          </Button>
-          <Button
-            color="danger"
-            variant="shadow"
-            startContent={<Icon name="home" size={30} color="white" />}
-            isIconOnly
-          >
-            <Icon name="home" size={30} color="white" />
-          </Button>
-        </ButtonGroup> */}
+        <Divider />
+        <Chip color="success" radius='full'>Malberee</Chip>
       </Container>
     </ThemeProvider>
   )
