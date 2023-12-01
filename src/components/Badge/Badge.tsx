@@ -15,7 +15,11 @@ const Badge: FC<BadgeProps> = ({ children, content, ...props }) => {
   const [width, setWidth] = useState(0)
   const [hasLayoutOccurred, setHasLayoutOccurred] = useState(false)
   const childRef = useRef<{ isDisabled: boolean }>(null)
-  const badgeProps = useBadgeProps({ width, ...props })
+  const badgeProps = useBadgeProps({
+    isDisabled: !!childRef.current?.isDisabled,
+    width,
+    ...props,
+  })
 
   const onLayout = (e: LayoutChangeEvent) => {
     if (!hasLayoutOccurred) {
@@ -25,9 +29,7 @@ const Badge: FC<BadgeProps> = ({ children, content, ...props }) => {
   }
 
   return (
-    <BadgeContext.Provider
-      value={{ isDisabled: childRef.current?.isDisabled, width, ...badgeProps }}
-    >
+    <BadgeContext.Provider value={{ ...badgeProps }}>
       <BadgeWrapper>
         {React.cloneElement(children as React.ReactElement, { ref: childRef })}
         <BadgeOutline onLayout={onLayout}>

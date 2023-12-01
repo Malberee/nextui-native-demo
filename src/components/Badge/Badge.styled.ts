@@ -9,11 +9,11 @@ export const BadgeWrapper = styled.View``
 
 export const BadgeOutline = styled.View(() => {
   const {
-    placement = 'top-right',
-    width = 0,
-    shape = 'rectangle',
+    placement,
+    width,
+    shape,
     isOneChar,
-    size = 'md',
+    size,
     isDot,
     showOutline,
     isDisabled,
@@ -36,7 +36,7 @@ export const BadgeOutline = styled.View(() => {
 })
 
 export const BadgeInner = styled.View(() => {
-  const { color = 'default', variant = 'solid' } = useBadgeContext()
+  const { color, variant } = useBadgeContext()
   const { colors } = useColors()
 
   return css`

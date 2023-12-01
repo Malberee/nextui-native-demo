@@ -5,7 +5,7 @@ import { radii, sizes } from './Avatar.constants'
 import useColors from '../ThemeProvider/hooks/useColors'
 
 export const AvatarWrapper = styled.View(() => {
-  const { radius = 'full', size = 'md', isDisabled } = useAvatarContext()
+  const { radius, size, isDisabled } = useAvatarContext()
   const { colors } = useColors()
 
   return css`
@@ -18,12 +18,7 @@ export const AvatarWrapper = styled.View(() => {
 })
 
 export const AvatarInner = styled.View(() => {
-  const {
-    color = 'default',
-    radius = 'full',
-    isDisabled,
-    source,
-  } = useAvatarContext()
+  const { color, radius, isDisabled, source } = useAvatarContext()
   const { colors } = useColors()
 
   return css`
@@ -40,7 +35,7 @@ export const AvatarInner = styled.View(() => {
 })
 
 export const AvatarImage = styled.Image(() => {
-  const { radius = 'full' } = useAvatarContext()
+  const { radius } = useAvatarContext()
 
   return css`
     width: 100%;
@@ -54,7 +49,7 @@ export const Name = styled.Text(() => {
 })
 
 export const AvatarOutline = styled.View(() => {
-  const { color = 'default', radius = 'full', size = 'md' } = useAvatarContext()
+  const { color, radius, size } = useAvatarContext()
   const { colors } = useColors()
 
   return css`

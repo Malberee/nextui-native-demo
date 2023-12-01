@@ -1,27 +1,29 @@
 import { useButtonGroupContext } from '../../ButtonGroup/hooks/useButtonGroupContext'
-import { ButtonProps } from '../Button.types'
+import { ButtonContextProps } from '../Button.types'
 
-export const useButtonProps = (props: Omit<ButtonProps, 'children'>) => {
+export const defaultProps: ButtonContextProps = {
+  variant: 'solid',
+  color: 'default',
+  size: 'md',
+  radius: 'md',
+  fullWidth: false,
+  isDisabled: false,
+  isInGroup: false,
+  isIconOnly: false,
+  isFirst: false,
+  isLast: false,
+}
+
+export const useButtonProps = (
+  props: Partial<ButtonContextProps>,
+): ButtonContextProps => {
   const groupContext = useButtonGroupContext()
   const isInGroup = !!Object.keys(groupContext).length
 
-  const {
-    variant = groupContext?.variant ?? 'solid',
-    color = groupContext?.color ?? 'default',
-    size = groupContext?.size ?? 'md',
-    radius = groupContext?.radius ?? 'md',
-    fullWidth = groupContext?.fullWidth ?? false,
-    isDisabled = groupContext?.isDisabled ?? false,
-  } = props
-
   return {
+    ...defaultProps,
+    ...groupContext,
     ...props,
-    variant,
-    color,
-    size,
-    radius,
-    fullWidth,
-    isDisabled,
     isInGroup,
   }
 }

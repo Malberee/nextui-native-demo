@@ -27,8 +27,20 @@ export interface ButtonProps {
   onPressOut?: OnPressType
 }
 
-export interface ButtonContextProps extends Omit<ButtonProps, 'children'> {
-  isInGroup?: boolean
-  isFirst?: boolean
-  isLast?: boolean
+export interface ButtonContextProps
+  extends Required<
+    Pick<
+      ButtonProps,
+      | 'variant'
+      | 'color'
+      | 'size'
+      | 'radius'
+      | 'fullWidth'
+      | 'isIconOnly'
+      | 'isDisabled'
+    >
+  > {
+  isInGroup: boolean
+  isFirst: boolean
+  isLast: boolean
 }

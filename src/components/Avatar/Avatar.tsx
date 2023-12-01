@@ -11,30 +11,32 @@ import { AvatarProps } from './Avatar.types'
 import { useAvatarProps } from './hooks/useAvatarProps'
 import { AvatarContext } from './hooks/useAvatarContext'
 
-const Avatar: FC<AvatarProps> = forwardRef((props, ref) => {
-  const { source, name, icon, isDisabled, isBordered, ...avatarProps } =
-    useAvatarProps(props)
+const Avatar: FC<AvatarProps> = forwardRef(
+  ({ name, icon, fallback, showFallback, ...props }, ref) => {
+    const { source, isDisabled, isBordered, ...avatarProps } =
+      useAvatarProps(props)
 
-  useImperativeHandle(ref, () => {
-    return { isDisabled }
-  })
+    useImperativeHandle(ref, () => {
+      return { isDisabled }
+    })
 
-  return (
-    <AvatarContext.Provider
-      value={{ source, isDisabled, isBordered, ...avatarProps }}
-    >
-      <AvatarWrapper>
-        <AvatarInner>
-          {source ? (
-            <AvatarImage source={source} />
-          ) : (
-            icon || <Name>{name}</Name>
-          )}
-        </AvatarInner>
-        {isBordered && <AvatarOutline />}
-      </AvatarWrapper>
-    </AvatarContext.Provider>
-  )
-})
+    return (
+      <AvatarContext.Provider
+        value={{ source, isDisabled, isBordered, ...avatarProps }}
+      >
+        <AvatarWrapper>
+          <AvatarInner>
+            {source ? (
+              <AvatarImage source={source} />
+            ) : (
+              icon || <Name>{name}</Name>
+            )}
+          </AvatarInner>
+          {isBordered && <AvatarOutline />}
+        </AvatarWrapper>
+      </AvatarContext.Provider>
+    )
+  },
+)
 
 export default Avatar

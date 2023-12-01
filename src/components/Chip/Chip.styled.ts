@@ -5,13 +5,7 @@ import { getRadius, getSize, getTextColor } from '../../utils'
 import { radii, sizes } from './Chip.constants'
 
 export const ChipWrapper = styled.View(() => {
-  const {
-    size = 'md',
-    radius = 'full',
-    color = 'default',
-    variant = 'solid',
-    isDisabled,
-  } = useChipContext()
+  const { size, radius, color, variant, isDisabled } = useChipContext()
   const { colors } = useColors()
 
   return css`
@@ -29,7 +23,7 @@ export const ChipWrapper = styled.View(() => {
 })
 
 export const ChipContent = styled.Text(() => {
-  const { size = 'md', color = 'default' } = useChipContext()
+  const { size, color } = useChipContext()
 
   return css`
     padding: 0 ${size === 'lg' ? 8 : 4}px;

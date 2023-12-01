@@ -1,23 +1,21 @@
 import { useAvatarGroupContext } from '../../AvatarGroup/hooks/useAvatarGroupContext'
-import { AvatarProps } from '../Avatar.types'
+import { AvatarContextProps } from '../Avatar.types'
 
-export const useAvatarProps = (props: AvatarProps) => {
+export const defaultProps: AvatarContextProps = {
+  source: undefined,
+  color: 'default',
+  radius: 'full',
+  size: 'md',
+  isBordered: false,
+  isDisabled: false,
+}
+
+export const useAvatarProps = (props: Partial<AvatarContextProps>) => {
   const groupContext = useAvatarGroupContext()
 
-  const {
-    color = groupContext?.color ?? 'default',
-    radius = groupContext?.radius ?? 'full',
-    size = groupContext?.size ?? 'md',
-    isBordered = groupContext?.isBordered ?? false,
-    isDisabled = groupContext?.isDisabled ?? false,
-  } = props
-
   return {
+    ...defaultProps,
+    ...groupContext,
     ...props,
-    color,
-    radius,
-    size,
-    isBordered,
-    isDisabled,
   }
 }

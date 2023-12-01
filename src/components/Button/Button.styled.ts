@@ -67,16 +67,16 @@ const AnimatedPressable = Animated.createAnimatedComponent(Pressable)
 
 export const ButtonWrapper = styled(AnimatedPressable)(() => {
   const {
-    radius = 'md',
-    color = 'default',
-    size = 'md',
-    variant = 'solid',
+    radius,
+    color,
+    size,
+    variant,
     fullWidth,
     isDisabled,
     isIconOnly,
-    isInGroup = false,
-    isFirst = false,
-    isLast = false,
+    isInGroup,
+    isFirst,
+    isLast,
   } = useButtonContext()
 
   return css`
@@ -102,7 +102,7 @@ export const ButtonWrapper = styled(AnimatedPressable)(() => {
 })
 
 export const ButtonContent = styled.Text(() => {
-  const { color = 'default', variant = 'solid' } = useButtonContext()
+  const { color, variant } = useButtonContext()
 
   const { colors } = useColors()
 

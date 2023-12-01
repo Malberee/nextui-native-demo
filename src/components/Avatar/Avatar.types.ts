@@ -3,7 +3,7 @@ import { ImageSourcePropType } from 'react-native'
 import { ColorName, RadiusName, SizeName } from '../../types'
 
 export interface AvatarProps {
-  source?: ImageSourcePropType
+  source: ImageSourcePropType | undefined
   color?: ColorName
   radius?: RadiusName | number
   size?: Extract<SizeName, 'sm' | 'md' | 'lg'> | number
@@ -14,3 +14,5 @@ export interface AvatarProps {
   isDisabled?: boolean
   showFallback?: boolean
 }
+
+export interface AvatarContextProps extends Required<Omit<AvatarProps, 'name' | 'icon' | 'fallback' | 'showFallback'>> {}

@@ -1,8 +1,9 @@
 import { createContext, useContext } from 'react'
-import { AvatarProps } from '../Avatar.types'
+import { AvatarContextProps } from '../Avatar.types'
+import { defaultProps } from './useAvatarProps'
 
-export const AvatarContext = createContext<AvatarProps>({})
+export const AvatarContext = createContext<AvatarContextProps>(defaultProps)
 
 export const useAvatarContext = () => {
-  return useContext<AvatarProps>(AvatarContext)
+  return useContext<AvatarContextProps>(AvatarContext)
 }

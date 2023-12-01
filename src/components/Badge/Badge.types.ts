@@ -2,7 +2,11 @@ import { ReactNode } from 'react'
 import { ColorName, SizeName, VariantName } from '../../types'
 
 export type Shape = 'circle' | 'rectangle'
-export type Placement = 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left'
+export type Placement =
+  | 'top-right'
+  | 'top-left'
+  | 'bottom-right'
+  | 'bottom-left'
 
 export interface BadgeProps {
   children: ReactNode
