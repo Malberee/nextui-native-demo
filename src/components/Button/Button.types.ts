@@ -1,6 +1,9 @@
 import { ReactNode } from 'react'
 import { ColorName, RadiusName, SizeName, VariantName } from '../../types'
+import { GestureResponderEvent } from 'react-native'
 
+export type OnPressType = (event?: GestureResponderEvent) => void
+export type PressEventType = 'press' | 'pressIn' | 'pressOut'
 export interface ButtonProps {
   children: ReactNode
   variant?: VariantName
@@ -19,7 +22,9 @@ export interface ButtonProps {
   disableAnimation?: boolean
 
   // events
-  onPress?: () => void
+  onPress?: OnPressType
+  onPressIn?: OnPressType
+  onPressOut?: OnPressType
 }
 
 export interface ButtonContextProps extends Omit<ButtonProps, 'children'> {

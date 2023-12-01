@@ -106,15 +106,21 @@ export default function App() {
         <Divider />
         <Code content="npm install @malberee/nextui-native" color="success" />
         <Divider />
-        <ButtonGroup color="secondary" size="lg" radius="lg" variant="flat">
-          <Button color="success" fullWidth>
+        <ButtonGroup
+          color="secondary"
+          size="md"
+          radius="lg"
+          variant="flat"
+          fullWidth
+        >
+          <Button color="success" onPressIn={(e) => console.log('pressIn')}>
             Submit
           </Button>
-          <Button color="primary" fullWidth>
-            Submit
-          </Button>
+          <Button color="warning">Submit</Button>
+          <Button color="primary">Submit</Button>
+          <Button color="danger">Submit</Button>
         </ButtonGroup>
-        <ButtonGroup color="secondary" size="lg" radius="lg">
+        {/* <ButtonGroup color="secondary" size="lg" radius="lg">
           <Button color="danger" variant="faded">
             Submit
           </Button>
@@ -135,7 +141,7 @@ export default function App() {
           >
             <Icon name="home" size={30} color="white" />
           </Button>
-        </ButtonGroup>
+        </ButtonGroup> */}
       </Container>
     </ThemeProvider>
   )

@@ -1,20 +1,26 @@
 import React, { FC, useState } from 'react'
-import { Animated } from 'react-native'
+import { Animated, GestureResponderEvent } from 'react-native'
 import { ButtonWrapper, ButtonContent } from './Button.styled'
 
-import { ButtonProps } from './Button.types'
+import { ButtonProps, OnPressType, PressEventType } from './Button.types'
 import { ButtonContext } from './hooks/useButtonContext'
 import { useButtonProps } from './hooks/useButtonProps'
 import { getTextColor } from '../../utils'
 import useColors from '../ThemeProvider/hooks/useColors'
 
-const Button: FC<ButtonProps> = ({ children, onPress, ...props }) => {
+const Button: FC<ButtonProps> = ({
+  children,
+  onPress,
+  onPressIn,
+  onPressOut,
+  ...props
+}) => {
   const [scaleValue, setScaleValue] = useState(new Animated.Value(1))
   const { startContent, endContent, isIconOnly, ...buttonProps } =
     useButtonProps(props)
   const { colors } = useColors()
 
-  const animateButton = (action: 'pressIn' | 'pressOut') => {
+  const animateButton = (action: Omit<PressEventType, 'press'>) => {
     Animated.timing(scaleValue, {
       toValue: action === 'pressIn' ? 0.973 : 1,
       duration: 100,
@@ -22,20 +28,34 @@ const Button: FC<ButtonProps> = ({ children, onPress, ...props }) => {
     }).start()
   }
 
+  const handlePress = (
+    eventType: PressEventType,
+    event?: GestureResponderEvent,
+    callback?: (event?: GestureResponderEvent) => void,
+  ) => {
+    animateButton(eventType)
+    if (callback) {
+      callback(event)
+    }
+  }
+
+  const androidRipple = {
+    color: `${
+      buttonProps.variant === 'solid' || buttonProps.variant === 'shadow'
+        ? `${getTextColor(buttonProps.color)}40`
+        : `${colors[buttonProps.color]}30`
+    }`,
+    foreground: true,
+  }
+
   return (
     <ButtonContext.Provider value={{ isIconOnly, ...buttonProps }}>
       <ButtonWrapper
         style={[{ transform: [{ scale: scaleValue }] }]}
-        onPressIn={() => animateButton('pressIn')}
-        onPressOut={() => animateButton('pressOut')}
-        android_ripple={{
-          color: `${
-            buttonProps.variant === 'solid' || buttonProps.variant === 'shadow'
-              ? `${getTextColor(buttonProps.color)}40`
-              : `${colors[buttonProps.color]}30`
-          }`,
-          foreground: true,
-        }}
+        onPressIn={(event) => handlePress('pressIn', event, onPressIn)}
+        onPressOut={(event) => handlePress('pressOut', event, onPressOut)}
+        onPress={(event) => handlePress('press', event, onPress)}
+        android_ripple={androidRipple}
       >
         {!isIconOnly && startContent}
         <ButtonContent>{children}</ButtonContent>
