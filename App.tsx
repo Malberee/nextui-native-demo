@@ -13,6 +13,7 @@ import {
   Code,
   Button,
   ButtonGroup,
+  User,
 } from './src'
 
 const Container = styled.View(() => {
@@ -30,6 +31,18 @@ export default function App() {
     <ThemeProvider>
       <Container>
         <StatusBar style="auto" />
+        <User
+          name="Malberee"
+          description="🗿 Fullstack Developer"
+          avatarProps={{
+            source: {
+              uri: 'https://i.pravatar.cc/150?u=a04258114e29026708c',
+            },
+            isBordered: true,
+            color: 'success',
+          }}
+        />
+        <Divider />
         <AvatarGroup color="danger" size="md" isBordered>
           <Badge isDot placement="bottom-left" shape="circle" color="success">
             <Avatar
