@@ -1,4 +1,5 @@
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
+import { Animated } from 'react-native'
 import { ButtonWrapper, ButtonContent } from './Button.styled'
 
 import { ButtonProps } from './Button.types'
@@ -8,14 +9,25 @@ import { getTextColor } from '../../utils'
 import useColors from '../ThemeProvider/hooks/useColors'
 
 const Button: FC<ButtonProps> = ({ children, onPress, ...props }) => {
+  const [scaleValue, setScaleValue] = useState(new Animated.Value(1))
   const { startContent, endContent, isIconOnly, ...buttonProps } =
     useButtonProps(props)
   const { colors } = useColors()
 
+  const animateButton = (action: 'pressIn' | 'pressOut') => {
+    Animated.timing(scaleValue, {
+      toValue: action === 'pressIn' ? 0.973 : 1,
+      duration: 100,
+      useNativeDriver: true,
+    }).start()
+  }
+
   return (
     <ButtonContext.Provider value={{ isIconOnly, ...buttonProps }}>
       <ButtonWrapper
-        onPress={onPress}
+        style={[{ transform: [{ scale: scaleValue }] }]}
+        onPressIn={() => animateButton('pressIn')}
+        onPressOut={() => animateButton('pressOut')}
         android_ripple={{
           color: `${
             buttonProps.variant === 'solid' || buttonProps.variant === 'shadow'
