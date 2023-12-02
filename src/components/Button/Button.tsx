@@ -19,12 +19,12 @@ const Button: FC<ButtonProps> = ({
   ...props
 }) => {
   const [scaleValue, setScaleValue] = useState(new Animated.Value(1))
-  const { isIconOnly, ...buttonProps } = useButtonProps(props)
+  const { isIconOnly, isDisabled, ...buttonProps } = useButtonProps(props)
   const { colors } = useColors()
 
   const animateButton = (action: Omit<PressEventType, 'press'>) => {
     Animated.timing(scaleValue, {
-      toValue: action === 'pressIn' ? 0.973 : 1,
+      toValue: action === 'pressIn' ? 0.97 : 1,
       duration: 100,
       useNativeDriver: true,
     }).start()
@@ -35,7 +35,10 @@ const Button: FC<ButtonProps> = ({
     event?: GestureResponderEvent,
     callback?: (event?: GestureResponderEvent) => void,
   ) => {
+    if (isDisabled) return
+
     animateButton(eventType)
+
     if (callback) {
       callback(event)
     }
@@ -51,13 +54,13 @@ const Button: FC<ButtonProps> = ({
   }
 
   return (
-    <ButtonContext.Provider value={{isIconOnly, ...buttonProps}}>
+    <ButtonContext.Provider value={{ isIconOnly, isDisabled, ...buttonProps }}>
       <ButtonWrapper
         style={[{ transform: [{ scale: scaleValue }] }]}
         onPressIn={(event) => handlePress('pressIn', event, onPressIn)}
         onPressOut={(event) => handlePress('pressOut', event, onPressOut)}
         onPress={(event) => handlePress('press', event, onPress)}
-        android_ripple={!disableRipple ? androidRipple : undefined}
+        android_ripple={disableRipple || isDisabled ? undefined : androidRipple}
       >
         {!isIconOnly && startContent}
         <ButtonContent>{children}</ButtonContent>

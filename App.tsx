@@ -127,7 +127,7 @@ export default function App() {
           variant="flat"
           fullWidth
         >
-          <Button color="success" variant="solid">
+          <Button color="success" variant="solid" isDisabled>
             Submit
           </Button>
           <Button color="warning">Submit</Button>
