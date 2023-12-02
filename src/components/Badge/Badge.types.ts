@@ -11,7 +11,7 @@ export type Placement =
 export interface BadgeProps {
   children: ReactNode
   content?: string | number | ReactNode
-  variant?: VariantName
+  variant?: Exclude<VariantName, 'light' | 'bordered'>
   color?: ColorName
   size?: Extract<SizeName, 'sm' | 'md' | 'lg'> | number
   shape?: Shape

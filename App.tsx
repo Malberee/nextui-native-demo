@@ -72,6 +72,8 @@ export default function App() {
             content="5"
             isOneChar
             size="md"
+            variant='solid'
+            showOutline
           >
             <Avatar
               color="warning"
@@ -146,7 +148,24 @@ export default function App() {
         <Chip
           color="secondary"
           radius="full"
-          size="lg"
+          size="md"
+          variant="flat"
+          onClose={(e) => console.log('text')}
+          startContent={<Icon name="home" size={15} color="white" />}
+          avatar={
+            <Avatar
+              source={{
+                uri: 'https://i.pravatar.cc/150?u=a04258114e29026708c',
+              }}
+            />
+          }
+        >
+          Chip
+        </Chip>
+        <Chip
+          color="secondary"
+          radius="full"
+          size="md"
           variant="shadow"
           onClose={(e) => console.log('text')}
           startContent={<Icon name="home" size={15} color="white" />}

@@ -4,6 +4,8 @@ import { getPlacement } from './utils'
 import { getSize } from '../../utils/getSize'
 import { sizes } from './Badge.constants'
 import useColors from '../ThemeProvider/hooks/useColors'
+import { getVariantStyles } from '../../utils/getVariantStyles'
+import { getTextColor } from '../../utils/getTextColor'
 
 export const BadgeWrapper = styled.View``
 
@@ -18,6 +20,7 @@ export const BadgeOutline = styled.View(() => {
     showOutline,
     isDisabled,
   } = useBadgeContext()
+  const { colors } = useColors()
 
   return css`
     position: absolute;
@@ -29,7 +32,7 @@ export const BadgeOutline = styled.View(() => {
       isDot ? 12 : size,
     ) + 2}px;
     padding: 2px;
-    background-color: ${showOutline ? '#ffffff' : 'transparent'};
+    background-color: ${showOutline ? colors.background : 'transparent'};
     opacity: ${isDisabled ? 0.5 : 1};
     border-radius: 9999px;
   `
@@ -47,14 +50,17 @@ export const BadgeInner = styled.View(() => {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: ${colors[color]};
+    ${getVariantStyles(variant, color)}
   `
 })
 export const BadgeContent = styled.Text(() => {
-  const { size = 'md' } = useBadgeContext()
+  const { size = 'md', variant, color } = useBadgeContext()
+  const { colors } = useColors()
   return css`
     font-size: ${size === 'sm' ? 12 : 14}px;
     line-height: ${size === 'sm' ? 14 : 17}px;
-    color: #ffffff;
+    color: ${variant === 'solid' || variant === 'shadow'
+      ? getTextColor(color)
+      : colors[color]};
   `
 })
