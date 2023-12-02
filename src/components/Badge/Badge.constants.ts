@@ -2,6 +2,6 @@ import { Sizes } from '../../types'
 
 export const sizes: Sizes = {
   sm: 16,
-  md: 20,
-  lg: 24,
+  md: 18,
+  lg: 20,
 }

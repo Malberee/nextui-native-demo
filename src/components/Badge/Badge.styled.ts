@@ -7,60 +7,58 @@ import useColors from '../ThemeProvider/hooks/useColors'
 import { getVariantStyles } from '../../utils/getVariantStyles'
 import { getTextColor } from '../../utils/getTextColor'
 
-export const BadgeWrapper = styled.View``
-
-export const BadgeOutline = styled.View(() => {
-  const {
-    placement,
-    width,
-    shape,
-    isOneChar,
-    size,
-    isDot,
-    showOutline,
-    isDisabled,
-  } = useBadgeContext()
-  const { colors } = useColors()
+export const BadgeWrapper = styled.View(() => {
+  const { placement, width, shape, isDisabled } = useBadgeContext()
 
   return css`
     position: absolute;
     ${getPlacement(placement, width, shape)}
-    ${isOneChar ? 'width:' : 'min-width:'} ${getSize(sizes, isDot ? 12 : size) +
-    2}px;
-    ${isOneChar ? 'height:' : 'min-height:'} ${getSize(
-      sizes,
-      isDot ? 12 : size,
-    ) + 2}px;
-    padding: 2px;
-    background-color: ${showOutline ? colors.background : 'transparent'};
+
     opacity: ${isDisabled ? 0.5 : 1};
+  `
+})
+
+export const BadgeOutline = styled.View(() => {
+  const { size = 'md', isDot, width } = useBadgeContext()
+  const { colors } = useColors()
+
+  return css`
+    position: absolute;
+    top: -2px;
+    left: -2px;
+
+    width: ${width + 4}px;
+    height: ${isDot ? 14 : getSize(sizes, size) + 4}px;
+
+    background-color: ${colors.background};
     border-radius: 9999px;
+    z-index: -1;
   `
 })
 
 export const BadgeInner = styled.View(() => {
-  const { color, variant } = useBadgeContext()
-  const { colors } = useColors()
+  const { variant, color, size, isDot } = useBadgeContext()
 
   return css`
-    width: 100%;
-    height: 100%;
-    padding: 1px 5px 1px 5px;
+    position: relative;
+
+    min-width: ${isDot ? 10 : getSize(sizes, size)}px;
+    height: ${isDot ? 10 : getSize(sizes, size)}px;
+
     border-radius: 9999px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     ${getVariantStyles(variant, color)}
   `
 })
 export const BadgeContent = styled.Text(() => {
-  const { size = 'md', variant, color } = useBadgeContext()
-  const { colors } = useColors()
+  const { size, color } = useBadgeContext()
+
   return css`
+    padding: 0 4px;
+    text-align: center;
+
     font-size: ${size === 'sm' ? 12 : 14}px;
-    line-height: ${size === 'sm' ? 14 : 17}px;
-    color: ${variant === 'solid' || variant === 'shadow'
-      ? getTextColor(color)
-      : colors[color]};
+    line-height: 18px;
+
+    color: ${getTextColor(color)};
   `
 })

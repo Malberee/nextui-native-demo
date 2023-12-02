@@ -46,7 +46,13 @@ export default function App() {
         />
         <Divider />
         <AvatarGroup color="danger" size="md" isBordered>
-          <Badge isDot placement="bottom-left" shape="circle" color="success">
+          <Badge
+            isDot
+            placement="bottom-left"
+            shape="circle"
+            color="success"
+            variant="shadow"
+          >
             <Avatar
               source={{
                 uri: 'https://i.pravatar.cc/150?u=a04258114e29026708c',
@@ -69,14 +75,15 @@ export default function App() {
             placement="top-right"
             shape="circle"
             color="danger"
-            content="5"
+            content={<Icon name="home" color="white"  />}
             isOneChar
             size="md"
-            variant='solid'
+            variant="solid"
             showOutline
+            // isDot
           >
             <Avatar
-              color="warning"
+              color="danger"
               source={{
                 uri: 'https://i.pravatar.cc/150?u=a04258a2462d826712d',
               }}

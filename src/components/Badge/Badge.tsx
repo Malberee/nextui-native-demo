@@ -1,5 +1,5 @@
 import React, { FC, useState, useRef } from 'react'
-import { LayoutChangeEvent } from 'react-native'
+import { LayoutChangeEvent, View } from 'react-native'
 import {
   BadgeWrapper,
   BadgeOutline,
@@ -10,12 +10,15 @@ import {
 import { BadgeProps } from './Badge.types'
 import { BadgeContext } from './hooks/useBadgeContext'
 import { useBadgeProps } from './hooks/useBadgeProps'
+import { getShadow } from '../../utils/getShadow'
+import useColors from '../ThemeProvider/hooks/useColors'
 
 const Badge: FC<BadgeProps> = ({ children, content, ...props }) => {
   const [width, setWidth] = useState(0)
   const [hasLayoutOccurred, setHasLayoutOccurred] = useState(false)
+  const { colors } = useColors()
   const childRef = useRef<{ isDisabled: boolean }>(null)
-  const badgeProps = useBadgeProps({
+  const { variant, color, showOutline, ...badgeProps } = useBadgeProps({
     isDisabled: !!childRef.current?.isDisabled,
     width,
     ...props,
@@ -29,11 +32,13 @@ const Badge: FC<BadgeProps> = ({ children, content, ...props }) => {
   }
 
   return (
-    <BadgeContext.Provider value={{ ...badgeProps }}>
-      <BadgeWrapper>
+    <BadgeContext.Provider
+      value={{ variant, color, showOutline, ...badgeProps }}
+    >
+      <View>
         {React.cloneElement(children as React.ReactElement, { ref: childRef })}
-        <BadgeOutline onLayout={onLayout}>
-          <BadgeInner>
+        <BadgeWrapper onLayout={onLayout}>
+          <BadgeInner style={{ ...getShadow(variant, colors, color) }}>
             {!props.isDot && (
               <BadgeContent>
                 {props.isOneChar && typeof content === 'string'
@@ -42,8 +47,9 @@ const Badge: FC<BadgeProps> = ({ children, content, ...props }) => {
               </BadgeContent>
             )}
           </BadgeInner>
-        </BadgeOutline>
-      </BadgeWrapper>
+          {showOutline && <BadgeOutline />}
+        </BadgeWrapper>
+      </View>
     </BadgeContext.Provider>
   )
 }
