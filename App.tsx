@@ -127,7 +127,7 @@ export default function App() {
           variant="flat"
           fullWidth
         >
-          <Button color="success" variant="solid" isDisabled>
+          <Button color="success" variant="solid">
             Submit
           </Button>
           <Button color="warning">Submit</Button>
@@ -139,7 +139,10 @@ export default function App() {
           </Button>
         </ButtonGroup>
         <Divider />
-        <Chip color="success" radius='full'>Malberee</Chip>
+        {/* <Chip color="success" radius='full'>Malberee</Chip> */}
+        <Button color="secondary" variant="shadow">
+          Submit
+        </Button>
       </Container>
     </ThemeProvider>
   )

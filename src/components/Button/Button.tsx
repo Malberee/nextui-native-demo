@@ -19,7 +19,8 @@ const Button: FC<ButtonProps> = ({
   ...props
 }) => {
   const [scaleValue, setScaleValue] = useState(new Animated.Value(1))
-  const { isIconOnly, isDisabled, ...buttonProps } = useButtonProps(props)
+  const { isIconOnly, isDisabled, variant, color, ...buttonProps } =
+    useButtonProps(props)
   const { colors } = useColors()
 
   const animateButton = (action: Omit<PressEventType, 'press'>) => {
@@ -46,17 +47,31 @@ const Button: FC<ButtonProps> = ({
 
   const androidRipple = {
     color: `${
-      buttonProps.variant === 'solid' || buttonProps.variant === 'shadow'
-        ? `${getTextColor(buttonProps.color)}40`
-        : `${colors[buttonProps.color]}30`
+      variant === 'solid' || variant === 'shadow'
+        ? `${getTextColor(color)}40`
+        : `${colors[color]}30`
     }`,
     foreground: true,
   }
 
   return (
-    <ButtonContext.Provider value={{ isIconOnly, isDisabled, ...buttonProps }}>
+    <ButtonContext.Provider
+      value={{ isIconOnly, isDisabled, variant, color, ...buttonProps }}
+    >
       <ButtonWrapper
-        style={[{ transform: [{ scale: scaleValue }] }]}
+        style={[
+          {
+            transform: [{ scale: scaleValue }],
+            shadowColor: variant === 'shadow' ? colors[color] : 'none',
+            shadowOffset: {
+              width: 0,
+              height: 12,
+            },
+            shadowOpacity: 0.25,
+            shadowRadius: 20.0,
+            elevation: 15,
+          },
+        ]}
         onPressIn={(event) => handlePress('pressIn', event, onPressIn)}
         onPressOut={(event) => handlePress('pressOut', event, onPressOut)}
         onPress={(event) => handlePress('press', event, onPress)}
