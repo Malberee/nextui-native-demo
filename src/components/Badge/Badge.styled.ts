@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components/native'
 import { useBadgeContext } from './hooks/useBadgeContext'
 import { getPlacement } from './utils'
-import { getSize } from '../../utils'
+import { getSize } from '../../utils/getSize'
 import { sizes } from './Badge.constants'
 import useColors from '../ThemeProvider/hooks/useColors'
 

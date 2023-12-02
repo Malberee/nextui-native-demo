@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components/native'
 import { useAvatarContext } from './hooks/useAvatarContext'
-import { getRadius, getSize } from '../../utils'
+import { getSize } from '../../utils/getSize'
+import { getRadius } from '../../utils/getRadius'
 import { radii, sizes } from './Avatar.constants'
 import useColors from '../ThemeProvider/hooks/useColors'
 

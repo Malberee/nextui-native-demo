@@ -2,7 +2,8 @@ import styled, { css } from 'styled-components/native'
 import { Text } from 'react-native'
 import { CodeProps } from './Code.types'
 import { radii, sizes } from './Code.constants'
-import { getRadius, getSize } from '../../utils'
+import { getSize } from '../../utils/getSize'
+import { getRadius } from '../../utils/getRadius'
 import useColors from '../ThemeProvider/hooks/useColors'
 
 export const CodeWrapper = styled.View<Pick<CodeProps, 'color' | 'radius'>>(

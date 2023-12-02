@@ -1,5 +1,5 @@
 import { Placement, Shape } from './Badge.types'
-import { getSize } from '../../utils'
+import { getSize } from '../../utils/getSize'
 import { sizes } from './Badge.constants'
 
 export const getPlacement = (

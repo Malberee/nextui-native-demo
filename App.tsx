@@ -134,15 +134,17 @@ export default function App() {
           <Button color="primary" variant="bordered">
             Submit
           </Button>
+          <Button color="secondary" variant="shadow">
+            Submit
+          </Button>
           <Button color="danger" variant="faded">
             Submit
           </Button>
         </ButtonGroup>
         <Divider />
-        {/* <Chip color="success" radius='full'>Malberee</Chip> */}
-        <Button color="secondary" variant="shadow">
-          Submit
-        </Button>
+        <Chip color="warning" radius="full" size="md" variant="bordered">
+          Malberee
+        </Chip>
       </Container>
     </ThemeProvider>
   )

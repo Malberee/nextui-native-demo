@@ -1,43 +1,11 @@
 import styled, { css } from 'styled-components/native'
 import { Animated, Pressable } from 'react-native'
 import useColors from '../ThemeProvider/hooks/useColors'
-import { getRadius, getTextColor } from '../../utils'
+import { getTextColor } from '../../utils/getTextColor'
+import { getRadius } from '../../utils/getRadius'
+import { getVariantStyles } from '../../utils/getVariantStyles'
 import { useButtonContext } from './hooks/useButtonContext'
-import { ColorName, VariantName } from '../../types'
 import { radii } from './Button.constants'
-
-const getVariantStyles = (variant: VariantName, color: ColorName) => {
-  const { colors } = useColors()
-
-  switch (variant) {
-    case 'flat':
-      return `
-            background-color: ${colors[color]}25;
-        `
-      break
-    case 'faded':
-      return `
-            background-color: ${colors.default100};
-            border-color: ${colors.default200};
-            border-width: 2px;
-        `
-      break
-    case 'bordered':
-      return `
-            border-color: ${colors[color]};
-            border-width: 2px;
-        `
-      break
-    case 'light':
-      return
-      break
-    default:
-      return `
-            background-color: ${colors[color]};
-        `
-      break
-  }
-}
 
 const getRadii = (
   isInGroup: boolean,

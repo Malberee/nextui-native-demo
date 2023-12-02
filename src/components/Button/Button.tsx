@@ -5,7 +5,8 @@ import { ButtonWrapper, ButtonContent } from './Button.styled'
 import { ButtonProps, PressEventType } from './Button.types'
 import { ButtonContext } from './hooks/useButtonContext'
 import { useButtonProps } from './hooks/useButtonProps'
-import { getTextColor } from '../../utils'
+import { getTextColor } from '../../utils/getTextColor'
+import { getShadow } from '../../utils/getShadow'
 import useColors from '../ThemeProvider/hooks/useColors'
 
 const Button: FC<ButtonProps> = ({
@@ -62,14 +63,7 @@ const Button: FC<ButtonProps> = ({
         style={[
           {
             transform: [{ scale: scaleValue }],
-            shadowColor: variant === 'shadow' ? colors[color] : 'none',
-            shadowOffset: {
-              width: 0,
-              height: 12,
-            },
-            shadowOpacity: 0.25,
-            shadowRadius: 20.0,
-            elevation: 15,
+            ...getShadow(variant, colors, color),
           },
         ]}
         onPressIn={(event) => handlePress('pressIn', event, onPressIn)}
