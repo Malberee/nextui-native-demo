@@ -3,7 +3,7 @@ import { ImageSourcePropType } from 'react-native'
 import { ColorName, RadiusName, SizeName } from '../../types'
 
 export interface AvatarProps {
-  source: ImageSourcePropType | undefined
+  source?: ImageSourcePropType | null
   color?: ColorName
   radius?: RadiusName | number
   size?: Extract<SizeName, 'sm' | 'md' | 'lg'> | number

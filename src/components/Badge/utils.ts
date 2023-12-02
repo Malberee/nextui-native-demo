@@ -10,9 +10,7 @@ export const getPlacement = (
   const placements = placement.split('-')
 
   return `
-    ${placements[0]}: -${
-      getSize(sizes, width) / 4
-    }px;
+    ${placements[0]}: -${getSize(sizes, width) / 4}px;
     ${placements[1]}: -${
       getSize(sizes, width) / (shape === 'circle' ? 4 : 2.5)
     }px;
