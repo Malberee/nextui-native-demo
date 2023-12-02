@@ -2,6 +2,7 @@ import { StatusBar } from 'expo-status-bar'
 import { Text } from 'react-native'
 import styled, { css } from 'styled-components/native'
 import Icon from 'react-native-vector-icons/Entypo'
+import IconIonicons from 'react-native-vector-icons/Ionicons'
 import useColors from './src/components/ThemeProvider/hooks/useColors'
 
 import {
@@ -34,7 +35,7 @@ export default function App() {
         <StatusBar style="auto" />
         <User
           name="Malberee"
-          description="🗿 Fullstack Developer"
+          description="🗿 Fullstack clown"
           avatarProps={{
             source: {
               uri: 'https://i.pravatar.cc/150?u=a04258114e29026708c',
@@ -142,8 +143,22 @@ export default function App() {
           </Button>
         </ButtonGroup>
         <Divider />
-        <Chip color="warning" radius="full" size="md" variant="bordered">
-          Malberee
+        <Chip
+          color="secondary"
+          radius="full"
+          size="lg"
+          variant="shadow"
+          onClose={(e) => console.log('text')}
+          startContent={<Icon name="home" size={15} color="white" />}
+          avatar={
+            <Avatar
+              source={{
+                uri: 'https://i.pravatar.cc/150?u=a04258114e29026708c',
+              }}
+            />
+          }
+        >
+          Chip
         </Chip>
       </Container>
     </ThemeProvider>

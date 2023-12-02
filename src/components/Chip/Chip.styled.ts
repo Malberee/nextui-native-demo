@@ -13,7 +13,9 @@ export const ChipWrapper = styled.View(() => {
 
   return css`
     display: flex;
+    flex-direction: row;
     justify-content: center;
+    align-items: center;
 
     height: ${getSize(sizes, size)}px;
     padding: 0 ${size === 'lg' ? 8 : 4}px;
