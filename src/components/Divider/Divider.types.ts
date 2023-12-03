@@ -1,3 +1,3 @@
 export interface DividerProps {
-    orientation?: 'horizontal' | 'vertical';
+  orientation?: 'horizontal' | 'vertical'
 }

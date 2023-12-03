@@ -15,4 +15,7 @@ export interface AvatarProps {
   showFallback?: boolean
 }
 
-export interface AvatarContextProps extends Required<Omit<AvatarProps, 'name' | 'icon' | 'fallback' | 'showFallback'>> {}
+export interface AvatarContextProps
+  extends Required<
+    Omit<AvatarProps, 'name' | 'icon' | 'fallback' | 'showFallback'>
+  > {}

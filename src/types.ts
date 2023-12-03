@@ -40,5 +40,3 @@ export type VariantName =
 export type Variants = {
   [key in VariantName]: string
 }
-
-

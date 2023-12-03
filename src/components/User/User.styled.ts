@@ -16,16 +16,16 @@ export const UserInner = styled.View(() => {
 
 export const UserName = styled.Text(() => {
   const { colors } = useColors()
-    return css`
+  return css`
     color: ${colors.foreground};
     font-size: 14px;
   `
 })
 
 export const UserDescription = styled.Text(() => {
- const { colors } = useColors()
- return css`
-   color: ${colors.default400};
-   font-size: 12px;
- `
+  const { colors } = useColors()
+  return css`
+    color: ${colors.default400};
+    font-size: 12px;
+  `
 })

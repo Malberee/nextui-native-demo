@@ -1,4 +1,3 @@
-import styled from 'styled-components/native';
+import styled from 'styled-components/native'
 
-export const TemplateNameWrapper = styled.View`
-`;
+export const TemplateNameWrapper = styled.View``

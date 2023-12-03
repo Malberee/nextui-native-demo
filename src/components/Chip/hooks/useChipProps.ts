@@ -9,6 +9,5 @@ export const defaultProps: Required<UseChipProps> = {
 }
 
 export const useChipProps = (props: UseChipProps): Required<UseChipProps> => {
-
   return { ...defaultProps, ...props }
 }

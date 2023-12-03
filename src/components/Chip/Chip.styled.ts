@@ -5,7 +5,7 @@ import { getRadius } from '../../utils/getRadius'
 import { getSize } from '../../utils/getSize'
 import { getTextColor } from '../../utils/getTextColor'
 import { radii, sizes } from './Chip.constants'
-import { getVariantStyles } from '../../utils/getVariantStyles'
+import { useVariantStyles } from '../../hooks/useVariantStyles'
 
 export const ChipWrapper = styled.View(() => {
   const { size, radius, color, variant, isDisabled } = useChipContext()
@@ -21,7 +21,7 @@ export const ChipWrapper = styled.View(() => {
     padding: 0 ${size === 'lg' ? 8 : 4}px;
 
     border-radius: ${getRadius(radii, radius)}px;
-    ${getVariantStyles(variant, color)}
+    ${useVariantStyles(variant, color)}
 
     opacity: ${isDisabled ? 0.5 : 1};
   `

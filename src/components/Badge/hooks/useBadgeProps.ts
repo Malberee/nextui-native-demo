@@ -16,7 +16,9 @@ export const defaultProps: Required<BadgeContextProps> = {
   width: 20,
 }
 
-export const useBadgeProps = (props: BadgeContextProps): Required<BadgeContextProps> => {
+export const useBadgeProps = (
+  props: BadgeContextProps,
+): Required<BadgeContextProps> => {
   const groupContext = useAvatarGroupContext()
 
   return {

@@ -3,7 +3,7 @@ import { Animated, Pressable } from 'react-native'
 import useColors from '../ThemeProvider/hooks/useColors'
 import { getTextColor } from '../../utils/getTextColor'
 import { getRadius } from '../../utils/getRadius'
-import { getVariantStyles } from '../../utils/getVariantStyles'
+import { useVariantStyles } from '../../hooks/useVariantStyles'
 import { useButtonContext } from './hooks/useButtonContext'
 import { radii } from './Button.constants'
 
@@ -61,7 +61,7 @@ export const ButtonWrapper = styled(AnimatedPressable)(() => {
     padding: 0
       ${isIconOnly ? 0 : size === 'sm' ? 12 : size === 'md' ? 16 : 24}px;
 
-    ${getVariantStyles(variant, color)}
+    ${useVariantStyles(variant, color)}
     ${getRadii(isInGroup, isFirst, isLast, getRadius(radii, radius))}
 
     opacity: ${isDisabled ? 0.5 : 1};

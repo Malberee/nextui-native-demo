@@ -1,7 +1,7 @@
 import useColors from '../components/ThemeProvider/hooks/useColors'
 import { VariantName, ColorName } from '../types'
 
-export const getVariantStyles = (variant: VariantName, color: ColorName) => {
+export const useVariantStyles = (variant: VariantName, color: ColorName) => {
   const { colors } = useColors()
 
   switch (variant) {

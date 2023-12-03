@@ -14,7 +14,7 @@ const ButtonGroup: FC<ButtonGroupProps> = ({ children, ...props }) => {
           React.cloneElement(child as React.ReactElement, {
             index,
             isFirst: index === 0,
-            isLast: index === arrayChildren.length - 1 ,
+            isLast: index === arrayChildren.length - 1,
           }),
         )}
       </ButtonGroupWrapper>

@@ -1,9 +1,9 @@
+import React from 'react'
 import { StatusBar } from 'expo-status-bar'
-import { Text } from 'react-native'
-import styled, { css } from 'styled-components/native'
 import Icon from 'react-native-vector-icons/Entypo'
-import IconIonicons from 'react-native-vector-icons/Ionicons'
+
 import useColors from './src/components/ThemeProvider/hooks/useColors'
+import styled, { css } from 'styled-components/native'
 
 import {
   ThemeProvider,
@@ -75,7 +75,7 @@ export default function App() {
             placement="top-right"
             shape="circle"
             color="danger"
-            content={<Icon name="home" color="white"  />}
+            content={<Icon name="home" color="white" />}
             isOneChar
             size="md"
             variant="solid"

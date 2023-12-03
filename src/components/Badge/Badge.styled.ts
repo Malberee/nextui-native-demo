@@ -4,7 +4,7 @@ import { getPlacement } from './utils'
 import { getSize } from '../../utils/getSize'
 import { sizes } from './Badge.constants'
 import useColors from '../ThemeProvider/hooks/useColors'
-import { getVariantStyles } from '../../utils/getVariantStyles'
+import { useVariantStyles } from '../../hooks/useVariantStyles'
 import { getTextColor } from '../../utils/getTextColor'
 
 export const BadgeWrapper = styled.View(() => {
@@ -46,7 +46,7 @@ export const BadgeInner = styled.View(() => {
     height: ${isDot ? 10 : getSize(sizes, size)}px;
 
     border-radius: 9999px;
-    ${getVariantStyles(variant, color)}
+    ${useVariantStyles(variant, color)}
   `
 })
 export const BadgeContent = styled.Text(() => {
