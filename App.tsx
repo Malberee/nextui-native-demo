@@ -1,4 +1,5 @@
 import React from 'react'
+import { Text } from 'react-native'
 import { StatusBar } from 'expo-status-bar'
 import Icon from 'react-native-vector-icons/Entypo'
 
@@ -16,6 +17,7 @@ import {
   ButtonGroup,
   User,
   Chip,
+  Switch,
 } from './src'
 
 const Container = styled.View(() => {
@@ -186,6 +188,15 @@ export default function App() {
         >
           Chip
         </Chip>
+        <Divider />
+        <Switch
+          startContent={<Icon name="home" size={15} color="white" />}
+          // endContent={<Icon name="home" size={15} color="white" />}
+          thumbIcon={<Icon name="home" size={15} color="black" />}
+          size='lg'
+        >
+          <Text>checkbox</Text>
+        </Switch>
       </Container>
     </ThemeProvider>
   )
