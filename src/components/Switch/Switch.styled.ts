@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components/native'
+import Animated from 'react-native-reanimated'
 import { useSwitchContext } from './hooks/useSwitchContext'
 import { getSize } from '../../utils/getSize'
 import { switchSizes, thumbSizes } from './Switch.constants'
@@ -8,30 +9,32 @@ interface SwitchWrapperProps {
   isChecked?: boolean
 }
 
-export const SwitchWrapper = styled.View<SwitchWrapperProps>(
-  ({ isChecked }) => {
-    const { size, color } = useSwitchContext()
-    const { colors } = useColors()
+export const SwitchWrapper = styled(Animated.View)<SwitchWrapperProps>(({
+  isChecked,
+}) => {
+  const { size, color } = useSwitchContext()
+  const { colors } = useColors()
 
-    return css`
-      position: relative;
+  return css`
+    position: relative;
 
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-direction: row;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
 
-      width: ${getSize(switchSizes, size)}px;
-      height: ${getSize(thumbSizes, size) + 8}px;
-      padding: 4px;
+    width: ${getSize(switchSizes, size)}px;
+    height: ${getSize(thumbSizes, size) + 8}px;
+    padding: 4px;
 
-      background-color: ${isChecked ? colors[color] : colors.content3};
-      border-radius: 9999px;
-    `
-  },
-)
+    background-color: ${isChecked ? colors[color] : colors.content3};
+    border-radius: 9999px;
+  `
+})
 
-export const SwitchThumb = styled.View<SwitchWrapperProps>(({ isChecked }) => {
+export const SwitchThumb = styled(Animated.View)<SwitchWrapperProps>(({
+  isChecked,
+}) => {
   const { size } = useSwitchContext()
 
   console.log(isChecked)
@@ -39,7 +42,7 @@ export const SwitchThumb = styled.View<SwitchWrapperProps>(({ isChecked }) => {
   return css`
     position: absolute;
     top: 4px;
-    ${isChecked ? 'right: 4px;' : 'left: 4px;'}
+    /* ${isChecked ? 'right: 4px;' : 'left: 4px;'} */
 
     display: flex;
     justify-content: center;
@@ -55,7 +58,7 @@ export const SwitchThumb = styled.View<SwitchWrapperProps>(({ isChecked }) => {
   `
 })
 
-export const SwitchLabel = styled.View(() => {
+export const SwitchLabel = styled.Text(() => {
   return css`
     color: white;
   `

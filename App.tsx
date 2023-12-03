@@ -193,9 +193,10 @@ export default function App() {
           startContent={<Icon name="home" size={15} color="white" />}
           // endContent={<Icon name="home" size={15} color="white" />}
           thumbIcon={<Icon name="home" size={15} color="black" />}
-          size='lg'
+          size="lg"
+          color="primary"
         >
-          <Text>checkbox</Text>
+          checkbox
         </Switch>
       </Container>
     </ThemeProvider>

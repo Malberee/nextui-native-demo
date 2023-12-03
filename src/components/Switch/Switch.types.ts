@@ -40,5 +40,6 @@ export interface SwitchContextProps
       | 'isRequired'
       | 'isDisabled'
       | 'disableAnimation'
+      | 'defaultSelected'
     >
   > {}

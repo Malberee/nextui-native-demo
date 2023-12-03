@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react'
+import React, { FC, useState, useEffect } from 'react'
 import { Pressable } from 'react-native'
 import {
   SwitchWrapper,
@@ -11,24 +11,33 @@ import {
 import { useSwitchProps } from './hooks/useSwitchProps'
 import { SwitchProps } from './Switch.types'
 import { SwitchContext } from './hooks/useSwitchContext'
+import { useSwitchAnimation } from './hooks/useSwitchAnimation'
 
 const Switch: FC<SwitchProps> = ({
   children,
   startContent,
   endContent,
   thumbIcon,
-  defaultSelected,
   ...props
 }) => {
+  const { color, size, defaultSelected, ...switchProps } = useSwitchProps(props)
   const [isChecked, setIsChecked] = useState<boolean>(defaultSelected || false)
-  const switchProps = useSwitchProps(props)
+  const { backgroundColorStyle, thumbStyle } = useSwitchAnimation(
+    isChecked,
+    color,
+    size,
+  )
 
   return (
-    <SwitchContext.Provider value={switchProps}>
-      <Pressable onPress={() => setIsChecked((prevValue) => !prevValue)}>
-        <SwitchWrapper isChecked={isChecked}>
+    <SwitchContext.Provider
+      value={{ color, size, defaultSelected, ...switchProps }}
+    >
+      <Pressable onPress={() => setIsChecked((prevState) => !prevState)}>
+        <SwitchWrapper isChecked={isChecked} style={backgroundColorStyle}>
           <StartContentWrapper>{startContent}</StartContentWrapper>
-          <SwitchThumb isChecked={isChecked}>{thumbIcon}</SwitchThumb>
+          <SwitchThumb isChecked={isChecked} style={thumbStyle}>
+            {thumbIcon}
+          </SwitchThumb>
           <EndContentWrapper>{endContent}</EndContentWrapper>
         </SwitchWrapper>
         <SwitchLabel>{children}</SwitchLabel>
