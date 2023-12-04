@@ -25,9 +25,18 @@ export default function App() {
       <Container>
         <StatusBar style="auto" />
 
-        <RadioGroup value="text" label="Radio group" size='md'>
-          <Radio value="text" label="text"/>
-          <Radio value="text2" label="text2"/>
+        <RadioGroup
+          value="london"
+          label="Radio group"
+          size="md"
+          orientation="vertical"
+          color="secondary"
+        >
+          <Radio value="london" label="London" color="danger" />
+          <Radio value="paris" label="Paris" color="warning" />
+          <Radio value="kyiv" label="Kyiv" color="success" />
+          <Radio value="new-york" label="New York" color="primary" />
+          <Radio value="dnipro" label="Dnipro" />
         </RadioGroup>
       </Container>
     </ThemeProvider>

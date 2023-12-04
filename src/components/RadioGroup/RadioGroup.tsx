@@ -18,8 +18,10 @@ const RadioGroup: FC<RadioGroupProps> = ({
   const [selectedRadio, setSelectedRadio] = useState(value)
 
   return (
-    <RadioGroupContext.Provider value={{ selectedRadio, ...props }}>
-      <RadioGroupWrapper>
+    <RadioGroupContext.Provider
+      value={{ selectedRadio, setSelectedRadio, ...props }}
+    >
+      <RadioGroupWrapper orientation={orientation}>
         {children}
         <RadioGroupLabel>{label}</RadioGroupLabel>
       </RadioGroupWrapper>

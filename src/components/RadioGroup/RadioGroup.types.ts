@@ -15,4 +15,5 @@ export interface RadioGroupProps extends RadioProps {
 export interface RadioGroupContextProps
   extends Omit<RadioGroupProps, 'children' | 'value'> {
   selectedRadio?: string
+  setSelectedRadio: (value: string) => void
 }

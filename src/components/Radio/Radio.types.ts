@@ -14,4 +14,9 @@ export interface RadioProps {
   disableAnimation?: boolean
 }
 
-export interface RadioContextProps extends Required<Pick<RadioProps, 'size' | 'color' | 'isDisabled'>> {}
+export interface RadioContextProps
+  extends Required<
+    Pick<RadioProps, 'size' | 'color' | 'isDisabled' | 'value'>
+  > {
+  selectedRadio?: string
+}

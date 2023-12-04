@@ -10,17 +10,17 @@ import {
 import { RadioProps } from './Radio.types'
 import { RadioContext } from './hooks/useRadioContext'
 import { useRadioProps } from './hooks/useRadioProps'
+import { useRadioGroupContext } from '../RadioGroup/hooks/useRadioGroupContext'
 
 const Radio: FC<RadioProps> = ({ label, ...props }) => {
-  const radioProps = useRadioProps(props)
+  const { value, selectedRadio, ...radioProps } = useRadioProps(props)
+  const { setSelectedRadio } = useRadioGroupContext()
 
   return (
-    <RadioContext.Provider value={radioProps}>
-      <Pressable>
+    <RadioContext.Provider value={{ value, selectedRadio, ...radioProps }}>
+      <Pressable onPress={() => setSelectedRadio(value)}>
         <RadioWrapper>
-          <RadioOutline>
-            <RadioDot />
-          </RadioOutline>
+          <RadioOutline>{selectedRadio === value && <RadioDot />}</RadioOutline>
           <RadioLabel>{label}</RadioLabel>
         </RadioWrapper>
       </Pressable>

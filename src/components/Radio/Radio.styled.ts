@@ -6,6 +6,7 @@ import { useRadioContext } from './hooks/useRadioContext'
 
 export const RadioWrapper = styled.View(() => {
   return css`
+    padding: 8px;
     display: flex;
     align-items: center;
     flex-direction: row;
@@ -24,9 +25,6 @@ export const RadioOutline = styled.View(() => {
   const { size, color, selectedRadio, value } = useRadioContext()
   const { colors } = useColors()
 
-  console.log(color)
-  
-
   return css`
     position: relative;
     width: ${getSize(sizes, size)}px;
@@ -42,14 +40,14 @@ export const RadioOutline = styled.View(() => {
 })
 
 export const RadioDot = styled.View(() => {
-  const { size } = useRadioContext()
+  const { size, color } = useRadioContext()
   const { colors } = useColors()
 
   return css`
     width: ${getSize(sizes, size) - 12}px;
     height: ${getSize(sizes, size) - 12}px;
 
-    background-color: ${colors.primary};
+    background-color: ${colors[color]};
     border-radius: 9999px;
   `
 })
