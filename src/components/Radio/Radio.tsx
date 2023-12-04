@@ -11,16 +11,28 @@ import { RadioProps } from './Radio.types'
 import { RadioContext } from './hooks/useRadioContext'
 import { useRadioProps } from './hooks/useRadioProps'
 import { useRadioGroupContext } from '../RadioGroup/hooks/useRadioGroupContext'
+import { useRadioAnimation } from './hooks/useRadioAnimation'
 
 const Radio: FC<RadioProps> = ({ label, ...props }) => {
-  const { value, selectedRadio, ...radioProps } = useRadioProps(props)
+  const radioProps = useRadioProps(props)
+  const { value, color, selectedRadio, isDisabled } = radioProps
   const { setSelectedRadio } = useRadioGroupContext()
+  const { radioDotStyle, radioOutlineStyle } = useRadioAnimation(
+    selectedRadio === value,
+    color,
+  )
+
+  const handlePress = () => {
+    !isDisabled && setSelectedRadio(value)
+  }
 
   return (
-    <RadioContext.Provider value={{ value, selectedRadio, ...radioProps }}>
-      <Pressable onPress={() => setSelectedRadio(value)}>
+    <RadioContext.Provider value={radioProps}>
+      <Pressable onPress={handlePress}>
         <RadioWrapper>
-          <RadioOutline>{selectedRadio === value && <RadioDot />}</RadioOutline>
+          <RadioOutline style={radioOutlineStyle}>
+            <RadioDot style={radioDotStyle} />
+          </RadioOutline>
           <RadioLabel>{label}</RadioLabel>
         </RadioWrapper>
       </Pressable>

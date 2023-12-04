@@ -1,7 +1,7 @@
 import { ReactNode } from 'react'
 import { RadioProps } from '../Radio/Radio.types'
 
-export interface RadioGroupProps extends RadioProps {
+export interface RadioGroupProps extends Partial<RadioProps> {
   children: ReactNode | ReactNode[]
   orientation?: 'horizontal' | 'vertical'
   name?: string

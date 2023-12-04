@@ -33,7 +33,7 @@ export default function App() {
           color="secondary"
         >
           <Radio value="london" label="London" color="danger" />
-          <Radio value="paris" label="Paris" color="warning" />
+          <Radio value="paris" label="Paris" color="warning" isDisabled />
           <Radio value="kyiv" label="Kyiv" color="success" />
           <Radio value="new-york" label="New York" color="primary" />
           <Radio value="dnipro" label="Dnipro" />

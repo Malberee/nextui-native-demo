@@ -1,16 +1,21 @@
 import styled, { css } from 'styled-components/native'
+import Animated from 'react-native-reanimated'
 import useColors from '../ThemeProvider/hooks/useColors'
 import { getSize } from '../../utils/getSize'
 import { sizes } from './Radio.contants'
 import { useRadioContext } from './hooks/useRadioContext'
 
 export const RadioWrapper = styled.View(() => {
+  const { isDisabled } = useRadioContext()
+
   return css`
     padding: 8px;
     display: flex;
     align-items: center;
     flex-direction: row;
     gap: 8px;
+
+    opacity: ${isDisabled ? 0.5 : 1};
   `
 })
 
@@ -21,7 +26,7 @@ export const RadioLabel = styled.Text(() => {
   `
 })
 
-export const RadioOutline = styled.View(() => {
+export const RadioOutline = styled(Animated.View)(() => {
   const { size, color, selectedRadio, value } = useRadioContext()
   const { colors } = useColors()
 
@@ -39,7 +44,7 @@ export const RadioOutline = styled.View(() => {
   `
 })
 
-export const RadioDot = styled.View(() => {
+export const RadioDot = styled(Animated.View)(() => {
   const { size, color } = useRadioContext()
   const { colors } = useColors()
 

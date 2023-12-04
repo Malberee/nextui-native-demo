@@ -7,7 +7,7 @@ type Props = {
 }
 
 const ThemeProvider: FC<Props> = ({ children }) => {
-  const [colors, setColors] = useState(Colors.dark)
+  const [colors, setColors] = useState(Colors.light)
 
   const applyColors = (colorTheme: TColors) => {
     setColors(colorTheme)
