@@ -22,8 +22,8 @@ const RadioGroup: FC<RadioGroupProps> = ({
       value={{ selectedRadio, setSelectedRadio, ...props }}
     >
       <RadioGroupWrapper orientation={orientation}>
-        {children}
         <RadioGroupLabel>{label}</RadioGroupLabel>
+        {children}
       </RadioGroupWrapper>
     </RadioGroupContext.Provider>
   )

@@ -3,6 +3,8 @@ import { Pressable } from 'react-native'
 import {
   RadioWrapper,
   RadioLabel,
+  RadioContent,
+  RadioDescription,
   RadioOutline,
   RadioDot,
 } from './Radio.styled'
@@ -13,7 +15,7 @@ import { useRadioProps } from './hooks/useRadioProps'
 import { useRadioGroupContext } from '../RadioGroup/hooks/useRadioGroupContext'
 import { useRadioAnimation } from './hooks/useRadioAnimation'
 
-const Radio: FC<RadioProps> = ({ label, ...props }) => {
+const Radio: FC<RadioProps> = ({ label, description, ...props }) => {
   const radioProps = useRadioProps(props)
   const { value, color, selectedRadio, isDisabled } = radioProps
   const { setSelectedRadio } = useRadioGroupContext()
@@ -33,7 +35,10 @@ const Radio: FC<RadioProps> = ({ label, ...props }) => {
           <RadioOutline style={radioOutlineStyle}>
             <RadioDot style={radioDotStyle} />
           </RadioOutline>
-          <RadioLabel>{label}</RadioLabel>
+          <RadioContent>
+            <RadioLabel>{label}</RadioLabel>
+            {description && <RadioDescription>{description}</RadioDescription>}
+          </RadioContent>
         </RadioWrapper>
       </Pressable>
     </RadioContext.Provider>

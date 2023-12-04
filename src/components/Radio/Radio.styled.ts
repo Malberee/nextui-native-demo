@@ -19,10 +19,26 @@ export const RadioWrapper = styled.View(() => {
   `
 })
 
+export const RadioContent = styled.View`
+  display: flex;
+  justify-content: center;
+`
+
 export const RadioLabel = styled.Text(() => {
   const { colors } = useColors()
+
   return css`
     color: ${colors.foreground};
+
+
+  `
+})
+
+export const RadioDescription = styled.Text(() => {
+  const { colors } = useColors()
+
+  return css`
+    color: ${colors.default400};
   `
 })
 

@@ -23,7 +23,7 @@ export default function App() {
   return (
     <ThemeProvider>
       <Container>
-        <StatusBar style="auto" />
+        <StatusBar style="light" />
 
         <RadioGroup
           value="london"
@@ -32,7 +32,12 @@ export default function App() {
           orientation="vertical"
           color="secondary"
         >
-          <Radio value="london" label="London" color="danger" />
+          <Radio
+            value="london"
+            label="London"
+            color="danger"
+            description="london is a capital of great britan"
+          />
           <Radio value="paris" label="Paris" color="warning" isDisabled />
           <Radio value="kyiv" label="Kyiv" color="success" />
           <Radio value="new-york" label="New York" color="primary" />
