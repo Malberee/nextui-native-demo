@@ -29,6 +29,8 @@ export const SwitchWrapper = styled(Animated.View)<SwitchWrapperProps>(({
 
     background-color: ${isChecked ? colors[color] : colors.content3};
     border-radius: 9999px;
+
+    overflow: hidden;
   `
 })
 
@@ -36,8 +38,6 @@ export const SwitchThumb = styled(Animated.View)<SwitchWrapperProps>(({
   isChecked,
 }) => {
   const { size } = useSwitchContext()
-
-  console.log(isChecked)
 
   return css`
     position: absolute;
@@ -55,6 +55,8 @@ export const SwitchThumb = styled(Animated.View)<SwitchWrapperProps>(({
     border-radius: 9999px;
 
     transition: background-color 2000ms linear;
+
+    z-index: 1;
   `
 })
 
@@ -64,10 +66,10 @@ export const SwitchLabel = styled.Text(() => {
   `
 })
 
-export const StartContentWrapper = styled.View(() => {
+export const StartContentWrapper = styled(Animated.View)(() => {
   return css``
 })
 
-export const EndContentWrapper = styled.View(() => {
+export const EndContentWrapper = styled(Animated.View)(() => {
   return css``
 })

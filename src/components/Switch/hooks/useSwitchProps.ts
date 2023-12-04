@@ -7,6 +7,7 @@ export const defaultProps: SwitchContextProps = {
   isRequired: false,
   isDisabled: false,
   disableAnimation: false,
+  defaultSelected: false
 }
 
 export const useSwitchProps = (
