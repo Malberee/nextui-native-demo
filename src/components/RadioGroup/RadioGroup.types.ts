@@ -5,7 +5,7 @@ export interface RadioGroupProps extends Partial<RadioProps> {
   children: ReactNode | ReactNode[]
   orientation?: 'horizontal' | 'vertical'
   name?: string
-  defaultValue?: string[]
+  defaultValue?: string
   errorMessage?: ReactNode
 
   // events
@@ -15,5 +15,5 @@ export interface RadioGroupProps extends Partial<RadioProps> {
 export interface RadioGroupContextProps
   extends Omit<RadioGroupProps, 'children' | 'value'> {
   selectedRadio?: string
-  setSelectedRadio: (value: string) => void
+  selectRadio: (value: string) => void
 }

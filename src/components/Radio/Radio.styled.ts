@@ -29,8 +29,6 @@ export const RadioLabel = styled.Text(() => {
 
   return css`
     color: ${colors.foreground};
-
-
   `
 })
 

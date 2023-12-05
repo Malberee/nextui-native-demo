@@ -20,17 +20,21 @@ const Container = styled(GestureHandlerRootView)(() => {
 })
 
 export default function App() {
+  const [radioValue, setRadioValue] = useState('london')
+
   return (
     <ThemeProvider>
       <Container>
         <StatusBar style="light" />
 
         <RadioGroup
-          value="london"
-          label="Radio group"
+          value={radioValue}
+          defaultValue={radioValue}
+          label={`Selected: ${radioValue}`}
           size="md"
           orientation="vertical"
           color="secondary"
+          onValueChange={(value) => setRadioValue(value)}
         >
           <Radio
             value="london"

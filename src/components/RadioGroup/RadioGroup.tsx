@@ -15,11 +15,21 @@ const RadioGroup: FC<RadioGroupProps> = ({
   onValueChange,
   ...props
 }) => {
-  const [selectedRadio, setSelectedRadio] = useState(value)
+  const [selectedRadio, setSelectedRadio] = useState(defaultValue)
+
+  const selectRadio = (newValue: string) => {
+    if (onValueChange) {
+      onValueChange(newValue)
+    } else {
+      setSelectedRadio(newValue)
+    }
+  }
+
+  
 
   return (
     <RadioGroupContext.Provider
-      value={{ selectedRadio, setSelectedRadio, ...props }}
+      value={{ selectedRadio: value || selectedRadio, selectRadio, ...props }}
     >
       <RadioGroupWrapper orientation={orientation}>
         <RadioGroupLabel>{label}</RadioGroupLabel>
