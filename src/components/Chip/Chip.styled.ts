@@ -9,7 +9,6 @@ import { useVariantStyles } from '../../hooks/useVariantStyles'
 
 export const ChipWrapper = styled.View(() => {
   const { size, radius, color, variant, isDisabled } = useChipContext()
-  const { colors } = useColors()
 
   return css`
     display: flex;
@@ -32,10 +31,23 @@ export const ChipContent = styled.Text(() => {
   const { colors } = useColors()
 
   return css`
-    padding: 0 ${size === 'lg' ? 8 : 4}px;
+    padding: 0 ${size === 'sm' ? 4 : 8}px;
     font-size: ${size === 'lg' ? 16 : size === 'md' ? 14 : 12}px;
     color: ${variant === 'solid' || variant === 'shadow'
       ? getTextColor(color)
       : colors[color]};
+  `
+})
+
+export const ChipDot = styled.View(() => {
+  const { color } = useChipContext()
+  const { colors } = useColors()
+
+  return css`
+    width: 8px;
+    height: 8px;
+    margin-left: 4px;
+    background-color: ${colors[color]};
+    border-radius: 9999px;
   `
 })

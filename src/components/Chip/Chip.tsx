@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import { Pressable } from 'react-native'
-import { ChipWrapper, ChipContent } from './Chip.styled'
+import { ChipWrapper, ChipContent, ChipDot } from './Chip.styled'
 import Icon from 'react-native-vector-icons/Ionicons'
 
 import { ChipProps } from './Chip.types'
@@ -25,13 +25,13 @@ const Chip: FC<ChipProps> = ({
   return (
     <ChipContext.Provider value={{ size, variant, color, ...chipProps }}>
       <ChipWrapper style={{ ...getShadow(variant, colors, color) }}>
+        {variant === 'dot' && <ChipDot />}
         {avatar
           ? React.cloneElement(avatar as React.ReactElement, {
               size: getSize(sizes, size) - (size === 'lg' ? 16 : 8),
             })
           : startContent}
         <ChipContent>{children}</ChipContent>
-
         {endContent && onClose ? (
           <Pressable onPress={onClose}>
             {React.cloneElement(endContent as React.ReactElement)}

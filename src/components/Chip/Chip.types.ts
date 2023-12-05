@@ -4,7 +4,7 @@ import { ColorName, RadiusName, SizeName, VariantName } from '../../types'
 
 export interface ChipProps {
   children: string
-  variant?: VariantName
+  variant?: VariantName | 'dot'
   color?: ColorName
   size?: Extract<SizeName, 'sm' | 'md' | 'lg'>
   radius?: RadiusName

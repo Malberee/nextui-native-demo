@@ -1,13 +1,19 @@
 import useColors from '../components/ThemeProvider/hooks/useColors'
 import { VariantName, ColorName } from '../types'
 
-export const useVariantStyles = (variant: VariantName, color: ColorName) => {
+export const useVariantStyles = (variant: VariantName | 'dot', color: ColorName) => {
   const { colors } = useColors()
 
   switch (variant) {
     case 'flat':
       return `
-            background-color: ${colors[color]}25;
+            background-color: ${colors[color]}33;
+        `
+      break
+    case 'dot':
+      return `
+            border-color: ${colors.default200};
+            border-width: 2px;
         `
       break
     case 'faded':

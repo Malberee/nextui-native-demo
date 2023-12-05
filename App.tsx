@@ -7,7 +7,7 @@ import IconFeather from 'react-native-vector-icons/Feather'
 import useColors from './src/components/ThemeProvider/hooks/useColors'
 import styled, { css } from 'styled-components/native'
 
-import { ThemeProvider, RadioGroup, Radio } from './src'
+import { ThemeProvider, RadioGroup, Radio, Chip } from './src'
 
 const Container = styled(GestureHandlerRootView)(() => {
   const { colors } = useColors()
@@ -27,6 +27,7 @@ export default function App() {
       <Container>
         <StatusBar style="light" />
 
+        <Chip variant="dot" color="warning">Active</Chip>
         <RadioGroup
           value={radioValue}
           label="Select a capital of Ukraine"
