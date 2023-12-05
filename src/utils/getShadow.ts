@@ -2,7 +2,7 @@ import { TColors } from '../colors'
 import { ColorName, VariantName } from '../types'
 
 export const getShadow = (
-  variant: VariantName,
+  variant: VariantName | 'dot',
   colors: TColors,
   color: ColorName,
 ) => {
