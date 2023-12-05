@@ -7,14 +7,14 @@ import {
 import useColors from '../../ThemeProvider/hooks/useColors'
 import { ColorName } from '../../../types'
 
-export const useRadioAnimation = (isChecked: boolean, color: ColorName) => {
+export const useRadioAnimation = (isChecked: boolean, color: ColorName, isInvalid: boolean) => {
   const { colors } = useColors()
 
   const scale = useDerivedValue(() => {
     return withTiming(isChecked ? 1 : 0, { duration: 100 })
   })
   const progress = useDerivedValue(() => {
-    return withTiming(isChecked ? 10 : 0, { duration: 100 })
+    return withTiming(isChecked || isInvalid ? 10 : 0, { duration: 100 })
   })
 
   const radioOutlineStyle = useAnimatedStyle(() => {
@@ -26,7 +26,7 @@ export const useRadioAnimation = (isChecked: boolean, color: ColorName) => {
 
     return { borderColor }
   })
-    
+
   const radioDotStyle = useAnimatedStyle(() => {
     return {
       transform: [

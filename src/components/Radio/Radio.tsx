@@ -17,11 +17,12 @@ import { useRadioAnimation } from './hooks/useRadioAnimation'
 
 const Radio: FC<RadioProps> = ({ label, description, ...props }) => {
   const radioProps = useRadioProps(props)
-  const { value, color, selectedRadio, isDisabled } = radioProps
+  const { value, color, selectedRadio, isDisabled, isInvalid } = radioProps
   const { selectRadio } = useRadioGroupContext()
   const { radioDotStyle, radioOutlineStyle } = useRadioAnimation(
     selectedRadio === value,
-    color,
+    isInvalid ? 'danger' : color,
+    isInvalid,
   )
 
   const handlePress = () => {

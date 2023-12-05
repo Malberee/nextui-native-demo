@@ -18,3 +18,19 @@ export const RadioGroupLabel = styled.Text(() => {
     color: ${colors.foreground};
   `
 })
+
+export const ErrorMessage = styled.Text(() => {
+  const { colors } = useColors()
+
+  return css`
+    color: ${colors.danger};
+  `
+})
+
+export const Asterisk = styled.Text(() => {
+  const { colors } = useColors()
+
+  return css`
+    color: ${colors.danger};
+  `
+})

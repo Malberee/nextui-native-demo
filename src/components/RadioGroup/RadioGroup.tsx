@@ -1,5 +1,10 @@
 import React, { FC, useState } from 'react'
-import { RadioGroupWrapper, RadioGroupLabel } from './RadioGroup.styled'
+import {
+  RadioGroupWrapper,
+  RadioGroupLabel,
+  ErrorMessage,
+  Asterisk,
+} from './RadioGroup.styled'
 
 import { RadioGroupProps } from './RadioGroup.types'
 import { RadioGroupContext } from './hooks/useRadioGroupContext'
@@ -12,6 +17,8 @@ const RadioGroup: FC<RadioGroupProps> = ({
   value,
   defaultValue,
   errorMessage,
+  isInvalid,
+  isRequired,
   onValueChange,
   ...props
 }) => {
@@ -25,15 +32,22 @@ const RadioGroup: FC<RadioGroupProps> = ({
     }
   }
 
-  
-
   return (
     <RadioGroupContext.Provider
-      value={{ selectedRadio: value || selectedRadio, selectRadio, ...props }}
+      value={{
+        selectedRadio: value || selectedRadio,
+        isInvalid,
+        selectRadio,
+        ...props,
+      }}
     >
       <RadioGroupWrapper orientation={orientation}>
-        <RadioGroupLabel>{label}</RadioGroupLabel>
+        <RadioGroupLabel>
+          {label}
+          {isRequired && <Asterisk>*</Asterisk>}
+        </RadioGroupLabel>
         {children}
+        {isInvalid && <ErrorMessage>{errorMessage}</ErrorMessage>}
       </RadioGroupWrapper>
     </RadioGroupContext.Provider>
   )

@@ -29,12 +29,14 @@ export default function App() {
 
         <RadioGroup
           value={radioValue}
-          defaultValue={radioValue}
-          label={`Selected: ${radioValue}`}
+          label="Select a capital of Ukraine"
           size="md"
           orientation="vertical"
           color="secondary"
           onValueChange={(value) => setRadioValue(value)}
+          isInvalid={radioValue === 'new-york'}
+          errorMessage="New York is not a capital of Ukraine"
+          isRequired
         >
           <Radio
             value="london"

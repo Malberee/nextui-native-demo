@@ -16,7 +16,7 @@ export interface RadioProps {
 
 export interface RadioContextProps
   extends Required<
-    Pick<RadioProps, 'size' | 'color' | 'isDisabled' | 'value'>
+    Pick<RadioProps, 'size' | 'color' | 'isDisabled' | 'value' | 'isInvalid'>
   > {
   selectedRadio?: string
 }

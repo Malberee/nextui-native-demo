@@ -25,31 +25,31 @@ export const RadioContent = styled.View`
 `
 
 export const RadioLabel = styled.Text(() => {
+  const { isInvalid } = useRadioContext()
   const { colors } = useColors()
 
   return css`
-    color: ${colors.foreground};
+    color: ${isInvalid ? colors.danger : colors.foreground};
   `
 })
 
 export const RadioDescription = styled.Text(() => {
+  const { isInvalid } = useRadioContext()
   const { colors } = useColors()
 
   return css`
-    color: ${colors.default400};
+    color: ${isInvalid ? colors.danger : colors.default400};
   `
 })
 
 export const RadioOutline = styled(Animated.View)(() => {
-  const { size, color, selectedRadio, value } = useRadioContext()
-  const { colors } = useColors()
+  const { size} = useRadioContext()
 
   return css`
     position: relative;
     width: ${getSize(sizes, size)}px;
     height: ${getSize(sizes, size)}px;
     border-radius: 9999px;
-    border-color: ${selectedRadio === value ? colors[color] : colors.default};
     border-width: 2px;
 
     display: flex;
@@ -59,14 +59,14 @@ export const RadioOutline = styled(Animated.View)(() => {
 })
 
 export const RadioDot = styled(Animated.View)(() => {
-  const { size, color } = useRadioContext()
+  const { size, color, isInvalid } = useRadioContext()
   const { colors } = useColors()
 
   return css`
     width: ${getSize(sizes, size) - 12}px;
     height: ${getSize(sizes, size) - 12}px;
 
-    background-color: ${colors[color]};
+    background-color: ${isInvalid ? colors.danger : colors[color]};
     border-radius: 9999px;
   `
 })
