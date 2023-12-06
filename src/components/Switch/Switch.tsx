@@ -17,6 +17,12 @@ import { useSwitchProps } from './hooks/useSwitchProps'
 import { SwitchProps } from './Switch.types'
 import { SwitchContext } from './hooks/useSwitchContext'
 import { useSwitchAnimation } from './hooks/useSwitchAnimation'
+import {
+  StretchInX,
+  StretchInY,
+  StretchOutX,
+  StretchOutY,
+} from 'react-native-reanimated'
 
 const Switch: FC<SwitchProps> = ({
   children,
@@ -27,16 +33,13 @@ const Switch: FC<SwitchProps> = ({
   onValueChange,
   ...props
 }) => {
-  const { color, size, defaultSelected, ...switchProps } =
-    useSwitchProps({isSelected, ...props})
+  const { color, size, defaultSelected, ...switchProps } = useSwitchProps({
+    isSelected,
+    ...props,
+  })
   const [isChecked, setIsChecked] = useState<boolean>(defaultSelected || false)
-  const {
-    backgroundStyle,
-    thumbStyle,
-    endContentStyle,
-    startContentStyle,
-    pan,
-  } = useSwitchAnimation(isSelected ?? isChecked, color, size)
+  const { backgroundStyle, thumbStyle, endContentStyle, startContentStyle } =
+    useSwitchAnimation(isSelected ?? isChecked, color, size)
 
   const handleToggle = () => {
     if (onValueChange) {
@@ -50,28 +53,23 @@ const Switch: FC<SwitchProps> = ({
     <SwitchContext.Provider
       value={{ color, size, defaultSelected, ...switchProps }}
     >
-        <GestureDetector gesture={pan}>
-          <Pressable onPress={handleToggle}>
-            <SwitchWrapper
-              isChecked={isSelected ?? isChecked}
-              style={backgroundStyle}
-            >
-              <StartContentWrapper style={startContentStyle}>
-                {startContent}
-              </StartContentWrapper>
-              <SwitchThumb
-                isChecked={isSelected ?? isChecked}
-                style={thumbStyle}
-              >
-                {thumbIcon}
-              </SwitchThumb>
-              <EndContentWrapper style={endContentStyle}>
-                {endContent}
-              </EndContentWrapper>
-            </SwitchWrapper>
-            <SwitchLabel>{children}</SwitchLabel>
-          </Pressable>
-        </GestureDetector>
+      <Pressable onPress={handleToggle}>
+        <SwitchWrapper
+          isChecked={isSelected ?? isChecked}
+          style={backgroundStyle}
+        >
+          <StartContentWrapper style={startContentStyle}>
+            {startContent}
+          </StartContentWrapper>
+          <SwitchThumb isChecked={isSelected ?? isChecked} style={thumbStyle}>
+            {thumbIcon}
+          </SwitchThumb>
+          <EndContentWrapper style={endContentStyle}>
+            {endContent}
+          </EndContentWrapper>
+        </SwitchWrapper>
+        <SwitchLabel>{children}</SwitchLabel>
+      </Pressable>
     </SwitchContext.Provider>
   )
 }

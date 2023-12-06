@@ -6,6 +6,7 @@ import {
   withSpring,
   withTiming,
   useDerivedValue,
+  StretchOutX,
 } from 'react-native-reanimated'
 import useColors from '../../ThemeProvider/hooks/useColors'
 import { ColorName, SizeName } from '../../../types'
@@ -39,17 +40,6 @@ export const useSwitchAnimation = (
   const endContentScale = useDerivedValue(() => {
     return withTiming(isChecked ? 0 : 1, { duration: 250 })
   })
-  const pressed = useSharedValue(false)
-  const stretch = useSharedValue(1)
-  const pan = Gesture.Pan()
-    .onBegin(() => {
-      pressed.value = true
-      stretch.value = withTiming(thumbSize + 10, { duration: 150 })
-    })
-    .onFinalize(() => {
-      pressed.value = false
-      stretch.value = withTiming(thumbSize, { duration: 150 })
-    })
 
   const backgroundStyle = useAnimatedStyle(() => {
     const backgroundColor = interpolateColor(
@@ -99,6 +89,5 @@ export const useSwitchAnimation = (
     thumbStyle,
     endContentStyle,
     startContentStyle,
-    pan,
   }
 }

@@ -7,7 +7,7 @@ export const getShadow = (
   color: ColorName,
 ) => {
   return {
-    shadowColor: variant === 'shadow' ? colors[color] : 'none',
+    shadowColor: variant === 'shadow' ? colors[color] : 'transparent',
     shadowOffset: {
       width: 0,
       height: 11,
