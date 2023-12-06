@@ -27,28 +27,49 @@ export default function App() {
       <Container>
         <StatusBar style="light" />
 
-        <Chip variant="dot" color="warning">Active</Chip>
+        <Chip variant="dot" color="warning">
+          Active
+        </Chip>
         <RadioGroup
           value={radioValue}
-          label="Select a capital of Ukraine"
+          label="Select your favorite city"
           size="md"
-          orientation="vertical"
+          orientation="horizontal"
           color="secondary"
           onValueChange={(value) => setRadioValue(value)}
-          isInvalid={radioValue === 'new-york'}
-          errorMessage="New York is not a capital of Ukraine"
+          isInvalid={radioValue === 'london'}
+          errorMessage="really?"
           isRequired
         >
           <Radio
+            value="buenos-aires"
+            label="Buenos Aires"
+            description="The capital of Argentina"
+          />
+          <Radio
+            value="paris"
+            label="Paris"
+            description="The capital of France"
+            color="warning"
+            isDisabled
+          />
+          <Radio
+            value="kyiv"
+            label="Kyiv"
+            color="success"
+            description="The capital of Ukraine"
+          />
+          <Radio
+            value="tokyo"
+            label="Tokyo"
+            color="primary"
+            description="The capital of Japan"
+          />
+          <Radio
             value="london"
             label="London"
-            color="danger"
-            description="london is a capital of great britan"
+            description="The capital of England"
           />
-          <Radio value="paris" label="Paris" color="warning" isDisabled />
-          <Radio value="kyiv" label="Kyiv" color="success" />
-          <Radio value="new-york" label="New York" color="primary" />
-          <Radio value="dnipro" label="Dnipro" />
         </RadioGroup>
       </Container>
     </ThemeProvider>

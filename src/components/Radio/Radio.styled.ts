@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components/native'
 import Animated from 'react-native-reanimated'
 import useColors from '../ThemeProvider/hooks/useColors'
 import { getSize } from '../../utils/getSize'
-import { sizes } from './Radio.contants'
+import { descriptionFontSizes, labelFontSizes, sizes } from './Radio.contants'
 import { useRadioContext } from './hooks/useRadioContext'
 
 export const RadioWrapper = styled.View(() => {
@@ -25,25 +25,27 @@ export const RadioContent = styled.View`
 `
 
 export const RadioLabel = styled.Text(() => {
-  const { isInvalid } = useRadioContext()
+  const { size, isInvalid } = useRadioContext()
   const { colors } = useColors()
 
   return css`
     color: ${isInvalid ? colors.danger : colors.foreground};
+    font-size: ${getSize(labelFontSizes, size)}px;
   `
 })
 
 export const RadioDescription = styled.Text(() => {
-  const { isInvalid } = useRadioContext()
+  const { size, isInvalid } = useRadioContext()
   const { colors } = useColors()
 
   return css`
     color: ${isInvalid ? colors.danger : colors.default400};
+    font-size: ${getSize(descriptionFontSizes, size)}px;
   `
 })
 
 export const RadioOutline = styled(Animated.View)(() => {
-  const { size} = useRadioContext()
+  const { size } = useRadioContext()
 
   return css`
     position: relative;

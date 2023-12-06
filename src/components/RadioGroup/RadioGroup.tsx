@@ -2,6 +2,7 @@ import React, { FC, useState } from 'react'
 import {
   RadioGroupWrapper,
   RadioGroupLabel,
+  RadioList,
   ErrorMessage,
   Asterisk,
 } from './RadioGroup.styled'
@@ -41,12 +42,12 @@ const RadioGroup: FC<RadioGroupProps> = ({
         ...props,
       }}
     >
-      <RadioGroupWrapper orientation={orientation}>
+      <RadioGroupWrapper>
         <RadioGroupLabel>
           {label}
           {isRequired && <Asterisk>*</Asterisk>}
         </RadioGroupLabel>
-        {children}
+        <RadioList orientation={orientation}>{children}</RadioList>
         {isInvalid && <ErrorMessage>{errorMessage}</ErrorMessage>}
       </RadioGroupWrapper>
     </RadioGroupContext.Provider>
