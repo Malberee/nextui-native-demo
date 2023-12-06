@@ -4,6 +4,7 @@ import { getSize } from '../../utils/getSize'
 import { thumbSizes, trackSizes } from './Slider.constants'
 import useColors from '../ThemeProvider/hooks/useColors'
 import Animated from 'react-native-reanimated'
+import { TextInput } from 'react-native-gesture-handler'
 
 export const SliderWrapper = styled.View(() => {
   return css`
@@ -30,7 +31,9 @@ export const SliderLabel = styled.Text(() => {
   `
 })
 
-export const SliderValue = styled.Text(() => {
+const AnimatedValue = Animated.createAnimatedComponent(TextInput)
+
+export const SliderValue = styled(AnimatedValue)(() => {
   const { size } = useSliderContext()
   const { colors } = useColors()
 

@@ -1,5 +1,6 @@
 import React, { FC, useState } from 'react'
-import { PanGestureHandler } from 'react-native-gesture-handler'
+import Animated, { useAnimatedProps } from 'react-native-reanimated'
+import { PanGestureHandler, TextInput } from 'react-native-gesture-handler'
 import { LayoutChangeEvent } from 'react-native'
 import {
   SliderWrapper,
@@ -27,34 +28,51 @@ const Slider: FC<SliderProps> = ({
   ...props
 }) => {
   const [trackWidth, setTrackWidth] = useState(0)
+  const [thumbWidth, setThumbWidth] = useState(0)
   const sliderProps = useSliderProps(props)
-  const { gestureHandler, animatedThumbStyle, animatedProgressStyle } = useSliderAnimation(
+  const {
+    gestureHandler,
+    animatedThumbStyle,
+    animatedProgressStyle,
+    stepText,
+  } = useSliderAnimation(
     defaultValue,
     minValue,
     maxValue,
     trackWidth,
+    thumbWidth,
   )
 
-  const onLayout = (e: LayoutChangeEvent) => {
-    // if (!hasLayoutOccurred) {
-    setTrackWidth(e.nativeEvent.layout.width)
-    // setHasLayoutOccurred(true)
-    // }
+  const onLayout = (e: LayoutChangeEvent, element: 'track' | 'thumb') => {
+    if (element === 'track') {
+      setTrackWidth(e.nativeEvent.layout.width)
+    } else {
+      setThumbWidth(e.nativeEvent.layout.width)
+    }
   }
+
+  const AnimatedText = Animated.createAnimatedComponent(TextInput)
+  const animatedValue = useAnimatedProps(() => ({
+    text: stepText.value,
+  }))
 
   return (
     <SliderContext.Provider value={sliderProps}>
       <SliderWrapper>
         <SliderContent>
           <SliderLabel>{label}</SliderLabel>
-          <SliderValue>{value}</SliderValue>
+          <AnimatedText animatedProps={animatedValue} defaultValue="0" />
         </SliderContent>
         <SliderInner>
-          <SliderTrack onLayout={onLayout}>
+          <SliderTrack
+            onLayout={(e: LayoutChangeEvent) => onLayout(e, 'track')}
+          >
             <SliderProgress style={animatedProgressStyle} />
             <PanGestureHandler onGestureEvent={gestureHandler}>
               <TouchableThumbZone style={animatedThumbStyle}>
-                <SliderThumb />
+                <SliderThumb
+                  onLayout={(e: LayoutChangeEvent) => onLayout(e, 'thumb')}
+                />
               </TouchableThumbZone>
             </PanGestureHandler>
           </SliderTrack>

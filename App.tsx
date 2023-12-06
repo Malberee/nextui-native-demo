@@ -26,7 +26,7 @@ export default function App() {
     <ThemeProvider>
       <Container>
         <StatusBar style="light" />
-        <Slider size="md" label="Slider" minValue={50}/>
+        <Slider size="sm" label="Slider" />
       </Container>
     </ThemeProvider>
   )
