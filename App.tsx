@@ -7,7 +7,7 @@ import IconFeather from 'react-native-vector-icons/Feather'
 import useColors from './src/components/ThemeProvider/hooks/useColors'
 import styled, { css } from 'styled-components/native'
 
-import { ThemeProvider, RadioGroup, Radio, Chip, Switch } from './src'
+import { ThemeProvider, RadioGroup, Radio, Chip, Switch, Slider } from './src'
 
 const Container = styled(GestureHandlerRootView)(() => {
   const { colors } = useColors()
@@ -26,51 +26,7 @@ export default function App() {
     <ThemeProvider>
       <Container>
         <StatusBar style="light" />
-        <Chip variant="dot" color="warning">
-          Active
-        </Chip>
-        <RadioGroup
-          value={radioValue}
-          label="Select your favorite city"
-          size="md"
-          orientation="horizontal"
-          color="secondary"
-          onValueChange={(value) => setRadioValue(value)}
-          isInvalid={radioValue === 'london'}
-          errorMessage="really?"
-          isRequired
-        >
-          <Radio
-            value="buenos-aires"
-            label="Buenos Aires"
-            description="The capital of Argentina"
-          />
-          <Radio
-            value="paris"
-            label="Paris"
-            description="The capital of France"
-            color="warning"
-            isDisabled
-          />
-          <Radio
-            value="kyiv"
-            label="Kyiv"
-            color="success"
-            description="The capital of Ukraine"
-          />
-          <Radio
-            value="tokyo"
-            label="Tokyo"
-            color="primary"
-            description="The capital of Japan"
-          />
-          <Radio
-            value="london"
-            label="London"
-            description="The capital of England"
-          />
-        </RadioGroup>
-        <Switch></Switch>
+        <Slider size="md" label="Slider" minValue={50}/>
       </Container>
     </ThemeProvider>
   )

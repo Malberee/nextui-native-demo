@@ -7,7 +7,7 @@ import { TemplateNameProps } from './TemplateName.types'
 const TemplateName: FC<TemplateNameProps> = () => {
   return (
     <TemplateNameWrapper>
-      <Text>Button Component</Text>
+      <Text>TemplateName Component</Text>
     </TemplateNameWrapper>
   )
 }
