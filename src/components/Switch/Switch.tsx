@@ -1,10 +1,5 @@
-import React, { FC, useState, useEffect } from 'react'
+import React, { FC, useState } from 'react'
 import { Pressable } from 'react-native'
-import IconFeather from 'react-native-vector-icons/Feather'
-import {
-  GestureDetector,
-  GestureHandlerRootView,
-} from 'react-native-gesture-handler'
 import {
   SwitchWrapper,
   SwitchThumb,
@@ -17,12 +12,6 @@ import { useSwitchProps } from './hooks/useSwitchProps'
 import { SwitchProps } from './Switch.types'
 import { SwitchContext } from './hooks/useSwitchContext'
 import { useSwitchAnimation } from './hooks/useSwitchAnimation'
-import {
-  StretchInX,
-  StretchInY,
-  StretchOutX,
-  StretchOutY,
-} from 'react-native-reanimated'
 
 const Switch: FC<SwitchProps> = ({
   children,

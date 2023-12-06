@@ -1,18 +1,13 @@
-import { useEffect } from 'react'
 import {
   interpolateColor,
-  useSharedValue,
   useAnimatedStyle,
-  withSpring,
   withTiming,
   useDerivedValue,
-  StretchOutX,
 } from 'react-native-reanimated'
 import useColors from '../../ThemeProvider/hooks/useColors'
 import { ColorName, SizeName } from '../../../types'
 import { getSize } from '../../../utils/getSize'
 import { thumbSizes } from '../Switch.constants'
-import { Gesture } from 'react-native-gesture-handler'
 
 export const useSwitchAnimation = (
   isChecked: boolean,
