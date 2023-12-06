@@ -43,7 +43,7 @@ export const useSliderAnimation = (
   })
 
   const animatedThumbStyle = useAnimatedStyle(() => {
-    return { transform: [{ translateX: translateX.value }] }
+    return { transform: [{ translateX: translateX.value - 12 }] }
   })
   const animatedProgressStyle = useAnimatedStyle(() => {
     return {
