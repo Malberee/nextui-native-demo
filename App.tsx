@@ -33,6 +33,7 @@ export default function App() {
           minValue={5}
           step={1}
           showSteps
+          hideThumb
         />
       </Container>
     </ThemeProvider>

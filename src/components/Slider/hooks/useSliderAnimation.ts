@@ -38,10 +38,6 @@ export const useSliderAnimation = (
       ctx.offsetX = translateX.value
     },
     onActive: (event, ctx: AnimatedGHContext) => {
-      // console.log(
-      //   Math.round((translateX.value * 100) / (trackWidth - thumbWidth)) + '%',
-      // )
-
       thumbPosition.value = (sliderValue.value - minValue) * oneStepValue
 
       console.log(sliderValue.value)
@@ -63,12 +59,14 @@ export const useSliderAnimation = (
   }))
 
   const animatedProgressStyle = useAnimatedStyle(() => ({
-    width: thumbPosition.value + thumbWidth,
+    width: sliderValue.value === minValue ? 0 : thumbPosition.value + thumbWidth - 2,
   }))
 
   return {
     gestureHandler,
-    values: {},
+    values: {
+      sliderValue,
+    },
     styles: {
       animatedProgressStyle,
       animatedThumbStyle,

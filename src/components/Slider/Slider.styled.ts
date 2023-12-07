@@ -8,7 +8,7 @@ import { TextInput } from 'react-native-gesture-handler'
 
 export const SliderWrapper = styled.View(() => {
   return css`
-    width: 80%;
+    width: 90%;
   `
 })
 
@@ -80,7 +80,6 @@ export const StepsWrapper = styled.View(() => {
   const { size } = useSliderContext()
 
   console.log(getSize(thumbSizes, size) / 2)
-  
 
   return css`
     position: absolute;
@@ -94,10 +93,12 @@ export const StepsWrapper = styled.View(() => {
 })
 
 export const StepDot = styled.View(() => {
+  const { colors } = useColors()
+
   return css`
     width: 6px;
     height: 6px;
-    background-color: #ffffff80;
+    background-color: ${colors.content3};
     border-radius: 9999px;
   `
 })
@@ -111,7 +112,7 @@ export const TouchableThumbZone = styled(Animated.View)(() => {
 })
 
 export const SliderThumb = styled(Animated.View)(() => {
-  const { size, color } = useSliderContext()
+  const { size, color, hideThumb } = useSliderContext()
   const { colors } = useColors()
 
   const thumbSize = getSize(thumbSizes, size)
@@ -119,9 +120,12 @@ export const SliderThumb = styled(Animated.View)(() => {
   return css`
     width: ${thumbSize}px;
     height: ${thumbSize}px;
+
     background-color: ${colors.background};
     border-color: ${colors[color]};
     border-width: 2px;
     border-radius: 9999px;
+    
+    opacity: ${hideThumb ? 0 : 1};
   `
 })
