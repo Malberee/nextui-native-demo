@@ -9,6 +9,8 @@ import {
   SliderValue,
   SliderInner,
   SliderTrack,
+  StepsWrapper,
+  StepDot,
   TouchableThumbZone,
   SliderProgress,
   SliderThumb,
@@ -23,9 +25,10 @@ const Slider: FC<SliderProps> = ({
   label,
   value,
   defaultValue,
-  minValue,
-  maxValue,
-  step,
+  minValue = 0,
+  maxValue = 100,
+  step = 1,
+  showSteps,
   ...props
 }) => {
   const [trackWidth, setTrackWidth] = useState(0)
@@ -40,7 +43,7 @@ const Slider: FC<SliderProps> = ({
     maxValue,
     trackWidth,
     thumbWidth,
-    step,
+    step = 1,
   )
 
   const onLayout = (e: LayoutChangeEvent, element: 'track' | 'thumb') => {
@@ -62,6 +65,9 @@ const Slider: FC<SliderProps> = ({
             onLayout={(e: LayoutChangeEvent) => onLayout(e, 'track')}
           >
             <SliderProgress style={animatedProgressStyle} />
+            {showSteps && <StepsWrapper>
+              {Array((maxValue - minValue + 1) * step).fill(<StepDot />)}
+            </StepsWrapper>}
             <PanGestureHandler onGestureEvent={gestureHandler}>
               <TouchableThumbZone style={animatedThumbStyle}>
                 <SliderThumb

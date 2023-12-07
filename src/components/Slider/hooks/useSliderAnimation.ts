@@ -17,15 +17,16 @@ export const useSliderAnimation = (
 ) => {
   const translateX = useSharedValue(defaultValue)
   const isSliding = useSharedValue(false)
-  const stepText = useDerivedValue(() => {
-    const sliderRange = trackWidth - thumbWidth
-    const valueRange = maxValue - minValue
-    const oneStepValue = sliderRange / valueRange
-    console.log('🦆  oneStepValue:', oneStepValue)
+
+  const sliderRange = trackWidth - thumbWidth
+  const valueRange = maxValue - minValue
+  const oneStepValue = sliderRange / valueRange
+  const sliderValue = useDerivedValue(() => {
     const stepValue = Math.ceil(translateX.value / oneStepValue + minValue)
 
     return stepValue
   })
+  const thumbPosition = useSharedValue(0)
 
   type AnimatedGHContext = {
     start: number
@@ -41,7 +42,9 @@ export const useSliderAnimation = (
       //   Math.round((translateX.value * 100) / (trackWidth - thumbWidth)) + '%',
       // )
 
-      console.log(stepText.value)
+      thumbPosition.value = (sliderValue.value - minValue) * oneStepValue
+
+      console.log(sliderValue.value)
 
       isSliding.value = true
       translateX.value = clamp(
@@ -56,11 +59,11 @@ export const useSliderAnimation = (
   })
 
   const animatedThumbStyle = useAnimatedStyle(() => ({
-    transform: [{ translateX: translateX.value - thumbWidth / 2 - 2 }],
+    transform: [{ translateX: thumbPosition.value - thumbWidth / 2 }],
   }))
 
   const animatedProgressStyle = useAnimatedStyle(() => ({
-    width: translateX.value + thumbWidth,
+    width: thumbPosition.value + thumbWidth,
   }))
 
   return {

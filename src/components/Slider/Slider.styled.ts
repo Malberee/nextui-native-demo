@@ -76,6 +76,32 @@ export const SliderProgress = styled(Animated.View)(() => {
   `
 })
 
+export const StepsWrapper = styled.View(() => {
+  const { size } = useSliderContext()
+
+  console.log(getSize(thumbSizes, size) / 2)
+  
+
+  return css`
+    position: absolute;
+    width: 100%;
+    padding: 0 ${getSize(thumbSizes, size) / 2 - 3}px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  `
+})
+
+export const StepDot = styled.View(() => {
+  return css`
+    width: 6px;
+    height: 6px;
+    background-color: #ffffff80;
+    border-radius: 9999px;
+  `
+})
+
 export const TouchableThumbZone = styled(Animated.View)(() => {
   return css`
     position: absolute;
