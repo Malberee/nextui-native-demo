@@ -1,6 +1,5 @@
 import {
   useAnimatedGestureHandler,
-  useAnimatedProps,
   useAnimatedStyle,
   useDerivedValue,
   useSharedValue,
@@ -24,7 +23,7 @@ export const useSliderAnimation = (
   const sliderValue = useDerivedValue(() => {
     const stepValue = Math.ceil(translateX.value / oneStepValue + minValue)
 
-    return stepValue
+    return `${stepValue}`
   })
   const thumbPosition = useSharedValue(0)
 
@@ -38,9 +37,7 @@ export const useSliderAnimation = (
       ctx.offsetX = translateX.value
     },
     onActive: (event, ctx: AnimatedGHContext) => {
-      thumbPosition.value = (sliderValue.value - minValue) * oneStepValue
-
-      console.log(sliderValue.value)
+      thumbPosition.value = (Number(sliderValue.value) - minValue) * oneStepValue
 
       isSliding.value = true
       translateX.value = clamp(
@@ -59,7 +56,7 @@ export const useSliderAnimation = (
   }))
 
   const animatedProgressStyle = useAnimatedStyle(() => ({
-    width: sliderValue.value === minValue ? 0 : thumbPosition.value + thumbWidth - 2,
+    width: Number(sliderValue.value) === minValue ? 0 : thumbPosition.value + thumbWidth,
   }))
 
   return {

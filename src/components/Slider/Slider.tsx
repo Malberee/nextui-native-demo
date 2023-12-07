@@ -1,6 +1,5 @@
 import React, { FC, useState } from 'react'
-import Animated, { useAnimatedProps } from 'react-native-reanimated'
-import { PanGestureHandler, TextInput } from 'react-native-gesture-handler'
+import { PanGestureHandler } from 'react-native-gesture-handler'
 import { LayoutChangeEvent } from 'react-native'
 import {
   SliderWrapper,
@@ -48,13 +47,14 @@ const Slider: FC<SliderProps> = ({ label, value, defaultValue, ...props }) => {
     }
   }
 
-  console.log(sliderValue.value)
+  const dots = Array((maxValue - minValue + 1) * step).fill(true)
 
   return (
     <SliderContext.Provider value={sliderProps}>
       <SliderWrapper>
         <SliderContent>
           <SliderLabel>{label}</SliderLabel>
+          <SliderValue text={sliderValue} />
         </SliderContent>
         <SliderInner>
           <SliderTrack
@@ -63,7 +63,9 @@ const Slider: FC<SliderProps> = ({ label, value, defaultValue, ...props }) => {
             <SliderProgress style={animatedProgressStyle} />
             {showSteps && (
               <StepsWrapper>
-                {Array((maxValue - minValue + 1) * step).fill(<StepDot />)}
+                {dots.map((_, index) => (
+                  <StepDot key={index} />
+                ))}
               </StepsWrapper>
             )}
             <PanGestureHandler onGestureEvent={gestureHandler}>

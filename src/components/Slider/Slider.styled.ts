@@ -4,7 +4,7 @@ import { getSize } from '../../utils/getSize'
 import { thumbSizes, trackSizes } from './Slider.constants'
 import useColors from '../ThemeProvider/hooks/useColors'
 import Animated from 'react-native-reanimated'
-import { TextInput } from 'react-native-gesture-handler'
+import { ReText } from 'react-native-redash'
 
 export const SliderWrapper = styled.View(() => {
   return css`
@@ -31,9 +31,7 @@ export const SliderLabel = styled.Text(() => {
   `
 })
 
-const AnimatedValue = Animated.createAnimatedComponent(TextInput)
-
-export const SliderValue = styled(AnimatedValue)(() => {
+export const SliderValue = styled(ReText)(() => {
   const { size } = useSliderContext()
   const { colors } = useColors()
 
@@ -73,6 +71,7 @@ export const SliderProgress = styled(Animated.View)(() => {
     height: 100%;
     background-color: ${colors[color]};
     border-radius: 9999px;
+    overflow: hidden;
   `
 })
 
@@ -93,12 +92,10 @@ export const StepsWrapper = styled.View(() => {
 })
 
 export const StepDot = styled.View(() => {
-  const { colors } = useColors()
-
   return css`
     width: 6px;
     height: 6px;
-    background-color: ${colors.content3};
+    background-color: #00000080;
     border-radius: 9999px;
   `
 })
@@ -118,6 +115,9 @@ export const SliderThumb = styled(Animated.View)(() => {
   const thumbSize = getSize(thumbSizes, size)
 
   return css`
+    position: relative;
+    left: ${size === 'lg' ? 2 : 0}px;
+
     width: ${thumbSize}px;
     height: ${thumbSize}px;
 
@@ -125,7 +125,7 @@ export const SliderThumb = styled(Animated.View)(() => {
     border-color: ${colors[color]};
     border-width: 2px;
     border-radius: 9999px;
-    
+
     opacity: ${hideThumb ? 0 : 1};
   `
 })
