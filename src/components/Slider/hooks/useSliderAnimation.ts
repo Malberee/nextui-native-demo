@@ -15,9 +15,17 @@ export const useSliderAnimation = (
   thumbWidth: number,
   step: number = 1,
 ) => {
-  const STEP = (trackWidth - thumbWidth) / maxValue ?? step
+  const translateX = useSharedValue(defaultValue)
   const isSliding = useSharedValue(false)
-  const translateX = useSharedValue(STEP * defaultValue)
+  const stepText = useDerivedValue(() => {
+    const sliderRange = trackWidth - thumbWidth
+    const valueRange = maxValue - minValue
+    const oneStepValue = sliderRange / valueRange
+    console.log('🦆  oneStepValue:', oneStepValue)
+    const stepValue = Math.ceil(translateX.value / oneStepValue + minValue)
+
+    return stepValue
+  })
 
   type AnimatedGHContext = {
     start: number
@@ -29,11 +37,16 @@ export const useSliderAnimation = (
       ctx.offsetX = translateX.value
     },
     onActive: (event, ctx: AnimatedGHContext) => {
-      isSliding.value = true
+      // console.log(
+      //   Math.round((translateX.value * 100) / (trackWidth - thumbWidth)) + '%',
+      // )
 
+      console.log(stepText.value)
+
+      isSliding.value = true
       translateX.value = clamp(
         event.translationX + ctx.offsetX,
-        minValue,
+        0,
         trackWidth - thumbWidth,
       )
     },
@@ -42,24 +55,20 @@ export const useSliderAnimation = (
     },
   })
 
-  const animatedThumbStyle = useAnimatedStyle(() => {
-    return { transform: [{ translateX: translateX.value - 12 }] }
-  })
-  const animatedProgressStyle = useAnimatedStyle(() => {
-    return {
-      width: translateX.value + thumbWidth,
-    }
-  })
-  const stepText = useDerivedValue(() => {
-    const step = Math.ceil(translateX.value / STEP)
+  const animatedThumbStyle = useAnimatedStyle(() => ({
+    transform: [{ translateX: translateX.value - thumbWidth / 2 - 2 }],
+  }))
 
-    return String(step)
-  })
+  const animatedProgressStyle = useAnimatedStyle(() => ({
+    width: translateX.value + thumbWidth,
+  }))
 
   return {
     gestureHandler,
-    animatedThumbStyle,
-    animatedProgressStyle,
-    stepText,
+    values: {},
+    styles: {
+      animatedProgressStyle,
+      animatedThumbStyle,
+    },
   }
 }

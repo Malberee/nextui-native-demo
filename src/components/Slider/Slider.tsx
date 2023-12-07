@@ -25,6 +25,7 @@ const Slider: FC<SliderProps> = ({
   defaultValue,
   minValue,
   maxValue,
+  step,
   ...props
 }) => {
   const [trackWidth, setTrackWidth] = useState(0)
@@ -32,15 +33,14 @@ const Slider: FC<SliderProps> = ({
   const sliderProps = useSliderProps(props)
   const {
     gestureHandler,
-    animatedThumbStyle,
-    animatedProgressStyle,
-    stepText,
+    styles: { animatedThumbStyle, animatedProgressStyle },
   } = useSliderAnimation(
     defaultValue,
     minValue,
     maxValue,
     trackWidth,
     thumbWidth,
+    step,
   )
 
   const onLayout = (e: LayoutChangeEvent, element: 'track' | 'thumb') => {
@@ -51,17 +51,11 @@ const Slider: FC<SliderProps> = ({
     }
   }
 
-  const AnimatedText = Animated.createAnimatedComponent(TextInput)
-  const animatedValue = useAnimatedProps(() => ({
-    text: stepText.value,
-  }))
-
   return (
     <SliderContext.Provider value={sliderProps}>
       <SliderWrapper>
         <SliderContent>
           <SliderLabel>{label}</SliderLabel>
-          <AnimatedText animatedProps={animatedValue} defaultValue="0" />
         </SliderContent>
         <SliderInner>
           <SliderTrack

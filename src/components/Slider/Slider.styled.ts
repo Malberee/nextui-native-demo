@@ -8,7 +8,7 @@ import { TextInput } from 'react-native-gesture-handler'
 
 export const SliderWrapper = styled.View(() => {
   return css`
-    width: 90%;
+    width: 80%;
   `
 })
 
