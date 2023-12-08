@@ -19,6 +19,7 @@ import { SliderProps } from './Slider.types'
 import { SliderContext } from './hooks/useSliderContext'
 import { useSliderProps } from './hooks/useSliderProps'
 import { useSliderAnimation } from './hooks/useSliderAnimation'
+import Steps from './Steps'
 
 const Slider: FC<SliderProps> = ({ label, value, defaultValue, ...props }) => {
   const [trackWidth, setTrackWidth] = useState(0)
@@ -47,8 +48,6 @@ const Slider: FC<SliderProps> = ({ label, value, defaultValue, ...props }) => {
     }
   }
 
-  const dots = Array((maxValue - minValue + 1) * step).fill(true)
-
   return (
     <SliderContext.Provider value={sliderProps}>
       <SliderWrapper>
@@ -60,14 +59,22 @@ const Slider: FC<SliderProps> = ({ label, value, defaultValue, ...props }) => {
           <SliderTrack
             onLayout={(e: LayoutChangeEvent) => onLayout(e, 'track')}
           >
-            <SliderProgress style={animatedProgressStyle} />
             {showSteps && (
-              <StepsWrapper>
-                {dots.map((_, index) => (
-                  <StepDot key={index} />
-                ))}
-              </StepsWrapper>
+              <Steps
+                steps={(maxValue - minValue) / step + 1}
+                trackWidth={trackWidth}
+                isReached={false}
+              />
             )}
+            <SliderProgress style={animatedProgressStyle}>
+              {showSteps && (
+                <Steps
+                  steps={(maxValue - minValue) / step + 1}
+                  trackWidth={trackWidth}
+                  isReached={true}
+                />
+              )}
+            </SliderProgress>
             <PanGestureHandler onGestureEvent={gestureHandler}>
               <TouchableThumbZone style={animatedThumbStyle}>
                 <SliderThumb

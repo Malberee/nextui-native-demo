@@ -58,7 +58,7 @@ export const SliderTrack = styled.View(() => {
     width: 100%;
     height: ${getSize(trackSizes, size)}px;
 
-    background-color: ${colors.default300};
+    background-color: ${colors.default300}80;
     border-radius: 9999px;
   `
 })
@@ -75,14 +75,16 @@ export const SliderProgress = styled(Animated.View)(() => {
   `
 })
 
-export const StepsWrapper = styled.View(() => {
-  const { size } = useSliderContext()
+interface StepsWrapperProps {
+  trackWidth: number
+}
 
-  console.log(getSize(thumbSizes, size) / 2)
+export const StepsWrapper = styled.View<StepsWrapperProps>(({ trackWidth }) => {
+  const { size } = useSliderContext()
 
   return css`
     position: absolute;
-    width: 100%;
+    width: ${trackWidth}px;
     padding: 0 ${getSize(thumbSizes, size) / 2 - 3}px;
 
     display: flex;
@@ -105,6 +107,7 @@ export const TouchableThumbZone = styled(Animated.View)(() => {
     position: absolute;
     align-self: flex-start;
     padding: 12px;
+    opacity: 0.5;
   `
 })
 

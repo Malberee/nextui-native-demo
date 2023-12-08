@@ -3,6 +3,7 @@ import {
   useAnimatedStyle,
   useDerivedValue,
   useSharedValue,
+  withTiming,
 } from 'react-native-reanimated'
 import { clamp } from '../utils'
 
@@ -18,7 +19,7 @@ export const useSliderAnimation = (
   const isSliding = useSharedValue(false)
 
   const sliderRange = trackWidth - thumbWidth
-  const valueRange = maxValue - minValue
+  const valueRange = maxValue - minValue + 1
   const oneStepValue = sliderRange / valueRange
   const sliderValue = useDerivedValue(() => {
     const stepValue = Math.ceil(translateX.value / oneStepValue + minValue)
@@ -37,7 +38,10 @@ export const useSliderAnimation = (
       ctx.offsetX = translateX.value
     },
     onActive: (event, ctx: AnimatedGHContext) => {
-      thumbPosition.value = (Number(sliderValue.value) - minValue) * oneStepValue
+      thumbPosition.value = withTiming(
+        (Number(sliderValue.value) - minValue) * oneStepValue,
+        { duration: 100 },
+      )
 
       isSliding.value = true
       translateX.value = clamp(
@@ -52,11 +56,16 @@ export const useSliderAnimation = (
   })
 
   const animatedThumbStyle = useAnimatedStyle(() => ({
-    transform: [{ translateX: thumbPosition.value - thumbWidth / 2 }],
+    transform: [
+      {
+        translateX:
+          thumbPosition.value - thumbWidth / 2 - (thumbWidth === 20 ? 2 : 0),
+      },
+    ],
   }))
 
   const animatedProgressStyle = useAnimatedStyle(() => ({
-    width: Number(sliderValue.value) === minValue ? 0 : thumbPosition.value + thumbWidth,
+    width: thumbPosition.value + thumbWidth,
   }))
 
   return {

@@ -32,8 +32,9 @@ export default function App() {
           label="Slider"
           maxValue={10}
           minValue={5}
-          step={1}
+          step={2}
           showSteps
+          // hideThumb
         />
       </Container>
     </ThemeProvider>

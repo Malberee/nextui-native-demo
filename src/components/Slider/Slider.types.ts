@@ -36,17 +36,21 @@ export interface SliderProps {
 }
 
 export interface SliderContextProps
-  extends Required<Omit<
-    SliderProps,
-    | 'label'
-    | 'name'
-    | 'value'
-    | 'defaultValue'
-    | 'fillOffset'
-    | 'marks'
-    | 'startContent'
-    | 'endContent'
-    | 'formatOptions'
-    | 'tooltipValueFormatOptions'
-    | 'tooltipProps'
-  >> {}
+  extends Required<
+    Omit<
+      SliderProps,
+      | 'label'
+      | 'name'
+      | 'value'
+      | 'defaultValue'
+      | 'fillOffset'
+      | 'marks'
+      | 'startContent'
+      | 'endContent'
+      | 'formatOptions'
+      | 'tooltipValueFormatOptions'
+      | 'tooltipProps'
+    >
+  > {
+
+}
