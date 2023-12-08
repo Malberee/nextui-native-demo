@@ -30,7 +30,11 @@ const Slider: FC<SliderProps> = ({ label, value, defaultValue, ...props }) => {
   const {
     gestureHandler,
     values: { sliderValue },
-    styles: { animatedThumbStyle, animatedProgressStyle },
+    styles: {
+      animatedTouchableThumbZoneStyle,
+      animatedThumbStyle,
+      animatedProgressStyle,
+    },
   } = useSliderAnimation(
     defaultValue,
     minValue,
@@ -76,9 +80,10 @@ const Slider: FC<SliderProps> = ({ label, value, defaultValue, ...props }) => {
               )}
             </SliderProgress>
             <PanGestureHandler onGestureEvent={gestureHandler}>
-              <TouchableThumbZone style={animatedThumbStyle}>
+              <TouchableThumbZone style={animatedTouchableThumbZoneStyle}>
                 <SliderThumb
                   onLayout={(e: LayoutChangeEvent) => onLayout(e, 'thumb')}
+                  style={animatedThumbStyle}
                 />
               </TouchableThumbZone>
             </PanGestureHandler>

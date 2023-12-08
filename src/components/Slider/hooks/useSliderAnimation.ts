@@ -19,6 +19,7 @@ export const useSliderAnimation = (
   const sliderStep = sliderRange / (maxValue - minValue)
 
   const translateX = useSharedValue(defaultValue * sliderStep)
+  const isSliding = useSharedValue(false)
   const sliderValue = useSharedValue(String(defaultValue))
   const sliderPosition = useDerivedValue(() => {
     const value = Number(sliderValue.value) * sliderStep
@@ -35,6 +36,7 @@ export const useSliderAnimation = (
       ctx.offsetX = translateX.value
     },
     onActive: (event, ctx: AnimatedGHContext) => {
+      isSliding.value = true
       translateX.value = translateX.value = clamp(
         event.translationX + ctx.offsetX,
         0,
@@ -43,19 +45,26 @@ export const useSliderAnimation = (
 
       sliderValue.value = String(Math.round(translateX.value / sliderStep))
     },
+    onEnd: () => {
+      isSliding.value = false
+    },
   })
 
   const animatedProgressStyle = useAnimatedStyle(() => ({
     width: sliderPosition.value + thumbWidth,
   }))
 
-  const animatedThumbStyle = useAnimatedStyle(() => ({
+  const animatedTouchableThumbZoneStyle = useAnimatedStyle(() => ({
     transform: [
       {
         translateX:
           sliderPosition.value - thumbWidth / 2 - (thumbWidth === 20 ? 2 : 0),
       },
     ],
+  }))
+
+  const animatedThumbStyle = useAnimatedStyle(() => ({
+    borderWidth: withTiming(isSliding.value ? 6 : 4, { duration: 150 }),
   }))
 
   return {
@@ -65,6 +74,7 @@ export const useSliderAnimation = (
     },
     styles: {
       animatedProgressStyle,
+      animatedTouchableThumbZoneStyle,
       animatedThumbStyle,
     },
   }

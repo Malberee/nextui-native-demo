@@ -81,7 +81,6 @@ export const TouchableThumbZone = styled(Animated.View)(() => {
     position: absolute;
     align-self: flex-start;
     padding: 12px;
-    opacity: 0.5;
   `
 })
 
@@ -100,7 +99,6 @@ export const SliderThumb = styled(Animated.View)(() => {
 
     background-color: ${colors.background};
     border-color: ${colors[color]};
-    border-width: 2px;
     border-radius: 9999px;
 
     opacity: ${hideThumb ? 0 : 1};
