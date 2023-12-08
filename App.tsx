@@ -27,13 +27,13 @@ export default function App() {
       <Container>
         <StatusBar style="light" />
         <Slider
-          size="lg"
-          color="success"
+          size="md"
+          color="danger"
           label="Slider"
-          maxValue={100}
-          minValue={0}
-          step={2}
-          // showSteps
+          maxValue={10}
+          minValue={5}
+          step={1}
+          showSteps
           defaultValue={0}
           // hideThumb
         />

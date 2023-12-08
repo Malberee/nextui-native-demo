@@ -22,7 +22,7 @@ export const useSliderAnimation = (
   const isSliding = useSharedValue(false)
   const sliderValue = useSharedValue(String(defaultValue))
   const sliderPosition = useDerivedValue(() => {
-    const value = Number(sliderValue.value) * sliderStep
+    const value = (Number(sliderValue.value) - minValue) * sliderStep
 
     return value
   })
@@ -43,7 +43,9 @@ export const useSliderAnimation = (
         trackWidth - thumbWidth,
       )
 
-      sliderValue.value = String(Math.round(translateX.value / sliderStep))
+      sliderValue.value = String(
+        Math.round(translateX.value / sliderStep) + minValue,
+      )
     },
     onEnd: () => {
       isSliding.value = false
