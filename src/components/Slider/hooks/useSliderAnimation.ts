@@ -15,21 +15,18 @@ export const useSliderAnimation = (
   thumbWidth: number,
   step: number = 1,
 ) => {
-  const translateX = useSharedValue(defaultValue)
-  const isSliding = useSharedValue(false)
-
   const sliderRange = trackWidth - thumbWidth
-  const valueRange = maxValue - minValue + 1
-  const oneStepValue = sliderRange / valueRange
-  const sliderValue = useDerivedValue(() => {
-    const stepValue = Math.ceil(translateX.value / oneStepValue + minValue)
+  const sliderStep = sliderRange / (maxValue - minValue)
 
-    return `${stepValue}`
+  const translateX = useSharedValue(defaultValue * sliderStep)
+  const sliderValue = useSharedValue(String(defaultValue))
+  const sliderPosition = useDerivedValue(() => {
+    const value = Number(sliderValue.value) * sliderStep
+
+    return value
   })
-  const thumbPosition = useSharedValue(0)
 
   type AnimatedGHContext = {
-    start: number
     offsetX: number
   }
 
@@ -38,34 +35,27 @@ export const useSliderAnimation = (
       ctx.offsetX = translateX.value
     },
     onActive: (event, ctx: AnimatedGHContext) => {
-      thumbPosition.value = withTiming(
-        (Number(sliderValue.value) - minValue) * oneStepValue,
-        { duration: 100 },
-      )
-
-      isSliding.value = true
-      translateX.value = clamp(
+      translateX.value = translateX.value = clamp(
         event.translationX + ctx.offsetX,
         0,
         trackWidth - thumbWidth,
       )
-    },
-    onEnd: () => {
-      isSliding.value = false
+
+      sliderValue.value = String(Math.round(translateX.value / sliderStep))
     },
   })
+
+  const animatedProgressStyle = useAnimatedStyle(() => ({
+    width: sliderPosition.value + thumbWidth,
+  }))
 
   const animatedThumbStyle = useAnimatedStyle(() => ({
     transform: [
       {
         translateX:
-          thumbPosition.value - thumbWidth / 2 - (thumbWidth === 20 ? 2 : 0),
+          sliderPosition.value - thumbWidth / 2 - (thumbWidth === 20 ? 2 : 0),
       },
     ],
-  }))
-
-  const animatedProgressStyle = useAnimatedStyle(() => ({
-    width: thumbPosition.value + thumbWidth,
   }))
 
   return {

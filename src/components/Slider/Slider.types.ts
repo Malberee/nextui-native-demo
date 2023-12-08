@@ -51,6 +51,4 @@ export interface SliderContextProps
       | 'tooltipValueFormatOptions'
       | 'tooltipProps'
     >
-  > {
-
-}
+  > {}

@@ -8,7 +8,7 @@ import { ReText } from 'react-native-redash'
 
 export const SliderWrapper = styled.View(() => {
   return css`
-    width: 90%;
+    width: 85%;
   `
 })
 
@@ -68,37 +68,11 @@ export const SliderProgress = styled(Animated.View)(() => {
   const { colors } = useColors()
 
   return css`
+    position: relative;
     height: 100%;
     background-color: ${colors[color]};
     border-radius: 9999px;
     overflow: hidden;
-  `
-})
-
-interface StepsWrapperProps {
-  trackWidth: number
-}
-
-export const StepsWrapper = styled.View<StepsWrapperProps>(({ trackWidth }) => {
-  const { size } = useSliderContext()
-
-  return css`
-    position: absolute;
-    width: ${trackWidth}px;
-    padding: 0 ${getSize(thumbSizes, size) / 2 - 3}px;
-
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-  `
-})
-
-export const StepDot = styled.View(() => {
-  return css`
-    width: 6px;
-    height: 6px;
-    background-color: #00000080;
-    border-radius: 9999px;
   `
 })
 

@@ -31,9 +31,10 @@ export default function App() {
           color="success"
           label="Slider"
           maxValue={10}
-          minValue={5}
+          minValue={0}
           step={2}
           showSteps
+          defaultValue={0}
           // hideThumb
         />
       </Container>

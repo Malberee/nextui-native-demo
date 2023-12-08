@@ -9,14 +9,15 @@ export const StepsWrapper = styled.View<Pick<StepsProps, 'trackWidth'>>(
   ({ trackWidth }) => {
     const { size } = useSliderContext()
 
-    const padding = getSize(thumbSizes, size) / 2 - 3
+    const padding = getSize(thumbSizes, size) / 2 - (size === 'lg' ? 4 : 3)
 
     return css`
       position: absolute;
 
       height: 100%;
       width: ${trackWidth}px;
-      padding: 0 ${padding}px;
+      padding-left: ${padding}px;
+      padding-right: ${padding - 0.5}px;
 
       display: flex;
       align-items: center;
@@ -26,20 +27,21 @@ export const StepsWrapper = styled.View<Pick<StepsProps, 'trackWidth'>>(
   },
 )
 
-export const Step = styled.View<Pick<StepsProps, 'isReached'>>(({ isReached }) => {
-  const { size } = useSliderContext()
-  const { colors } = useColors()
+export const Step = styled.View<Pick<StepsProps, 'isReached'>>(
+  ({ isReached }) => {
+    const { size } = useSliderContext()
+    const { colors } = useColors()
 
-  const stepSize = size === 'lg' ? 8 : 6
-  
+    const stepSize = size === 'lg' ? 8 : 6
 
-  return css`
-    width: ${stepSize}px;
-    height: ${stepSize}px;
+    return css`
+      width: ${stepSize}px;
+      height: ${stepSize}px;
 
-    background-color: ${isReached
-      ? `${colors.background}80`
-      : `${colors.default300}80`};
-    border-radius: 9999px;
-  `
-})
+      background-color: ${isReached
+        ? `${colors.background}80`
+        : `${colors.default300}80`};
+      border-radius: 9999px;
+    `
+  },
+)
