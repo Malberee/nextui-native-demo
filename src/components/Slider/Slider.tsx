@@ -37,9 +37,9 @@ const Slider: FC<SliderProps> = ({
 
   const handleValueChange = (value: number) => {
     if (onValueChange) {
-      onValueChange(value * step - minValue)
+      onValueChange(value)
     }
-    setSliderValue(value * step - minValue)
+    setSliderValue(value)
   }
 
   const {

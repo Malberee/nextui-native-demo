@@ -28,9 +28,9 @@ export default function App() {
           size="md"
           color="danger"
           label="Slider"
-          maxValue={15}
-          minValue={0}
-          step={3}
+          maxValue={11}
+          minValue={5}
+          step={2}
           showSteps
           onValueChangeEnd={(value) => console.log(value)}
           // defaultValue={6}

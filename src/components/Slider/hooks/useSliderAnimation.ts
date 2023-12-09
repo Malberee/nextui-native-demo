@@ -30,7 +30,7 @@ export const useSliderAnimation = (
 
     runOnJS(onValueChange)(Number(sliderValue.value))
 
-    return value
+    return value / step
   })
 
   type AnimatedGHContext = {
@@ -50,7 +50,7 @@ export const useSliderAnimation = (
       )
 
       sliderValue.value = String(
-        Math.round(translateX.value / sliderStep) + minValue,
+        Math.round(translateX.value / sliderStep) * step + minValue,
       )
     },
     onEnd: () => {
