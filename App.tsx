@@ -16,6 +16,7 @@ import {
   Switch,
   Slider,
   Button,
+  Progress
 } from './src'
 
 const Container = styled(GestureHandlerRootView)(() => {
@@ -33,28 +34,7 @@ export default function App() {
     <ThemeProvider>
       <Container>
         <StatusBar style="light" />
-        <Slider
-          size="lg"
-          color="danger"
-          label="Slider"
-          maxValue={10}
-          minValue={0}
-          step={2}
-          showSteps
-          onValueChangeEnd={(value) => console.log(value)}
-          // defaultValue={[6, 5]}
-          // hideThumb
-          startContent={
-            <Button variant="light" isIconOnly color="danger">
-              <IconAwesome name="volume-down" size={24} />
-            </Button>
-          }
-          endContent={
-            <Button variant="light" isIconOnly color="danger">
-              <IconAwesome name="volume-up" size={24} />
-            </Button>
-          }
-        />
+        <Progress color="primary" size="lg" radius="sm" />
       </Container>
     </ThemeProvider>
   )

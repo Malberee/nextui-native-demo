@@ -9,7 +9,7 @@ import {
 import { clamp } from '../utils'
 
 export const useSliderAnimation = (
-  defaultValue: number | number[] = 0,
+  defaultValue: number,
   minValue: number = 0,
   maxValue: number = 100,
   trackWidth: number,
@@ -21,9 +21,9 @@ export const useSliderAnimation = (
   const sliderRange = trackWidth - thumbWidth
   const sliderStep = sliderRange / ((maxValue - minValue) / step)
 
-  const translateX = useSharedValue(sliderStep * minValue)
   const isSliding = useSharedValue(false)
-  const sliderValue = useSharedValue(String(minValue))
+  const translateX = useSharedValue(0)
+  const sliderValue = useSharedValue(String(defaultValue || minValue))
   const sliderPosition = useDerivedValue(() => {
     const value = (Number(sliderValue.value) - minValue) * sliderStep
 
@@ -34,6 +34,8 @@ export const useSliderAnimation = (
 
   const handleButton = (action: 'increment' | 'decrement') => {
     const value = Number(sliderValue.value)
+
+    translateX.value = sliderPosition.value
 
     if (action === 'decrement' && value > minValue) {
       sliderValue.value = String(value - step)
