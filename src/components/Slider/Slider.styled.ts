@@ -7,12 +7,14 @@ import Animated from 'react-native-reanimated'
 
 export const SliderWrapper = styled.View(() => {
   return css`
-    width: 85%;
+    width: 70%;
+    align-items: center;
   `
 })
 
 export const SliderContent = styled.View(() => {
   return css`
+    width: 100%;
     display: flex;
     justify-content: space-between;
     flex-direction: row;
@@ -41,7 +43,12 @@ export const SliderValue = styled.Text(() => {
 })
 
 export const SliderInner = styled.View(() => {
-  return css``
+  return css`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+  `
 })
 
 export const SliderTrack = styled.View(() => {
@@ -80,7 +87,6 @@ export const TouchableThumbZone = styled(Animated.View)(() => {
     position: absolute;
     align-self: flex-start;
     padding: 12px;
-    opacity: 0.5;
   `
 })
 

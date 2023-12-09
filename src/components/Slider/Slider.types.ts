@@ -14,7 +14,7 @@ export interface SliderProps {
   radius?: RadiusName
   step?: number
   value?: number
-  defaultValue?: number
+  defaultValue?: number | number[]
   minValue?: number
   maxValue?: number
   orientation?: 'horizontal' | 'vertical'

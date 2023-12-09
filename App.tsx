@@ -3,11 +3,20 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import { StatusBar } from 'expo-status-bar'
 import Icon from 'react-native-vector-icons/Entypo'
 import IconFeather from 'react-native-vector-icons/Feather'
+import IconAwesome from 'react-native-vector-icons/FontAwesome'
 
 import useColors from './src/components/ThemeProvider/hooks/useColors'
 import styled, { css } from 'styled-components/native'
 
-import { ThemeProvider, RadioGroup, Radio, Chip, Switch, Slider } from './src'
+import {
+  ThemeProvider,
+  RadioGroup,
+  Radio,
+  Chip,
+  Switch,
+  Slider,
+  Button,
+} from './src'
 
 const Container = styled(GestureHandlerRootView)(() => {
   const { colors } = useColors()
@@ -25,16 +34,26 @@ export default function App() {
       <Container>
         <StatusBar style="light" />
         <Slider
-          size="md"
+          size="lg"
           color="danger"
           label="Slider"
-          maxValue={11}
-          minValue={5}
+          maxValue={10}
+          minValue={0}
           step={2}
           showSteps
           onValueChangeEnd={(value) => console.log(value)}
-          // defaultValue={6}
+          // defaultValue={[6, 5]}
           // hideThumb
+          startContent={
+            <Button variant="light" isIconOnly color="danger">
+              <IconAwesome name="volume-down" size={24} />
+            </Button>
+          }
+          endContent={
+            <Button variant="light" isIconOnly color="danger">
+              <IconAwesome name="volume-up" size={24} />
+            </Button>
+          }
         />
       </Container>
     </ThemeProvider>

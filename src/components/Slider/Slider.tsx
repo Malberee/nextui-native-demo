@@ -25,6 +25,8 @@ const Slider: FC<SliderProps> = ({
   label,
   value,
   defaultValue,
+  startContent,
+  endContent,
   onValueChange,
   onValueChangeEnd,
   ...props
@@ -37,13 +39,14 @@ const Slider: FC<SliderProps> = ({
 
   const handleValueChange = (value: number) => {
     if (onValueChange) {
-      onValueChange(value)
+      onValueChange(Number(value.toFixed(2)))
     }
-    setSliderValue(value)
+    setSliderValue(Number(value.toFixed(2)))
   }
 
   const {
     gestureHandler,
+    handleButton,
     styles: {
       animatedTouchableThumbZoneStyle,
       animatedThumbStyle,
@@ -76,9 +79,12 @@ const Slider: FC<SliderProps> = ({
           <SliderValue>{sliderValue}</SliderValue>
         </SliderContent>
         <SliderInner>
+          {startContent &&
+            React.cloneElement(startContent as React.ReactElement, {
+              onPress: () => handleButton('decrement'),
+            })}
           <SliderTrack
             onLayout={(e: LayoutChangeEvent) => onLayout(e, 'track')}
-            
           >
             {showSteps && (
               <Steps
@@ -105,6 +111,10 @@ const Slider: FC<SliderProps> = ({
               </TouchableThumbZone>
             </PanGestureHandler>
           </SliderTrack>
+          {endContent &&
+            React.cloneElement(endContent as React.ReactElement, {
+              onPress: () => handleButton('increment'),
+            })}
         </SliderInner>
       </SliderWrapper>
     </SliderContext.Provider>

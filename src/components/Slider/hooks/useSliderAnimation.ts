@@ -7,10 +7,9 @@ import {
   withTiming,
 } from 'react-native-reanimated'
 import { clamp } from '../utils'
-import { useEffect } from 'react'
 
 export const useSliderAnimation = (
-  defaultValue: number = 0,
+  defaultValue: number | number[] = 0,
   minValue: number = 0,
   maxValue: number = 100,
   trackWidth: number,
@@ -32,6 +31,17 @@ export const useSliderAnimation = (
 
     return value / step
   })
+
+  const handleButton = (action: 'increment' | 'decrement') => {
+    const value = Number(sliderValue.value)
+
+    if (action === 'decrement' && value > minValue) {
+      sliderValue.value = String(value - step)
+    }
+    if (action === 'increment' && value < maxValue) {
+      sliderValue.value = String(value + step)
+    }
+  }
 
   type AnimatedGHContext = {
     offsetX: number
@@ -68,7 +78,7 @@ export const useSliderAnimation = (
         ? 0
         : value === maxValue
           ? '100%'
-          : sliderPosition.value + thumbWidth / 2
+          : sliderPosition.value + thumbWidth
 
     return {
       width,
@@ -90,6 +100,7 @@ export const useSliderAnimation = (
 
   return {
     gestureHandler,
+    handleButton,
     styles: {
       animatedProgressStyle,
       animatedTouchableThumbZoneStyle,
