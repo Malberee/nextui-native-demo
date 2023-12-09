@@ -20,8 +20,6 @@ const Container = styled(GestureHandlerRootView)(() => {
 })
 
 export default function App() {
-  const [radioValue, setRadioValue] = useState('london')
-
   return (
     <ThemeProvider>
       <Container>
@@ -30,9 +28,9 @@ export default function App() {
           size="md"
           color="danger"
           label="Slider"
-          maxValue={10}
+          maxValue={15}
           minValue={0}
-          step={1}
+          step={3}
           showSteps
           onValueChangeEnd={(value) => console.log(value)}
           // defaultValue={6}

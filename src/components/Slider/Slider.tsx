@@ -37,9 +37,9 @@ const Slider: FC<SliderProps> = ({
 
   const handleValueChange = (value: number) => {
     if (onValueChange) {
-      onValueChange(value)
+      onValueChange(value * step - minValue)
     }
-    setSliderValue(value)
+    setSliderValue(value * step - minValue)
   }
 
   const {
@@ -78,6 +78,7 @@ const Slider: FC<SliderProps> = ({
         <SliderInner>
           <SliderTrack
             onLayout={(e: LayoutChangeEvent) => onLayout(e, 'track')}
+            
           >
             {showSteps && (
               <Steps

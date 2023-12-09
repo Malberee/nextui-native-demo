@@ -61,9 +61,19 @@ export const useSliderAnimation = (
     },
   })
 
-  const animatedProgressStyle = useAnimatedStyle(() => ({
-    width: sliderPosition.value + thumbWidth,
-  }))
+  const animatedProgressStyle = useAnimatedStyle(() => {
+    const value = Number(sliderValue.value)
+    const width =
+      value === minValue
+        ? 0
+        : value === maxValue
+          ? '100%'
+          : sliderPosition.value + thumbWidth / 2
+
+    return {
+      width,
+    }
+  })
 
   const animatedTouchableThumbZoneStyle = useAnimatedStyle(() => ({
     transform: [

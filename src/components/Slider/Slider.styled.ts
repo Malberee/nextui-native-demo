@@ -80,6 +80,7 @@ export const TouchableThumbZone = styled(Animated.View)(() => {
     position: absolute;
     align-self: flex-start;
     padding: 12px;
+    opacity: 0.5;
   `
 })
 
