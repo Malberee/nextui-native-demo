@@ -31,10 +31,11 @@ export default function App() {
           color="danger"
           label="Slider"
           maxValue={10}
-          minValue={5}
+          minValue={0}
           step={1}
           showSteps
-          defaultValue={0}
+          onValueChangeEnd={(value) => console.log(value)}
+          // defaultValue={6}
           // hideThumb
         />
       </Container>

@@ -1,4 +1,5 @@
 import {
+  runOnJS,
   useAnimatedGestureHandler,
   useAnimatedStyle,
   useDerivedValue,
@@ -6,6 +7,7 @@ import {
   withTiming,
 } from 'react-native-reanimated'
 import { clamp } from '../utils'
+import { useEffect } from 'react'
 
 export const useSliderAnimation = (
   defaultValue: number = 0,
@@ -14,15 +16,19 @@ export const useSliderAnimation = (
   trackWidth: number,
   thumbWidth: number,
   step: number = 1,
+  onValueChange: (value: number) => void,
+  onValueChangeEnd?: (value: number) => void,
 ) => {
   const sliderRange = trackWidth - thumbWidth
-  const sliderStep = sliderRange / (maxValue - minValue)
+  const sliderStep = sliderRange / ((maxValue - minValue) / step)
 
-  const translateX = useSharedValue(defaultValue * sliderStep)
+  const translateX = useSharedValue(sliderStep * minValue)
   const isSliding = useSharedValue(false)
-  const sliderValue = useSharedValue(String(defaultValue))
+  const sliderValue = useSharedValue(String(minValue))
   const sliderPosition = useDerivedValue(() => {
     const value = (Number(sliderValue.value) - minValue) * sliderStep
+
+    runOnJS(onValueChange)(Number(sliderValue.value))
 
     return value
   })
@@ -49,6 +55,9 @@ export const useSliderAnimation = (
     },
     onEnd: () => {
       isSliding.value = false
+      if (onValueChangeEnd) {
+        runOnJS(onValueChangeEnd)(Number(sliderValue.value))
+      }
     },
   })
 
@@ -71,9 +80,6 @@ export const useSliderAnimation = (
 
   return {
     gestureHandler,
-    values: {
-      sliderValue,
-    },
     styles: {
       animatedProgressStyle,
       animatedTouchableThumbZoneStyle,

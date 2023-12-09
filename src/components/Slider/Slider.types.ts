@@ -33,6 +33,10 @@ export interface SliderProps {
   disableThumbScale?: boolean
   isDisabled?: boolean
   disableAnimation?: boolean
+
+  // events
+  onValueChange?: (value: number) => void
+  onValueChangeEnd?: (value: number) => void
 }
 
 export interface SliderContextProps

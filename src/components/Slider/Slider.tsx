@@ -21,15 +21,29 @@ import { useSliderProps } from './hooks/useSliderProps'
 import { useSliderAnimation } from './hooks/useSliderAnimation'
 import Steps from './Steps'
 
-const Slider: FC<SliderProps> = ({ label, value, defaultValue, ...props }) => {
+const Slider: FC<SliderProps> = ({
+  label,
+  value,
+  defaultValue,
+  onValueChange,
+  onValueChangeEnd,
+  ...props
+}) => {
   const [trackWidth, setTrackWidth] = useState(0)
   const [thumbWidth, setThumbWidth] = useState(0)
   const sliderProps = useSliderProps(props)
   const { minValue, maxValue, step, showSteps } = sliderProps
+  const [sliderValue, setSliderValue] = useState(0)
+
+  const handleValueChange = (value: number) => {
+    if (onValueChange) {
+      onValueChange(value)
+    }
+    setSliderValue(value)
+  }
 
   const {
     gestureHandler,
-    values: { sliderValue },
     styles: {
       animatedTouchableThumbZoneStyle,
       animatedThumbStyle,
@@ -42,6 +56,8 @@ const Slider: FC<SliderProps> = ({ label, value, defaultValue, ...props }) => {
     trackWidth,
     thumbWidth,
     step,
+    handleValueChange,
+    onValueChangeEnd,
   )
 
   const onLayout = (e: LayoutChangeEvent, element: 'track' | 'thumb') => {
@@ -57,7 +73,7 @@ const Slider: FC<SliderProps> = ({ label, value, defaultValue, ...props }) => {
       <SliderWrapper>
         <SliderContent>
           <SliderLabel>{label}</SliderLabel>
-          <SliderValue text={sliderValue} />
+          <SliderValue>{sliderValue}</SliderValue>
         </SliderContent>
         <SliderInner>
           <SliderTrack

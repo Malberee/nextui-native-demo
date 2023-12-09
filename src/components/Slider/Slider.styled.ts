@@ -4,7 +4,6 @@ import { getSize } from '../../utils/getSize'
 import { thumbSizes, trackSizes } from './Slider.constants'
 import useColors from '../ThemeProvider/hooks/useColors'
 import Animated from 'react-native-reanimated'
-import { ReText } from 'react-native-redash'
 
 export const SliderWrapper = styled.View(() => {
   return css`
@@ -31,7 +30,7 @@ export const SliderLabel = styled.Text(() => {
   `
 })
 
-export const SliderValue = styled(ReText)(() => {
+export const SliderValue = styled.Text(() => {
   const { size } = useSliderContext()
   const { colors } = useColors()
 
