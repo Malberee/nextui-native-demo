@@ -7,7 +7,32 @@ import { getRadius } from '../../utils/getRadius'
 
 export const ProgressWrapper = styled.View`
   width: 100%;
+  display: flex;
+  gap: 8px;
 `
+
+export const ProgressLabels = styled.View(() => {
+  return css`
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+  `
+})
+
+export const ProgressLabel = styled.Text(() => {
+  const { colors } = useColors()
+  return css`
+    color: ${colors.foreground};
+  `
+})
+
+export const ProgressValueLabel = styled.Text(() => {
+  const { colors } = useColors()
+  return css`
+    color: ${colors.foreground};
+  `
+})
 
 export const Track = styled.View(() => {
   const { size, radius } = useProgressContext()
@@ -32,6 +57,5 @@ export const Progression = styled.View(() => {
     height: 100%;
     background-color: ${colors[color]};
     border-radius: ${getRadius(radii, radius)}px;
-    background-image: linear-gradient(red, black);
   `
 })

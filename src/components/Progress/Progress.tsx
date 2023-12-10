@@ -1,5 +1,12 @@
 import React, { FC } from 'react'
-import { ProgressWrapper, Track, Progression } from './Progress.styled'
+import {
+  ProgressLabels,
+  ProgressLabel,
+  ProgressValueLabel,
+  ProgressWrapper,
+  Track,
+  Progression,
+} from './Progress.styled'
 
 import { ProgressProps } from './Progress.types'
 import { ProgressContext } from './hooks/useProgressContext'
@@ -19,6 +26,10 @@ const Progress: FC<ProgressProps> = ({
   return (
     <ProgressContext.Provider value={progressProps}>
       <ProgressWrapper>
+        <ProgressLabels>
+          <ProgressLabel>Loading...</ProgressLabel>
+          <ProgressValueLabel>50%</ProgressValueLabel>
+        </ProgressLabels>
         <Track>
           <Progression />
         </Track>
