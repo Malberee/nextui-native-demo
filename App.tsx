@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import { StatusBar } from 'expo-status-bar'
 import Icon from 'react-native-vector-icons/Entypo'
@@ -16,7 +16,7 @@ import {
   Switch,
   Slider,
   Button,
-  Progress
+  Progress,
 } from './src'
 
 const Container = styled(GestureHandlerRootView)(() => {
@@ -30,11 +30,19 @@ const Container = styled(GestureHandlerRootView)(() => {
 })
 
 export default function App() {
+  const [value, setValue] = useState(0)
+
+  useEffect(() => {
+    setInterval(() => {
+      setValue((prevState) => prevState + 10)
+    }, 2000)
+  }, [])
+
   return (
     <ThemeProvider>
       <Container>
         <StatusBar style="light" />
-        <Progress color="primary" size="lg" radius="sm" />
+        <Progress color="primary" size="lg" radius="full" value={value} label='Progress' valueLabel={value} />
       </Container>
     </ThemeProvider>
   )

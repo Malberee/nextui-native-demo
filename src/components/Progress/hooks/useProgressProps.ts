@@ -5,6 +5,10 @@ export const defaultProps: ProgressContextProps = {
   size: 'md',
   radius: 'md',
   isDisabled: false,
+  value: 0,
+  minValue: 0,
+  maxValue: 100,
+  showValueLabel: true
 }
 
 export const useProgressProps = (

@@ -20,5 +20,15 @@ export interface ProgressProps {
 
 export interface ProgressContextProps
   extends Required<
-    Pick<ProgressProps, 'size' | 'color' | 'radius' | 'isDisabled'>
+    Pick<
+      ProgressProps,
+      | 'size'
+      | 'color'
+      | 'radius'
+      | 'isDisabled'
+      | 'value'
+      | 'minValue'
+      | 'maxValue'
+      | 'showValueLabel'
+    >
   > {}

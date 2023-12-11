@@ -4,6 +4,7 @@ import { getSize } from '../../utils/getSize'
 import { radii, sizes } from './Progress.constants'
 import useColors from '../ThemeProvider/hooks/useColors'
 import { getRadius } from '../../utils/getRadius'
+import Animated from 'react-native-reanimated'
 
 export const ProgressWrapper = styled.View`
   width: 100%;
@@ -45,17 +46,18 @@ export const Track = styled.View(() => {
     height: ${height}px;
     background-color: ${colors.default300}80;
     border-radius: ${getRadius(radii, radius)}px;
+    overflow: hidden;
   `
 })
 
-export const Progression = styled.View(() => {
+export const Progression = styled(Animated.View)(() => {
   const { color, radius } = useProgressContext()
   const { colors } = useColors()
 
   return css`
-    width: 50%;
     height: 100%;
     background-color: ${colors[color]};
-    border-radius: ${getRadius(radii, radius)}px;
+    border-top-right-radius: ${getRadius(radii, radius)}px;
+    border-bottom-right-radius: ${getRadius(radii, radius)}px;
   `
 })
