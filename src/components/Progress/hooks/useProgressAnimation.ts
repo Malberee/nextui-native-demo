@@ -1,5 +1,7 @@
+import { useState } from 'react'
 import {
   useAnimatedStyle,
+  useDerivedValue,
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated'
@@ -7,18 +9,20 @@ import {
 export const useProgressAnimation = (
   minValue: number,
   maxValue: number,
-  value: number,
+  value: number = 0,
+  trackWidth: number,
 ) => {
-  const progress = useSharedValue(0)
-
   const range = maxValue - minValue
-  progress.value = (value * 100) / range
-
-  console.log(progress.value)
+  const progress = useDerivedValue(() => {
+    return `${(value * 100) / range - minValue}%`
+  })
 
   const animatedProgressStyle = useAnimatedStyle(() => ({
-    width: withTiming(`${progress.value}%`, { duration: 500 }),
+    left: withTiming(`${Number(progress.value.split('%')[0]) - 100}%`),
   }))
 
-  return { animatedProgressStyle }
+  return {
+    progress: progress,
+    animatedProgressStyle,
+  }
 }

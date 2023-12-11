@@ -17,6 +17,7 @@ import {
   Slider,
   Button,
   Progress,
+  ButtonGroup,
 } from './src'
 
 const Container = styled(GestureHandlerRootView)(() => {
@@ -30,19 +31,32 @@ const Container = styled(GestureHandlerRootView)(() => {
 })
 
 export default function App() {
-  const [value, setValue] = useState(0)
-
-  useEffect(() => {
-    setInterval(() => {
-      setValue((prevState) => prevState + 10)
-    }, 2000)
-  }, [])
+  const minValue = 0
+  const maxValue = 50
+  const [value, setValue] = useState(minValue)
 
   return (
     <ThemeProvider>
       <Container>
         <StatusBar style="light" />
-        <Progress color="primary" size="lg" radius="full" value={value} label='Progress' valueLabel={value} />
+        <ButtonGroup size="lg" color="success" variant="flat">
+          <Button isIconOnly onPress={() => setValue(value - 10)}>
+            -
+          </Button>
+          <Button isIconOnly onPress={() => setValue(value + 10)}>
+            +
+          </Button>
+        </ButtonGroup>
+        <Progress
+          color="primary"
+          size="lg"
+          radius="full"
+          minValue={minValue}
+          maxValue={maxValue}
+          value={value}
+          label="Progress"
+          valueLabel={value}
+        />
       </Container>
     </ThemeProvider>
   )

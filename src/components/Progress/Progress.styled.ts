@@ -5,6 +5,7 @@ import { radii, sizes } from './Progress.constants'
 import useColors from '../ThemeProvider/hooks/useColors'
 import { getRadius } from '../../utils/getRadius'
 import Animated from 'react-native-reanimated'
+import { ReText } from 'react-native-redash'
 
 export const ProgressWrapper = styled.View`
   width: 100%;
@@ -28,7 +29,7 @@ export const ProgressLabel = styled.Text(() => {
   `
 })
 
-export const ProgressValueLabel = styled.Text(() => {
+export const ProgressValueLabel = styled(ReText)(() => {
   const { colors } = useColors()
   return css`
     color: ${colors.foreground};
@@ -56,8 +57,8 @@ export const Progression = styled(Animated.View)(() => {
 
   return css`
     height: 100%;
+    width: 100%;
     background-color: ${colors[color]};
-    border-top-right-radius: ${getRadius(radii, radius)}px;
-    border-bottom-right-radius: ${getRadius(radii, radius)}px;
+    border-radius: ${getRadius(radii, radius)}px;
   `
 })
