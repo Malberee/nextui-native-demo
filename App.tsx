@@ -31,9 +31,10 @@ const Container = styled(GestureHandlerRootView)(() => {
 })
 
 export default function App() {
-  const minValue = 0
+  const minValue = 30
   const maxValue = 50
   const [value, setValue] = useState(minValue)
+  const [isChecked, setIsChecked] = useState(false)
 
   return (
     <ThemeProvider>
@@ -46,6 +47,9 @@ export default function App() {
           <Button isIconOnly onPress={() => setValue(value + 10)}>
             +
           </Button>
+          <Button color='danger' onPress={() => setIsChecked(prevState => !prevState)}>
+            toggle
+          </Button>
         </ButtonGroup>
         <Progress
           color="primary"
@@ -56,6 +60,7 @@ export default function App() {
           value={value}
           label="Progress"
           valueLabel={value}
+          isIndeterminate={isChecked}
         />
       </Container>
     </ThemeProvider>

@@ -30,5 +30,7 @@ export interface ProgressContextProps
       | 'minValue'
       | 'maxValue'
       | 'showValueLabel'
+      | 'isIndeterminate'
+      | 'isStriped'
     >
   > {}
