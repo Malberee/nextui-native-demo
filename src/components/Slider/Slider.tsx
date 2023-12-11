@@ -71,7 +71,7 @@ const Slider: FC<SliderProps> = ({
       setThumbWidth(e.nativeEvent.layout.width)
     }
   }
-
+  
   return (
     <SliderContext.Provider value={sliderProps}>
       <SliderWrapper>

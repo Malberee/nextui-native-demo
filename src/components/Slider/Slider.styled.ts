@@ -7,7 +7,7 @@ import Animated from 'react-native-reanimated'
 
 export const SliderWrapper = styled.View(() => {
   return css`
-    width: 70%;
+    width: 80%;
     align-items: center;
     gap: 8px;
   `
