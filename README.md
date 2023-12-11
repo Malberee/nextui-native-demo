@@ -17,5 +17,9 @@ Here is a list of some of the components that have already been implemented:
 - [x] Switch
 - [x] User
 
-<img src="./src/images/dark.png" alt="isolated" width="200"/>
-<img src="./src/images/light.png" alt="isolated" width="200"/>
+<div align="center">
+    <div style="display: flex; align-items: flex-start;">
+        <img src="./src/images/dark.png" alt="isolated" width="200"/>
+        <img src="./src/images/light.png" alt="isolated" width="200"/>
+    </div>
+</div>
