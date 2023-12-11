@@ -10,14 +10,20 @@ import styled, { css } from 'styled-components/native'
 
 import {
   ThemeProvider,
+  AvatarGroup,
+  Avatar,
+  Badge,
+  ButtonGroup,
+  Button,
+  Chip,
+  Code,
+  Divider,
+  Progress,
   RadioGroup,
   Radio,
-  Chip,
-  Switch,
   Slider,
-  Button,
-  Progress,
-  ButtonGroup,
+  Switch,
+  User,
 } from './src'
 
 const Container = styled(GestureHandlerRootView)(() => {
@@ -40,31 +46,9 @@ export default function App() {
     <ThemeProvider>
       <Container>
         <StatusBar style="light" />
-        <ButtonGroup size="lg" color="success" variant="flat">
-          <Button isIconOnly onPress={() => setValue(value - 10)}>
-            -
-          </Button>
-          <Button isIconOnly onPress={() => setValue(value + 10)}>
-            +
-          </Button>
-          <Button
-            color="danger"
-            onPress={() => setIsChecked((prevState) => !prevState)}
-          >
-            toggle
-          </Button>
-        </ButtonGroup>
-        <Slider
-          maxValue={100}
-          step={10}
-          marks={[
-            { label: '20%', value: 20 },
-
-            { label: '50%', value: 50 },
-
-            { label: '80%', value: 80 },
-          ]}
-        />
+        <AvatarGroup size="md">
+          <Avatar />
+        </AvatarGroup>
       </Container>
     </ThemeProvider>
   )
