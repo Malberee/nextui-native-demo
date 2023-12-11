@@ -16,8 +16,6 @@ export const useProgressAnimation = (
 ) => {
   const range = maxValue - minValue
   const progress = useDerivedValue(() => {
-    console.log(isIndeterminate)
-
     return `${((value - minValue) * 100) / range}%`
   })
 

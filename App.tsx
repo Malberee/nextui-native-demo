@@ -47,20 +47,23 @@ export default function App() {
           <Button isIconOnly onPress={() => setValue(value + 10)}>
             +
           </Button>
-          <Button color='danger' onPress={() => setIsChecked(prevState => !prevState)}>
+          <Button
+            color="danger"
+            onPress={() => setIsChecked((prevState) => !prevState)}
+          >
             toggle
           </Button>
         </ButtonGroup>
-        <Progress
-          color="primary"
-          size="lg"
-          radius="full"
-          minValue={minValue}
-          maxValue={maxValue}
-          value={value}
-          label="Progress"
-          valueLabel={value}
-          isIndeterminate={isChecked}
+        <Slider
+          maxValue={100}
+          step={10}
+          marks={[
+            { label: '20%', value: 20 },
+
+            { label: '50%', value: 50 },
+
+            { label: '80%', value: 80 },
+          ]}
         />
       </Container>
     </ThemeProvider>

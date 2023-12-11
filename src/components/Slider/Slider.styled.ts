@@ -9,6 +9,7 @@ export const SliderWrapper = styled.View(() => {
   return css`
     width: 70%;
     align-items: center;
+    gap: 8px;
   `
 })
 
@@ -18,7 +19,6 @@ export const SliderContent = styled.View(() => {
     display: flex;
     justify-content: space-between;
     flex-direction: row;
-    margin-bottom: 8px;
   `
 })
 
@@ -108,5 +108,23 @@ export const SliderThumb = styled(Animated.View)(() => {
     border-radius: 9999px;
 
     opacity: ${hideThumb ? 0 : 1};
+  `
+})
+
+export const MarkList = styled.View(() => {
+  return css`
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  `
+})
+
+export const Mark = styled.Text<{ isReached: boolean }>(({ isReached }) => {
+  const { colors } = useColors()
+  return css`
+    color: ${colors.foreground};
+    font-size: 14px;
+    opacity: ${isReached ? 1 : 0.5};
   `
 })

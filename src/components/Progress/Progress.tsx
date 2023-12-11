@@ -20,7 +20,6 @@ const Progress: FC<ProgressProps> = ({
   valueLabel,
   ...props
 }) => {
-  const [trackWidth, setTrackWidth] = useState(0)
   const progressProps = useProgressProps(props)
   const { minValue, maxValue, showValueLabel, isIndeterminate } = progressProps
   const { progress, animatedProgressStyle } = useProgressAnimation(
@@ -30,18 +29,16 @@ const Progress: FC<ProgressProps> = ({
     isIndeterminate,
   )
 
-  const onLayout = (e: LayoutChangeEvent) => {
-    setTrackWidth(e.nativeEvent.layout.width)
-  }
-
   return (
     <ProgressContext.Provider value={progressProps}>
       <ProgressWrapper>
         <ProgressLabels>
           {label && <ProgressLabel>{label}</ProgressLabel>}
-          {showValueLabel && !isIndeterminate && <ProgressValueLabel text={progress} />}
+          {showValueLabel && !isIndeterminate && (
+            <ProgressValueLabel text={progress} />
+          )}
         </ProgressLabels>
-        <Track onLayout={onLayout}>
+        <Track>
           <Progression style={animatedProgressStyle} />
         </Track>
       </ProgressWrapper>

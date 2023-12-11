@@ -8,11 +8,11 @@ import {
   SliderValue,
   SliderInner,
   SliderTrack,
-  StepsWrapper,
-  StepDot,
   TouchableThumbZone,
   SliderProgress,
   SliderThumb,
+  MarkList,
+  Mark,
 } from './Slider.styled'
 
 import { SliderProps } from './Slider.types'
@@ -27,6 +27,7 @@ const Slider: FC<SliderProps> = ({
   defaultValue,
   startContent,
   endContent,
+  marks,
   onValueChange,
   onValueChangeEnd,
   ...props
@@ -116,6 +117,15 @@ const Slider: FC<SliderProps> = ({
               onPress: () => handleButton('increment'),
             })}
         </SliderInner>
+        {marks && (
+          <MarkList>
+            {marks.map(({ label, value }, index) => (
+              <Mark isReached={sliderValue >= value} key={index}>
+                {label}
+              </Mark>
+            ))}
+          </MarkList>
+        )}
       </SliderWrapper>
     </SliderContext.Provider>
   )
