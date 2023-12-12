@@ -14,7 +14,7 @@ export interface SliderProps {
   radius?: RadiusName
   step?: number
   value?: number
-  defaultValue?: number | number[]
+  defaultValue?: number
   minValue?: number
   maxValue?: number
   orientation?: 'horizontal' | 'vertical'
@@ -46,7 +46,6 @@ export interface SliderContextProps
       | 'label'
       | 'name'
       | 'value'
-      | 'defaultValue'
       | 'fillOffset'
       | 'marks'
       | 'startContent'
@@ -54,5 +53,7 @@ export interface SliderContextProps
       | 'formatOptions'
       | 'tooltipValueFormatOptions'
       | 'tooltipProps'
+      | 'onValueChange'
+      | 'onValueChangeEnd'
     >
   > {}

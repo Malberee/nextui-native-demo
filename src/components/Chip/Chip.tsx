@@ -1,6 +1,7 @@
 import React, { FC } from 'react'
 import { Pressable } from 'react-native'
 import { ChipWrapper, ChipContent, ChipDot } from './Chip.styled'
+// @ts-ignore
 import Icon from 'react-native-vector-icons/Ionicons'
 
 import { ChipProps } from './Chip.types'

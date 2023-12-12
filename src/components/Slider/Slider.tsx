@@ -24,7 +24,6 @@ import Steps from './Steps'
 const Slider: FC<SliderProps> = ({
   label,
   value,
-  defaultValue,
   startContent,
   endContent,
   marks,
@@ -35,7 +34,7 @@ const Slider: FC<SliderProps> = ({
   const [trackWidth, setTrackWidth] = useState(0)
   const [thumbWidth, setThumbWidth] = useState(0)
   const sliderProps = useSliderProps(props)
-  const { minValue, maxValue, step, showSteps } = sliderProps
+  const { defaultValue, minValue, maxValue, step, showSteps } = sliderProps
   const [sliderValue, setSliderValue] = useState(0)
 
   const handleValueChange = (value: number) => {
@@ -71,7 +70,7 @@ const Slider: FC<SliderProps> = ({
       setThumbWidth(e.nativeEvent.layout.width)
     }
   }
-  
+
   return (
     <SliderContext.Provider value={sliderProps}>
       <SliderWrapper>

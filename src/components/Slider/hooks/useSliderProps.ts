@@ -7,6 +7,7 @@ export const defaultProps: SliderContextProps = {
   step: 1,
   minValue: 0,
   maxValue: 100,
+  defaultValue: 0,
   orientation: 'horizontal',
   showSteps: false,
   showTooltip: false,

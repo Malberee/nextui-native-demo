@@ -10,8 +10,8 @@ import { clamp } from '../utils'
 
 export const useSliderAnimation = (
   defaultValue: number,
-  minValue: number = 0,
-  maxValue: number = 100,
+  minValue: number,
+  maxValue: number,
   trackWidth: number,
   thumbWidth: number,
   step: number = 1,
