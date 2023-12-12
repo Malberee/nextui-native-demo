@@ -1,7 +1,7 @@
 # NextUI for React Native
 
 I'm just trying to replicate the design and some functionality of NextUI for React Native.\
-Many of the components do not have the full functionality of the original NextUI library.
+Many of the components do not have the full functionality of the original NextUI library (npm package coming soon).
 
 Here is a list of some of the components that have already been implemented:
 
