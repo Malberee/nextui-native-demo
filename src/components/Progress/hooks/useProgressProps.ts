@@ -10,7 +10,7 @@ export const defaultProps: ProgressContextProps = {
   maxValue: 100,
   showValueLabel: true,
   isIndeterminate: false,
-  isStriped: false
+  isStriped: false,
 }
 
 export const useProgressProps = (

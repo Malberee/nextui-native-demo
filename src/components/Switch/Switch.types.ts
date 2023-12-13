@@ -1,13 +1,6 @@
-import React, { ReactNode } from 'react'
+import { ReactNode } from 'react'
 import { GestureResponderEvent } from 'react-native'
 import { ColorName, SizeName } from '../../types'
-
-type IconProps = {
-  width: string
-  height: string
-  isSelected: boolean
-  className: string
-}
 
 export interface SwitchProps {
   children?: ReactNode

@@ -1,5 +1,4 @@
 import React, { FC } from 'react'
-import { Text } from 'react-native'
 import Avatar from '../Avatar'
 import {
   UserWrapper,

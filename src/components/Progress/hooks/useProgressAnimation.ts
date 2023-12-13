@@ -1,8 +1,6 @@
-import { useState } from 'react'
 import {
   useAnimatedStyle,
   useDerivedValue,
-  useSharedValue,
   withRepeat,
   withSequence,
   withTiming,
@@ -11,8 +9,8 @@ import {
 export const useProgressAnimation = (
   minValue: number,
   maxValue: number,
-  value: number = 0,
   isIndeterminate: boolean,
+  value: number = 0,
 ) => {
   const range = maxValue - minValue
   const progress = useDerivedValue(() => {

@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components/native'
-import { Animated, Pressable } from 'react-native'
+import Animated from 'react-native-reanimated'
 import useColors from '../ThemeProvider/hooks/useColors'
-import { getTextColor } from '../../utils/getTextColor'
+import { useTextColor } from '../../hooks/useTextColor'
 import { getRadius } from '../../utils/getRadius'
 import { useVariantStyles } from '../../hooks/useVariantStyles'
 import { useButtonContext } from './hooks/useButtonContext'
@@ -31,9 +31,7 @@ const getRadii = (
   return `border-radius: ${radius}px;`
 }
 
-const AnimatedPressable = Animated.createAnimatedComponent(Pressable)
-
-export const ButtonWrapper = styled(AnimatedPressable)(() => {
+export const ButtonWrapper = styled(Animated.View)(() => {
   const {
     radius,
     color,
@@ -76,7 +74,7 @@ export const ButtonContent = styled.Text(() => {
 
   return css`
     color: ${variant === 'solid' || variant === 'shadow'
-      ? getTextColor(color)
+      ? useTextColor(color)
       : colors[color]};
   `
 })

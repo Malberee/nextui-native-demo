@@ -6,13 +6,13 @@ export const defaultProps: RadioContextProps = {
   color: 'primary',
   isDisabled: false,
   isInvalid: false,
-  value: ''
+  value: '',
 }
 
 export const useRadioProps = (
   props: Partial<RadioContextProps>,
 ): RadioContextProps => {
-  const radioContext = useRadioGroupContext() 
+  const radioContext = useRadioGroupContext()
 
   return {
     ...defaultProps,

@@ -14,7 +14,7 @@ export const useSliderAnimation = (
   maxValue: number,
   trackWidth: number,
   thumbWidth: number,
-  step: number = 1,
+  step: number,
   onValueChange: (value: number) => void,
   onValueChangeEnd?: (value: number) => void,
 ) => {

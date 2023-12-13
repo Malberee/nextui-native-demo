@@ -17,4 +17,3 @@ export const descriptionFontSizes: Pick<Sizes, 'sm' | 'md' | 'lg'> = {
   md: 14,
   lg: 16,
 }
-

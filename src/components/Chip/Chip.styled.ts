@@ -3,7 +3,7 @@ import useColors from '../ThemeProvider/hooks/useColors'
 import { useChipContext } from './hooks/useChipContext'
 import { getRadius } from '../../utils/getRadius'
 import { getSize } from '../../utils/getSize'
-import { getTextColor } from '../../utils/getTextColor'
+import { useTextColor } from '../../hooks/useTextColor'
 import { radii, sizes } from './Chip.constants'
 import { useVariantStyles } from '../../hooks/useVariantStyles'
 
@@ -34,7 +34,7 @@ export const ChipContent = styled.Text(() => {
     padding: 0 ${size === 'sm' ? 4 : 8}px;
     font-size: ${size === 'lg' ? 16 : size === 'md' ? 14 : 12}px;
     color: ${variant === 'solid' || variant === 'shadow'
-      ? getTextColor(color)
+      ? useTextColor(color)
       : colors[color]};
   `
 })

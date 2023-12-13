@@ -1,5 +1,5 @@
 export interface StepsProps {
-    steps: number
-    trackWidth: number
-    isReached: boolean
+  steps: number
+  trackWidth: number
+  isReached: boolean
 }

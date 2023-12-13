@@ -5,7 +5,7 @@ import { getSize } from '../../utils/getSize'
 import { sizes } from './Badge.constants'
 import useColors from '../ThemeProvider/hooks/useColors'
 import { useVariantStyles } from '../../hooks/useVariantStyles'
-import { getTextColor } from '../../utils/getTextColor'
+import { useTextColor } from '../../hooks/useTextColor'
 
 export const BadgeWrapper = styled.View(() => {
   const { placement, width, shape, isDisabled } = useBadgeContext()
@@ -59,6 +59,6 @@ export const BadgeContent = styled.Text(() => {
     font-size: ${size === 'sm' ? 12 : 14}px;
     line-height: 18px;
 
-    color: ${getTextColor(color)};
+    color: ${useTextColor(color)};
   `
 })

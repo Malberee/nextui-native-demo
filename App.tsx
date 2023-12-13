@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
 
 import useColors from './src/components/ThemeProvider/hooks/useColors'
@@ -34,15 +34,11 @@ const Container = styled(GestureHandlerRootView)(() => {
 })
 
 export default function App() {
-  const minValue = 30
-  const maxValue = 50
-  const [value, setValue] = useState(minValue)
-  const [isChecked, setIsChecked] = useState(false)
 
   return (
     <ThemeProvider>
       <Container>
-
+        <Button>Button</Button>
       </Container>
     </ThemeProvider>
   )

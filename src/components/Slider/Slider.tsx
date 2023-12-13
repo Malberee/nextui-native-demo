@@ -37,11 +37,11 @@ const Slider: FC<SliderProps> = ({
   const { defaultValue, minValue, maxValue, step, showSteps } = sliderProps
   const [sliderValue, setSliderValue] = useState(0)
 
-  const handleValueChange = (value: number) => {
+  const handleValueChange = (newValue: number) => {
     if (onValueChange) {
-      onValueChange(Number(value.toFixed(2)))
+      onValueChange(Number(newValue.toFixed(2)))
     }
-    setSliderValue(Number(value.toFixed(2)))
+    setSliderValue(Number(newValue.toFixed(2)))
   }
 
   const {
@@ -118,9 +118,9 @@ const Slider: FC<SliderProps> = ({
         </SliderInner>
         {marks && (
           <MarkList>
-            {marks.map(({ label, value }, index) => (
-              <Mark isReached={sliderValue >= value} key={index}>
-                {label}
+            {marks.map(({ label: markLabel, value: markValue }, index) => (
+              <Mark isReached={sliderValue >= markValue} key={index}>
+                {markLabel}
               </Mark>
             ))}
           </MarkList>

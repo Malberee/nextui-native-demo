@@ -2,9 +2,12 @@ module.exports = {
   root: true,
   extends: [
     '@react-native-community',
+    'plugin:import/recommended',
     'airbnb-typescript',
     'prettier',
-    'prettier/@typescript-eslint',
-    'prettier/react',
   ],
+  parserOptions: { project: ['tsconfig.json'] },
+  settings: {
+    'import/ignore': ['react-native'],
+  },
 }

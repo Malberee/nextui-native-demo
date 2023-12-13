@@ -1,7 +1,7 @@
 import useColors from '../components/ThemeProvider/hooks/useColors'
 import { ColorName } from '../types'
 
-export const getTextColor = (color: ColorName) => {
+export const useTextColor = (color: ColorName) => {
   const { colors } = useColors()
   if (color === 'success' || color === 'warning') {
     return colors.black

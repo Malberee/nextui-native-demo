@@ -1,5 +1,4 @@
-import React, { FC, useState } from 'react'
-import { LayoutChangeEvent } from 'react-native'
+import React, { FC } from 'react'
 import {
   ProgressLabels,
   ProgressLabel,
@@ -25,8 +24,8 @@ const Progress: FC<ProgressProps> = ({
   const { progress, animatedProgressStyle } = useProgressAnimation(
     minValue,
     maxValue,
-    value,
     isIndeterminate,
+    value,
   )
 
   return (

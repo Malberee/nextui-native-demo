@@ -24,16 +24,18 @@ const Radio: FC<RadioProps> = ({ label, description, ...props }) => {
     selectedRadio === value,
     isInvalid ? 'danger' : color,
     isInvalid,
-    isDisabled
+    isDisabled,
   )
 
   const handlePress = () => {
-    !isDisabled && selectRadio(value)
+    if (!isDisabled) {
+      selectRadio(value)
+    }
   }
 
   return (
     <RadioContext.Provider value={radioProps}>
-      <GestureDetector gesture={pan} >
+      <GestureDetector gesture={pan}>
         <Pressable onPress={handlePress}>
           <RadioWrapper>
             <RadioOutline style={radioOutlineStyle}>

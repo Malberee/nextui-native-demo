@@ -1,5 +1,4 @@
 import styled, { css } from 'styled-components/native'
-import { Text } from 'react-native'
 import { CodeProps } from './Code.types'
 import { radii, sizes } from './Code.constants'
 import { getSize } from '../../utils/getSize'
