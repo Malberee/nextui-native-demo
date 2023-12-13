@@ -34,11 +34,12 @@ const Container = styled(GestureHandlerRootView)(() => {
 })
 
 export default function App() {
-
   return (
     <ThemeProvider>
       <Container>
-        <Button>Button</Button>
+        <Button variant="shadow" color="warning">
+          Button
+        </Button>
       </Container>
     </ThemeProvider>
   )

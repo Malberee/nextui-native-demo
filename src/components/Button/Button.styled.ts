@@ -5,7 +5,8 @@ import { useTextColor } from '../../hooks/useTextColor'
 import { getRadius } from '../../utils/getRadius'
 import { useVariantStyles } from '../../hooks/useVariantStyles'
 import { useButtonContext } from './hooks/useButtonContext'
-import { radii } from './Button.constants'
+import { radii, sizes } from './Button.constants'
+import { getSize } from '../../utils/getSize'
 
 const getRadii = (
   isInGroup: boolean,
@@ -69,12 +70,24 @@ export const ButtonWrapper = styled(Animated.View)(() => {
 
 export const ButtonContent = styled.Text(() => {
   const { color, variant } = useButtonContext()
-
   const { colors } = useColors()
 
   return css`
+    text-align: center;
     color: ${variant === 'solid' || variant === 'shadow'
       ? useTextColor(color)
       : colors[color]};
+  `
+})
+
+export const Ripple = styled(Animated.View)(() => {
+  const { color } = useButtonContext()
+
+  return css`
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 9999px;
+    background-color: ${useTextColor(color)}70;
   `
 })

@@ -1,25 +1,61 @@
+import { View } from 'react-native'
 import {
+  measure,
   useAnimatedGestureHandler,
+  useAnimatedRef,
   useAnimatedStyle,
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated'
 
 export const useButtonAnimation = () => {
-  const scale = useSharedValue(1)
+  const buttonScale = useSharedValue(1)
+  const rippleScale = useSharedValue(0)
+  const rippleOpacity = useSharedValue(1)
+  const centerX = useSharedValue(0)
+  const centerY = useSharedValue(0)
+
+  const ref = useAnimatedRef<View>()
+  const width = useSharedValue(0)
+  const height = useSharedValue(0)
 
   const gestureHandler = useAnimatedGestureHandler({
     onStart: () => {
-      scale.value = 0.95
+      buttonScale.value = 0.95
     },
-    onFinish: () => {
-      scale.value = 1
+    onFinish: (event) => {
+      const layout = measure(ref)
+      width.value = layout.width
+      height.value = layout.height
+
+      buttonScale.value = 1
+      rippleScale.value = 0
+      rippleScale.value = withTiming(1, { duration: 700 })
+
+      rippleOpacity.value = 1
+      rippleOpacity.value = withTiming(0, { duration: 700 })
+
+      centerX.value = event.x
+      centerY.value = event.y
     },
   })
 
   const animatedButtonStyle = useAnimatedStyle(() => ({
-    transform: [{ scale: withTiming(scale.value, { duration: 100 }) }],
+    transform: [{ scale: withTiming(buttonScale.value, { duration: 100 }) }],
   }))
 
-  return { gestureHandler, animatedButtonStyle }
+  const animatedRippleStyle = useAnimatedStyle(() => {
+    const circleRadius = Math.sqrt(width.value ** 2 + height.value ** 2)
+    const translateX = centerX.value - circleRadius
+    const translateY = centerY.value - circleRadius
+
+    return {
+      width: circleRadius * 2,
+      height: circleRadius * 2,
+      opacity: rippleOpacity.value,
+      transform: [{ translateX }, { translateY }, { scale: rippleScale.value }],
+    }
+  })
+
+  return { gestureHandler, ref, animatedButtonStyle, animatedRippleStyle }
 }
