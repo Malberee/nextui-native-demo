@@ -37,7 +37,7 @@ export default function App() {
   return (
     <ThemeProvider>
       <Container>
-        <Button variant="shadow" color="warning">
+        <Button variant="flat" color="success" fullWidth>
           Button
         </Button>
       </Container>

@@ -21,7 +21,7 @@ export const useButtonAnimation = () => {
 
   const gestureHandler = useAnimatedGestureHandler({
     onStart: () => {
-      buttonScale.value = 0.95
+      buttonScale.value = 0.98
     },
     onFinish: (event) => {
       const layout = measure(ref)

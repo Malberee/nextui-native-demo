@@ -90,7 +90,8 @@ export const ButtonContent = styled.Text(() => {
 })
 
 export const Ripple = styled(Animated.View)(() => {
-  const { color } = useButtonContext()
+  const { color, variant } = useButtonContext()
+  const { colors } = useColors()
 
   return css`
     position: absolute;
@@ -98,6 +99,8 @@ export const Ripple = styled(Animated.View)(() => {
     left: 0;
     flex: none;
     border-radius: 9999px;
-    background-color: ${useTextColor(color)}70;
+    background-color: ${variant === 'solid' || variant === 'shadow'
+      ? useTextColor(color)
+      : colors[color]}70;
   `
 })
