@@ -1,5 +1,10 @@
 import React, { FC } from 'react'
-import { ButtonWrapper, ButtonInner, ButtonContent, Ripple } from './Button.styled'
+import {
+  ButtonWrapper,
+  ButtonInner,
+  ButtonContent,
+  Ripple,
+} from './Button.styled'
 
 import { ButtonProps } from './Button.types'
 import { ButtonContext } from './hooks/useButtonContext'

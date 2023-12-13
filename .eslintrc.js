@@ -10,4 +10,5 @@ module.exports = {
   settings: {
     'import/ignore': ['react-native'],
   },
+  ignorePatterns: ['.eslintrc.js'],
 }

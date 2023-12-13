@@ -46,9 +46,11 @@ export const ButtonWrapper = styled(Animated.View)(() => {
     isLast,
   } = useButtonContext()
 
+  const width = getSize(sizes, size)
+
   return css`
-    height: ${size === 'sm' ? 32 : size === 'md' ? 40 : 48}px;
-    ${isIconOnly && `width: ${size === 'sm' ? 32 : size === 'md' ? 40 : 48}px`};
+    height: ${width}px;
+    ${isIconOnly && `width: ${width}px`};
     min-width: ${!isInGroup && fullWidth ? '100%' : 'auto'};
     padding: 0
       ${isIconOnly ? 0 : size === 'sm' ? 12 : size === 'md' ? 16 : 24}px;

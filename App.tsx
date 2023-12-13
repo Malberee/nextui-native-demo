@@ -6,20 +6,20 @@ import styled, { css } from 'styled-components/native'
 
 import {
   ThemeProvider,
-  AvatarGroup,
-  Avatar,
-  Badge,
-  ButtonGroup,
+  // AvatarGroup,
+  // Avatar,
+  // Badge,
+  // ButtonGroup,
   Button,
-  Chip,
-  Code,
-  Divider,
-  Progress,
-  RadioGroup,
-  Radio,
-  Slider,
-  Switch,
-  User,
+  // Chip,
+  // Code,
+  // Divider,
+  // Progress,
+  // RadioGroup,
+  // Radio,
+  // Slider,
+  // Switch,
+  // User,
 } from './src'
 
 const Container = styled(GestureHandlerRootView)(() => {
