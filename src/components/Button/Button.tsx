@@ -1,5 +1,5 @@
-import React, { FC, useState } from 'react'
-import { ButtonWrapper, ButtonContent, Ripple } from './Button.styled'
+import React, { FC } from 'react'
+import { ButtonWrapper, ButtonInner, ButtonContent, Ripple } from './Button.styled'
 
 import { ButtonProps } from './Button.types'
 import { ButtonContext } from './hooks/useButtonContext'
@@ -8,7 +8,6 @@ import { getShadow } from '../../utils/getShadow'
 import useColors from '../ThemeProvider/hooks/useColors'
 import { useButtonAnimation } from './hooks/useButtonAnimation'
 import { PanGestureHandler } from 'react-native-gesture-handler'
-import { LayoutChangeEvent, View } from 'react-native'
 
 const Button: FC<ButtonProps> = ({
   children,
@@ -39,9 +38,11 @@ const Button: FC<ButtonProps> = ({
           ref={ref}
           collapsable={false}
         >
-          {!isIconOnly && startContent}
-          <ButtonContent>{children}</ButtonContent>
-          {!isIconOnly && endContent}
+          <ButtonInner>
+            {!isIconOnly && startContent}
+            <ButtonContent>{children}</ButtonContent>
+            {!isIconOnly && endContent}
+          </ButtonInner>
           {!disableRipple && <Ripple style={animatedRippleStyle} />}
         </ButtonWrapper>
       </PanGestureHandler>

@@ -47,13 +47,6 @@ export const ButtonWrapper = styled(Animated.View)(() => {
   } = useButtonContext()
 
   return css`
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-    align-items: center;
-    flex-grow: ${isInGroup && fullWidth ? 1 : 0};
-    gap: 8px;
-
     height: ${size === 'sm' ? 32 : size === 'md' ? 40 : 48}px;
     ${isIconOnly && `width: ${size === 'sm' ? 32 : size === 'md' ? 40 : 48}px`};
     min-width: ${!isInGroup && fullWidth ? '100%' : 'auto'};
@@ -65,6 +58,20 @@ export const ButtonWrapper = styled(Animated.View)(() => {
 
     opacity: ${isDisabled ? 0.5 : 1};
     overflow: hidden;
+  `
+})
+
+export const ButtonInner = styled.View(() => {
+  const { fullWidth, isInGroup } = useButtonContext()
+
+  return css`
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    flex-grow: ${isInGroup && fullWidth ? 1 : 0};
+    gap: 8px;
+    height: 100%;
   `
 })
 
@@ -87,6 +94,7 @@ export const Ripple = styled(Animated.View)(() => {
     position: absolute;
     top: 0;
     left: 0;
+    flex: none;
     border-radius: 9999px;
     background-color: ${useTextColor(color)}70;
   `
