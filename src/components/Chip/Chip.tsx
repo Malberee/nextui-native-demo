@@ -1,8 +1,7 @@
 import React, { FC } from 'react'
 import { Pressable } from 'react-native'
 import { ChipWrapper, ChipContent, ChipDot } from './Chip.styled'
-// @ts-ignore
-import Icon from 'react-native-vector-icons/Ionicons'
+import { CloseCircle } from 'nextui-native-icons'
 
 import { ChipProps } from './Chip.types'
 import { ChipContext } from './hooks/useChipContext'
@@ -11,6 +10,7 @@ import { getShadow } from '../../utils/getShadow'
 import useColors from '../ThemeProvider/hooks/useColors'
 import { getSize } from '../../utils/getSize'
 import { sizes } from './Chip.constants'
+import { useTextColor } from '../../hooks/useTextColor'
 
 const Chip: FC<ChipProps> = ({
   children,
@@ -22,6 +22,10 @@ const Chip: FC<ChipProps> = ({
 }) => {
   const { size, variant, color, ...chipProps } = useChipProps(props)
   const { colors } = useColors()
+
+  const textColor = useTextColor(color)
+  const closeIconColor =
+    variant === 'solid' || variant === 'shadow' ? textColor : colors[color]
 
   return (
     <ChipContext.Provider value={{ size, variant, color, ...chipProps }}>
@@ -39,7 +43,11 @@ const Chip: FC<ChipProps> = ({
           </Pressable>
         ) : onClose ? (
           <Pressable onPress={onClose}>
-            <Icon name="close" size={15} color="white" />
+            <CloseCircle
+              width={getSize(sizes, size) - 10}
+              height={getSize(sizes, size) - 10}
+              color={closeIconColor}
+            />
           </Pressable>
         ) : (
           endContent

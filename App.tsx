@@ -10,8 +10,8 @@ import {
   // Avatar,
   // Badge,
   // ButtonGroup,
-  Button,
-  // Chip,
+  // Button,
+  Chip,
   // Code,
   // Divider,
   // Progress,
@@ -37,9 +37,14 @@ export default function App() {
   return (
     <ThemeProvider>
       <Container>
-        <Button variant="flat" color="success" fullWidth>
-          Button
-        </Button>
+        <Chip
+          size="lg"
+          color="default"
+          variant="shadow"
+          onClose={() => console.log('🍄')}
+        >
+          не Кнопкааааааааа
+        </Chip>
       </Container>
     </ThemeProvider>
   )
