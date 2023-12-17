@@ -1,5 +1,13 @@
 import { ReactNode } from 'react'
 import { ColorName, SizeName } from '../../types'
+import { CSSProperties } from 'styled-components/native'
+
+type Styles = {
+  wrapper?: CSSProperties
+  content?: CSSProperties
+  label?: CSSProperties
+  description?: CSSProperties
+}
 
 export interface RadioProps {
   label?: ReactNode
@@ -12,6 +20,7 @@ export interface RadioProps {
   isReadOnly?: boolean
   isInvalid?: boolean
   disableAnimation?: boolean
+  styles?: Styles
 }
 
 export interface RadioContextProps

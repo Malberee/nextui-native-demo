@@ -11,12 +11,12 @@ import {
   // Badge,
   // ButtonGroup,
   // Button,
-  Chip,
+  // Chip,
   // Code,
   // Divider,
   // Progress,
-  // RadioGroup,
-  // Radio,
+  RadioGroup,
+  Radio,
   // Slider,
   // Switch,
   // User,
@@ -37,14 +37,24 @@ export default function App() {
   return (
     <ThemeProvider>
       <Container>
-        <Chip
+        <RadioGroup
           size="lg"
-          color="default"
-          variant="shadow"
-          onClose={() => console.log('🍄')}
+          color="success"
+          styles={{
+            wrapper: {
+              width: 300,
+              marginBottom: 8,
+              justifyContent: 'space-between',
+              flexDirection: 'row-reverse',
+              backgroundColor: '#353535',
+              borderRadius: 8,
+            },
+          }}
         >
-          не Кнопкааааааааа
-        </Chip>
+          <Radio value="1" label="Radio" description="description" />
+          <Radio value="2" label="Radio" description="description" />
+          <Radio value="3" label="Radio" description="description" />
+        </RadioGroup>
       </Container>
     </ThemeProvider>
   )
