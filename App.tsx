@@ -33,27 +33,46 @@ const Container = styled(GestureHandlerRootView)(() => {
   `
 })
 
+const styles = {
+  wrapper: {
+    default: {
+      width: 300,
+      marginBottom: 8,
+      justifyContent: 'space-between',
+      flexDirection: 'row-reverse',
+      backgroundColor: '#353535',
+      borderRadius: 8,
+    },
+    active: {
+      borderColor: 'red',
+      borderWidth: 2,
+    },
+  },
+}
+
 export default function App() {
   return (
     <ThemeProvider>
       <Container>
-        <RadioGroup
-          size="lg"
-          color="success"
-          styles={{
-            wrapper: {
-              width: 300,
-              marginBottom: 8,
-              justifyContent: 'space-between',
-              flexDirection: 'row-reverse',
-              backgroundColor: '#353535',
-              borderRadius: 8,
-            },
-          }}
-        >
-          <Radio value="1" label="Radio" description="description" />
-          <Radio value="2" label="Radio" description="description" />
-          <Radio value="3" label="Radio" description="description" />
+        <RadioGroup size="lg" color="success">
+          <Radio
+            value="1"
+            label="Radio"
+            description="description"
+            styles={styles}
+          />
+          <Radio
+            value="2"
+            label="Radio"
+            description="description"
+            styles={styles}
+          />
+          <Radio
+            value="3"
+            label="Radio"
+            description="description"
+            styles={styles}
+          />
         </RadioGroup>
       </Container>
     </ThemeProvider>

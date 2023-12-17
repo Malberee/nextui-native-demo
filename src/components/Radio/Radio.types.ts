@@ -3,10 +3,8 @@ import { ColorName, SizeName } from '../../types'
 import { CSSProperties } from 'styled-components/native'
 
 type Styles = {
-  wrapper?: CSSProperties
-  content?: CSSProperties
-  label?: CSSProperties
-  description?: CSSProperties
+  default?: CSSProperties
+  active?: CSSProperties
 }
 
 export interface RadioProps {
@@ -20,7 +18,9 @@ export interface RadioProps {
   isReadOnly?: boolean
   isInvalid?: boolean
   disableAnimation?: boolean
-  styles?: Styles
+  styles?: Partial<
+    Record<'wrapper' | 'content' | 'label' | 'description', Styles>
+  >
 }
 
 export interface RadioContextProps

@@ -16,13 +16,13 @@ import { useRadioGroupContext } from '../RadioGroup/hooks/useRadioGroupContext'
 import { useRadioAnimation } from './hooks/useRadioAnimation'
 import { GestureDetector } from 'react-native-gesture-handler'
 
-const Radio: FC<RadioProps> = ({ label, description, ...props }) => {
+const Radio: FC<RadioProps> = ({ label, description, styles, ...props }) => {
   const radioProps = useRadioProps(props)
-  const { value, color, selectedRadio, isDisabled, isInvalid, styles } =
-    radioProps
+  const { value, color, selectedRadio, isDisabled, isInvalid } = radioProps
+  const isSelected = selectedRadio === value
   const { selectRadio } = useRadioGroupContext()
   const { radioDotStyle, radioOutlineStyle, pan } = useRadioAnimation(
-    selectedRadio === value,
+    isSelected,
     isInvalid ? 'danger' : color,
     isInvalid,
     isDisabled,
@@ -34,11 +34,22 @@ const Radio: FC<RadioProps> = ({ label, description, ...props }) => {
     }
   }
 
+  const getCustomWrapperStyles = () => {
+    if (!!!styles) return null
+
+    console.log(!!!styles)
+
+    return {
+      ...styles.wrapper?.default,
+      ...(isSelected && styles?.wrapper?.active),
+    }
+  }
+
   return (
     <RadioContext.Provider value={radioProps}>
       <GestureDetector gesture={pan}>
         <Pressable onPress={handlePress}>
-          <RadioWrapper style={styles.wrapper}>
+          <RadioWrapper style={getCustomWrapperStyles()}>
             <RadioOutline style={radioOutlineStyle}>
               <RadioDot style={radioDotStyle} />
             </RadioOutline>
