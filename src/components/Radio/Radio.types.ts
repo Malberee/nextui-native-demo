@@ -3,8 +3,8 @@ import { ColorName, SizeName } from '../../types'
 import { StyleProp, ViewStyle } from 'react-native'
 
 type StylesObject = {
-  default?: StyleProp<ViewStyle>
-  active?: StyleProp<ViewStyle>
+  default?: { [key: string]: StyleProp<ViewStyle> }
+  active?: { [key: string]: StyleProp<ViewStyle> }
 }
 
 export type Styles = Partial<

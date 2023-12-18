@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { Pressable, StyleProp } from 'react-native'
+import { Pressable, StyleProp, ViewStyle } from 'react-native'
 import {
   RadioWrapper,
   RadioLabel,
@@ -34,18 +34,46 @@ const Radio: FC<RadioProps> = ({ label, description, styles, ...props }) => {
     }
   }
 
+  const {
+    wrapper: { default: wrapperDefault, active: wrapperActive } = {},
+    content: { default: contentDefault, active: contentActive } = {},
+    label: { default: labelDefault, active: labelActive } = {},
+    description: {
+      default: descriptionDefault,
+      active: descriptionActive,
+    } = {},
+  } = styles as Required<Styles>
+
   return (
     <RadioContext.Provider value={radioProps}>
       <GestureDetector gesture={pan}>
         <Pressable onPress={handlePress}>
-          <RadioWrapper style={styles?.wrapper?.default}>
+          <RadioWrapper
+            style={{
+              ...wrapperDefault,
+              ...(isSelected && wrapperActive),
+            }}
+          >
             <RadioOutline style={radioOutlineStyle}>
               <RadioDot style={radioDotStyle} />
             </RadioOutline>
-            <RadioContent>
-              <RadioLabel>{label}</RadioLabel>
+            <RadioContent
+              style={{ ...contentDefault, ...(isSelected && contentActive) }}
+            >
+              <RadioLabel
+                style={{ ...labelDefault, ...(isSelected && labelActive) }}
+              >
+                {label}
+              </RadioLabel>
               {description && (
-                <RadioDescription>{description}</RadioDescription>
+                <RadioDescription
+                  style={{
+                    ...descriptionDefault,
+                    ...(isSelected && descriptionActive),
+                  }}
+                >
+                  {description}
+                </RadioDescription>
               )}
             </RadioContent>
           </RadioWrapper>
