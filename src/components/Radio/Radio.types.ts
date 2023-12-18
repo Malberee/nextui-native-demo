@@ -1,10 +1,10 @@
 import { ReactNode } from 'react'
 import { ColorName, SizeName } from '../../types'
-import { CSSProperties } from 'styled-components/native'
+import { StyleProp, ViewStyle } from 'react-native'
 
 type StylesObject = {
-  default?: CSSProperties
-  active?: CSSProperties
+  default?: StyleProp<ViewStyle>
+  active?: StyleProp<ViewStyle>
 }
 
 export type Styles = Partial<

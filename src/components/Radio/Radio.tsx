@@ -34,23 +34,11 @@ const Radio: FC<RadioProps> = ({ label, description, styles, ...props }) => {
     }
   }
 
-  const StylesKeys = Object.keys(styles)
-
-  const getCustomStyles = (): StyleProp<Styles> | null => {
-    if (!styles) return null
-
-    console.log(!styles)
-
-    return styles
-  }
-
-  console.log(!!getCustomStyles()?.wrapper)
-
   return (
     <RadioContext.Provider value={radioProps}>
       <GestureDetector gesture={pan}>
         <Pressable onPress={handlePress}>
-          <RadioWrapper style={getCustomStyles()?.wrapper || null}>
+          <RadioWrapper style={styles?.wrapper?.default}>
             <RadioOutline style={radioOutlineStyle}>
               <RadioDot style={radioDotStyle} />
             </RadioOutline>
