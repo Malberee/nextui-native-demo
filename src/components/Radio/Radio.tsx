@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { Pressable } from 'react-native'
+import { Pressable, StyleProp } from 'react-native'
 import {
   RadioWrapper,
   RadioLabel,
@@ -9,7 +9,7 @@ import {
   RadioDot,
 } from './Radio.styled'
 
-import { RadioProps } from './Radio.types'
+import { RadioProps, Styles } from './Radio.types'
 import { RadioContext } from './hooks/useRadioContext'
 import { useRadioProps } from './hooks/useRadioProps'
 import { useRadioGroupContext } from '../RadioGroup/hooks/useRadioGroupContext'
@@ -34,22 +34,23 @@ const Radio: FC<RadioProps> = ({ label, description, styles, ...props }) => {
     }
   }
 
-  const getCustomWrapperStyles = () => {
-    if (!!!styles) return null
+  const StylesKeys = Object.keys(styles)
 
-    console.log(!!!styles)
+  const getCustomStyles = (): StyleProp<Styles> | null => {
+    if (!styles) return null
 
-    return {
-      ...styles.wrapper?.default,
-      ...(isSelected && styles?.wrapper?.active),
-    }
+    console.log(!styles)
+
+    return styles
   }
+
+  console.log(!!getCustomStyles()?.wrapper)
 
   return (
     <RadioContext.Provider value={radioProps}>
       <GestureDetector gesture={pan}>
         <Pressable onPress={handlePress}>
-          <RadioWrapper style={getCustomWrapperStyles()}>
+          <RadioWrapper style={getCustomStyles()?.wrapper || null}>
             <RadioOutline style={radioOutlineStyle}>
               <RadioDot style={radioDotStyle} />
             </RadioOutline>
