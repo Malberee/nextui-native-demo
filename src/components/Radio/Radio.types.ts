@@ -2,8 +2,14 @@ import { ReactNode } from 'react'
 import { ColorName, SizeName } from '../../types'
 import { CSSProp } from 'styled-components'
 
-export type Styles = Partial<
-  Record<'wrapper' | 'content' | 'label' | 'description', CSSProp>
+type StylesObject = {
+  default?: CSSProp
+  active?: CSSProp
+}
+
+export type Styles = Record<
+  'wrapper' | 'content' | 'label' | 'description',
+  StylesObject
 >
 
 export interface RadioProps {
@@ -17,7 +23,7 @@ export interface RadioProps {
   isReadOnly?: boolean
   isInvalid?: boolean
   disableAnimation?: boolean
-  styles?: Styles
+  styles?: Partial<Styles>
 }
 
 export interface RadioContextProps

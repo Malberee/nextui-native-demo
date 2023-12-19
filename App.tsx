@@ -35,17 +35,21 @@ const Container = styled(GestureHandlerRootView)(() => {
 })
 
 const styles = {
-  wrapper: css`
-    width: 300;
-    margin-bottom: 8px;
-    justify-content: space-between;
-    flex-direction: row-reverse;
-    background-color: #353535;
-    border-radius: 8px;
-  `,
+  wrapper: {
+    default: css`
+      width: 300px;
+      margin-bottom: 8px;
+      justify-content: space-between;
+      flex-direction: row-reverse;
+      background-color: #353535;
+      border-radius: 8px;
+    `,
+    active: css`
+      border-color: red;
+      border-width: 2px;
+    `,
+  },
 }
-
-console.log(styles)
 
 export default function App() {
   const [radio, setRadio] = useState('1')
@@ -53,12 +57,7 @@ export default function App() {
   return (
     <ThemeProvider>
       <Container>
-        <RadioGroup
-          size="lg"
-          color="success"
-          onValueChange={(value: string) => setRadio(value)}
-          value={radio}
-        >
+        <RadioGroup size="lg" color="success">
           <Radio
             value="1"
             label="Radio"

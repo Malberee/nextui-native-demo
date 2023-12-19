@@ -34,20 +34,48 @@ const Radio: FC<RadioProps> = ({ label, description, styles, ...props }) => {
     }
   }
 
-  const { wrapper } = styles
+  const {
+    wrapper: { default: wrapperDefault, active: wrapperActive } = {},
+    content: { default: contentDefault, active: contentActive } = {},
+    label: { default: labelDefault, active: labelActive } = {},
+    description: {
+      default: descriptionDefault,
+      active: descriptionActive,
+    } = {},
+  }: Styles = styles as Styles
 
   return (
     <RadioContext.Provider value={radioProps}>
       <GestureDetector gesture={pan}>
         <Pressable onPress={handlePress}>
-          <RadioWrapper css={wrapper}>
+          <RadioWrapper
+            css={`
+              ${wrapperDefault} ${isSelected && wrapperActive}
+            `}
+          >
             <RadioOutline style={radioOutlineStyle}>
               <RadioDot style={radioDotStyle} />
             </RadioOutline>
-            <RadioContent>
-              <RadioLabel>{label}</RadioLabel>
+            <RadioContent
+              css={`
+                ${contentDefault} ${isSelected && contentActive}
+              `}
+            >
+              <RadioLabel
+                css={`
+                  ${labelDefault} ${isSelected && labelActive}
+                `}
+              >
+                {label}
+              </RadioLabel>
               {description && (
-                <RadioDescription>{description}</RadioDescription>
+                <RadioDescription
+                  css={`
+                    ${descriptionDefault} ${isSelected && descriptionActive}
+                  `}
+                >
+                  {description}
+                </RadioDescription>
               )}
             </RadioContent>
           </RadioWrapper>
