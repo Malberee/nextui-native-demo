@@ -1,14 +1,9 @@
 import { ReactNode } from 'react'
 import { ColorName, SizeName } from '../../types'
-import { StyleProp, ViewStyle } from 'react-native'
-
-type StylesObject = {
-  default?: { [key: string]: StyleProp<ViewStyle> }
-  active?: { [key: string]: StyleProp<ViewStyle> }
-}
+import { CSSProp } from 'styled-components'
 
 export type Styles = Partial<
-  Record<'wrapper' | 'content' | 'label' | 'description', StylesObject>
+  Record<'wrapper' | 'content' | 'label' | 'description', CSSProp>
 >
 
 export interface RadioProps {

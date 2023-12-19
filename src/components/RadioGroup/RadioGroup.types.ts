@@ -7,9 +7,9 @@ export interface RadioGroupProps extends Partial<RadioProps> {
   name?: string
   defaultValue?: string
   errorMessage?: ReactNode
+  value?: string
 
   // events
-  // onChange: ()
   onValueChange?: (value: string) => void
 }
 export interface RadioGroupContextProps

@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
+import styled, { css } from 'styled-components/native'
+import type {} from 'styled-components/cssprop'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
 
 import useColors from './src/components/ThemeProvider/hooks/useColors'
-import styled, { css } from 'styled-components/native'
 
 import {
   ThemeProvider,
@@ -34,27 +35,30 @@ const Container = styled(GestureHandlerRootView)(() => {
 })
 
 const styles = {
-  wrapper: {
-    default: {
-      width: 300,
-      marginBottom: 8,
-      justifyContent: 'space-between',
-      flexDirection: 'row-reverse',
-      backgroundColor: '#353535',
-      borderRadius: 8,
-    },
-    active: {
-      borderColor: 'red',
-      borderWidth: 2,
-    },
-  },
+  wrapper: css`
+    width: 300;
+    margin-bottom: 8px;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    background-color: #353535;
+    border-radius: 8px;
+  `,
 }
 
+console.log(styles)
+
 export default function App() {
+  const [radio, setRadio] = useState('1')
+
   return (
     <ThemeProvider>
       <Container>
-        <RadioGroup size="lg" color="success">
+        <RadioGroup
+          size="lg"
+          color="success"
+          onValueChange={(value: string) => setRadio(value)}
+          value={radio}
+        >
           <Radio
             value="1"
             label="Radio"
