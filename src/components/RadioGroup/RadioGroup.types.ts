@@ -13,7 +13,7 @@ export interface RadioGroupProps extends Partial<RadioProps> {
   onValueChange?: (value: string) => void
 }
 export interface RadioGroupContextProps
-  extends Omit<RadioGroupProps, 'children' | 'value'> {
+  extends Omit<RadioGroupProps, 'children' | 'value' | 'styles'> {
   selectedRadio?: string
   selectRadio: (value: string) => void
 }

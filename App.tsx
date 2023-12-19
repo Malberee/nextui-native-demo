@@ -55,7 +55,15 @@ export default function App() {
   return (
     <ThemeProvider>
       <Container>
-        <RadioGroup size="lg" color="success">
+        <RadioGroup
+          size="lg"
+          color="success"
+          label="Radio group"
+          description="Select radio"
+          // isInvalid
+          errorMessage="error чини давай"
+          styles={{}}
+        >
           <Radio
             value="1"
             label="Radio"
@@ -75,7 +83,7 @@ export default function App() {
             styles={styles}
           />
         </RadioGroup>
-        <RadioGroup size="lg" color="success">
+        <RadioGroup size="lg" color="primary">
           <Radio value="1" label="Radio" description="description" />
           <Radio value="2" label="Radio" description="description" />
           <Radio value="3" label="Radio" description="description" />
