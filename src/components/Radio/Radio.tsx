@@ -42,7 +42,7 @@ const Radio: FC<RadioProps> = ({ label, description, styles, ...props }) => {
       default: descriptionDefault,
       active: descriptionActive,
     } = {},
-  }: Styles = styles as Styles
+  }: Styles = (styles as Styles) || {}
 
   return (
     <RadioContext.Provider value={radioProps}>

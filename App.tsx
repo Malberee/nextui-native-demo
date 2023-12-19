@@ -42,7 +42,7 @@ export default function App() {
         margin-bottom: 8px;
         justify-content: space-between;
         flex-direction: row-reverse;
-        background-color: #353535;
+        background-color: #18181b;
         border-radius: 8px;
       `,
       active: css`
@@ -74,6 +74,11 @@ export default function App() {
             description="description"
             styles={styles}
           />
+        </RadioGroup>
+        <RadioGroup size="lg" color="success">
+          <Radio value="1" label="Radio" description="description" />
+          <Radio value="2" label="Radio" description="description" />
+          <Radio value="3" label="Radio" description="description" />
         </RadioGroup>
       </Container>
     </ThemeProvider>
