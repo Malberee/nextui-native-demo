@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { Pressable, StyleProp, ViewStyle } from 'react-native'
+import { Pressable } from 'react-native'
 import {
   RadioWrapper,
   RadioLabel,
