@@ -17,6 +17,7 @@ const Progress: FC<ProgressProps> = ({
   label,
   value,
   valueLabel,
+  formatOptions,
   ...props
 }) => {
   const progressProps = useProgressProps(props)
@@ -25,6 +26,7 @@ const Progress: FC<ProgressProps> = ({
     minValue,
     maxValue,
     isIndeterminate,
+    formatOptions,
     value,
   )
 

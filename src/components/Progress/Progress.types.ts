@@ -1,6 +1,11 @@
 import { ReactNode } from 'react'
 import { ColorName, RadiusName, SizeName } from '../../types'
 
+export type FormatOptions = {
+  locale: string
+  options?: Intl.NumberFormatOptions
+}
+
 export interface ProgressProps {
   label?: ReactNode
   size?: Extract<SizeName, 'sm' | 'md' | 'lg'>
@@ -10,7 +15,7 @@ export interface ProgressProps {
   valueLabel?: ReactNode
   minValue?: number
   maxValue?: number
-  // formatOptions?:
+  formatOptions?: FormatOptions
   isIndeterminate?: boolean
   isStriped?: boolean
   showValueLabel?: boolean

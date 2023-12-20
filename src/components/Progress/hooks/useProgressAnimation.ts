@@ -5,16 +5,24 @@ import {
   withSequence,
   withTiming,
 } from 'react-native-reanimated'
+import { FormatOptions } from '../Progress.types'
 
 export const useProgressAnimation = (
   minValue: number,
   maxValue: number,
   isIndeterminate: boolean,
+  formatOptions?: FormatOptions,
   value: number = 0,
 ) => {
   const range = maxValue - minValue
   const progress = useDerivedValue(() => {
-    return `${((value - minValue) * 100) / range}%`
+    if (
+      formatOptions?.options?.style === 'percent' ||
+      !formatOptions?.options?.style
+    ) {
+      return `${((value - minValue) * 100) / range}%`
+    }
+    return value.toLocaleString(formatOptions?.locale, formatOptions?.options)
   })
 
   const animatedProgressStyle = useAnimatedStyle(() => {
@@ -30,8 +38,10 @@ export const useProgressAnimation = (
       }
     }
 
+    const left = ((value - minValue) * 100) / range
+
     return {
-      left: withTiming(`${Number(progress.value.split('%')[0]) - 100}%`),
+      left: withTiming(`${left - 100}%`),
     }
   })
 

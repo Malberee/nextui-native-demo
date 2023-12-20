@@ -15,9 +15,9 @@ import {
   // Chip,
   // Code,
   // Divider,
-  // Progress,
-  RadioGroup,
-  Radio,
+  Progress,
+  // RadioGroup,
+  // Radio,
   // Slider,
   // Switch,
   // User,
@@ -35,59 +35,21 @@ const Container = styled(GestureHandlerRootView)(() => {
 })
 
 export default function App() {
-  const styles = {
-    wrapper: {
-      default: css`
-        width: 300px;
-        margin-bottom: 8px;
-        justify-content: space-between;
-        flex-direction: row-reverse;
-        background-color: #18181b;
-        border-radius: 8px;
-      `,
-      active: css`
-        border-color: #17c964;
-        border-width: 2px;
-      `,
-    },
-  }
-
   return (
     <ThemeProvider>
       <Container>
-        <RadioGroup
-          size="lg"
-          color="success"
-          label="Radio group"
-          description="Select radio"
-          // isInvalid
-          errorMessage="error чини давай"
-          styles={{}}
-        >
-          <Radio
-            value="1"
-            label="Radio"
-            description="description"
-            styles={styles}
-          />
-          <Radio
-            value="2"
-            label="Radio"
-            description="description"
-            styles={styles}
-          />
-          <Radio
-            value="3"
-            label="Radio"
-            description="description"
-            styles={styles}
-          />
-        </RadioGroup>
-        <RadioGroup size="lg" color="primary">
-          <Radio value="1" label="Radio" description="description" />
-          <Radio value="2" label="Radio" description="description" />
-          <Radio value="3" label="Radio" description="description" />
-        </RadioGroup>
+        <Progress
+          value={350}
+          minValue={0}
+          maxValue={1000}
+          formatOptions={{
+            locale: 'us',
+            options: {
+              style: 'currency',
+              currency: 'USD',
+            },
+          }}
+        />
       </Container>
     </ThemeProvider>
   )
