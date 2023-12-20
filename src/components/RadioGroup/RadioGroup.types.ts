@@ -1,5 +1,8 @@
 import { ReactNode } from 'react'
 import { RadioProps } from '../Radio/Radio.types'
+import { StylesProp } from '../../types'
+
+export type RadioGroupStyles = StylesProp<'wrapper' | 'label' | 'description'>
 
 export interface RadioGroupProps extends Partial<RadioProps> {
   children: ReactNode | ReactNode[]
@@ -8,6 +11,7 @@ export interface RadioGroupProps extends Partial<RadioProps> {
   defaultValue?: string
   errorMessage?: ReactNode
   value?: string
+  styles?: Partial<RadioGroupStyles>
 
   // events
   onValueChange?: (value: string) => void

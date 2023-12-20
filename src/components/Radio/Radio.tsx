@@ -9,7 +9,7 @@ import {
   RadioDot,
 } from './Radio.styled'
 
-import { RadioProps, Styles } from './Radio.types'
+import { RadioProps, RadioStyles } from './Radio.types'
 import { RadioContext } from './hooks/useRadioContext'
 import { useRadioProps } from './hooks/useRadioProps'
 import { useRadioGroupContext } from '../RadioGroup/hooks/useRadioGroupContext'
@@ -42,7 +42,7 @@ const Radio: FC<RadioProps> = ({ label, description, styles, ...props }) => {
       default: descriptionDefault,
       active: descriptionActive,
     } = {},
-  }: Styles = (styles as Styles) || {}
+  }: RadioStyles = (styles as RadioStyles) || {}
 
   return (
     <RadioContext.Provider value={radioProps}>

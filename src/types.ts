@@ -1,3 +1,5 @@
+import { CSSProp } from 'styled-components'
+
 export type RadiusName = 'none' | 'sm' | 'md' | 'lg' | 'full'
 export type Radii = {
   [key in RadiusName]: number
@@ -40,3 +42,10 @@ export type VariantName =
 export type Variants = {
   [key in VariantName]: string
 }
+
+type StylesObject = {
+  default?: CSSProp
+  active?: CSSProp
+}
+
+export type StylesProp<T extends string> = Record<T, StylesObject>

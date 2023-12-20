@@ -8,9 +8,8 @@ import {
   Asterisk,
 } from './RadioGroup.styled'
 
-import { RadioGroupProps } from './RadioGroup.types'
+import { RadioGroupProps, RadioGroupStyles } from './RadioGroup.types'
 import { RadioGroupContext } from './hooks/useRadioGroupContext'
-import { Styles } from '../Radio/Radio.types'
 
 const RadioGroup: FC<RadioGroupProps> = ({
   children,
@@ -41,7 +40,7 @@ const RadioGroup: FC<RadioGroupProps> = ({
     wrapper: { default: wrapperDefault } = {},
     label: { default: labelDefault } = {},
     description: { default: descriptionDefault } = {},
-  }: Styles = (styles as Styles) || {}
+  }: RadioGroupStyles = (styles as RadioGroupStyles) || {}
 
   return (
     <RadioGroupContext.Provider
