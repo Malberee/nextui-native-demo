@@ -1,10 +1,5 @@
 import { ReactNode } from 'react'
-import { ColorName, RadiusName, SizeName } from '../../types'
-
-export type FormatOptions = {
-  locale: string
-  options?: Intl.NumberFormatOptions
-}
+import { ColorName, FormatOptions, RadiusName, SizeName } from '../../types'
 
 export interface ProgressProps {
   label?: ReactNode
@@ -25,17 +20,8 @@ export interface ProgressProps {
 
 export interface ProgressContextProps
   extends Required<
-    Pick<
+    Omit<
       ProgressProps,
-      | 'size'
-      | 'color'
-      | 'radius'
-      | 'isDisabled'
-      | 'value'
-      | 'minValue'
-      | 'maxValue'
-      | 'showValueLabel'
-      | 'isIndeterminate'
-      | 'isStriped'
+      'valueLabel' | 'formatOptions' | 'disableAnimation' | 'label'
     >
   > {}

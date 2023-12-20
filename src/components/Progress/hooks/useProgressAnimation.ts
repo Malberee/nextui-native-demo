@@ -5,7 +5,7 @@ import {
   withSequence,
   withTiming,
 } from 'react-native-reanimated'
-import { FormatOptions } from '../Progress.types'
+import { FormatOptions } from '../../../types'
 
 export const useProgressAnimation = (
   minValue: number,

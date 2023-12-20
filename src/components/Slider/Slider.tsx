@@ -27,6 +27,7 @@ const Slider: FC<SliderProps> = ({
   startContent,
   endContent,
   marks,
+  formatOptions,
   onValueChange,
   onValueChangeEnd,
   ...props
@@ -71,12 +72,24 @@ const Slider: FC<SliderProps> = ({
     }
   }
 
+  const getFormattedValue = () => {
+    const range = maxValue - minValue
+
+    if (formatOptions?.options?.style === 'percent') {
+      return `${((sliderValue - minValue) * 100) / range}%`
+    }
+    return sliderValue.toLocaleString(
+      formatOptions?.locale,
+      formatOptions?.options,
+    )
+  }
+
   return (
     <SliderContext.Provider value={sliderProps}>
       <SliderWrapper>
         <SliderContent>
           <SliderLabel>{label}</SliderLabel>
-          <SliderValue>{sliderValue}</SliderValue>
+          <SliderValue>{getFormattedValue()}</SliderValue>
         </SliderContent>
         <SliderInner>
           {startContent &&

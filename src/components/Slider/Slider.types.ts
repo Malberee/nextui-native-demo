@@ -1,5 +1,5 @@
 import { ReactNode } from 'react'
-import { ColorName, RadiusName, SizeName } from '../../types'
+import { ColorName, FormatOptions, RadiusName, SizeName } from '../../types'
 
 export type SliderStepMarks = {
   value: number
@@ -24,9 +24,7 @@ export interface SliderProps {
   marks?: SliderStepMarks
   startContent?: ReactNode
   endContent?: ReactNode
-  //   formatOptions?:
-  // tooltipValueFormatOptions?:
-  //   tooltipProps?:
+  formatOptions?: FormatOptions
   showOutline?: boolean
   hideValue?: boolean
   hideThumb?: boolean

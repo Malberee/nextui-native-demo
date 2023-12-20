@@ -7,6 +7,7 @@ import {
   withTiming,
 } from 'react-native-reanimated'
 import { clamp } from '../utils'
+import { FormatOptions } from '../../../types'
 
 export const useSliderAnimation = (
   defaultValue: number,

@@ -49,3 +49,8 @@ type StylesObject = {
 }
 
 export type StylesProp<T extends string> = Record<T, StylesObject>
+
+export type FormatOptions = {
+  locale: string
+  options?: Intl.NumberFormatOptions
+}

@@ -18,7 +18,7 @@ import {
   Progress,
   // RadioGroup,
   // Radio,
-  // Slider,
+  Slider,
   // Switch,
   // User,
 } from './src'
@@ -42,11 +42,21 @@ export default function App() {
           value={350}
           minValue={0}
           maxValue={1000}
+          label="🐷 Piggy bank"
           formatOptions={{
-            locale: 'us',
+            locale: 'ua',
             options: {
               style: 'currency',
-              currency: 'USD',
+              currency: 'UAH',
+            },
+          }}
+        />
+        <Slider
+          formatOptions={{
+            locale: 'ua',
+            options: {
+              style: 'currency',
+              currency: 'UAH',
             },
           }}
         />
