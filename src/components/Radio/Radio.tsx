@@ -9,12 +9,13 @@ import {
   RadioDot,
 } from './Radio.styled'
 
-import { RadioProps, RadioStyles } from './Radio.types'
+import { RadioProps } from './Radio.types'
 import { RadioContext } from './hooks/useRadioContext'
 import { useRadioProps } from './hooks/useRadioProps'
 import { useRadioGroupContext } from '../RadioGroup/hooks/useRadioGroupContext'
 import { useRadioAnimation } from './hooks/useRadioAnimation'
 import { GestureDetector } from 'react-native-gesture-handler'
+import useCustomStyles from './hooks/useCustomStyles'
 
 const Radio: FC<RadioProps> = ({ label, description, styles, ...props }) => {
   const radioProps = useRadioProps(props)
@@ -27,6 +28,8 @@ const Radio: FC<RadioProps> = ({ label, description, styles, ...props }) => {
     isInvalid,
     isDisabled,
   )
+  const { wrapperStyles, contentStyles, labelStyles, descriptionStyles } =
+    useCustomStyles(isSelected, styles)
 
   const handlePress = () => {
     if (!isDisabled) {
@@ -34,46 +37,18 @@ const Radio: FC<RadioProps> = ({ label, description, styles, ...props }) => {
     }
   }
 
-  const {
-    wrapper: { default: wrapperDefault, active: wrapperActive } = {},
-    content: { default: contentDefault, active: contentActive } = {},
-    label: { default: labelDefault, active: labelActive } = {},
-    description: {
-      default: descriptionDefault,
-      active: descriptionActive,
-    } = {},
-  }: RadioStyles = (styles as RadioStyles) || {}
-
   return (
     <RadioContext.Provider value={radioProps}>
       <GestureDetector gesture={pan}>
         <Pressable onPress={handlePress}>
-          <RadioWrapper
-            css={`
-              ${wrapperDefault} ${isSelected && wrapperActive}
-            `}
-          >
+          <RadioWrapper css={wrapperStyles}>
             <RadioOutline style={radioOutlineStyle}>
               <RadioDot style={radioDotStyle} />
             </RadioOutline>
-            <RadioContent
-              css={`
-                ${contentDefault} ${isSelected && contentActive}
-              `}
-            >
-              <RadioLabel
-                css={`
-                  ${labelDefault} ${isSelected && labelActive}
-                `}
-              >
-                {label}
-              </RadioLabel>
+            <RadioContent css={contentStyles}>
+              <RadioLabel css={labelStyles}>{label}</RadioLabel>
               {description && (
-                <RadioDescription
-                  css={`
-                    ${descriptionDefault} ${isSelected && descriptionActive}
-                  `}
-                >
+                <RadioDescription css={descriptionStyles}>
                   {description}
                 </RadioDescription>
               )}

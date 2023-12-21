@@ -15,10 +15,10 @@ import {
   // Chip,
   // Code,
   // Divider,
-  Progress,
-  // RadioGroup,
-  // Radio,
-  Slider,
+  // Progress,
+  RadioGroup,
+  Radio,
+  // Slider,
   // Switch,
   // User,
 } from './src'
@@ -35,31 +35,26 @@ const Container = styled(GestureHandlerRootView)(() => {
 })
 
 export default function App() {
+  const styles = {
+    wrapper: {
+      default: css`
+        background-color: #ccc;
+      `,
+      active: css`
+        background-color: #fff;
+      `,
+    },
+  }
+
   return (
     <ThemeProvider>
       <Container>
-        <Progress
-          value={350}
-          minValue={0}
-          maxValue={1000}
-          label="🐷 Piggy bank"
-          formatOptions={{
-            locale: 'ua',
-            options: {
-              style: 'currency',
-              currency: 'UAH',
-            },
-          }}
-        />
-        <Slider
-          formatOptions={{
-            locale: 'ua',
-            options: {
-              style: 'currency',
-              currency: 'UAH',
-            },
-          }}
-        />
+        <RadioGroup>
+          <Radio value="1" label="Radio" styles={styles} />
+          <Radio value="2" label="Radio" styles={styles} />
+          <Radio value="3" label="Radio" styles={styles} />
+          <Radio value="4" label="Radio" styles={styles} />
+        </RadioGroup>
       </Container>
     </ThemeProvider>
   )
