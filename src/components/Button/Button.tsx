@@ -27,7 +27,7 @@ const Button: FC<ButtonProps> = ({
   const { isIconOnly, isDisabled, variant, color, ...buttonProps } =
     useButtonProps(props)
   const { gestureHandler, ref, animatedButtonStyle, animatedRippleStyle } =
-    useButtonAnimation()
+    useButtonAnimation(onPress, onPressIn, onPressOut)
   const { colors } = useColors()
 
   return (
@@ -39,6 +39,7 @@ const Button: FC<ButtonProps> = ({
           style={[
             { ...animatedButtonStyle, ...getShadow(variant, colors, color) },
           ]}
+          onPress={onPress}
           // @ts-ignore
           ref={ref}
           collapsable={false}

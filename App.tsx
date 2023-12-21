@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled, { css } from 'styled-components/native'
 import type {} from 'styled-components/cssprop'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
@@ -11,14 +11,14 @@ import {
   // Avatar,
   // Badge,
   // ButtonGroup,
-  // Button,
+  Button,
   // Chip,
   // Code,
   // Divider,
   // Progress,
-  RadioGroup,
-  Radio,
-  // Slider,
+  // RadioGroup,
+  // Radio,
+  Slider,
   // Switch,
   // User,
 } from './src'
@@ -35,26 +35,22 @@ const Container = styled(GestureHandlerRootView)(() => {
 })
 
 export default function App() {
-  const styles = {
-    wrapper: {
-      default: css`
-        background-color: #ccc;
-      `,
-      active: css`
-        background-color: #fff;
-      `,
-    },
-  }
+  const [value, setValue] = useState(0)
+
+  useEffect(() => {
+    console.log(value)
+  }, [value])
 
   return (
     <ThemeProvider>
       <Container>
-        <RadioGroup>
-          <Radio value="1" label="Radio" styles={styles} />
-          <Radio value="2" label="Radio" styles={styles} />
-          <Radio value="3" label="Radio" styles={styles} />
-          <Radio value="4" label="Radio" styles={styles} />
-        </RadioGroup>
+        <Slider
+          label="Slider"
+          maxValue={10}
+          onValueChange={(newValue: number) => setValue(newValue)}
+          value={5}
+        />
+        <Button onPressOut={() => setValue(10)}>set 10</Button>
       </Container>
     </ThemeProvider>
   )

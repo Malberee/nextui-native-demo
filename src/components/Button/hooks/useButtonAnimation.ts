@@ -1,14 +1,20 @@
 import { View } from 'react-native'
 import {
   measure,
+  runOnJS,
   useAnimatedGestureHandler,
   useAnimatedRef,
   useAnimatedStyle,
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated'
+import { OnPressType } from '../Button.types'
 
-export const useButtonAnimation = () => {
+export const useButtonAnimation = (
+  onPress?: OnPressType,
+  onPressIn?: OnPressType,
+  onPressOut?: OnPressType,
+) => {
   const buttonScale = useSharedValue(1)
   const rippleScale = useSharedValue(0)
   const rippleOpacity = useSharedValue(1)
@@ -20,10 +26,17 @@ export const useButtonAnimation = () => {
   const height = useSharedValue(0)
 
   const gestureHandler = useAnimatedGestureHandler({
-    onStart: () => {
+    onStart: (event: any) => {
       buttonScale.value = 0.98
+
+      if (onPress) {
+        runOnJS(onPress)(event)
+      }
+      if (onPressIn) {
+        runOnJS(onPressIn)(event)
+      }
     },
-    onFinish: (event) => {
+    onFinish: (event: any) => {
       const layout = measure(ref)
       width.value = layout.width
       height.value = layout.height
@@ -37,6 +50,10 @@ export const useButtonAnimation = () => {
 
       centerX.value = event.x
       centerY.value = event.y
+
+      if (onPressOut) {
+        runOnJS(onPressOut)(event)
+      }
     },
   })
 
