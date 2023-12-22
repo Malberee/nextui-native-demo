@@ -1,14 +1,17 @@
 import React, { FC } from 'react'
-import { Text } from 'react-native'
 import { AccordionWrapper } from './Accordion.styled'
 
 import { AccordionProps } from './Accordion.types'
+import { AccordionContext } from './hooks/useContext'
+import useProps from './hooks/useProps'
 
-const Accordion: FC<AccordionProps> = () => {
+const Accordion: FC<AccordionProps> = ({ children, ...props }) => {
+  const accordionProps = useProps(props)
+
   return (
-    <AccordionWrapper>
-      <Text>Accordion Component</Text>
-    </AccordionWrapper>
+    <AccordionContext.Provider value={accordionProps}>
+      <AccordionWrapper>{children}</AccordionWrapper>
+    </AccordionContext.Provider>
   )
 }
 

@@ -25,3 +25,6 @@ export interface AccordionProps {
   // events
   onSelectionChange?: (keys: 'all' | Set<Key>) => any
 }
+
+export interface AccordionContextProps
+  extends Pick<AccordionProps, 'isCompact' | 'isDisabled' | 'hideIndicator'> {}
