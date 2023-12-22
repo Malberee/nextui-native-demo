@@ -32,19 +32,6 @@ export const useSliderAnimation = (
     return value / step
   })
 
-  const handleButton = (action: 'increment' | 'decrement') => {
-    const value = Number(sliderValue.value)
-
-    translateX.value = sliderPosition.value
-
-    if (action === 'decrement' && value > minValue) {
-      sliderValue.value = String(value - step)
-    }
-    if (action === 'increment' && value < maxValue) {
-      sliderValue.value = String(value + step)
-    }
-  }
-
   type AnimatedGHContext = {
     offsetX: number
   }
@@ -102,7 +89,6 @@ export const useSliderAnimation = (
 
   return {
     gestureHandler,
-    handleButton,
     styles: {
       animatedProgressStyle,
       animatedTouchableThumbZoneStyle,
