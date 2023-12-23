@@ -1,13 +1,17 @@
 import React, { FC } from 'react'
 import { Text } from 'react-native'
-import { AccordionItemWrapper } from './AccordionItem.styled'
+import {
+  AccordionItemWrapper,
+  AccordionItemHeader,
+} from './AccordionItem.styled'
 
 import { AccordionItemProps } from './AccordionItem.types'
 
-const AccordionItem: FC<AccordionItemProps> = () => {
+const AccordionItem: FC<AccordionItemProps> = ({ children, ...props }) => {
   return (
     <AccordionItemWrapper>
-      <Text>AccordionItem Component</Text>
+      <AccordionItemHeader></AccordionItemHeader>
+      <Text>{children}</Text>
     </AccordionItemWrapper>
   )
 }

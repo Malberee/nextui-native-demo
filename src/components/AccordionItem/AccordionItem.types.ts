@@ -15,3 +15,6 @@ export interface AccordionItemProps {
   // events
   // onPress:
 }
+
+export interface AccordionItemContextProps
+  extends Pick<AccordionItemProps, 'isCompact' | 'isDisabled'> {}
