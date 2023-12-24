@@ -17,7 +17,7 @@ export const AccordionItemHeader = styled.View(() => {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 0 ${isCompact ? 8 : 16}px;
+    padding: ${isCompact ? 8 : 16}px 0;
   `
 })
 

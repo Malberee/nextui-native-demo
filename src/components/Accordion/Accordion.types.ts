@@ -3,7 +3,7 @@ import { DividerProps } from '../Divider/Divider.types'
 
 type Variants = 'light' | 'shadow' | 'bordered' | 'splitted'
 
-type SelectionMode = 'none' | 'multiple' | 'single'
+type SelectionMode = 'multiple' | 'single'
 
 export interface AccordionProps {
   children: ReactNode | ReactNode[]
