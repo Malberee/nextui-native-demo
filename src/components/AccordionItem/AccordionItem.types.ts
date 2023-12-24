@@ -1,4 +1,4 @@
-import { ReactNode } from 'react'
+import { Key, ReactNode } from 'react'
 
 export interface AccordionItemProps {
   children: ReactNode | string
@@ -11,6 +11,7 @@ export interface AccordionItemProps {
   //   keepContentMounted?: boolean
   hideIndicator?: boolean
   disableIndicatorAnimation?: boolean
+  index?: Key
 
   // events
   // onPress:

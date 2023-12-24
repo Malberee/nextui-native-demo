@@ -40,7 +40,7 @@ export default function App() {
   return (
     <ThemeProvider>
       <Container>
-        <Accordion isCompact selectionMode="single">
+        <Accordion>
           <AccordionItem title="Accordion" subtitle="Press to expand">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. A minus
             nobis doloribus iusto inventore impedit odit officiis perspiciatis

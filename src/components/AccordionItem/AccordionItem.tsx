@@ -16,18 +16,18 @@ import useColors from '../ThemeProvider/hooks/useColors'
 import useAccordionItemAnimation from './hooks/useAccordionItemAnimation'
 import { useAccordionItemProps } from './hooks/useProps'
 import { AccordionItemContext } from './hooks/useContext'
+import { useAccordionContext } from '../Accordion/hooks/useContext'
 
 const AccordionItem: FC<AccordionItemProps> = ({
   children,
   title,
   subtitle,
-  isOpen,
-  toggleAccordionItem,
-  index,
+  index = 0,
   ...props
 }) => {
   const accordionItemProps = useAccordionItemProps(props)
   const { colors } = useColors()
+  const { selectedKeys, toggleAccordionItem } = useAccordionContext()
 
   const content = () => {
     if (typeof children === 'string') {
@@ -36,7 +36,9 @@ const AccordionItem: FC<AccordionItemProps> = ({
     return children
   }
 
-  const { animatedIndicatorStyles } = useAccordionItemAnimation(isOpen)
+  const { animatedIndicatorStyles } = useAccordionItemAnimation(
+    selectedKeys?.includes(index as string) || selectedKeys === 'all',
+  )
 
   return (
     <AccordionItemContext.Provider value={accordionItemProps}>

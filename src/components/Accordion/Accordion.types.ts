@@ -27,4 +27,7 @@ export interface AccordionProps {
 }
 
 export interface AccordionContextProps
-  extends Pick<AccordionProps, 'isCompact' | 'isDisabled' | 'hideIndicator'> {}
+  extends Pick<AccordionProps, 'isCompact' | 'isDisabled' | 'hideIndicator'> {
+  selectedKeys: 'all' | Key[]
+  toggleAccordionItem: (key: Key) => void
+}

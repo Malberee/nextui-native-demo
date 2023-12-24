@@ -14,7 +14,7 @@ const Accordion: FC<AccordionProps> = ({
   selectionMode,
   ...props
 }) => {
-  const [selectedKeys, setSelectedKeys] = useState<'all' | Keys[]>(
+  const [selectedKeys, setSelectedKeys] = useState<'all' | Key[]>(
     selectKeys || defaultSelectedKeys || [],
   )
   const { showDivider, ...accordionProps } = useProps(props)
@@ -22,6 +22,10 @@ const Accordion: FC<AccordionProps> = ({
   useEffect(() => {
     setSelectedKeys(selectKeys || defaultSelectedKeys || [])
   }, [selectKeys, defaultSelectedKeys])
+
+  useEffect(() => {
+    console.log(selectedKeys)
+  }, [selectedKeys])
 
   const toggleAccordionItem = (key: Key) => {
     if (selectionMode === 'single') {
@@ -42,8 +46,6 @@ const Accordion: FC<AccordionProps> = ({
     return (
       <React.Fragment key={index}>
         {React.cloneElement(child as React.ReactElement, {
-          isOpen: selectedKeys?.includes(index) || selectedKeys === 'all',
-          toggleAccordionItem,
           index,
         })}
         {index < React.Children.count(children) - 1 && showDivider && (
@@ -54,7 +56,9 @@ const Accordion: FC<AccordionProps> = ({
   })
 
   return (
-    <AccordionContext.Provider value={accordionProps}>
+    <AccordionContext.Provider
+      value={{ selectedKeys, toggleAccordionItem, ...accordionProps }}
+    >
       <AccordionWrapper>{AccordionsItems}</AccordionWrapper>
     </AccordionContext.Provider>
   )
