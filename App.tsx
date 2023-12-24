@@ -18,9 +18,11 @@ import {
   // Progress,
   // RadioGroup,
   // Radio,
-  Slider,
+  // Slider,
   // Switch,
   // User,
+  Accordion,
+  AccordionItem,
 } from './src'
 
 const Container = styled(GestureHandlerRootView)(() => {
@@ -35,22 +37,29 @@ const Container = styled(GestureHandlerRootView)(() => {
 })
 
 export default function App() {
-  const [value, setValue] = useState(0)
-
-  useEffect(() => {
-    console.log(value)
-  }, [value])
-
   return (
     <ThemeProvider>
       <Container>
-        <Slider
-          label="Slider"
-          maxValue={10}
-          onValueChange={(newValue: number) => setValue(newValue)}
-          value={5}
-        />
-        <Button onPressOut={() => setValue(10)}>set 10</Button>
+        <Accordion>
+          <AccordionItem title="Accordion" subtitle="Press to expand">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. A minus
+            nobis doloribus iusto inventore impedit odit officiis perspiciatis
+            eveniet eos dolorem molestias et, minima quidem natus vel quas,
+            consequuntur aut!
+          </AccordionItem>
+          <AccordionItem title="Accordion" subtitle="Press to expand">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. A minus
+            nobis doloribus iusto inventore impedit odit officiis perspiciatis
+            eveniet eos dolorem molestias et, minima quidem natus vel quas,
+            consequuntur aut!
+          </AccordionItem>
+          <AccordionItem title="Accordion" subtitle="Press to expand">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. A minus
+            nobis doloribus iusto inventore impedit odit officiis perspiciatis
+            eveniet eos dolorem molestias et, minima quidem natus vel quas,
+            consequuntur aut!
+          </AccordionItem>
+        </Accordion>
       </Container>
     </ThemeProvider>
   )
