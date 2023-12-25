@@ -2,7 +2,7 @@ import React from 'react'
 import styled, { css } from 'styled-components/native'
 import type {} from 'styled-components/cssprop'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
-import { Archive } from 'nextui-native-icons'
+import { Cake } from 'nextui-native-icons'
 
 import useColors from './src/components/ThemeProvider/hooks/useColors'
 
@@ -25,6 +25,7 @@ import {
   Accordion,
   AccordionItem,
 } from './src'
+import { Text } from 'react-native'
 
 const Container = styled(GestureHandlerRootView)(() => {
   const { colors } = useColors()
@@ -46,7 +47,7 @@ export default function App() {
             title="Accordion"
             subtitle="Press to expand"
             // hideIndicator
-            indicator={<Archive color="white" width={20} height={20} />}
+            indicator={<Cake color="white" width={20} height={20} />}
             startContent={
               <Avatar
                 color="success"
@@ -58,22 +59,28 @@ export default function App() {
               />
             }
           >
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. A minus
-            nobis doloribus iusto inventore impedit odit officiis perspiciatis
-            eveniet eos dolorem molestias et, minima quidem natus vel quas,
-            consequuntur aut!
+            <Text>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. A minus
+              nobis doloribus iusto inventore impedit odit officiis perspiciatis
+              eveniet eos dolorem molestias et, minima quidem natus vel quas,
+              consequuntur aut!
+            </Text>
           </AccordionItem>
           <AccordionItem title="Accordion" subtitle="Press to expand">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. A minus
-            nobis doloribus iusto inventore impedit odit officiis perspiciatis
-            eveniet eos dolorem molestias et, minima quidem natus vel quas,
-            consequuntur aut!
+            <Text>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. A minus
+              nobis doloribus iusto inventore impedit odit officiis perspiciatis
+              eveniet eos dolorem molestias et, minima quidem natus vel quas,
+              consequuntur aut!
+            </Text>
           </AccordionItem>
           <AccordionItem title="Accordion" subtitle="Press to expand">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. A minus
-            nobis doloribus iusto inventore impedit odit officiis perspiciatis
-            eveniet eos dolorem molestias et, minima quidem natus vel quas,
-            consequuntur aut!
+            <Text>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. A minus
+              nobis doloribus iusto inventore impedit odit officiis perspiciatis
+              eveniet eos dolorem molestias et, minima quidem natus vel quas,
+              consequuntur aut!
+            </Text>
           </AccordionItem>
         </Accordion>
       </Container>

@@ -5,7 +5,9 @@ import useColors from '../ThemeProvider/hooks/useColors'
 import Animated from 'react-native-reanimated'
 
 export const AccordionItemWrapper = styled.View(() => {
-  return css``
+  return css`
+    overflow: hidden;
+  `
 })
 
 export const AccordionItemHeader = styled.View(() => {
@@ -25,6 +27,7 @@ export const HeaderInner = styled.View(() => {
     display: flex;
     flex-direction: row;
     gap: 12px;
+    margin-left: 4px;
   `
 })
 
@@ -48,11 +51,11 @@ export const Indicator = styled(Animated.View)(() => {
   return css``
 })
 
-export const Content = styled.Text(() => {
+export const ContentWrapper = styled(Animated.Text)(() => {
   const { colors } = useColors()
 
   return css`
-    /* position: absolute; */
+    position: absolute;
     color: ${colors.foreground};
   `
 })
