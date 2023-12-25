@@ -18,8 +18,6 @@ const useAccordionItemAnimation = (isOpen: boolean) => {
     'worklet'
 
     height.value = !height.value ? Number(measure(animatedRef).height ?? 0) : 0
-
-    console.log(!height.value ? Number(measure(animatedRef).height ?? 0) : 0)
   }
 
   const animatedIndicatorStyles = useAnimatedStyle(() => ({

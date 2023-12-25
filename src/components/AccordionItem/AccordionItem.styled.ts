@@ -3,6 +3,7 @@ import styled from 'styled-components/native'
 import { useAccordionItemContext } from './hooks/useContext'
 import useColors from '../ThemeProvider/hooks/useColors'
 import Animated from 'react-native-reanimated'
+import { Text } from 'react-native'
 
 export const AccordionItemWrapper = styled.View(() => {
   return css`
@@ -51,7 +52,7 @@ export const Indicator = styled(Animated.View)(() => {
   return css``
 })
 
-export const ContentWrapper = styled(Animated.Text)(() => {
+export const ContentWrapper = styled(Text)(() => {
   const { colors } = useColors()
 
   return css`

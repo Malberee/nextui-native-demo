@@ -81,10 +81,7 @@ const AccordionItem: FC<AccordionItemProps> = ({
         </Pressable>
 
         <Animated.View style={animatedContentStyles}>
-          {/* // @ts-ignore */}
-          <ContentWrapper ref={animatedRef} collapsable={false}>
-            {children}
-          </ContentWrapper>
+          <ContentWrapper ref={animatedRef}>{children}</ContentWrapper>
         </Animated.View>
       </AccordionItemWrapper>
     </AccordionItemContext.Provider>
