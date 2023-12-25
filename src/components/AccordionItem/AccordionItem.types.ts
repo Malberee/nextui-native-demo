@@ -18,4 +18,7 @@ export interface AccordionItemProps {
 }
 
 export interface AccordionItemContextProps
-  extends Pick<AccordionItemProps, 'isCompact' | 'isDisabled'> {}
+  extends Pick<
+    AccordionItemProps,
+    'isCompact' | 'isDisabled' | 'disableIndicatorAnimation' | 'hideIndicator'
+  > {}

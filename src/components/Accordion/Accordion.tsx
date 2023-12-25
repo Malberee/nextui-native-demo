@@ -5,6 +5,7 @@ import { AccordionProps } from './Accordion.types'
 import { AccordionContext } from './hooks/useContext'
 import useProps from './hooks/useProps'
 import Divider from '../Divider'
+import { css } from 'styled-components/native'
 
 const Accordion: FC<AccordionProps> = ({
   children,
@@ -45,7 +46,11 @@ const Accordion: FC<AccordionProps> = ({
           index,
         })}
         {index < React.Children.count(children) - 1 && showDivider && (
-          <Divider />
+          <Divider
+            styles={css`
+              margin: 0;
+            `}
+          />
         )}
       </React.Fragment>
     )

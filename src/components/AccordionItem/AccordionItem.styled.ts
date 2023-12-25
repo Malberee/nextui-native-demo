@@ -53,10 +53,12 @@ export const Indicator = styled(Animated.View)(() => {
 })
 
 export const ContentWrapper = styled(Text)(() => {
+  const { isCompact } = useAccordionItemContext()
   const { colors } = useColors()
 
   return css`
     position: absolute;
     color: ${colors.foreground};
+    padding: ${isCompact ? 8 : 16}px 0;
   `
 })

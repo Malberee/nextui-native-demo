@@ -2,7 +2,7 @@ import React from 'react'
 import styled, { css } from 'styled-components/native'
 import type {} from 'styled-components/cssprop'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
-import { Cake } from 'nextui-native-icons'
+import { Crown } from 'nextui-native-icons'
 
 import useColors from './src/components/ThemeProvider/hooks/useColors'
 
@@ -20,7 +20,7 @@ import {
   // RadioGroup,
   // Radio,
   // Slider,
-  // Switch,
+  Switch,
   // User,
   Accordion,
   AccordionItem,
@@ -42,12 +42,13 @@ export default function App() {
   return (
     <ThemeProvider>
       <Container>
-        <Accordion>
+        <Accordion variant="shadow">
           <AccordionItem
             title="Accordion"
             subtitle="Press to expand"
             // hideIndicator
-            indicator={<Cake color="white" width={20} height={20} />}
+            indicator={<Crown color="red" width={20} height={20} />}
+            disableIndicatorAnimation
             startContent={
               <Avatar
                 color="success"
@@ -65,6 +66,7 @@ export default function App() {
               eveniet eos dolorem molestias et, minima quidem natus vel quas,
               consequuntur aut!
             </Text>
+            <Switch />
           </AccordionItem>
           <AccordionItem title="Accordion" subtitle="Press to expand">
             <Text>
