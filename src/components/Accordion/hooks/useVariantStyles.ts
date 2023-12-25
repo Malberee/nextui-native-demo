@@ -6,17 +6,16 @@ const useVariantStyles = (variant: Variant) => {
   const { colors } = useColors()
 
   const styles = {
-    light: css``,
+    light: '',
     shadow: css`
       border-color: ${colors.default200};
       border-width: 1px;
-      // shadow
     `,
     bordered: css`
       border-color: ${colors.default200};
       border-width: 2px;
     `,
-    splitted: css``,
+    splitted: '',
   }
 
   return styles[variant]

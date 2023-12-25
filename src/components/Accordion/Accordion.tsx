@@ -13,7 +13,7 @@ const Accordion: FC<AccordionProps> = ({
   defaultSelectedKeys,
   selectedKeys: selectKeys,
   selectionMode,
-  showDivider,
+  showDivider = true,
   ...props
 }) => {
   const [selectedKeys, setSelectedKeys] = useState<'all' | Key[]>(

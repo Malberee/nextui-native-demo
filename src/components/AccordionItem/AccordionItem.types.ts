@@ -1,4 +1,5 @@
 import { Key, ReactNode } from 'react'
+import { Variant } from '../Accordion/Accordion.types'
 
 export interface AccordionItemProps {
   children: ReactNode | string
@@ -21,4 +22,6 @@ export interface AccordionItemContextProps
   extends Pick<
     AccordionItemProps,
     'isCompact' | 'isDisabled' | 'disableIndicatorAnimation' | 'hideIndicator'
-  > {}
+  > {
+  variant?: Variant
+}
