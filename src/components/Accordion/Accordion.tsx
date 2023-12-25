@@ -23,10 +23,6 @@ const Accordion: FC<AccordionProps> = ({
     setSelectedKeys(selectKeys || defaultSelectedKeys || [])
   }, [selectKeys, defaultSelectedKeys])
 
-  useEffect(() => {
-    console.log(selectedKeys)
-  }, [selectedKeys])
-
   const toggleAccordionItem = (key: Key) => {
     if (selectionMode === 'single') {
       setSelectedKeys([key])

@@ -1,17 +1,18 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import styled, { css } from 'styled-components/native'
 import type {} from 'styled-components/cssprop'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
+import { Archive } from 'nextui-native-icons'
 
 import useColors from './src/components/ThemeProvider/hooks/useColors'
 
 import {
   ThemeProvider,
   // AvatarGroup,
-  // Avatar,
+  Avatar,
   // Badge,
   // ButtonGroup,
-  Button,
+  // Button,
   // Chip,
   // Code,
   // Divider,
@@ -41,7 +42,22 @@ export default function App() {
     <ThemeProvider>
       <Container>
         <Accordion>
-          <AccordionItem title="Accordion" subtitle="Press to expand">
+          <AccordionItem
+            title="Accordion"
+            subtitle="Press to expand"
+            // hideIndicator
+            indicator={<Archive color="white" width={20} height={20} />}
+            startContent={
+              <Avatar
+                color="success"
+                radius="md"
+                isBordered
+                source={{
+                  uri: 'https://i.pravatar.cc/150?u=a042581f4e29026024d',
+                }}
+              />
+            }
+          >
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. A minus
             nobis doloribus iusto inventore impedit odit officiis perspiciatis
             eveniet eos dolorem molestias et, minima quidem natus vel quas,

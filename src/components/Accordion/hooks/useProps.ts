@@ -1,6 +1,6 @@
-import { AccordionProps } from '../Accordion.types'
+import { AccordionContextProps, AccordionProps } from '../Accordion.types'
 
-const defaultProps: Omit<AccordionProps, 'children'> = {
+export const defaultProps: AccordionContextProps = {
   variant: 'light',
   selectionMode: 'single',
   isCompact: false,
@@ -8,6 +8,7 @@ const defaultProps: Omit<AccordionProps, 'children'> = {
   showDivider: true,
   hideIndicator: false,
   fullWidth: true,
+  disableIndicatorAnimation: false,
 }
 
 const useProps = (props: Partial<AccordionProps>) => {

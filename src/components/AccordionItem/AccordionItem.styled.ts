@@ -3,7 +3,6 @@ import styled from 'styled-components/native'
 import { useAccordionItemContext } from './hooks/useContext'
 import useColors from '../ThemeProvider/hooks/useColors'
 import Animated from 'react-native-reanimated'
-import { Pressable } from 'react-native'
 
 export const AccordionItemWrapper = styled.View(() => {
   return css``
@@ -22,7 +21,11 @@ export const AccordionItemHeader = styled.View(() => {
 })
 
 export const HeaderInner = styled.View(() => {
-  return css``
+  return css`
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+  `
 })
 
 export const Title = styled.Text(() => {
@@ -41,9 +44,7 @@ export const Subtitle = styled.Text(() => {
   `
 })
 
-const AnimatedIndicatorWrapper = Animated.createAnimatedComponent(Pressable)
-
-export const Indicator = styled(AnimatedIndicatorWrapper)(() => {
+export const Indicator = styled(Animated.View)(() => {
   return css``
 })
 
@@ -51,6 +52,7 @@ export const Content = styled.Text(() => {
   const { colors } = useColors()
 
   return css`
+    /* position: absolute; */
     color: ${colors.foreground};
   `
 })

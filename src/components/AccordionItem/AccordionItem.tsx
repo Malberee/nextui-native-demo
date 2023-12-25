@@ -1,5 +1,5 @@
-import React, { FC, useState } from 'react'
-import { Pressable, Text } from 'react-native'
+import React, { FC } from 'react'
+import { Pressable, View } from 'react-native'
 import { ArrowLeft1 } from 'nextui-native-icons'
 import {
   AccordionItemWrapper,
@@ -23,11 +23,17 @@ const AccordionItem: FC<AccordionItemProps> = ({
   title,
   subtitle,
   index = 0,
+  startContent,
+  indicator,
   ...props
 }) => {
-  const accordionItemProps = useAccordionItemProps(props)
+  const accordionItemProps = {
+    ...useAccordionContext(),
+    ...useAccordionItemProps(props),
+  }
+  const { hideIndicator, disableIndicatorAnimation } = accordionItemProps
   const { colors } = useColors()
-  const { selectedKeys, toggleAccordionItem } = useAccordionContext()
+  const { selectedKeys, toggleAccordionItem = () => {} } = useAccordionContext()
 
   const content = () => {
     if (typeof children === 'string') {
@@ -46,12 +52,27 @@ const AccordionItem: FC<AccordionItemProps> = ({
         <Pressable onPress={() => toggleAccordionItem(index)}>
           <AccordionItemHeader>
             <HeaderInner>
-              <Title>{title}</Title>
-              <Subtitle>{subtitle}</Subtitle>
+              {startContent}
+              <View>
+                <Title>{title}</Title>
+                <Subtitle>{subtitle}</Subtitle>
+              </View>
             </HeaderInner>
-            <Indicator style={animatedIndicatorStyles}>
-              <ArrowLeft1 width={20} height={20} color={colors.default400} />
-            </Indicator>
+            {!hideIndicator && (
+              <Indicator
+                style={
+                  disableIndicatorAnimation ? null : animatedIndicatorStyles
+                }
+              >
+                {indicator || (
+                  <ArrowLeft1
+                    width={20}
+                    height={20}
+                    color={colors.default400}
+                  />
+                )}
+              </Indicator>
+            )}
           </AccordionItemHeader>
         </Pressable>
         {content()}

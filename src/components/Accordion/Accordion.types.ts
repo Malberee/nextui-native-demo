@@ -16,7 +16,6 @@ export interface AccordionProps {
   DividerProps?: DividerProps
   hideIndicator?: boolean
   disableIndicatorAnimation?: boolean
-  //   keepContentMounted?: boolean // And this
   fullWidth?: boolean
   disabledKeys?: Key[]
   selectedKeys?: 'all' | Key[]
@@ -27,7 +26,17 @@ export interface AccordionProps {
 }
 
 export interface AccordionContextProps
-  extends Pick<AccordionProps, 'isCompact' | 'isDisabled' | 'hideIndicator'> {
-  selectedKeys: 'all' | Key[]
-  toggleAccordionItem: (key: Key) => void
+  extends Pick<
+    AccordionProps,
+    | 'variant'
+    | 'selectionMode'
+    | 'isCompact'
+    | 'isDisabled'
+    | 'hideIndicator'
+    | 'showDivider'
+    | 'fullWidth'
+    | 'disableIndicatorAnimation'
+  > {
+  selectedKeys?: 'all' | Key[]
+  toggleAccordionItem?: (key: Key) => void
 }
