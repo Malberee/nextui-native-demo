@@ -13,12 +13,13 @@ const Accordion: FC<AccordionProps> = ({
   defaultSelectedKeys,
   selectedKeys: selectKeys,
   selectionMode,
+  showDivider,
   ...props
 }) => {
   const [selectedKeys, setSelectedKeys] = useState<'all' | Key[]>(
     selectKeys || defaultSelectedKeys || [],
   )
-  const { showDivider, ...accordionProps } = useProps(props)
+  const accordionProps = useProps(props)
 
   useEffect(() => {
     setSelectedKeys(selectKeys || defaultSelectedKeys || [])

@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from 'react'
+import React, { FC } from 'react'
 import { Pressable, View } from 'react-native'
 import { ArrowLeft1 } from 'nextui-native-icons'
 import {

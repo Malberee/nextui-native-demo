@@ -34,7 +34,6 @@ export interface AccordionContextProps
       | 'isCompact'
       | 'isDisabled'
       | 'hideIndicator'
-      | 'showDivider'
       | 'fullWidth'
       | 'disableIndicatorAnimation'
     >

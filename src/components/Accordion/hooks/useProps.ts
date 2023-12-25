@@ -5,13 +5,12 @@ export const defaultProps: AccordionContextProps = {
   selectionMode: 'single',
   isCompact: false,
   isDisabled: false,
-  showDivider: true,
   hideIndicator: false,
   fullWidth: true,
   disableIndicatorAnimation: false,
 }
 
-const useProps = (props: Partial<AccordionProps>) => {
+const useProps = (props: Partial<AccordionProps>): AccordionContextProps => {
   return { ...defaultProps, ...props }
 }
 
