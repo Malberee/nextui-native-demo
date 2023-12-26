@@ -42,7 +42,10 @@ export default function App() {
   return (
     <ThemeProvider>
       <Container>
-        <Accordion variant="splitted">
+        <Accordion
+          variant="splitted"
+          onSelectionChange={(keys) => console.log(keys)}
+        >
           <AccordionItem
             title="Accordion"
             subtitle="Press to expand"

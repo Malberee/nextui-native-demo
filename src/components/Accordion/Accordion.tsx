@@ -14,6 +14,7 @@ const Accordion: FC<AccordionProps> = ({
   selectedKeys: selectKeys,
   selectionMode,
   showDivider = true,
+  onSelectionChange,
   ...props
 }) => {
   const [selectedKeys, setSelectedKeys] = useState<'all' | Key[]>(
@@ -24,6 +25,12 @@ const Accordion: FC<AccordionProps> = ({
   useEffect(() => {
     setSelectedKeys(selectKeys || defaultSelectedKeys || [])
   }, [selectKeys, defaultSelectedKeys])
+
+  useEffect(() => {
+    if (onSelectionChange) {
+      onSelectionChange(selectedKeys)
+    }
+  }, [selectedKeys, onSelectionChange])
 
   const toggleAccordionItem = (key: Key) => {
     if (selectionMode === 'single') {

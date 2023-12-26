@@ -22,7 +22,7 @@ export interface AccordionProps {
   defaultSelectedKeys?: 'all' | Key[]
 
   // events
-  onSelectionChange?: (keys: 'all' | Set<Key>) => any
+  onSelectionChange?: (keys: 'all' | Key[]) => any
 }
 
 export interface AccordionContextProps
