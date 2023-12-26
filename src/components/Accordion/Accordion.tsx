@@ -40,13 +40,16 @@ const Accordion: FC<AccordionProps> = ({
     }
   }
 
+  const shouldRenderDivider =
+    showDivider && accordionProps.variant !== 'splitted'
+
   const AccordionsItems = React.Children.map(children, (child, index: any) => {
     return (
       <React.Fragment key={index}>
         {React.cloneElement(child as React.ReactElement, {
           index,
         })}
-        {index < React.Children.count(children) - 1 && showDivider && (
+        {index < React.Children.count(children) - 1 && shouldRenderDivider && (
           <Divider
             styles={css`
               margin: 0;

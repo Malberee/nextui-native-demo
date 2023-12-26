@@ -9,7 +9,10 @@ export const AccordionWrapper = styled.View(() => {
   return css`
     width: 100%;
     padding: 0 ${isCompact ? 8 : 16}px;
+    display: flex;
+    gap: ${variant === 'splitted' ? 8 : 0}px;
+    flex-direction: column;
     border-radius: 12px;
-    ${useVariantStyles(variant)}
+    ${variant !== 'splitted' && useVariantStyles(variant)}
   `
 })

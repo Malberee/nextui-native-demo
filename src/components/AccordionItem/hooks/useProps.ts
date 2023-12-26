@@ -2,6 +2,7 @@ import { useAccordionContext } from '../../Accordion/hooks/useContext'
 import { AccordionItemContextProps } from '../AccordionItem.types'
 
 export const defaultProps: Required<AccordionItemContextProps> = {
+  variant: 'light',
   isCompact: false,
   isDisabled: false,
   disableIndicatorAnimation: false,

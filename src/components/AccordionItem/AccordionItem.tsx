@@ -34,11 +34,7 @@ const AccordionItem: FC<AccordionItemProps> = ({
   }
   const { hideIndicator, disableIndicatorAnimation } = accordionItemProps
   const { colors } = useColors()
-  const {
-    variant,
-    selectedKeys,
-    toggleAccordionItem = () => {},
-  } = useAccordionContext()
+  const { selectedKeys, toggleAccordionItem = () => {} } = useAccordionContext()
 
   const isOpen =
     selectedKeys?.includes(index as string) || selectedKeys === 'all'

@@ -3,8 +3,8 @@ import { AccordionItemContextProps } from '../AccordionItem.types'
 import { defaultProps } from './useProps'
 
 export const AccordionItemContext =
-  createContext<AccordionItemContextProps>(defaultProps)
+  createContext<Required<AccordionItemContextProps>>(defaultProps)
 
 export const useAccordionItemContext = () => {
-  return useContext<AccordionItemContextProps>(AccordionItemContext)
+  return useContext<Required<AccordionItemContextProps>>(AccordionItemContext)
 }

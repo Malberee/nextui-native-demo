@@ -42,7 +42,7 @@ export default function App() {
   return (
     <ThemeProvider>
       <Container>
-        <Accordion variant="shadow">
+        <Accordion variant="splitted">
           <AccordionItem
             title="Accordion"
             subtitle="Press to expand"
