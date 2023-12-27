@@ -1,6 +1,6 @@
 import { createContext, useContext } from 'react'
 import { AccordionContextProps } from '../Accordion.types'
-import { defaultProps } from './useProps'
+import { defaultProps } from './useAccordionProps'
 
 export const AccordionContext =
   createContext<AccordionContextProps>(defaultProps)

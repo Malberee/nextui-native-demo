@@ -1,4 +1,4 @@
-import { useAccordionContext } from '../../Accordion/hooks/useContext'
+import { useAccordionContext } from '../../Accordion/hooks/useAccordionContext'
 import { AccordionItemContextProps } from '../AccordionItem.types'
 
 export const defaultProps: Required<AccordionItemContextProps> = {

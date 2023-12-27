@@ -9,7 +9,6 @@ export interface AccordionProps {
   children: ReactNode | ReactNode[]
   variant?: Variant
   selectionMode?: SelectionMode
-  // selectionBehavior?: // Decide what to do with it
   isCompact?: boolean
   isDisabled?: boolean
   showDivider?: boolean

@@ -10,8 +10,10 @@ export const defaultProps: AccordionContextProps = {
   disableIndicatorAnimation: false,
 }
 
-const useProps = (props: Partial<AccordionProps>): AccordionContextProps => {
+const useAccordionProps = (
+  props: Partial<AccordionProps>,
+): AccordionContextProps => {
   return { ...defaultProps, ...props }
 }
 
-export default useProps
+export default useAccordionProps

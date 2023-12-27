@@ -1,7 +1,7 @@
 import { css } from 'styled-components'
 import styled from 'styled-components/native'
-import { useAccordionContext } from './hooks/useContext'
-import useVariantStyles from './hooks/useVariantStyles'
+import { useAccordionContext } from './hooks/useAccordionContext'
+import useAccordionVariantStyles from './hooks/useAccordionVariantStyles'
 
 export const AccordionWrapper = styled.View(() => {
   const { isCompact, variant } = useAccordionContext()
@@ -13,6 +13,6 @@ export const AccordionWrapper = styled.View(() => {
     gap: ${variant === 'splitted' ? 8 : 0}px;
     flex-direction: column;
     border-radius: 12px;
-    ${variant !== 'splitted' && useVariantStyles(variant)}
+    ${variant !== 'splitted' && useAccordionVariantStyles(variant)}
   `
 })

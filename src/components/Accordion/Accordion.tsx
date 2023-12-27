@@ -2,8 +2,8 @@ import React, { FC, Key, useEffect, useState } from 'react'
 import { AccordionWrapper } from './Accordion.styled'
 
 import { AccordionProps } from './Accordion.types'
-import { AccordionContext } from './hooks/useContext'
-import useProps from './hooks/useProps'
+import { AccordionContext } from './hooks/useAccordionContext'
+import useAccordionProps from './hooks/useAccordionProps'
 import Divider from '../Divider'
 import { css } from 'styled-components/native'
 
@@ -20,7 +20,7 @@ const Accordion: FC<AccordionProps> = ({
   const [selectedKeys, setSelectedKeys] = useState<'all' | Key[]>(
     selectKeys || defaultSelectedKeys || [],
   )
-  const accordionProps = useProps(props)
+  const accordionProps = useAccordionProps(props)
 
   useEffect(() => {
     setSelectedKeys(selectKeys || defaultSelectedKeys || [])

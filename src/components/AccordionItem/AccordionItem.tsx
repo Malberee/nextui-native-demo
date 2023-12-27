@@ -14,9 +14,9 @@ import {
 import { AccordionItemProps } from './AccordionItem.types'
 import useColors from '../ThemeProvider/hooks/useColors'
 import useAccordionItemAnimation from './hooks/useAccordionItemAnimation'
-import { useAccordionItemProps } from './hooks/useProps'
-import { AccordionItemContext } from './hooks/useContext'
-import { useAccordionContext } from '../Accordion/hooks/useContext'
+import { useAccordionItemProps } from './hooks/useAccordionItemProps'
+import { AccordionItemContext } from './hooks/useAccordionItemContext'
+import { useAccordionContext } from '../Accordion/hooks/useAccordionContext'
 import Animated, { runOnUI } from 'react-native-reanimated'
 
 const AccordionItem: FC<AccordionItemProps> = ({

@@ -2,7 +2,7 @@ import { css } from 'styled-components'
 import { Variant } from '../Accordion.types'
 import useColors from '../../ThemeProvider/hooks/useColors'
 
-const useVariantStyles = (variant: Variant) => {
+const useAccordionVariantStyles = (variant: Variant) => {
   const { colors } = useColors()
 
   const styles = {
@@ -30,4 +30,4 @@ const useVariantStyles = (variant: Variant) => {
   return styles[variant]
 }
 
-export default useVariantStyles
+export default useAccordionVariantStyles

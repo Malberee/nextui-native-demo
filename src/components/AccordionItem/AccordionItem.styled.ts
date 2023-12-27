@@ -1,17 +1,17 @@
 import { css } from 'styled-components'
 import styled from 'styled-components/native'
-import { useAccordionItemContext } from './hooks/useContext'
+import { useAccordionItemContext } from './hooks/useAccordionItemContext'
 import useColors from '../ThemeProvider/hooks/useColors'
 import Animated from 'react-native-reanimated'
 import { Text } from 'react-native'
-import useVariantStyles from '../Accordion/hooks/useVariantStyles'
+import useAccordionVariantStyles from '../Accordion/hooks/useAccordionVariantStyles'
 
 export const AccordionItemWrapper = styled.View(() => {
   const { variant } = useAccordionItemContext()
 
   return css`
     overflow: hidden;
-    ${variant === 'splitted' && useVariantStyles(variant)}
+    ${variant === 'splitted' && useAccordionVariantStyles(variant)}
   `
 })
 
