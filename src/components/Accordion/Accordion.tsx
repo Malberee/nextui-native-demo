@@ -9,7 +9,6 @@ import { css } from 'styled-components/native'
 
 const Accordion: FC<AccordionProps> = ({
   children,
-  disabledKeys,
   defaultSelectedKeys,
   selectedKeys: selectKeys,
   selectionMode,
@@ -69,7 +68,11 @@ const Accordion: FC<AccordionProps> = ({
 
   return (
     <AccordionContext.Provider
-      value={{ selectedKeys, toggleAccordionItem, ...accordionProps }}
+      value={{
+        selectedKeys,
+        toggleAccordionItem,
+        ...accordionProps,
+      }}
     >
       <AccordionWrapper>{AccordionsItems}</AccordionWrapper>
     </AccordionContext.Provider>

@@ -7,11 +7,12 @@ import { Text } from 'react-native'
 import useAccordionVariantStyles from '../Accordion/hooks/useAccordionVariantStyles'
 
 export const AccordionItemWrapper = styled.View(() => {
-  const { variant } = useAccordionItemContext()
+  const { variant, isDisabled } = useAccordionItemContext()
 
   return css`
     overflow: hidden;
     ${variant === 'splitted' && useAccordionVariantStyles(variant)}
+    opacity: ${isDisabled ? 0.5 : 1};
   `
 })
 

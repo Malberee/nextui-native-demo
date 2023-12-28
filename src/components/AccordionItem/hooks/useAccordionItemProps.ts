@@ -1,3 +1,4 @@
+import { Key } from 'react'
 import { useAccordionContext } from '../../Accordion/hooks/useAccordionContext'
 import { AccordionItemContextProps } from '../AccordionItem.types'
 
@@ -9,8 +10,14 @@ export const defaultProps: Required<AccordionItemContextProps> = {
   hideIndicator: false,
 }
 
-export const useAccordionItemProps = (props: AccordionItemContextProps) => {
+export const useAccordionItemProps = (
+  props: AccordionItemContextProps,
+  index: Key,
+) => {
   const accordionContext = useAccordionContext()
 
-  return { ...defaultProps, ...accordionContext, ...props }
+  const isDisabled =
+    props.isDisabled || accordionContext?.disabledKeys?.includes(index)
+
+  return { ...defaultProps, ...accordionContext, ...props, isDisabled }
 }

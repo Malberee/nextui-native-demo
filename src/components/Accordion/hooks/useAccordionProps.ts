@@ -8,6 +8,7 @@ export const defaultProps: AccordionContextProps = {
   hideIndicator: false,
   fullWidth: true,
   disableIndicatorAnimation: false,
+  disabledKeys: [],
 }
 
 const useAccordionProps = (

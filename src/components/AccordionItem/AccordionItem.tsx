@@ -30,9 +30,11 @@ const AccordionItem: FC<AccordionItemProps> = ({
 }) => {
   const accordionItemProps = {
     ...useAccordionContext(),
-    ...useAccordionItemProps(props),
+    ...useAccordionItemProps(props, index),
   }
-  const { hideIndicator, disableIndicatorAnimation } = accordionItemProps
+  const { hideIndicator, disableIndicatorAnimation, isDisabled } =
+    accordionItemProps
+
   const { colors } = useColors()
   const { selectedKeys, toggleAccordionItem = () => {} } = useAccordionContext()
 
@@ -46,8 +48,10 @@ const AccordionItem: FC<AccordionItemProps> = ({
   } = useAccordionItemAnimation(isOpen)
 
   const handlePress = () => {
-    toggleAccordionItem(index)
-    runOnUI(setHeight)()
+    if (!isDisabled) {
+      toggleAccordionItem(index)
+      runOnUI(setHeight)()
+    }
   }
 
   return (

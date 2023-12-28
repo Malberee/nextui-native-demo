@@ -35,6 +35,7 @@ export interface AccordionContextProps
       | 'hideIndicator'
       | 'fullWidth'
       | 'disableIndicatorAnimation'
+      | 'disabledKeys'
     >
   > {
   selectedKeys?: 'all' | Key[]

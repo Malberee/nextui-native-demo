@@ -45,6 +45,7 @@ export default function App() {
         <Accordion
           variant="splitted"
           onSelectionChange={(keys) => console.log(keys)}
+          disabledKeys={[1, 0]}
         >
           <AccordionItem
             title="Accordion"
@@ -52,6 +53,7 @@ export default function App() {
             // hideIndicator
             indicator={<Crown color="red" width={20} height={20} />}
             disableIndicatorAnimation
+            isDisabled
             startContent={
               <Avatar
                 color="success"
