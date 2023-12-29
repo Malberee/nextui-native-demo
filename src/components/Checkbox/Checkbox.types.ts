@@ -21,3 +21,9 @@ export interface CheckboxProps {
   // events
   onValueChange?: (isSelected: boolean) => void
 }
+
+export interface CheckboxContextProps
+  extends Omit<
+    CheckboxProps,
+    'children' | 'name' | 'value' | 'defaultSelected' | 'onValueChange'
+  > {}
