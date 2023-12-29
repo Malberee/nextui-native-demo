@@ -6,6 +6,7 @@ Many of the components do not have the full functionality of the original NextUI
 Here is a list of some of the components that have already been implemented:
 
 - [x] AvatarGroup, Avatar
+- [x] Accordion
 - [x] Badge
 - [x] ButtonGroup, Button
 - [x] Chip
