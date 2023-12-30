@@ -9,7 +9,7 @@ import useColors from './src/components/ThemeProvider/hooks/useColors'
 import {
   ThemeProvider,
   // AvatarGroup,
-  Avatar,
+  // Avatar,
   // Badge,
   // ButtonGroup,
   // Button,
@@ -20,10 +20,12 @@ import {
   // RadioGroup,
   // Radio,
   // Slider,
-  Switch,
+  // Switch,
   // User,
-  Accordion,
-  AccordionItem,
+  // Accordion,
+  // AccordionItem,
+  CheckboxGroup,
+  Checkbox,
 } from './src'
 import { Text } from 'react-native'
 
@@ -42,54 +44,11 @@ export default function App() {
   return (
     <ThemeProvider>
       <Container>
-        <Accordion
-          variant="splitted"
-          onSelectionChange={(keys) => console.log(keys)}
-          disabledKeys={[1, 0]}
-        >
-          <AccordionItem
-            title="Accordion"
-            subtitle="Press to expand"
-            // hideIndicator
-            indicator={<Crown color="red" width={20} height={20} />}
-            disableIndicatorAnimation
-            isDisabled
-            startContent={
-              <Avatar
-                color="success"
-                radius="md"
-                isBordered
-                source={{
-                  uri: 'https://i.pravatar.cc/150?u=a042581f4e29026024d',
-                }}
-              />
-            }
-          >
-            <Text>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. A minus
-              nobis doloribus iusto inventore impedit odit officiis perspiciatis
-              eveniet eos dolorem molestias et, minima quidem natus vel quas,
-              consequuntur aut!
-            </Text>
-            <Switch />
-          </AccordionItem>
-          <AccordionItem title="Accordion" subtitle="Press to expand">
-            <Text>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. A minus
-              nobis doloribus iusto inventore impedit odit officiis perspiciatis
-              eveniet eos dolorem molestias et, minima quidem natus vel quas,
-              consequuntur aut!
-            </Text>
-          </AccordionItem>
-          <AccordionItem title="Accordion" subtitle="Press to expand">
-            <Text>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. A minus
-              nobis doloribus iusto inventore impedit odit officiis perspiciatis
-              eveniet eos dolorem molestias et, minima quidem natus vel quas,
-              consequuntur aut!
-            </Text>
-          </AccordionItem>
-        </Accordion>
+        <CheckboxGroup>
+          <Checkbox size="md" color="primary" isSelected={true} value="0" >
+            <Text>Checkbox</Text>
+          </Checkbox>
+        </CheckboxGroup>
       </Container>
     </ThemeProvider>
   )

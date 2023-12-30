@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components/native'
 import Animated from 'react-native-reanimated'
 import useColors from '../ThemeProvider/hooks/useColors'
 import { getSize } from '../../utils/getSize'
-import { descriptionFontSizes, labelFontSizes, sizes } from './Radio.contants'
+import { descriptionFontSizes, labelFontSizes, sizes } from './Radio.constants'
 import { useRadioContext } from './hooks/useRadioContext'
 
 export const RadioWrapper = styled.View(() => {

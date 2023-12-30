@@ -4,7 +4,7 @@ import { ColorName, RadiusName, SizeName } from '../../types'
 export interface CheckboxProps {
   children?: ReactNode
   // icon
-  value?: string
+  value: string
   name?: string
   size?: Extract<SizeName, 'sm' | 'md' | 'lg'>
   color?: ColorName

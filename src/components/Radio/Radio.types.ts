@@ -9,7 +9,7 @@ export interface RadioProps {
   label?: ReactNode
   size?: Extract<SizeName, 'sm' | 'md' | 'lg'>
   color?: ColorName
-  value: string
+  value?: string
   description?: ReactNode
   isDisabled?: boolean
   isRequired?: boolean

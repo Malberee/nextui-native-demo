@@ -2,7 +2,7 @@ import { ReactNode } from 'react'
 import { CheckboxProps } from '../Checkbox/Checkbox.types'
 
 export interface CheckboxGroupProps
-  extends Omit<CheckboxProps, 'value' | 'isSelected'> {
+  extends Omit<CheckboxProps, 'value' | 'isSelected' | 'defaultSelected'> {
   children?: ReactNode | ReactNode[]
   orientation?: 'vertical' | 'horizontal'
   value?: string[]
@@ -20,4 +20,5 @@ export interface CheckboxGroupContextProps
     | 'isSelected'
     | 'defaultSelected'
     | 'onValueChange'
-  > {}
+  > {
+}
