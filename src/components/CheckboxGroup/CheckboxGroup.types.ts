@@ -20,5 +20,4 @@ export interface CheckboxGroupContextProps
     | 'isSelected'
     | 'defaultSelected'
     | 'onValueChange'
-  > {
-}
+  > {}

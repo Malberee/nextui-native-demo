@@ -45,7 +45,10 @@ export default function App() {
     <ThemeProvider>
       <Container>
         <CheckboxGroup>
-          <Checkbox size="md" color="primary" isSelected={true} value="0" >
+          <Checkbox size="md" color="primary" value="0">
+            <Text>Checkbox</Text>
+          </Checkbox>
+          <Checkbox size="md" color="primary" value="1">
             <Text>Checkbox</Text>
           </Checkbox>
         </CheckboxGroup>

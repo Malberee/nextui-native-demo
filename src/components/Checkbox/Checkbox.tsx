@@ -5,22 +5,27 @@ import { CheckboxProps } from './Checkbox.types'
 import { Text } from 'react-native-svg'
 import { CheckboxContext } from './hooks/useCheckboxContext'
 import { useCheckboxProps } from './hooks/useCheckboxProps'
+import { Pressable } from 'react-native'
 
 const Checkbox: FC<CheckboxProps> = ({
   children,
-  isSelected,
-  onValueChange,
   value,
+  onValueChange,
   ...props
 }) => {
   const checkboxProps = useCheckboxProps(props)
+  console.log(checkboxProps.isSelected)
 
   return (
     <CheckboxContext.Provider value={checkboxProps}>
-      <CheckboxWrapper>
-        <CheckboxPressable>{isSelected && <Text>√</Text>}</CheckboxPressable>
-        {children}
-      </CheckboxWrapper>
+      <Pressable onPress={() => onValueChange(value)}>
+        <CheckboxWrapper>
+          <CheckboxPressable>
+            {checkboxProps.isSelected && <Text>√</Text>}
+          </CheckboxPressable>
+          {children}
+        </CheckboxWrapper>
+      </Pressable>
     </CheckboxContext.Provider>
   )
 }

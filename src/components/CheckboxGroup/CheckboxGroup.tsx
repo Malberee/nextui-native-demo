@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import {
   CheckboxGroupWrapper,
   Name,
@@ -25,11 +25,33 @@ const CheckboxGroup: FC<CheckboxGroupProps> = ({
   )
   const checkboxGroupProps = useCheckboxGroupProps(props)
 
+  const selectCheckbox = (checkboxValue: string) => {
+    if (!selectedCheckboxes.includes(checkboxValue)) {
+      setSelectedCheckboxes([...selectedCheckboxes, checkboxValue])
+      return
+    }
+    setSelectedCheckboxes(
+      selectedCheckboxes.filter((item) => item !== checkboxValue),
+    )
+  }
+
+  useEffect(() => {
+    console.log(selectedCheckboxes)
+  }, [selectedCheckboxes])
+
   return (
     <CheckboxGroupContext.Provider value={checkboxGroupProps}>
       <Name>{name}</Name>
       <CheckboxGroupWrapper>
-        {React.cloneElement(children as React.ReactElement, { onValueChange })}
+        {children?.map((child, index) =>
+          React.cloneElement(child, {
+            key: index,
+            isSelected:
+              child.props.isSelected ??
+              selectedCheckboxes.includes(child.props.value),
+            onValueChange: child.props.onValueChange ?? selectCheckbox,
+          }),
+        )}
       </CheckboxGroupWrapper>
       <Description>{description}</Description>
       <ErrorMessage>{errorMessage}</ErrorMessage>

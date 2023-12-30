@@ -19,7 +19,7 @@ export interface CheckboxProps {
   isInvalid?: boolean
 
   // events
-  onValueChange?: (isSelected: boolean) => void
+  onValueChange?: (checkboxValue: string) => void
 }
 
 export interface CheckboxContextProps

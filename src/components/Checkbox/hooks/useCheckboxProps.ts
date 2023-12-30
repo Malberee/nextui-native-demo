@@ -16,5 +16,6 @@ export const defaultProps: Required<CheckboxContextProps> = {
 export const useCheckboxProps = (
   props: CheckboxContextProps,
 ): Required<CheckboxContextProps> => {
+
   return { ...defaultProps, ...props }
 }

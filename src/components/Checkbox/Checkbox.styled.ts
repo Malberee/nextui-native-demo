@@ -10,6 +10,7 @@ export const CheckboxWrapper = styled.View(() => {
   return css`
     display: flex;
     flex-direction: row;
+    padding: 8px;
   `
 })
 
@@ -18,8 +19,6 @@ const animatedPressable = Animated.createAnimatedComponent(Pressable)
 export const CheckboxPressable = styled(animatedPressable)(() => {
   const { size, radius, color, isSelected } = useCheckboxContext()
   const { colors } = useColors()
-
-  console.log(sizes[size])
 
   return css`
     width: ${sizes[size] || size}px;
