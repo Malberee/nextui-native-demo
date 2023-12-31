@@ -27,8 +27,16 @@ const CheckboxGroup: FC<CheckboxGroupProps> = ({
 
   const selectCheckbox = (checkboxValue: string) => {
     if (!selectedCheckboxes.includes(checkboxValue)) {
+      if (onValueChange) {
+        onValueChange([...selectedCheckboxes, checkboxValue])
+      }
       setSelectedCheckboxes([...selectedCheckboxes, checkboxValue])
+
       return
+    }
+
+    if (onValueChange) {
+      onValueChange(selectedCheckboxes.filter((item) => item !== checkboxValue))
     }
     setSelectedCheckboxes(
       selectedCheckboxes.filter((item) => item !== checkboxValue),
@@ -36,16 +44,18 @@ const CheckboxGroup: FC<CheckboxGroupProps> = ({
   }
 
   return (
-    <CheckboxGroupContext.Provider value={checkboxGroupProps}>
+    <CheckboxGroupContext.Provider
+      value={{ ...checkboxGroupProps, selectCheckbox }}
+    >
       <Name>{name}</Name>
       <CheckboxGroupWrapper>
         {React.Children.map(children, (child: any, index) =>
           React.cloneElement(child, {
             key: index,
             isSelected:
+              child.props.isIndeterminate ??
               child.props.isSelected ??
               selectedCheckboxes.includes(child.props.value),
-            onValueChange: child.props.onValueChange ?? selectCheckbox,
           }),
         )}
       </CheckboxGroupWrapper>

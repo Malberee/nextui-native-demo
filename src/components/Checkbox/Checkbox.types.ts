@@ -2,7 +2,7 @@ import { ReactNode } from 'react'
 import { ColorName, RadiusName, SizeName } from '../../types'
 
 export interface CheckboxProps {
-  children?: ReactNode
+  label?: ReactNode | string
   // icon
   value: string
   name?: string
@@ -19,7 +19,7 @@ export interface CheckboxProps {
   isInvalid?: boolean
 
   // events
-  onValueChange?: (checkboxValue: string) => void
+  onValueChange?: (isSelected: boolean) => void
 }
 
 export interface CheckboxContextProps

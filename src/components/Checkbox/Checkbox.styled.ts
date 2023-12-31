@@ -6,6 +6,7 @@ import { radii, sizes } from './Checkbox.constants'
 import useColors from '../ThemeProvider/hooks/useColors'
 import { getSize } from '../../utils/getSize'
 import { getRadius } from '../../utils/getRadius'
+import { useTextColor } from '../../hooks/useTextColor'
 
 export const CheckboxWrapper = styled.View(() => {
   return css`
@@ -53,5 +54,23 @@ export const CheckboxFiller = styled(Animated.View)(() => {
 
     background-color: ${colors[color]};
     border-radius: ${getRadius(radii, radius)}px;
+  `
+})
+
+export const Label = styled.Text(() => {
+  const { isSelected, lineThrough } = useCheckboxContext()
+
+  return css`
+    text-decoration: ${isSelected && lineThrough ? 'line-through' : 'none'};
+  `
+})
+
+export const MinusIcon = styled.View(() => {
+  const { color } = useCheckboxContext()
+
+  return css`
+    width: 60%;
+    height: 10%;
+    background-color: ${useTextColor(color)};
   `
 })

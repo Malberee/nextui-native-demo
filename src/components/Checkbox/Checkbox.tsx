@@ -1,8 +1,10 @@
-import React, { FC } from 'react'
+import React, { FC, useEffect } from 'react'
 import {
   CheckboxWrapper,
   CheckboxOutline,
   CheckboxFiller,
+  Label,
+  MinusIcon,
 } from './Checkbox.styled'
 
 import { CheckboxProps } from './Checkbox.types'
@@ -12,23 +14,33 @@ import { Pressable } from 'react-native'
 import useCheckboxAnimation from './hooks/useCheckboxAnimation'
 import { Checkmark } from 'nextui-native-icons'
 import { useTextColor } from '../../hooks/useTextColor'
+import { useCheckboxGroupContext } from '../CheckboxGroup/hooks/useCheckboxGroupContext'
 
 const Checkbox: FC<CheckboxProps> = ({
-  children,
+  label,
   value,
   onValueChange,
   ...props
 }) => {
   const checkboxProps = useCheckboxProps(props)
+  const { isSelected } = checkboxProps
   const { animatedCheckboxStyles } = useCheckboxAnimation(
     checkboxProps.isSelected,
   )
+  const iconColor = useTextColor(checkboxProps.color)
+  const { selectCheckbox } = useCheckboxGroupContext()
 
   const handlePress = () => {
-    if (onValueChange) {
-      onValueChange(value)
+    if (!onValueChange) {
+      selectCheckbox(value)
     }
   }
+
+  useEffect(() => {
+    if (onValueChange) {
+      onValueChange(isSelected)
+    }
+  }, [isSelected, onValueChange])
 
   return (
     <CheckboxContext.Provider value={checkboxProps}>
@@ -36,14 +48,14 @@ const Checkbox: FC<CheckboxProps> = ({
         <CheckboxWrapper>
           <CheckboxOutline>
             <CheckboxFiller style={animatedCheckboxStyles}>
-              <Checkmark
-                color={useTextColor(checkboxProps.color)}
-                width="60%"
-                height="60%"
-              />
+              {checkboxProps.isIndeterminate ? (
+                <MinusIcon />
+              ) : (
+                <Checkmark color={iconColor} width="60%" height="60%" />
+              )}
             </CheckboxFiller>
           </CheckboxOutline>
-          {children}
+          <Label>{label}</Label>
         </CheckboxWrapper>
       </Pressable>
     </CheckboxContext.Provider>

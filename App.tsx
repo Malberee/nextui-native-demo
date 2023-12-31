@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled, { css } from 'styled-components/native'
 import type {} from 'styled-components/cssprop'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
@@ -40,16 +40,30 @@ const Container = styled(GestureHandlerRootView)(() => {
 })
 
 export default function App() {
+  const [items, setItems] = useState<string[]>([])
+
+  const addItem = (value: string[]) => {
+    setItems(value)
+  }
+
+  useEffect(() => {
+    console.log(items)
+  }, [items])
+
   return (
     <ThemeProvider>
       <Container>
-        <CheckboxGroup size="lg" color="warning">
-          <Checkbox size="sm" value="0" radius="full">
-            <Text>Checkbox</Text>
-          </Checkbox>
-          <Checkbox color="danger" value="1">
-            <Text>Checkbox</Text>
-          </Checkbox>
+        <CheckboxGroup
+          size="lg"
+          color="warning"
+          value={items}
+          onValueChange={addItem}
+        >
+          <Checkbox size="sm" value="0" radius="full" label="Checkbox" />
+          <Checkbox color="danger" value="1" label="Checkbox" />
+          <Checkbox color="danger" value="2" label="Checkbox" />
+          <Checkbox color="danger" value="3" label="Checkbox" />
+          <Checkbox color="danger" value="4" label="Checkbox" />
         </CheckboxGroup>
       </Container>
     </ThemeProvider>

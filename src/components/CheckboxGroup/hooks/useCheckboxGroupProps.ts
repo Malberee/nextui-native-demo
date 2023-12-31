@@ -10,10 +10,11 @@ export const defaultProps: Required<CheckboxGroupContextProps> = {
   isRequired: false,
   isInvalid: false,
   isReadOnly: false,
+  selectCheckbox: () => {},
 }
 
 export const useCheckboxGroupProps = (
-  props: CheckboxGroupContextProps,
+  props: Partial<CheckboxGroupContextProps>,
 ): Required<CheckboxGroupContextProps> => {
   return { ...defaultProps, ...props }
 }
