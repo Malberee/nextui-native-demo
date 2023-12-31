@@ -41,6 +41,7 @@ const Container = styled(GestureHandlerRootView)(() => {
 
 export default function App() {
   const [items, setItems] = useState<string[]>([])
+  const [isSelected, setIsSelected] = useState(false)
 
   const addItem = (value: string[]) => {
     setItems(value)
@@ -65,6 +66,14 @@ export default function App() {
           <Checkbox color="danger" value="3" label="Checkbox" />
           <Checkbox color="danger" value="4" label="Checkbox" />
         </CheckboxGroup>
+        <Checkbox
+          color="danger"
+          value="4"
+          label="Checkbox"
+          isSelected={isSelected}
+          onValueChange={(value: boolean) => setIsSelected(value)}
+        />
+        <Text>{items}</Text>
       </Container>
     </ThemeProvider>
   )

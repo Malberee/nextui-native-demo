@@ -31,9 +31,10 @@ const Checkbox: FC<CheckboxProps> = ({
   const { selectCheckbox } = useCheckboxGroupContext()
 
   const handlePress = () => {
-    if (!onValueChange) {
-      selectCheckbox(value)
+    if (onValueChange) {
+      onValueChange(!isSelected)
     }
+    selectCheckbox(value)
   }
 
   useEffect(() => {
