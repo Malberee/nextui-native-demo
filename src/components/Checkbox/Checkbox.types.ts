@@ -6,7 +6,7 @@ export interface CheckboxProps {
   // icon
   value: string
   name?: string
-  size?: Extract<SizeName, 'sm' | 'md' | 'lg'>
+  size?: Extract<SizeName, 'sm' | 'md' | 'lg'> | number
   color?: ColorName
   radius?: RadiusName
   lineThrough?: boolean

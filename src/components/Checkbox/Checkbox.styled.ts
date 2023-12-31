@@ -1,10 +1,10 @@
-import { Pressable } from 'react-native'
 import Animated from 'react-native-reanimated'
 import { css } from 'styled-components'
 import styled from 'styled-components/native'
 import { useCheckboxContext } from './hooks/useCheckboxContext'
 import { radii, sizes } from './Checkbox.constants'
 import useColors from '../ThemeProvider/hooks/useColors'
+import { getSize } from '../../utils/getSize'
 
 export const CheckboxWrapper = styled.View(() => {
   return css`
@@ -19,9 +19,11 @@ export const CheckboxOutline = styled.View(() => {
   const { size, radius } = useCheckboxContext()
   const { colors } = useColors()
 
+  const Size = getSize(sizes, size)
+
   return css`
-    width: ${sizes[size] || size}px;
-    height: ${sizes[size] || size}px;
+    width: ${Size}px;
+    height: ${Size}px;
 
     display: flex;
     justify-content: center;
@@ -34,12 +36,15 @@ export const CheckboxOutline = styled.View(() => {
 })
 
 export const CheckboxFiller = styled(Animated.View)(() => {
-  const { size, color } = useCheckboxContext()
+  const { size, color, radius } = useCheckboxContext()
   const { colors } = useColors()
 
+  const Size = getSize(sizes, size)
+
   return css`
-    width: ${sizes[size] || size}px;
-    height: ${sizes[size] || size}px;
+    width: ${Size}px;
+    height: ${Size}px;
     background-color: ${colors[color]};
+    border-radius: ${radii[radius]}px;
   `
 })

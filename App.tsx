@@ -45,7 +45,7 @@ export default function App() {
     <ThemeProvider>
       <Container>
         <CheckboxGroup size="lg">
-          <Checkbox size="sm" color="primary" value="0">
+          <Checkbox size="sm" color="primary" value="0" radius="full">
             <Text>Checkbox</Text>
           </Checkbox>
           <Checkbox color="primary" value="1">
