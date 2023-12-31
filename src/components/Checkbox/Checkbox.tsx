@@ -10,6 +10,7 @@ import { CheckboxContext } from './hooks/useCheckboxContext'
 import { useCheckboxProps } from './hooks/useCheckboxProps'
 import { Pressable } from 'react-native'
 import useCheckboxAnimation from './hooks/useCheckboxAnimation'
+import { Checkmark } from 'nextui-native-icons'
 
 const Checkbox: FC<CheckboxProps> = ({
   children,
@@ -33,7 +34,9 @@ const Checkbox: FC<CheckboxProps> = ({
       <Pressable onPress={handlePress}>
         <CheckboxWrapper>
           <CheckboxOutline>
-            <CheckboxFiller style={animatedCheckboxStyles} />
+            <CheckboxFiller style={animatedCheckboxStyles}>
+              <Checkmark color="white" width="60%" height="60%" />
+            </CheckboxFiller>
           </CheckboxOutline>
           {children}
         </CheckboxWrapper>

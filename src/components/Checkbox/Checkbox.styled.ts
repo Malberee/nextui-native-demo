@@ -44,6 +44,11 @@ export const CheckboxFiller = styled(Animated.View)(() => {
   return css`
     width: ${Size}px;
     height: ${Size}px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     background-color: ${colors[color]};
     border-radius: ${radii[radius]}px;
   `
