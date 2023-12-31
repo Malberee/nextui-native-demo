@@ -35,15 +35,11 @@ const CheckboxGroup: FC<CheckboxGroupProps> = ({
     )
   }
 
-  useEffect(() => {
-    console.log(selectedCheckboxes)
-  }, [selectedCheckboxes])
-
   return (
     <CheckboxGroupContext.Provider value={checkboxGroupProps}>
       <Name>{name}</Name>
       <CheckboxGroupWrapper>
-        {children?.map((child, index) =>
+        {React.Children.map(children, (child: any, index) =>
           React.cloneElement(child, {
             key: index,
             isSelected:

@@ -14,11 +14,16 @@ const Checkbox: FC<CheckboxProps> = ({
   ...props
 }) => {
   const checkboxProps = useCheckboxProps(props)
-  console.log(checkboxProps.isSelected)
+
+  const handlePress = () => {
+    if (onValueChange) {
+      onValueChange(value)
+    }
+  }
 
   return (
     <CheckboxContext.Provider value={checkboxProps}>
-      <Pressable onPress={() => onValueChange(value)}>
+      <Pressable onPress={handlePress}>
         <CheckboxWrapper>
           <CheckboxPressable>
             {checkboxProps.isSelected && <Text>√</Text>}
