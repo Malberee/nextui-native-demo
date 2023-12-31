@@ -5,12 +5,14 @@ import { useCheckboxContext } from './hooks/useCheckboxContext'
 import { radii, sizes } from './Checkbox.constants'
 import useColors from '../ThemeProvider/hooks/useColors'
 import { getSize } from '../../utils/getSize'
+import { getRadius } from '../../utils/getRadius'
 
 export const CheckboxWrapper = styled.View(() => {
   return css`
     display: flex;
     align-items: center;
     flex-direction: row;
+    gap: 8px;
     padding: 8px;
   `
 })
@@ -29,7 +31,7 @@ export const CheckboxOutline = styled.View(() => {
     justify-content: center;
     align-items: center;
 
-    border-radius: ${radii[radius]}px;
+    border-radius: ${getRadius(radii, radius)}px;
     border-width: 2px;
     border-color: ${colors.default};
   `
@@ -50,6 +52,6 @@ export const CheckboxFiller = styled(Animated.View)(() => {
     align-items: center;
 
     background-color: ${colors[color]};
-    border-radius: ${radii[radius]}px;
+    border-radius: ${getRadius(radii, radius)}px;
   `
 })

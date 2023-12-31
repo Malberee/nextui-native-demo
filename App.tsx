@@ -2,7 +2,6 @@ import React from 'react'
 import styled, { css } from 'styled-components/native'
 import type {} from 'styled-components/cssprop'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
-import { Crown } from 'nextui-native-icons'
 
 import useColors from './src/components/ThemeProvider/hooks/useColors'
 
@@ -44,11 +43,11 @@ export default function App() {
   return (
     <ThemeProvider>
       <Container>
-        <CheckboxGroup size="lg">
-          <Checkbox size="sm" color="primary" value="0" radius="full">
+        <CheckboxGroup size="lg" color="warning">
+          <Checkbox size="sm" value="0" radius="full">
             <Text>Checkbox</Text>
           </Checkbox>
-          <Checkbox color="primary" value="1">
+          <Checkbox color="danger" value="1">
             <Text>Checkbox</Text>
           </Checkbox>
         </CheckboxGroup>
