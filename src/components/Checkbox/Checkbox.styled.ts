@@ -9,24 +9,37 @@ import useColors from '../ThemeProvider/hooks/useColors'
 export const CheckboxWrapper = styled.View(() => {
   return css`
     display: flex;
+    align-items: center;
     flex-direction: row;
     padding: 8px;
   `
 })
 
-const animatedPressable = Animated.createAnimatedComponent(Pressable)
-
-export const CheckboxPressable = styled(animatedPressable)(() => {
-  const { size, radius, color, isSelected } = useCheckboxContext()
+export const CheckboxOutline = styled.View(() => {
+  const { size, radius } = useCheckboxContext()
   const { colors } = useColors()
 
   return css`
     width: ${sizes[size] || size}px;
     height: ${sizes[size] || size}px;
 
-    background-color: ${isSelected ? colors[color] : 'transparent'};
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     border-radius: ${radii[radius]}px;
     border-width: 2px;
-    border-color: ${colors[color]};
+    border-color: ${colors.default};
+  `
+})
+
+export const CheckboxFiller = styled(Animated.View)(() => {
+  const { size, color } = useCheckboxContext()
+  const { colors } = useColors()
+
+  return css`
+    width: ${sizes[size] || size}px;
+    height: ${sizes[size] || size}px;
+    background-color: ${colors[color]};
   `
 })

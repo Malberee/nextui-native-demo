@@ -44,11 +44,11 @@ export default function App() {
   return (
     <ThemeProvider>
       <Container>
-        <CheckboxGroup>
-          <Checkbox size="md" color="primary" value="0">
+        <CheckboxGroup size="lg">
+          <Checkbox size="sm" color="primary" value="0">
             <Text>Checkbox</Text>
           </Checkbox>
-          <Checkbox size="md" color="primary" value="1">
+          <Checkbox color="primary" value="1">
             <Text>Checkbox</Text>
           </Checkbox>
         </CheckboxGroup>

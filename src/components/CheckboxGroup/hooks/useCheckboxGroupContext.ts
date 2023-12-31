@@ -5,6 +5,6 @@ import { defaultProps } from './useCheckboxGroupProps'
 export const CheckboxGroupContext =
   createContext<CheckboxGroupContextProps>(defaultProps)
 
-export const useCheckboxGroupContextGroupContext = () => {
+export const useCheckboxGroupContext = () => {
   return useContext<CheckboxGroupContextProps>(CheckboxGroupContext)
 }
