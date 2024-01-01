@@ -48,7 +48,17 @@ const CheckboxGroup: FC<CheckboxGroupProps> = ({
       value={{ ...checkboxGroupProps, selectCheckbox }}
     >
       <Name>{name}</Name>
-      <CheckboxGroupWrapper>{children}</CheckboxGroupWrapper>
+      <CheckboxGroupWrapper>
+        {React.Children.map(children, (child: any, index) =>
+          React.cloneElement(child, {
+            key: index,
+            isSelected:
+              child.props.isIndeterminate ??
+              child.props.isSelected ??
+              selectedCheckboxes.includes(child.props.value),
+          }),
+        )}
+      </CheckboxGroupWrapper>
       <Description>{description}</Description>
       <ErrorMessage>{errorMessage}</ErrorMessage>
     </CheckboxGroupContext.Provider>
