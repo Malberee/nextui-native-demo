@@ -19,8 +19,10 @@ export const CheckboxWrapper = styled.View(() => {
 })
 
 export const CheckboxOutline = styled.View(() => {
-  const { size, radius } = useCheckboxContext()
+  const { size, radius, isSelected } = useCheckboxContext()
   const { colors } = useColors()
+
+  console.log(isSelected)
 
   const Size = getSize(sizes, size)
 

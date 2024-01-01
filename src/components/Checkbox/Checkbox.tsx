@@ -24,28 +24,36 @@ const Checkbox: FC<CheckboxProps> = ({
   ...props
 }) => {
   const checkboxProps = useCheckboxProps(props)
-  const { isSelected } = checkboxProps
-  const { animatedCheckboxStyles } = useCheckboxAnimation(
-    checkboxProps.isSelected,
+  const { isSelected, defaultSelected, isIndeterminate } = checkboxProps
+
+  const [isChecked, setIsChecked] = useState(
+    (isIndeterminate || defaultSelected) ?? isSelected ?? false,
   )
+  const { animatedCheckboxStyles } = useCheckboxAnimation(isChecked)
   const iconColor = useTextColor(checkboxProps.color)
   const { selectCheckbox } = useCheckboxGroupContext()
 
   const handlePress = () => {
-    if (onValueChange) {
-      onValueChange(!isSelected)
+    if (isIndeterminate) {
+      return
     }
-    selectCheckbox(value)
+
+    if (selectCheckbox) {
+      selectCheckbox(value)
+    }
+    setIsChecked((prevState) => !prevState)
   }
 
   useEffect(() => {
     if (onValueChange) {
-      onValueChange(isSelected)
+      onValueChange(isChecked)
     }
-  }, [isSelected, onValueChange])
+  }, [isChecked, onValueChange])
 
   return (
-    <CheckboxContext.Provider value={checkboxProps}>
+    <CheckboxContext.Provider
+      value={{ ...checkboxProps, isSelected: isChecked }}
+    >
       <Pressable onPress={handlePress}>
         <CheckboxWrapper>
           <CheckboxOutline>

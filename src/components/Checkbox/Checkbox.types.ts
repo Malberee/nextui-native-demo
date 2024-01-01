@@ -23,7 +23,19 @@ export interface CheckboxProps {
 }
 
 export interface CheckboxContextProps
-  extends Omit<
-    CheckboxProps,
-    'children' | 'name' | 'value' | 'defaultSelected' | 'onValueChange'
-  > {}
+  extends Required<
+      Omit<
+        CheckboxProps,
+        | 'label'
+        | 'icon'
+        | 'name'
+        | 'value'
+        | 'onValueChange'
+        | 'defaultSelected'
+        | 'isSelected'
+      >
+    >,
+    Pick<CheckboxProps, 'isSelected' | 'defaultSelected'> {
+  isSelected?: boolean
+  defaultSelected?: boolean
+}

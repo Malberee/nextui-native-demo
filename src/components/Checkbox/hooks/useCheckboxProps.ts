@@ -1,7 +1,7 @@
 import { useCheckboxGroupContext } from '../../CheckboxGroup/hooks/useCheckboxGroupContext'
 import { CheckboxContextProps } from '../Checkbox.types'
 
-export const defaultProps: Required<CheckboxContextProps> = {
+export const defaultProps: CheckboxContextProps = {
   color: 'primary',
   size: 'md',
   radius: 'md',
@@ -10,13 +10,12 @@ export const defaultProps: Required<CheckboxContextProps> = {
   isInvalid: false,
   isReadOnly: false,
   isRequired: false,
-  isSelected: false,
   lineThrough: false,
 }
 
 export const useCheckboxProps = (
-  props: CheckboxContextProps,
-): Required<CheckboxContextProps> => {
+  props: Partial<CheckboxContextProps>,
+): CheckboxContextProps => {
   const checkboxGroupContext = useCheckboxGroupContext()
 
   return { ...defaultProps, ...checkboxGroupContext, ...props }

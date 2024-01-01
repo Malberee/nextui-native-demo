@@ -18,14 +18,17 @@ export interface CheckboxGroupProps
 }
 
 export interface CheckboxGroupContextProps
-  extends Omit<
-    CheckboxProps,
-    | 'label'
-    | 'value'
-    | 'name'
-    | 'isSelected'
-    | 'defaultSelected'
-    | 'onValueChange'
+  extends Required<
+    Omit<
+      CheckboxProps,
+      | 'label'
+      | 'value'
+      | 'icon'
+      | 'name'
+      | 'isSelected'
+      | 'defaultSelected'
+      | 'onValueChange'
+    >
   > {
-  selectCheckbox: (value: string) => void
+  selectCheckbox?: (value: string) => void
 }

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import styled, { css } from 'styled-components/native'
 import type {} from 'styled-components/cssprop'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
@@ -48,10 +48,6 @@ export default function App() {
     setItems(value)
   }
 
-  useEffect(() => {
-    console.log(items)
-  }, [items])
-
   return (
     <ThemeProvider>
       <Container>
@@ -68,6 +64,7 @@ export default function App() {
             value="1"
             label="Checkbox"
             icon={<AddCircle color="white" />}
+            isIndeterminate
           />
           <Checkbox color="danger" value="2" label="Checkbox" />
           <Checkbox color="danger" value="3" label="Checkbox" />
