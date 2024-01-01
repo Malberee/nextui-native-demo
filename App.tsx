@@ -27,6 +27,7 @@ import {
   Checkbox,
 } from './src'
 import { Text } from 'react-native'
+import { AddCircle } from 'nextui-native-icons'
 
 const Container = styled(GestureHandlerRootView)(() => {
   const { colors } = useColors()
@@ -59,9 +60,15 @@ export default function App() {
           color="warning"
           value={items}
           onValueChange={addItem}
+          lineThrough
         >
           <Checkbox size="sm" value="0" radius="full" label="Checkbox" />
-          <Checkbox color="danger" value="1" label="Checkbox" />
+          <Checkbox
+            color="danger"
+            value="1"
+            label="Checkbox"
+            icon={<AddCircle color="white" />}
+          />
           <Checkbox color="danger" value="2" label="Checkbox" />
           <Checkbox color="danger" value="3" label="Checkbox" />
           <Checkbox color="danger" value="4" label="Checkbox" />

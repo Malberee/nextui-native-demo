@@ -3,7 +3,7 @@ import { ColorName, RadiusName, SizeName } from '../../types'
 
 export interface CheckboxProps {
   label?: ReactNode | string
-  // icon
+  icon?: ReactNode
   value: string
   name?: string
   size?: Extract<SizeName, 'sm' | 'md' | 'lg'> | number

@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import {
   CheckboxWrapper,
   CheckboxOutline,
@@ -19,6 +19,7 @@ import { useCheckboxGroupContext } from '../CheckboxGroup/hooks/useCheckboxGroup
 const Checkbox: FC<CheckboxProps> = ({
   label,
   value,
+  icon,
   onValueChange,
   ...props
 }) => {
@@ -52,7 +53,7 @@ const Checkbox: FC<CheckboxProps> = ({
               {checkboxProps.isIndeterminate ? (
                 <MinusIcon />
               ) : (
-                <Checkmark color={iconColor} width="60%" height="60%" />
+                icon ?? <Checkmark color={iconColor} width="60%" height="60%" />
               )}
             </CheckboxFiller>
           </CheckboxOutline>
