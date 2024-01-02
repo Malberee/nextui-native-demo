@@ -63,6 +63,13 @@ export const CheckboxFiller = styled(Animated.View)(() => {
   `
 })
 
+export const LabelWrapper = styled.View(() => {
+  return css`
+    display: flex;
+    justify-content: center;
+  `
+})
+
 export const LabelText = styled(Animated.Text)(() => {
   const { isInvalid } = useCheckboxContext()
   const { colors } = useColors()
@@ -82,7 +89,6 @@ export const Line = styled(Animated.View)(() => {
 
   return css`
     position: absolute;
-    top: 40%;
     align-self: center;
     height: 2px;
     background-color: ${lineColor};
