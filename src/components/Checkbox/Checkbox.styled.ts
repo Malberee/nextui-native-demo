@@ -8,7 +8,7 @@ import { getSize } from '../../utils/getSize'
 import { getRadius } from '../../utils/getRadius'
 import { useTextColor } from '../../hooks/useTextColor'
 
-export const CheckboxWrapper = styled.View(() => {
+export const CheckboxWrapper = styled(Animated.View)(() => {
   return css`
     display: flex;
     align-items: center;
@@ -18,7 +18,7 @@ export const CheckboxWrapper = styled.View(() => {
   `
 })
 
-export const CheckboxOutline = styled.View(() => {
+export const CheckboxOutline = styled(Animated.View)(() => {
   const { size, radius, isSelected } = useCheckboxContext()
   const { colors } = useColors()
 

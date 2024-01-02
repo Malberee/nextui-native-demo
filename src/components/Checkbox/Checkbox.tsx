@@ -15,6 +15,7 @@ import useCheckboxAnimation from './hooks/useCheckboxAnimation'
 import { Checkmark } from 'nextui-native-icons'
 import { useTextColor } from '../../hooks/useTextColor'
 import { useCheckboxGroupContext } from '../CheckboxGroup/hooks/useCheckboxGroupContext'
+import { PanGestureHandler } from 'react-native-gesture-handler'
 
 const Checkbox: FC<CheckboxProps> = ({
   label,
@@ -29,7 +30,8 @@ const Checkbox: FC<CheckboxProps> = ({
   const [isChecked, setIsChecked] = useState(
     (isIndeterminate || defaultSelected) ?? isSelected ?? false,
   )
-  const { animatedCheckboxStyles } = useCheckboxAnimation(isChecked)
+  const { animatedFillerStyles, animatedCheckboxStyles, gestureHandler } =
+    useCheckboxAnimation(isChecked)
   const iconColor = useTextColor(checkboxProps.color)
   const { selectCheckbox } = useCheckboxGroupContext()
 
@@ -55,18 +57,22 @@ const Checkbox: FC<CheckboxProps> = ({
       value={{ ...checkboxProps, isSelected: isChecked }}
     >
       <Pressable onPress={handlePress}>
-        <CheckboxWrapper>
-          <CheckboxOutline>
-            <CheckboxFiller style={animatedCheckboxStyles}>
-              {checkboxProps.isIndeterminate ? (
-                <MinusIcon />
-              ) : (
-                icon ?? <Checkmark color={iconColor} width="60%" height="60%" />
-              )}
-            </CheckboxFiller>
-          </CheckboxOutline>
-          <Label>{label}</Label>
-        </CheckboxWrapper>
+        <PanGestureHandler onGestureEvent={gestureHandler}>
+          <CheckboxWrapper>
+            <CheckboxOutline style={animatedCheckboxStyles}>
+              <CheckboxFiller style={animatedFillerStyles}>
+                {checkboxProps.isIndeterminate ? (
+                  <MinusIcon />
+                ) : (
+                  icon ?? (
+                    <Checkmark color={iconColor} width="60%" height="60%" />
+                  )
+                )}
+              </CheckboxFiller>
+            </CheckboxOutline>
+            <Label>{label}</Label>
+          </CheckboxWrapper>
+        </PanGestureHandler>
       </Pressable>
     </CheckboxContext.Provider>
   )
