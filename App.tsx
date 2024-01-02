@@ -75,13 +75,13 @@ export default function App() {
             isReadOnly
           />
         </CheckboxGroup>
-        <Checkbox
+        {/* <Checkbox
           color="danger"
           value="4"
           label="Checkbox"
           // isSelected={isSelected}
           // onValueChange={(value: boolean) => setIsSelected(value)}
-        />
+        /> */}
         <Text>{items}</Text>
       </Container>
     </ThemeProvider>

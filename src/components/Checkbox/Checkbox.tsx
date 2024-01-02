@@ -3,7 +3,8 @@ import {
   CheckboxWrapper,
   CheckboxOutline,
   CheckboxFiller,
-  Label,
+  LabelText,
+  Line,
   MinusIcon,
 } from './Checkbox.styled'
 
@@ -16,6 +17,7 @@ import { Checkmark } from 'nextui-native-icons'
 import { useTextColor } from '../../hooks/useTextColor'
 import { useCheckboxGroupContext } from '../CheckboxGroup/hooks/useCheckboxGroupContext'
 import { PanGestureHandler } from 'react-native-gesture-handler'
+import { View } from 'react-native'
 
 const Checkbox: FC<CheckboxProps> = ({
   label,
@@ -25,14 +27,24 @@ const Checkbox: FC<CheckboxProps> = ({
   ...props
 }) => {
   const checkboxProps = useCheckboxProps(props)
-  const { isSelected, defaultSelected, isIndeterminate, isReadOnly } =
-    checkboxProps
+  const {
+    isSelected,
+    defaultSelected,
+    isIndeterminate,
+    isReadOnly,
+    lineThrough,
+  } = checkboxProps
 
   const [isChecked, setIsChecked] = useState(
     (isIndeterminate || defaultSelected) ?? isSelected ?? false,
   )
-  const { animatedFillerStyles, animatedCheckboxStyles, gestureHandler } =
-    useCheckboxAnimation(isChecked)
+  const {
+    animatedFillerStyles,
+    animatedCheckboxStyles,
+    animatedLineStyles,
+    animatedOpacityStyles,
+    gestureHandler,
+  } = useCheckboxAnimation(isChecked, lineThrough)
   const iconColor = useTextColor(checkboxProps.color)
   const { selectCheckbox } = useCheckboxGroupContext()
 
@@ -71,7 +83,12 @@ const Checkbox: FC<CheckboxProps> = ({
                 )}
               </CheckboxFiller>
             </CheckboxOutline>
-            <Label>{label}</Label>
+            <View>
+              <LabelText style={animatedOpacityStyles}>{label}</LabelText>
+              <Line
+                style={{ ...animatedOpacityStyles, ...animatedLineStyles }}
+              />
+            </View>
           </CheckboxWrapper>
         </PanGestureHandler>
       </Pressable>

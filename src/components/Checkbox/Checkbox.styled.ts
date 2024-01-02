@@ -63,15 +63,29 @@ export const CheckboxFiller = styled(Animated.View)(() => {
   `
 })
 
-export const Label = styled.Text(() => {
-  const { isSelected, lineThrough, isInvalid } = useCheckboxContext()
+export const LabelText = styled(Animated.Text)(() => {
+  const { isInvalid } = useCheckboxContext()
   const { colors } = useColors()
 
   const textColor = isInvalid ? colors.danger : colors.foreground
 
   return css`
     color: ${textColor};
-    text-decoration: ${isSelected && lineThrough ? 'line-through' : 'none'};
+  `
+})
+
+export const Line = styled(Animated.View)(() => {
+  const { isInvalid } = useCheckboxContext()
+  const { colors } = useColors()
+
+  const lineColor = isInvalid ? colors.danger : colors.foreground
+
+  return css`
+    position: absolute;
+    top: 40%;
+    align-self: center;
+    height: 2px;
+    background-color: ${lineColor};
   `
 })
 
