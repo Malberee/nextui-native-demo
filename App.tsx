@@ -64,11 +64,16 @@ export default function App() {
             value="1"
             label="Checkbox"
             icon={<AddCircle color="white" />}
-            isIndeterminate
           />
           <Checkbox color="danger" value="2" label="Checkbox" />
           <Checkbox color="danger" value="3" label="Checkbox" />
-          <Checkbox color="danger" value="4" label="Checkbox" />
+          <Checkbox
+            color="danger"
+            value="4"
+            label="Checkbox"
+            isInvalid
+            isReadOnly
+          />
         </CheckboxGroup>
         <Checkbox
           color="danger"

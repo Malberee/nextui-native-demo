@@ -9,22 +9,26 @@ import { getRadius } from '../../utils/getRadius'
 import { useTextColor } from '../../hooks/useTextColor'
 
 export const CheckboxWrapper = styled(Animated.View)(() => {
+  const { isDisabled } = useCheckboxContext()
+
   return css`
     display: flex;
     align-items: center;
     flex-direction: row;
     gap: 8px;
     padding: 8px;
+    opacity: ${isDisabled ? 0.5 : 1};
   `
 })
 
 export const CheckboxOutline = styled(Animated.View)(() => {
-  const { size, radius, isSelected } = useCheckboxContext()
+  const { size, radius, isSelected, isInvalid } = useCheckboxContext()
   const { colors } = useColors()
 
   console.log(isSelected)
 
   const Size = getSize(sizes, size)
+  const borderColor = isInvalid ? colors.danger : colors.default
 
   return css`
     width: ${Size}px;
@@ -36,7 +40,7 @@ export const CheckboxOutline = styled(Animated.View)(() => {
 
     border-radius: ${getRadius(radii, radius)}px;
     border-width: 2px;
-    border-color: ${colors.default};
+    border-color: ${borderColor};
   `
 })
 
@@ -60,9 +64,13 @@ export const CheckboxFiller = styled(Animated.View)(() => {
 })
 
 export const Label = styled.Text(() => {
-  const { isSelected, lineThrough } = useCheckboxContext()
+  const { isSelected, lineThrough, isInvalid } = useCheckboxContext()
+  const { colors } = useColors()
+
+  const textColor = isInvalid ? colors.danger : colors.foreground
 
   return css`
+    color: ${textColor};
     text-decoration: ${isSelected && lineThrough ? 'line-through' : 'none'};
   `
 })

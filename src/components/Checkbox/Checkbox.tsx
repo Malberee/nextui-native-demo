@@ -25,7 +25,8 @@ const Checkbox: FC<CheckboxProps> = ({
   ...props
 }) => {
   const checkboxProps = useCheckboxProps(props)
-  const { isSelected, defaultSelected, isIndeterminate } = checkboxProps
+  const { isSelected, defaultSelected, isIndeterminate, isReadOnly } =
+    checkboxProps
 
   const [isChecked, setIsChecked] = useState(
     (isIndeterminate || defaultSelected) ?? isSelected ?? false,
@@ -36,7 +37,7 @@ const Checkbox: FC<CheckboxProps> = ({
   const { selectCheckbox } = useCheckboxGroupContext()
 
   const handlePress = () => {
-    if (isIndeterminate) {
+    if (isIndeterminate || isReadOnly) {
       return
     }
 
