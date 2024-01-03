@@ -1,4 +1,5 @@
 import React, { FC, useState } from 'react'
+import { View } from 'react-native'
 import {
   CheckboxGroupWrapper,
   Label,
@@ -25,6 +26,7 @@ const CheckboxGroup: FC<CheckboxGroupProps> = ({
     value ?? defaultValue ?? [],
   )
   const checkboxGroupProps = useCheckboxGroupProps(props)
+  const { isInvalid } = checkboxGroupProps
 
   const selectCheckbox = (checkboxValue: string) => {
     if (!selectedCheckboxes.includes(checkboxValue)) {
@@ -48,22 +50,30 @@ const CheckboxGroup: FC<CheckboxGroupProps> = ({
     <CheckboxGroupContext.Provider
       value={{ ...checkboxGroupProps, selectCheckbox }}
     >
-      <Label css={styles?.label as any}>{label}</Label>
-      <CheckboxGroupWrapper css={styles?.wrapper as any}>
-        {React.Children.map(children, (child: any, index) =>
-          React.cloneElement(child, {
-            key: index,
-            isSelected:
-              child.props.isIndeterminate ??
-              child.props.isSelected ??
-              selectedCheckboxes.includes(child.props.value),
-          }),
+      <View>
+        {label && <Label css={styles?.label as any}>{label}</Label>}
+        <CheckboxGroupWrapper css={styles?.wrapper as any}>
+          {React.Children.map(children, (child: any, index) =>
+            React.cloneElement(child, {
+              key: index,
+              isSelected:
+                child.props.isIndeterminate ??
+                child.props.isSelected ??
+                selectedCheckboxes.includes(child.props.value),
+            }),
+          )}
+        </CheckboxGroupWrapper>
+        {description && (
+          <Description css={styles?.description as any}>
+            {description}
+          </Description>
         )}
-      </CheckboxGroupWrapper>
-      <Description css={styles?.description as any}>{description}</Description>
-      <ErrorMessage css={styles?.errorMessage as any}>
-        {errorMessage}
-      </ErrorMessage>
+        {isInvalid && errorMessage && (
+          <ErrorMessage css={styles?.errorMessage as any}>
+            {errorMessage}
+          </ErrorMessage>
+        )}
+      </View>
     </CheckboxGroupContext.Provider>
   )
 }

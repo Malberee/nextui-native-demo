@@ -40,25 +40,39 @@ const Container = styled(GestureHandlerRootView)(() => {
 })
 
 export default function App() {
-  const [items, setItems] = useState<string>('2')
+  const [value, setValue] = useState<string[]>([])
+
+  const values = ['0', '1', '2', '3', '4']
 
   return (
     <ThemeProvider>
       <Container>
-        <RadioGroup value={items} onValueChange={(item) => setItems(item)}>
-          <Radio
-            label="Radio"
-            value="0"
-            styles={{
-              wrapper: css`
-                background-color: ${items === '0' ? 'black' : 'white'};
-              `,
-            }}
-          />
-          <Radio label="Radio" value="1" />
-          <Radio label="Radio" value="2" />
-          <Radio label="Radio" value="3" />
-        </RadioGroup>
+        <CheckboxGroup
+          label="Select anything"
+          value={value}
+          onValueChange={(item) => setValue(item)}
+          isInvalid={value.includes('0')}
+          errorMessage="Not zero"
+        >
+          {values.map((item) => (
+            <Checkbox
+              value={item}
+              key={item}
+              styles={{
+                wrapper: css`
+                  width: 100px;
+                  display: flex;
+                  justify-content: space-between;
+                  background-color: ${value.includes(item)
+                    ? '#ccc'
+                    : 'transparent'};
+                `,
+              }}
+            >
+              {item}
+            </Checkbox>
+          ))}
+        </CheckboxGroup>
       </Container>
     </ThemeProvider>
   )
