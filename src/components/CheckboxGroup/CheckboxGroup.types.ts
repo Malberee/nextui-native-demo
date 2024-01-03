@@ -21,7 +21,7 @@ export interface CheckboxGroupContextProps
   extends Required<
     Omit<
       CheckboxProps,
-      | 'label'
+      | 'children'
       | 'value'
       | 'icon'
       | 'name'

@@ -18,11 +18,13 @@ import { Checkmark } from 'nextui-native-icons'
 import { useTextColor } from '../../hooks/useTextColor'
 import { useCheckboxGroupContext } from '../CheckboxGroup/hooks/useCheckboxGroupContext'
 import { PanGestureHandler } from 'react-native-gesture-handler'
+import useCheckboxCustomStyles from './hooks/useCheckboxCustomStyles'
 
 const Checkbox: FC<CheckboxProps> = ({
-  label,
+  children,
   value,
   icon,
+  styles,
   onValueChange,
   ...props
 }) => {
@@ -37,6 +39,10 @@ const Checkbox: FC<CheckboxProps> = ({
 
   const [isChecked, setIsChecked] = useState(
     (isIndeterminate || defaultSelected) ?? isSelected ?? false,
+  )
+  const { wrapperStyles, contentStyles, labelStyles } = useCheckboxCustomStyles(
+    isChecked,
+    styles,
   )
   const {
     animatedFillerStyles,
@@ -65,13 +71,24 @@ const Checkbox: FC<CheckboxProps> = ({
     }
   }, [isChecked, onValueChange])
 
+  const getChildren = () => {
+    if (typeof children === 'string') {
+      return (
+        <LabelText style={animatedOpacityStyles} css={labelStyles}>
+          {children}
+        </LabelText>
+      )
+    }
+    return children
+  }
+
   return (
     <CheckboxContext.Provider
       value={{ ...checkboxProps, isSelected: isChecked }}
     >
       <Pressable onPress={handlePress}>
         <PanGestureHandler onGestureEvent={gestureHandler}>
-          <CheckboxWrapper>
+          <CheckboxWrapper css={wrapperStyles}>
             <CheckboxOutline style={animatedCheckboxStyles}>
               <CheckboxFiller style={animatedFillerStyles}>
                 {checkboxProps.isIndeterminate ? (
@@ -83,8 +100,8 @@ const Checkbox: FC<CheckboxProps> = ({
                 )}
               </CheckboxFiller>
             </CheckboxOutline>
-            <LabelWrapper>
-              <LabelText style={animatedOpacityStyles}>{label}</LabelText>
+            <LabelWrapper css={contentStyles}>
+              {getChildren()}
               <Line style={[animatedOpacityStyles, animatedLineStyles]} />
             </LabelWrapper>
           </CheckboxWrapper>

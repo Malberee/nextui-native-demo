@@ -58,22 +58,33 @@ export default function App() {
           onValueChange={addItem}
           lineThrough
         >
-          <Checkbox size="sm" value="0" radius="full" label="Checkbox" />
           <Checkbox
-            color="danger"
-            value="1"
-            label="Checkbox"
-            icon={<AddCircle color="white" />}
-          />
-          <Checkbox color="danger" value="2" label="Checkbox" />
-          <Checkbox color="danger" value="3" label="Checkbox" />
-          <Checkbox
-            color="danger"
-            value="4"
-            label="Checkbox"
-            isInvalid
-            isReadOnly
-          />
+            radius="full"
+            value="0"
+            styles={{
+              wrapper: {
+                default: css`
+                  background-color: #ccc;
+                `,
+                active: css`
+                  background-color: #fff;
+                `,
+              },
+            }}
+          >
+            <Text>Checkbox</Text>
+            <Text>Press pls</Text>
+          </Checkbox>
+          <Checkbox color="danger" value="1" icon={<AddCircle color="white" />}>
+            Checkbox
+          </Checkbox>
+          <Checkbox color="danger" value="2">
+            Checkbox
+          </Checkbox>
+          <Checkbox color="danger" value="3">
+            Checkbox
+          </Checkbox>
+          <Checkbox value="4">Checkbox</Checkbox>
         </CheckboxGroup>
         {/* <Checkbox
           color="danger"

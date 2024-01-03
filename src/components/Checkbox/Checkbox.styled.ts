@@ -22,10 +22,8 @@ export const CheckboxWrapper = styled(Animated.View)(() => {
 })
 
 export const CheckboxOutline = styled(Animated.View)(() => {
-  const { size, radius, isSelected, isInvalid } = useCheckboxContext()
+  const { size, radius, isInvalid } = useCheckboxContext()
   const { colors } = useColors()
-
-  console.log(isSelected)
 
   const Size = getSize(sizes, size)
   const borderColor = isInvalid ? colors.danger : colors.default

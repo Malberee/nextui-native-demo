@@ -1,14 +1,17 @@
 import { ReactNode } from 'react'
-import { ColorName, RadiusName, SizeName } from '../../types'
+import { ColorName, RadiusName, SizeName, StylesProp } from '../../types'
+
+export type CheckboxStyles = StylesProp<'wrapper' | 'content' | 'label'>
 
 export interface CheckboxProps {
-  label?: ReactNode | string
+  children?: ReactNode
   icon?: ReactNode
   value: string
   name?: string
   size?: Extract<SizeName, 'sm' | 'md' | 'lg'> | number
   color?: ColorName
   radius?: RadiusName
+  /** Children must be a string for lineThrough to work correctly */
   lineThrough?: boolean
   isSelected?: boolean
   defaultSelected?: boolean
@@ -17,6 +20,7 @@ export interface CheckboxProps {
   isDisabled?: boolean
   isIndeterminate?: boolean
   isInvalid?: boolean
+  styles?: Partial<CheckboxStyles>
 
   // events
   onValueChange?: (isSelected: boolean) => void
@@ -26,7 +30,7 @@ export interface CheckboxContextProps
   extends Required<
       Omit<
         CheckboxProps,
-        | 'label'
+        | 'children'
         | 'icon'
         | 'name'
         | 'value'
