@@ -43,12 +43,7 @@ export type Variants = {
   [key in VariantName]: string
 }
 
-type StylesObject = {
-  default?: CSSProp
-  active?: CSSProp
-}
-
-export type StylesProp<T extends string> = Record<T, StylesObject>
+export type StylesProp<T extends string> = Partial<Record<T, CSSProp>>
 
 export type FormatOptions = {
   locale: string

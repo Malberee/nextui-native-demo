@@ -15,7 +15,6 @@ import { useRadioProps } from './hooks/useRadioProps'
 import { useRadioGroupContext } from '../RadioGroup/hooks/useRadioGroupContext'
 import { useRadioAnimation } from './hooks/useRadioAnimation'
 import { GestureDetector } from 'react-native-gesture-handler'
-import useCustomStyles from './hooks/useCustomStyles'
 
 const Radio: FC<RadioProps> = ({ label, description, styles, ...props }) => {
   const radioProps = useRadioProps(props)
@@ -28,8 +27,6 @@ const Radio: FC<RadioProps> = ({ label, description, styles, ...props }) => {
     isInvalid,
     isDisabled,
   )
-  const { wrapperStyles, contentStyles, labelStyles, descriptionStyles } =
-    useCustomStyles(isSelected, styles)
 
   const handlePress = () => {
     if (!isDisabled) {
@@ -37,18 +34,20 @@ const Radio: FC<RadioProps> = ({ label, description, styles, ...props }) => {
     }
   }
 
+  console.log(styles)
+
   return (
     <RadioContext.Provider value={radioProps}>
       <GestureDetector gesture={pan}>
         <Pressable onPress={handlePress}>
-          <RadioWrapper css={wrapperStyles}>
+          <RadioWrapper css={styles?.wrapper as any}>
             <RadioOutline style={radioOutlineStyle}>
               <RadioDot style={radioDotStyle} />
             </RadioOutline>
-            <RadioContent css={contentStyles}>
-              <RadioLabel css={labelStyles}>{label}</RadioLabel>
+            <RadioContent css={styles?.content as any}>
+              <RadioLabel css={styles?.label as any}>{label}</RadioLabel>
               {description && (
-                <RadioDescription css={descriptionStyles}>
+                <RadioDescription css={styles?.description as any}>
                   {description}
                 </RadioDescription>
               )}

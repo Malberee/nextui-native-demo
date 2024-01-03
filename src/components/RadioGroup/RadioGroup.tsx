@@ -36,12 +36,6 @@ const RadioGroup: FC<RadioGroupProps> = ({
     }
   }
 
-  const {
-    wrapper: { default: wrapperDefault } = {},
-    label: { default: labelDefault } = {},
-    description: { default: descriptionDefault } = {},
-  }: RadioGroupStyles = (styles as RadioGroupStyles) || {}
-
   return (
     <RadioGroupContext.Provider
       value={{
@@ -51,25 +45,13 @@ const RadioGroup: FC<RadioGroupProps> = ({
         ...props,
       }}
     >
-      <RadioGroupWrapper
-        css={`
-          ${wrapperDefault}
-        `}
-      >
-        <RadioGroupLabel
-          css={`
-            ${labelDefault}
-          `}
-        >
+      <RadioGroupWrapper css={styles?.wrapper as any}>
+        <RadioGroupLabel css={styles?.label as any}>
           {label}
           {isRequired && <Asterisk>*</Asterisk>}
         </RadioGroupLabel>
         <RadioList orientation={orientation}>{children}</RadioList>
-        <RadioGroupDescription
-          css={`
-            ${descriptionDefault}
-          `}
-        >
+        <RadioGroupDescription css={styles?.description as any}>
           {description}
         </RadioGroupDescription>
         {isInvalid && <ErrorMessage>{errorMessage}</ErrorMessage>}

@@ -5,7 +5,7 @@ export const CheckboxGroupWrapper = styled.View(() => {
   return css``
 })
 
-export const Name = styled.View(() => {
+export const Label = styled.View(() => {
   return css``
 })
 

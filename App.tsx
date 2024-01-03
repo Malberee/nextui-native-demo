@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import styled, { css } from 'styled-components/native'
+
 import type {} from 'styled-components/cssprop'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
 
@@ -16,8 +17,8 @@ import {
   // Code,
   // Divider,
   // Progress,
-  // RadioGroup,
-  // Radio,
+  RadioGroup,
+  Radio,
   // Slider,
   // Switch,
   // User,
@@ -26,8 +27,6 @@ import {
   CheckboxGroup,
   Checkbox,
 } from './src'
-import { Text } from 'react-native'
-import { AddCircle } from 'nextui-native-icons'
 
 const Container = styled(GestureHandlerRootView)(() => {
   const { colors } = useColors()
@@ -41,59 +40,25 @@ const Container = styled(GestureHandlerRootView)(() => {
 })
 
 export default function App() {
-  const [items, setItems] = useState<string[]>(['2'])
-  const [isSelected, setIsSelected] = useState(false)
-
-  const addItem = (value: string[]) => {
-    setItems(value)
-  }
+  const [items, setItems] = useState<string>('2')
 
   return (
     <ThemeProvider>
       <Container>
-        <CheckboxGroup
-          size="lg"
-          color="warning"
-          value={items}
-          onValueChange={addItem}
-          lineThrough
-        >
-          <Checkbox
-            radius="full"
+        <RadioGroup value={items} onValueChange={(item) => setItems(item)}>
+          <Radio
+            label="Radio"
             value="0"
             styles={{
-              wrapper: {
-                default: css`
-                  background-color: #ccc;
-                `,
-                active: css`
-                  background-color: #fff;
-                `,
-              },
+              wrapper: css`
+                background-color: ${items === '0' ? 'black' : 'white'};
+              `,
             }}
-          >
-            <Text>Checkbox</Text>
-            <Text>Press pls</Text>
-          </Checkbox>
-          <Checkbox color="danger" value="1" icon={<AddCircle color="white" />}>
-            Checkbox
-          </Checkbox>
-          <Checkbox color="danger" value="2">
-            Checkbox
-          </Checkbox>
-          <Checkbox color="danger" value="3">
-            Checkbox
-          </Checkbox>
-          <Checkbox value="4">Checkbox</Checkbox>
-        </CheckboxGroup>
-        {/* <Checkbox
-          color="danger"
-          value="4"
-          label="Checkbox"
-          // isSelected={isSelected}
-          // onValueChange={(value: boolean) => setIsSelected(value)}
-        /> */}
-        <Text>{items}</Text>
+          />
+          <Radio label="Radio" value="1" />
+          <Radio label="Radio" value="2" />
+          <Radio label="Radio" value="3" />
+        </RadioGroup>
       </Container>
     </ThemeProvider>
   )

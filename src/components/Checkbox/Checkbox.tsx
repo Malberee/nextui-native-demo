@@ -18,7 +18,6 @@ import { Checkmark } from 'nextui-native-icons'
 import { useTextColor } from '../../hooks/useTextColor'
 import { useCheckboxGroupContext } from '../CheckboxGroup/hooks/useCheckboxGroupContext'
 import { PanGestureHandler } from 'react-native-gesture-handler'
-import useCheckboxCustomStyles from './hooks/useCheckboxCustomStyles'
 
 const Checkbox: FC<CheckboxProps> = ({
   children,
@@ -39,10 +38,6 @@ const Checkbox: FC<CheckboxProps> = ({
 
   const [isChecked, setIsChecked] = useState(
     (isIndeterminate || defaultSelected) ?? isSelected ?? false,
-  )
-  const { wrapperStyles, contentStyles, labelStyles } = useCheckboxCustomStyles(
-    isChecked,
-    styles,
   )
   const {
     animatedFillerStyles,
@@ -74,7 +69,7 @@ const Checkbox: FC<CheckboxProps> = ({
   const getChildren = () => {
     if (typeof children === 'string') {
       return (
-        <LabelText style={animatedOpacityStyles} css={labelStyles}>
+        <LabelText style={animatedOpacityStyles} css={styles?.label as any}>
           {children}
         </LabelText>
       )
@@ -88,7 +83,7 @@ const Checkbox: FC<CheckboxProps> = ({
     >
       <Pressable onPress={handlePress}>
         <PanGestureHandler onGestureEvent={gestureHandler}>
-          <CheckboxWrapper css={wrapperStyles}>
+          <CheckboxWrapper css={styles?.wrapper as any}>
             <CheckboxOutline style={animatedCheckboxStyles}>
               <CheckboxFiller style={animatedFillerStyles}>
                 {checkboxProps.isIndeterminate ? (
@@ -100,7 +95,7 @@ const Checkbox: FC<CheckboxProps> = ({
                 )}
               </CheckboxFiller>
             </CheckboxOutline>
-            <LabelWrapper css={contentStyles}>
+            <LabelWrapper css={styles?.content as any}>
               {getChildren()}
               <Line style={[animatedOpacityStyles, animatedLineStyles]} />
             </LabelWrapper>

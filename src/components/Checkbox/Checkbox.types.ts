@@ -20,7 +20,7 @@ export interface CheckboxProps {
   isDisabled?: boolean
   isIndeterminate?: boolean
   isInvalid?: boolean
-  styles?: Partial<CheckboxStyles>
+  styles?: CheckboxStyles
 
   // events
   onValueChange?: (isSelected: boolean) => void

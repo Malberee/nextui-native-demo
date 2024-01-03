@@ -1,7 +1,7 @@
 import React, { FC, useState } from 'react'
 import {
   CheckboxGroupWrapper,
-  Name,
+  Label,
   Description,
   ErrorMessage,
 } from './CheckboxGroup.styled'
@@ -12,11 +12,12 @@ import { useCheckboxGroupProps } from './hooks/useCheckboxGroupProps'
 
 const CheckboxGroup: FC<CheckboxGroupProps> = ({
   children,
-  name,
+  label,
   description,
   errorMessage,
   defaultValue,
   value,
+  styles,
   onValueChange,
   ...props
 }) => {
@@ -47,8 +48,8 @@ const CheckboxGroup: FC<CheckboxGroupProps> = ({
     <CheckboxGroupContext.Provider
       value={{ ...checkboxGroupProps, selectCheckbox }}
     >
-      <Name>{name}</Name>
-      <CheckboxGroupWrapper>
+      <Label css={styles?.label as any}>{label}</Label>
+      <CheckboxGroupWrapper css={styles?.wrapper as any}>
         {React.Children.map(children, (child: any, index) =>
           React.cloneElement(child, {
             key: index,
@@ -59,8 +60,10 @@ const CheckboxGroup: FC<CheckboxGroupProps> = ({
           }),
         )}
       </CheckboxGroupWrapper>
-      <Description>{description}</Description>
-      <ErrorMessage>{errorMessage}</ErrorMessage>
+      <Description css={styles?.description as any}>{description}</Description>
+      <ErrorMessage css={styles?.errorMessage as any}>
+        {errorMessage}
+      </ErrorMessage>
     </CheckboxGroupContext.Provider>
   )
 }
