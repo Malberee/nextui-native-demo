@@ -12,7 +12,7 @@ import {
   // Avatar,
   // Badge,
   // ButtonGroup,
-  // Button,
+  Button,
   // Chip,
   // Code,
   // Divider,
@@ -27,6 +27,7 @@ import {
   CheckboxGroup,
   Checkbox,
 } from './src'
+import { TextInput } from 'react-native'
 
 const Container = styled(GestureHandlerRootView)(() => {
   const { colors } = useColors()
@@ -73,6 +74,9 @@ export default function App() {
             </Checkbox>
           ))}
         </CheckboxGroup>
+        <Button onPress={() => console.log('text')} isDisabled>
+          Button
+        </Button>
       </Container>
     </ThemeProvider>
   )

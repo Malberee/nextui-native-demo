@@ -18,7 +18,8 @@ import { GestureDetector } from 'react-native-gesture-handler'
 
 const Radio: FC<RadioProps> = ({ label, description, styles, ...props }) => {
   const radioProps = useRadioProps(props)
-  const { value, color, selectedRadio, isDisabled, isInvalid } = radioProps
+  const { value, color, selectedRadio, isDisabled, isInvalid, isReadOnly } =
+    radioProps
   const isSelected = selectedRadio === value
   const { selectRadio } = useRadioGroupContext()
   const { radioDotStyle, radioOutlineStyle, pan } = useRadioAnimation(
@@ -29,9 +30,7 @@ const Radio: FC<RadioProps> = ({ label, description, styles, ...props }) => {
   )
 
   const handlePress = () => {
-    if (!isDisabled) {
-      selectRadio(value)
-    }
+    selectRadio(value)
   }
 
   console.log(styles)
@@ -39,7 +38,7 @@ const Radio: FC<RadioProps> = ({ label, description, styles, ...props }) => {
   return (
     <RadioContext.Provider value={radioProps}>
       <GestureDetector gesture={pan}>
-        <Pressable onPress={handlePress}>
+        <Pressable onPress={handlePress} disabled={isReadOnly || isDisabled}>
           <RadioWrapper css={styles?.wrapper as any}>
             <RadioOutline style={radioOutlineStyle}>
               <RadioDot style={radioDotStyle} />

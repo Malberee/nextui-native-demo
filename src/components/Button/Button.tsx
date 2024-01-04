@@ -27,19 +27,22 @@ const Button: FC<ButtonProps> = ({
   const { isIconOnly, isDisabled, variant, color, ...buttonProps } =
     useButtonProps(props)
   const { gestureHandler, ref, animatedButtonStyle, animatedRippleStyle } =
-    useButtonAnimation(onPress, onPressIn, onPressOut)
+    useButtonAnimation()
   const { colors } = useColors()
 
   return (
     <ButtonContext.Provider
       value={{ isIconOnly, isDisabled, variant, color, ...buttonProps }}
     >
-      <PanGestureHandler onGestureEvent={gestureHandler}>
+      <PanGestureHandler onGestureEvent={gestureHandler} enabled={!isDisabled}>
         <ButtonWrapper
           style={[
             { ...animatedButtonStyle, ...getShadow(variant, colors, color) },
           ]}
           onPress={onPress}
+          onPressIn={onPressIn}
+          onPressOut={onPressOut}
+          disabled={isDisabled}
           // @ts-ignore
           ref={ref}
           collapsable={false}

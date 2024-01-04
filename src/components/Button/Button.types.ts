@@ -2,7 +2,7 @@ import { ReactNode } from 'react'
 import { ColorName, RadiusName, SizeName, VariantName } from '../../types'
 import { GestureResponderEvent } from 'react-native'
 
-export type OnPressType = (event?: GestureResponderEvent) => void
+type OnPressType = (event?: GestureResponderEvent) => void
 export interface ButtonProps {
   children: ReactNode
   variant?: VariantName

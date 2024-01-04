@@ -33,6 +33,7 @@ const Checkbox: FC<CheckboxProps> = ({
     defaultSelected,
     isIndeterminate,
     isReadOnly,
+    isDisabled,
     lineThrough,
   } = checkboxProps
 
@@ -50,10 +51,6 @@ const Checkbox: FC<CheckboxProps> = ({
   const { selectCheckbox } = useCheckboxGroupContext()
 
   const handlePress = () => {
-    if (isIndeterminate || isReadOnly) {
-      return
-    }
-
     if (selectCheckbox) {
       selectCheckbox(value)
     }
@@ -81,7 +78,10 @@ const Checkbox: FC<CheckboxProps> = ({
     <CheckboxContext.Provider
       value={{ ...checkboxProps, isSelected: isChecked }}
     >
-      <Pressable onPress={handlePress}>
+      <Pressable
+        onPress={handlePress}
+        disabled={isIndeterminate || isReadOnly || isDisabled}
+      >
         <PanGestureHandler onGestureEvent={gestureHandler}>
           <CheckboxWrapper css={styles?.wrapper as any}>
             <CheckboxOutline style={animatedCheckboxStyles}>

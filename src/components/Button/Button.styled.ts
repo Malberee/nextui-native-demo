@@ -7,6 +7,7 @@ import { useVariantStyles } from '../../hooks/useVariantStyles'
 import { useButtonContext } from './hooks/useButtonContext'
 import { radii, sizes } from './Button.constants'
 import { getSize } from '../../utils/getSize'
+import { Pressable } from 'react-native'
 
 const getRadii = (
   isInGroup: boolean,
@@ -32,7 +33,9 @@ const getRadii = (
   return `border-radius: ${radius}px;`
 }
 
-export const ButtonWrapper = styled(Animated.View)(() => {
+const animatedPressable = Animated.createAnimatedComponent(Pressable)
+
+export const ButtonWrapper = styled(animatedPressable)(() => {
   const {
     radius,
     color,
