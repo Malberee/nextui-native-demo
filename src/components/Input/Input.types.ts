@@ -1,9 +1,10 @@
 import { ReactNode } from 'react'
 import { ColorName, RadiusName, SizeName, VariantName } from '../../types'
+import { TextInputProps } from 'react-native'
 
 type LabelPlacement = 'inside' | 'outside' | 'outside-left'
 
-export interface InputProps {
+export interface InputProps extends TextInputProps {
   variant?: Extract<VariantName, 'flat' | 'bordered' | 'faded'> | 'underlined'
   color?: ColorName
   size?: Extract<SizeName, 'sm' | 'md' | 'lg'>
@@ -25,7 +26,8 @@ export interface InputProps {
   isInvalid?: boolean
 
   // events
-  onValueChange?: (value: string) => void
+  // onChange?:
+  // onValueChange?: (value: string) => void
   onClear?: () => void
 }
 

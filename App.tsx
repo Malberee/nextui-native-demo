@@ -12,13 +12,13 @@ import {
   // Avatar,
   // Badge,
   // ButtonGroup,
-  Button,
+  // Button,
   // Chip,
   // Code,
   // Divider,
   // Progress,
-  RadioGroup,
-  Radio,
+  // RadioGroup,
+  // Radio,
   // Slider,
   // Switch,
   // User,
@@ -48,7 +48,7 @@ export default function App() {
   return (
     <ThemeProvider>
       <Container>
-        <Input />
+        <Input placeholder="textsdfsdf" color="default" />
       </Container>
     </ThemeProvider>
   )
