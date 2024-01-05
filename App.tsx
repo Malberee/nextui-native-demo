@@ -26,8 +26,8 @@ import {
   // AccordionItem,
   CheckboxGroup,
   Checkbox,
+  Input,
 } from './src'
-import { TextInput } from 'react-native'
 
 const Container = styled(GestureHandlerRootView)(() => {
   const { colors } = useColors()
@@ -48,35 +48,7 @@ export default function App() {
   return (
     <ThemeProvider>
       <Container>
-        <CheckboxGroup
-          label="Select anything"
-          value={value}
-          onValueChange={(item) => setValue(item)}
-          isInvalid={value.includes('0')}
-          errorMessage="Not zero"
-        >
-          {values.map((item) => (
-            <Checkbox
-              value={item}
-              key={item}
-              styles={{
-                wrapper: css`
-                  width: 100px;
-                  display: flex;
-                  justify-content: space-between;
-                  background-color: ${value.includes(item)
-                    ? '#ccc'
-                    : 'transparent'};
-                `,
-              }}
-            >
-              {item}
-            </Checkbox>
-          ))}
-        </CheckboxGroup>
-        <Button onPress={() => console.log('text')} isDisabled>
-          Button
-        </Button>
+        <Input />
       </Container>
     </ThemeProvider>
   )

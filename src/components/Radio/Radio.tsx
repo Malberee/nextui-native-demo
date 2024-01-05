@@ -33,8 +33,6 @@ const Radio: FC<RadioProps> = ({ label, description, styles, ...props }) => {
     selectRadio(value)
   }
 
-  console.log(styles)
-
   return (
     <RadioContext.Provider value={radioProps}>
       <GestureDetector gesture={pan}>
