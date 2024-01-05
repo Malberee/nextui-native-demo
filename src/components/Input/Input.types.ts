@@ -4,7 +4,6 @@ import { ColorName, RadiusName, SizeName, VariantName } from '../../types'
 type LabelPlacement = 'inside' | 'outside' | 'outside-left'
 
 export interface InputProps {
-  children?: ReactNode
   variant?: Extract<VariantName, 'flat' | 'bordered' | 'faded'> | 'underlined'
   color?: ColorName
   size?: Extract<SizeName, 'sm' | 'md' | 'lg'>
@@ -18,7 +17,7 @@ export interface InputProps {
   startContent?: ReactNode
   endContent?: ReactNode
   labelPlacement?: LabelPlacement
-  fullWidth?: boolean
+  // fullWidth?: boolean
   isClearable?: boolean
   isRequired?: boolean
   isReadOnly?: boolean
@@ -29,3 +28,17 @@ export interface InputProps {
   onValueChange?: (value: string) => void
   onClear?: () => void
 }
+
+export interface InputContextProps
+  extends Required<
+    Pick<
+      InputProps,
+      | 'variant'
+      | 'color'
+      | 'size'
+      | 'radius'
+      | 'labelPlacement'
+      | 'isDisabled'
+      | 'isInvalid'
+    >
+  > {}
