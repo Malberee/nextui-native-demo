@@ -52,13 +52,13 @@ export default function App() {
           placeholder="Enter your email"
           label="Email"
           description="We`ll never share your email with anyone else."
-          color="default"
+          color="primary"
         />
         <Input
           // placeholder="Enter your email"
           label="Email"
           description="We`ll never share your email with anyone else."
-          color="default"
+          color="secondary"
         />
       </Container>
     </ThemeProvider>

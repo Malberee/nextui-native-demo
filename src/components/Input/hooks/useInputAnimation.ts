@@ -7,12 +7,15 @@ const useInputAnimation = (shouldChangeLabelPosition: boolean) => {
   const { size } = useInputContext()
   const paddingTop = getSize(paddings, size)
 
-  const animatedLabelStyles = useAnimatedStyle(() => ({
-    fontSize: withTiming(shouldChangeLabelPosition ? 12 : 16, {
-      duration: 300,
-    }),
-    top: withTiming(shouldChangeLabelPosition ? -paddingTop : 0),
-  }))
+  const animatedLabelStyles = useAnimatedStyle(() => {
+    return {
+      fontSize: withTiming(shouldChangeLabelPosition ? 12 : 16, {
+        duration: 300,
+      }),
+      top: withTiming(shouldChangeLabelPosition ? -paddingTop - 4 : 0),
+      left: 0,
+    }
+  })
 
   return { animatedLabelStyles }
 }

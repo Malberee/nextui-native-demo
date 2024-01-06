@@ -21,11 +21,10 @@ export const InputInner = styled.View(() => {
     position: relative;
 
     width: 100%;
+    height: ${getSize(sizes, size)}px;
     display: flex;
     justify-content: center;
 
-    width: 100%;
-    height: ${getSize(sizes, size)}px;
     padding: ${getSize(paddings, size)}px 12px;
     background-color: ${colors[color]}33;
     border-radius: ${getRadius(radii, radius)}px;
@@ -50,14 +49,13 @@ export const StyledTextInput = styled.TextInput(() => {
 })
 
 export const Label = styled(Animated.Text)(() => {
-  const { size, color } = useInputContext()
+  const { color } = useInputContext()
   const { colors } = useColors()
 
-  const fontSize = size === 'lg' ? 16 : 14
   const textColor = color === 'default' ? colors.default600 : colors[color]
 
   return css`
-    font-size: ${fontSize}px;
+    position: relative;
     color: ${textColor};
   `
 })
