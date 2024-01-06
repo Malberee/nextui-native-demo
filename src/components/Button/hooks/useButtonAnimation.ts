@@ -1,7 +1,6 @@
 import { View } from 'react-native'
 import {
   measure,
-  runOnJS,
   useAnimatedGestureHandler,
   useAnimatedRef,
   useAnimatedStyle,
