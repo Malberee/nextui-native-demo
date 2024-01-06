@@ -27,7 +27,7 @@ export interface InputProps extends TextInputProps {
 
   // events
   // onChange?:
-  // onValueChange?: (value: string) => void
+  onValueChange?: (value: string) => void
   onClear?: () => void
 }
 

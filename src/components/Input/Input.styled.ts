@@ -1,52 +1,76 @@
 import { css } from 'styled-components'
 import styled from 'styled-components/native'
+import Animated from 'react-native-reanimated'
 import useColors from '../ThemeProvider/hooks/useColors'
 import { useInputContext } from './hooks/useInputContext'
 import { getRadius } from '../../utils/getRadius'
 import { paddings, radii, sizes } from './Input.constants'
 import { getSize } from '../../utils/getSize'
 
-export const InputWrapper = styled.View(() => {
+export const InputWrapper = styled.Pressable(() => {
   return css`
     width: 100%;
   `
 })
 
 export const InputInner = styled.View(() => {
+  const { radius, size, color } = useInputContext()
+  const { colors } = useColors()
+
   return css`
+    position: relative;
+
     width: 100%;
     display: flex;
     justify-content: center;
+
+    width: 100%;
+    height: ${getSize(sizes, size)}px;
+    padding: ${getSize(paddings, size)}px 12px;
+    background-color: ${colors[color]}33;
+    border-radius: ${getRadius(radii, radius)}px;
   `
 })
 
 export const StyledTextInput = styled.TextInput(() => {
-  const { radius, size, color } = useInputContext()
+  const { color, size } = useInputContext()
   const { colors } = useColors()
 
   const textColor = color === 'default' ? colors.foreground : colors[color]
 
   return css`
+    position: absolute;
+    bottom: ${getSize(paddings, size)}px;
+    left: 12px;
     width: 100%;
-    height: ${getSize(sizes, size)}px;
-    padding: ${getSize(paddings, size)}px 12px;
-    background-color: ${colors[color]}33;
+    height: ${size === 'lg' ? 24 : 20}px;
+    font-size: ${size === 'lg' ? 16 : 14}px;
     color: ${textColor};
-    border-radius: ${getRadius(radii, radius)}px;
   `
 })
 
-export const Placeholder = styled.Text(() => {
+export const Label = styled(Animated.Text)(() => {
   const { size, color } = useInputContext()
   const { colors } = useColors()
 
   const fontSize = size === 'lg' ? 16 : 14
-  const textColor = color === 'default' ? colors.default500 : colors[color]
+  const textColor = color === 'default' ? colors.default600 : colors[color]
 
   return css`
-    position: absolute;
-    left: 12px;
     font-size: ${fontSize}px;
     color: ${textColor};
+  `
+})
+
+export const Description = styled.Text(() => {
+  const { size } = useInputContext()
+  const { colors } = useColors()
+
+  const fontSize = size === 'lg' ? 16 : 14
+
+  return css`
+    padding: 4px;
+    font-size: ${fontSize}px;
+    color: ${colors.default400};
   `
 })
