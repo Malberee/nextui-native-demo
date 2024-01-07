@@ -13,7 +13,7 @@ Here is a list of some of the components that have already been implemented:
 - [x] Chip
 - [x] Code
 - [x] Divider
-- [x] Input 
+- [x] Input (WIP)
 - [x] Progress
 - [x] RadioGroup, Radio
 - [x] Slider
