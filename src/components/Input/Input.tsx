@@ -4,6 +4,7 @@ import {
   InputContainer,
   InputWrapper,
   InputInner,
+  TextFieldWrapper,
   StyledTextInput,
   Label,
   Placeholder,
@@ -39,8 +40,6 @@ const Input: FC<InputProps> = ({
   const { animatedLabelStyles } = useInputAnimation(shouldChangeLabelPosition)
   const inputRef = useRef<TextInput>(null)
 
-  console.log(isClearable && inputValue)
-
   const handleClear = () => {
     if (onClear) {
       onClear()
@@ -52,7 +51,6 @@ const Input: FC<InputProps> = ({
 
   useEffect(() => {
     onValueChange?.(inputValue)
-    console.log(inputValue)
   }, [inputValue, onValueChange])
 
   const accentColor = color === 'default' ? colors.default500 : colors[color]
@@ -60,23 +58,32 @@ const Input: FC<InputProps> = ({
   return (
     <InputContext.Provider value={inputProps}>
       <InputContainer>
-        {label && <Label>{label}</Label>}
         <InputWrapper>
-          {startContent}
-          <StyledTextInput
-            cursorColor={accentColor}
-            onChangeText={(_value) => setInputValue(_value)}
-            value={inputValue}
-            defaultValue={defaultValue}
-            // @ts-ignore
-            ref={inputRef}
-          />
-          {endContent}
-          {isClearable && inputValue && (
-            <ClearPressable onPress={handleClear}>
-              <CloseCircle color={accentColor} />
-            </ClearPressable>
-          )}
+          {label && <Label>{label}</Label>}
+          <InputInner>
+            {startContent}
+            <TextFieldWrapper>
+              {placeholder && !inputValue && (
+                <Placeholder>{placeholder}</Placeholder>
+              )}
+              <StyledTextInput
+                cursorColor={accentColor}
+                onChangeText={(_value) => setInputValue(_value)}
+                value={inputValue}
+                defaultValue={defaultValue}
+                onFocus={() => setIsFocused(true)}
+                onBlur={() => setIsFocused(false)}
+                // @ts-ignore
+                ref={inputRef}
+              />
+            </TextFieldWrapper>
+            {endContent}
+            {isClearable && inputValue && (
+              <ClearPressable onPress={handleClear}>
+                <CloseCircle color={accentColor} />
+              </ClearPressable>
+            )}
+          </InputInner>
         </InputWrapper>
         {description && <Description>{description}</Description>}
       </InputContainer>

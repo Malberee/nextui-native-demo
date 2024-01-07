@@ -13,28 +13,34 @@ export const InputContainer = styled.View(() => {
   `
 })
 
-export const InputWrapper = styled.Pressable(() => {
+export const InputWrapper = styled.View(() => {
   const { radius, size, color } = useInputContext()
   const { colors } = useColors()
 
   return css`
-    width: 100%;
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    gap: 6px;
-
     padding: ${getSize(paddings, size)}px 12px;
-    height: ${getSize(sizes, size)}px;
+    /* min-height: ${getSize(sizes, size)}px; */
 
     background-color: ${colors[color]}33;
     border-radius: ${getRadius(radii, radius)}px;
   `
 })
 
-export const InputInner = styled.View(() => {
+export const InputInner = styled.Pressable(() => {
   return css`
     width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 6px;
+  `
+})
+
+export const TextFieldWrapper = styled.View(() => {
+  return css`
+    flex: 1;
+    display: flex;
+    justify-content: center;
   `
 })
 
@@ -47,7 +53,6 @@ export const Placeholder = styled.Text(() => {
 
   return css`
     position: absolute;
-    left: 12px;
     color: ${placeholderColor};
   `
 })
@@ -59,8 +64,7 @@ export const StyledTextInput = styled.TextInput(() => {
   const textColor = color === 'default' ? colors.foreground : colors[color]
 
   return css`
-    flex: 1;
-    /* height: ${size === 'lg' ? 24 : 20}px; */
+    width: 100%;
     font-size: ${size === 'lg' ? 16 : 14}px;
     color: ${textColor};
   `

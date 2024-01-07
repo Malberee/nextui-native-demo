@@ -52,19 +52,20 @@ export default function App() {
       <Container>
         <Input
           startContent={<Sms color="black" />}
-          endContent={<Text>@gmail.com</Text>}
+          // endContent={<Text>@gmail.com</Text>}
           placeholder="Enter your email"
           label="Email"
           description="We`ll never share your email with anyone else."
           color="primary"
           isClearable
-          defaultValue="text"
+          // defaultValue="text"
         />
         <Input
-          // placeholder="Enter your email"
+          placeholder="Enter your email"
           label="Email"
           description="We`ll never share your email with anyone else."
           color="secondary"
+          defaultValue="text"
         />
       </Container>
     </ThemeProvider>
