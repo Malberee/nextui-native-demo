@@ -7,6 +7,12 @@ import { getRadius } from '../../utils/getRadius'
 import { paddings, radii, sizes } from './Input.constants'
 import { getSize } from '../../utils/getSize'
 
+export const InputContainer = styled.View(() => {
+  return css`
+    width: 100%;
+  `
+})
+
 export const InputWrapper = styled.Pressable(() => {
   return css`
     width: 100%;
@@ -23,11 +29,27 @@ export const InputInner = styled.View(() => {
     width: 100%;
     height: ${getSize(sizes, size)}px;
     display: flex;
-    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
 
     padding: ${getSize(paddings, size)}px 12px;
     background-color: ${colors[color]}33;
     border-radius: ${getRadius(radii, radius)}px;
+  `
+})
+
+export const Placeholder = styled.Text(() => {
+  const { color } = useInputContext()
+  const { colors } = useColors()
+
+  const placeholderColor =
+    color === 'default' ? colors.default500 : colors[color]
+
+  return css`
+    position: absolute;
+    left: 12px;
+    color: ${placeholderColor};
   `
 })
 
@@ -38,9 +60,6 @@ export const StyledTextInput = styled.TextInput(() => {
   const textColor = color === 'default' ? colors.foreground : colors[color]
 
   return css`
-    position: absolute;
-    bottom: ${getSize(paddings, size)}px;
-    left: 12px;
     width: 100%;
     height: ${size === 'lg' ? 24 : 20}px;
     font-size: ${size === 'lg' ? 16 : 14}px;
@@ -57,6 +76,19 @@ export const Label = styled(Animated.Text)(() => {
   return css`
     position: relative;
     color: ${textColor};
+  `
+})
+
+export const ClearPressable = styled.Pressable(() => {
+  const { color } = useInputContext()
+  const { colors } = useColors()
+
+  const placeholderColor =
+    color === 'default' ? colors.default500 : colors[color]
+
+  return css`
+    margin-left: auto;
+    color: ${placeholderColor};
   `
 })
 
