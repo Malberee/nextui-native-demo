@@ -56,16 +56,32 @@ export default function App() {
           placeholder="Enter your email"
           label="Email"
           description="We`ll never share your email with anyone else."
-          color="primary"
+          color="secondary"
           isClearable
+          labelPlacement="outside"
           // defaultValue="text"
         />
         <Input
+          startContent={<Sms color="black" />}
+          // endContent={<Text>@gmail.com</Text>}
           placeholder="Enter your email"
           label="Email"
           description="We`ll never share your email with anyone else."
           color="secondary"
-          defaultValue="text"
+          isClearable
+          labelPlacement="outside-left"
+          // defaultValue="text"
+        />
+        <Input
+          startContent={<Sms color="black" />}
+          // endContent={<Text>@gmail.com</Text>}
+          placeholder="Enter your email"
+          label="Email"
+          description="We`ll never share your email with anyone else."
+          color="secondary"
+          isClearable
+          labelPlacement="inside"
+          // defaultValue="text"
         />
       </Container>
     </ThemeProvider>

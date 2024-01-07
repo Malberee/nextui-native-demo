@@ -34,7 +34,7 @@ const Input: FC<InputProps> = ({
   const [inputValue, setInputValue] = useState(value || defaultValue || '')
   const [isFocused, setIsFocused] = useState(false)
   const inputProps = useInputProps(props)
-  const { color, isClearable } = inputProps
+  const { color, isClearable, labelPlacement } = inputProps
   const { colors } = useColors()
   const shouldChangeLabelPosition = !!isFocused || !!placeholder || !!inputValue
   const { animatedLabelStyles } = useInputAnimation(shouldChangeLabelPosition)
@@ -58,8 +58,9 @@ const Input: FC<InputProps> = ({
   return (
     <InputContext.Provider value={inputProps}>
       <InputContainer>
+        {label && labelPlacement !== 'inside' && <Label>{label}</Label>}
         <InputWrapper>
-          {label && <Label>{label}</Label>}
+          {label && labelPlacement === 'inside' && <Label>{label}</Label>}
           <InputInner>
             {startContent}
             <TextFieldWrapper>
@@ -85,8 +86,8 @@ const Input: FC<InputProps> = ({
             )}
           </InputInner>
         </InputWrapper>
-        {description && <Description>{description}</Description>}
       </InputContainer>
+      {description && <Description>{description}</Description>}
     </InputContext.Provider>
   )
 }

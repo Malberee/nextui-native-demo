@@ -8,18 +8,25 @@ import { paddings, radii, sizes } from './Input.constants'
 import { getSize } from '../../utils/getSize'
 
 export const InputContainer = styled.View(() => {
+  const { labelPlacement } = useInputContext()
+
   return css`
     width: 100%;
+    display: flex;
+    flex-direction: ${labelPlacement === 'outside-left' ? 'row' : 'column'};
+    align-items: ${labelPlacement === 'outside-left' ? 'center' : 'left'};
+    gap: 8px;
   `
 })
 
 export const InputWrapper = styled.View(() => {
-  const { radius, size, color } = useInputContext()
+  const { radius, size, color, labelPlacement } = useInputContext()
   const { colors } = useColors()
 
   return css`
+    ${labelPlacement === 'outside-left' ? 'flex: 1;' : 'width: 100%;'}
+
     padding: ${getSize(paddings, size)}px 12px;
-    /* min-height: ${getSize(sizes, size)}px; */
 
     background-color: ${colors[color]}33;
     border-radius: ${getRadius(radii, radius)}px;
@@ -28,7 +35,6 @@ export const InputWrapper = styled.View(() => {
 
 export const InputInner = styled.Pressable(() => {
   return css`
-    width: 100%;
     display: flex;
     align-items: center;
     flex-direction: row;
@@ -77,7 +83,6 @@ export const Label = styled(Animated.Text)(() => {
   const textColor = color === 'default' ? colors.default600 : colors[color]
 
   return css`
-    position: relative;
     color: ${textColor};
   `
 })
@@ -103,6 +108,7 @@ export const Description = styled.Text(() => {
 
   return css`
     padding: 4px;
+    width: 100%;
     font-size: ${fontSize}px;
     color: ${colors.default400};
   `
