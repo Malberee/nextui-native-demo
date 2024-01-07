@@ -9,10 +9,11 @@ Here is a list of some of the components that have already been implemented:
 - [x] Accordion
 - [x] Badge
 - [x] ButtonGroup, Button
-- [x] CheckboxGroup, Checkbox (WIP)
+- [x] CheckboxGroup, Checkbox
 - [x] Chip
 - [x] Code
 - [x] Divider
+- [x] Input 
 - [x] Progress
 - [x] RadioGroup, Radio
 - [x] Slider
