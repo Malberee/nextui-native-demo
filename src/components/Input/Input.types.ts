@@ -42,5 +42,6 @@ export interface InputContextProps
       | 'labelPlacement'
       | 'isDisabled'
       | 'isInvalid'
+      | 'isClearable'
     >
   > {}

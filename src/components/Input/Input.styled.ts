@@ -14,28 +14,27 @@ export const InputContainer = styled.View(() => {
 })
 
 export const InputWrapper = styled.Pressable(() => {
-  return css`
-    width: 100%;
-  `
-})
-
-export const InputInner = styled.View(() => {
   const { radius, size, color } = useInputContext()
   const { colors } = useColors()
 
   return css`
-    position: relative;
-
     width: 100%;
-    height: ${getSize(sizes, size)}px;
     display: flex;
-    flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    flex-direction: row;
+    gap: 6px;
 
     padding: ${getSize(paddings, size)}px 12px;
+    height: ${getSize(sizes, size)}px;
+
     background-color: ${colors[color]}33;
     border-radius: ${getRadius(radii, radius)}px;
+  `
+})
+
+export const InputInner = styled.View(() => {
+  return css`
+    width: 100%;
   `
 })
 
@@ -60,8 +59,8 @@ export const StyledTextInput = styled.TextInput(() => {
   const textColor = color === 'default' ? colors.foreground : colors[color]
 
   return css`
-    width: 100%;
-    height: ${size === 'lg' ? 24 : 20}px;
+    flex: 1;
+    /* height: ${size === 'lg' ? 24 : 20}px; */
     font-size: ${size === 'lg' ? 16 : 14}px;
     color: ${textColor};
   `

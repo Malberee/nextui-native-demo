@@ -8,6 +8,7 @@ export const defaultProps: InputContextProps = {
   labelPlacement: 'inside',
   isDisabled: false,
   isInvalid: false,
+  isClearable: false,
 }
 
 const useInputProps = (

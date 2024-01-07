@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components/native'
 
 import type {} from 'styled-components/cssprop'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
+import { Sms } from 'nextui-native-icons'
 
 import useColors from './src/components/ThemeProvider/hooks/useColors'
 
@@ -28,6 +29,7 @@ import {
   Checkbox,
   Input,
 } from './src'
+import { Text } from 'react-native'
 
 const Container = styled(GestureHandlerRootView)(() => {
   const { colors } = useColors()
@@ -49,10 +51,14 @@ export default function App() {
     <ThemeProvider>
       <Container>
         <Input
+          startContent={<Sms color="black" />}
+          endContent={<Text>@gmail.com</Text>}
           placeholder="Enter your email"
           label="Email"
           description="We`ll never share your email with anyone else."
           color="primary"
+          isClearable
+          defaultValue="text"
         />
         <Input
           // placeholder="Enter your email"
