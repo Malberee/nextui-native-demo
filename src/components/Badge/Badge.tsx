@@ -1,4 +1,5 @@
 import React, { FC, useState, useRef } from 'react'
+import { Easing, ZoomIn, ZoomOut } from 'react-native-reanimated'
 import { LayoutChangeEvent, View } from 'react-native'
 import {
   BadgeWrapper,
@@ -12,7 +13,6 @@ import { BadgeContext } from './hooks/useBadgeContext'
 import { useBadgeProps } from './hooks/useBadgeProps'
 import { getShadow } from '../../utils/getShadow'
 import useColors from '../ThemeProvider/hooks/useColors'
-import useBadgeAnimation from './hooks/useBadgeAnimation'
 
 const Badge: FC<BadgeProps> = ({ children, content, ...props }) => {
   const [width, setWidth] = useState(0)
@@ -24,7 +24,6 @@ const Badge: FC<BadgeProps> = ({ children, content, ...props }) => {
     width,
     ...props,
   })
-  const { animatedBadgeStyles } = useBadgeAnimation(badgeProps.isInvisible)
 
   const onLayout = (e: LayoutChangeEvent) => {
     if (!hasLayoutOccurred) {
@@ -39,18 +38,26 @@ const Badge: FC<BadgeProps> = ({ children, content, ...props }) => {
     >
       <View>
         {React.cloneElement(children as React.ReactElement, { ref: childRef })}
-        <BadgeWrapper onLayout={onLayout} style={animatedBadgeStyles}>
-          <BadgeInner style={{ ...getShadow(variant, colors, color) }}>
-            {!props.isDot && (
-              <BadgeContent>
-                {props.isOneChar && typeof content === 'string'
-                  ? content.charAt(0)
-                  : content}
-              </BadgeContent>
+        {!badgeProps.isInvisible && (
+          <BadgeWrapper
+            onLayout={onLayout}
+            entering={ZoomIn.duration(200).easing(
+              Easing.bezier(0.17, 0.67, 0.57, 1.3) as any,
             )}
-          </BadgeInner>
-          {showOutline && <BadgeOutline />}
-        </BadgeWrapper>
+            exiting={ZoomOut.duration(200)}
+          >
+            <BadgeInner style={{ ...getShadow(variant, colors, color) }}>
+              {!props.isDot && (
+                <BadgeContent>
+                  {props.isOneChar && typeof content === 'string'
+                    ? content.charAt(0)
+                    : content}
+                </BadgeContent>
+              )}
+            </BadgeInner>
+            {showOutline && <BadgeOutline />}
+          </BadgeWrapper>
+        )}
       </View>
     </BadgeContext.Provider>
   )
