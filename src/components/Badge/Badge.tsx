@@ -12,6 +12,7 @@ import { BadgeContext } from './hooks/useBadgeContext'
 import { useBadgeProps } from './hooks/useBadgeProps'
 import { getShadow } from '../../utils/getShadow'
 import useColors from '../ThemeProvider/hooks/useColors'
+import useBadgeAnimation from './hooks/useBadgeAnimation'
 
 const Badge: FC<BadgeProps> = ({ children, content, ...props }) => {
   const [width, setWidth] = useState(0)
@@ -23,6 +24,7 @@ const Badge: FC<BadgeProps> = ({ children, content, ...props }) => {
     width,
     ...props,
   })
+  const { animatedBadgeStyles } = useBadgeAnimation(badgeProps.isInvisible)
 
   const onLayout = (e: LayoutChangeEvent) => {
     if (!hasLayoutOccurred) {
@@ -37,7 +39,7 @@ const Badge: FC<BadgeProps> = ({ children, content, ...props }) => {
     >
       <View>
         {React.cloneElement(children as React.ReactElement, { ref: childRef })}
-        <BadgeWrapper onLayout={onLayout}>
+        <BadgeWrapper onLayout={onLayout} style={animatedBadgeStyles}>
           <BadgeInner style={{ ...getShadow(variant, colors, color) }}>
             {!props.isDot && (
               <BadgeContent>

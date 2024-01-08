@@ -10,10 +10,10 @@ import useColors from './src/components/ThemeProvider/hooks/useColors'
 import {
   ThemeProvider,
   // AvatarGroup,
-  // Avatar,
-  // Badge,
+  Avatar,
+  Badge,
   // ButtonGroup,
-  // Button,
+  Button,
   // Chip,
   // Code,
   // Divider,
@@ -44,12 +44,17 @@ const Container = styled(GestureHandlerRootView)(() => {
 
 export default function App() {
   const [value, setValue] = useState<string[]>([])
+  const [showBadge, setShowBadge] = useState(false)
 
   const values = ['0', '1', '2', '3', '4']
 
   return (
     <ThemeProvider>
       <Container>
+        <Button onPress={() => setShowBadge(!showBadge)}>Press</Button>
+        <Badge content="5" color="danger" showOutline isInvisible={showBadge}>
+          <Avatar color="primary" isBordered />
+        </Badge>
         <Input
           startContent={<Sms color="black" />}
           // endContent={<Text>@gmail.com</Text>}

@@ -6,8 +6,9 @@ import { sizes } from './Badge.constants'
 import useColors from '../ThemeProvider/hooks/useColors'
 import { useVariantStyles } from '../../hooks/useVariantStyles'
 import { useTextColor } from '../../hooks/useTextColor'
+import Animated from 'react-native-reanimated'
 
-export const BadgeWrapper = styled.View(() => {
+export const BadgeWrapper = styled(Animated.View)(() => {
   const { placement, width, shape, isDisabled } = useBadgeContext()
 
   return css`
