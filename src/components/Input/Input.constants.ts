@@ -9,9 +9,9 @@ export const radii: Radii = {
 }
 
 export const sizes: Sizes = {
-  sm: 40,
-  md: 48,
-  lg: 56,
+  sm: 32,
+  md: 40,
+  lg: 48,
 }
 
 export const paddings: Sizes = {

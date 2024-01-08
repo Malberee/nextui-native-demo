@@ -18,6 +18,8 @@ import useInputProps from './hooks/useInputProps'
 import useColors from '../ThemeProvider/hooks/useColors'
 import useInputAnimation from './hooks/useInputAnimation'
 import { TextInput } from 'react-native'
+import { View } from 'react-native'
+import Animated from 'react-native-reanimated'
 
 const Input: FC<InputProps> = ({
   placeholder,
@@ -60,7 +62,9 @@ const Input: FC<InputProps> = ({
       <InputContainer>
         {label && labelPlacement !== 'inside' && <Label>{label}</Label>}
         <InputWrapper>
-          {label && labelPlacement === 'inside' && <Label>{label}</Label>}
+          {label && labelPlacement === 'inside' && (
+            <Label style={animatedLabelStyles}>{label}</Label>
+          )}
           <InputInner>
             {startContent}
             <TextFieldWrapper>

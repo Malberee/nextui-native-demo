@@ -23,10 +23,19 @@ export const InputWrapper = styled.View(() => {
   const { radius, size, color, labelPlacement } = useInputContext()
   const { colors } = useColors()
 
+  const paddingsTopBottom =
+    labelPlacement !== 'inside' ? 0 : getSize(paddings, size)
+
   return css`
+    position: relative;
     ${labelPlacement === 'outside-left' ? 'flex: 1;' : 'width: 100%;'}
 
-    padding: ${getSize(paddings, size)}px 12px;
+    height: ${getSize(sizes, size) + paddingsTopBottom * 2}px;
+    min-height: ${getSize(sizes, size)}px;
+    padding: ${paddingsTopBottom}px 12px;
+
+    display: flex;
+    justify-content: center;
 
     background-color: ${colors[color]}33;
     border-radius: ${getRadius(radii, radius)}px;
@@ -35,6 +44,7 @@ export const InputWrapper = styled.View(() => {
 
 export const InputInner = styled.Pressable(() => {
   return css`
+    height: 100%;
     display: flex;
     align-items: center;
     flex-direction: row;
@@ -44,9 +54,14 @@ export const InputInner = styled.Pressable(() => {
 
 export const TextFieldWrapper = styled.View(() => {
   return css`
-    flex: 1;
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
     display: flex;
-    justify-content: center;
+    flex-direction: row;
+    align-items: center;
   `
 })
 
@@ -83,7 +98,10 @@ export const Label = styled(Animated.Text)(() => {
   const textColor = color === 'default' ? colors.default600 : colors[color]
 
   return css`
+    position: absolute;
+    left: 12px;
     color: ${textColor};
+    z-index: 10;
   `
 })
 

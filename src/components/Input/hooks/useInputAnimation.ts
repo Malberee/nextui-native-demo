@@ -12,8 +12,7 @@ const useInputAnimation = (shouldChangeLabelPosition: boolean) => {
       fontSize: withTiming(shouldChangeLabelPosition ? 12 : 16, {
         duration: 300,
       }),
-      top: withTiming(shouldChangeLabelPosition ? -paddingTop - 4 : 0),
-      left: 0,
+      top: withTiming(shouldChangeLabelPosition ? paddingTop : '50%'),
     }
   })
 

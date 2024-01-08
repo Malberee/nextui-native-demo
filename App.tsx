@@ -51,19 +51,14 @@ export default function App() {
   return (
     <ThemeProvider>
       <Container>
-        <Button onPress={() => setShowBadge(!showBadge)}>Press</Button>
-        <Badge content="5" color="danger" showOutline isInvisible={showBadge}>
-          <Avatar color="primary" isBordered />
-        </Badge>
         <Input
-          startContent={<Sms color="black" />}
-          // endContent={<Text>@gmail.com</Text>}
           placeholder="Enter your email"
           label="Email"
           description="We`ll never share your email with anyone else."
           color="secondary"
           isClearable
-          labelPlacement="outside"
+          labelPlacement="inside"
+          size="md"
           // defaultValue="text"
         />
         <Input
@@ -80,7 +75,7 @@ export default function App() {
         <Input
           startContent={<Sms color="black" />}
           // endContent={<Text>@gmail.com</Text>}
-          placeholder="Enter your email"
+          // placeholder="Enter your email"
           label="Email"
           description="We`ll never share your email with anyone else."
           color="secondary"
