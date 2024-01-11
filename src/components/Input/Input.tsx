@@ -62,32 +62,14 @@ const Input: FC<InputProps> = ({
       <InputContainer>
         {label && labelPlacement !== 'inside' && <Label>{label}</Label>}
         <InputWrapper>
-          {label && labelPlacement === 'inside' && (
-            <Label style={animatedLabelStyles}>{label}</Label>
-          )}
+          {label && labelPlacement === 'inside' && <Label>{label}</Label>}
           <InputInner>
             {startContent}
             <TextFieldWrapper>
-              {placeholder && !inputValue && (
-                <Placeholder>{placeholder}</Placeholder>
-              )}
-              <StyledTextInput
-                cursorColor={accentColor}
-                onChangeText={(_value) => setInputValue(_value)}
-                value={inputValue}
-                defaultValue={defaultValue}
-                onFocus={() => setIsFocused(true)}
-                onBlur={() => setIsFocused(false)}
-                // @ts-ignore
-                ref={inputRef}
-              />
+              {placeholder && <Placeholder>{placeholder}</Placeholder>}
+              <StyledTextInput />
             </TextFieldWrapper>
             {endContent}
-            {isClearable && inputValue && (
-              <ClearPressable onPress={handleClear}>
-                <CloseCircle color={accentColor} />
-              </ClearPressable>
-            )}
           </InputInner>
         </InputWrapper>
       </InputContainer>

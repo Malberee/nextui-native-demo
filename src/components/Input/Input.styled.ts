@@ -14,28 +14,23 @@ export const InputContainer = styled.View(() => {
     width: 100%;
     display: flex;
     flex-direction: ${labelPlacement === 'outside-left' ? 'row' : 'column'};
-    align-items: ${labelPlacement === 'outside-left' ? 'center' : 'left'};
+    align-items: ${labelPlacement === 'outside-left' ? 'center' : 'normal'};
     gap: 8px;
   `
 })
 
 export const InputWrapper = styled.View(() => {
-  const { radius, size, color, labelPlacement } = useInputContext()
+  const { color, size, radius, labelPlacement } = useInputContext()
   const { colors } = useColors()
 
-  const paddingsTopBottom =
-    labelPlacement !== 'inside' ? 0 : getSize(paddings, size)
-
   return css`
-    position: relative;
-    ${labelPlacement === 'outside-left' ? 'flex: 1;' : 'width: 100%;'}
-
-    height: ${getSize(sizes, size) + paddingsTopBottom * 2}px;
+    flex-grow: 1;
     min-height: ${getSize(sizes, size)}px;
-    padding: ${paddingsTopBottom}px 12px;
+    padding: ${getSize(paddings, size)}px 12px;
 
     display: flex;
-    justify-content: center;
+    flex-direction: ${labelPlacement === 'inside' ? 'column' : 'row'};
+    align-items: ${labelPlacement === 'inside' ? 'normal' : 'center'};
 
     background-color: ${colors[color]}33;
     border-radius: ${getRadius(radii, radius)}px;
@@ -44,21 +39,17 @@ export const InputWrapper = styled.View(() => {
 
 export const InputInner = styled.Pressable(() => {
   return css`
-    height: 100%;
     display: flex;
-    align-items: center;
     flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
     gap: 6px;
   `
 })
 
 export const TextFieldWrapper = styled.View(() => {
   return css`
-    position: relative;
-
-    width: 100%;
-    height: 100%;
-
+    flex-grow: 1;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -69,12 +60,10 @@ export const Placeholder = styled.Text(() => {
   const { color } = useInputContext()
   const { colors } = useColors()
 
-  const placeholderColor =
-    color === 'default' ? colors.default500 : colors[color]
-
   return css`
     position: absolute;
-    color: ${placeholderColor};
+
+    color: ${colors[color]};
   `
 })
 
@@ -82,12 +71,8 @@ export const StyledTextInput = styled.TextInput(() => {
   const { color, size } = useInputContext()
   const { colors } = useColors()
 
-  const textColor = color === 'default' ? colors.foreground : colors[color]
-
   return css`
-    width: 100%;
-    font-size: ${size === 'lg' ? 16 : 14}px;
-    color: ${textColor};
+    flex-grow: 1;
   `
 })
 
@@ -95,13 +80,8 @@ export const Label = styled(Animated.Text)(() => {
   const { color } = useInputContext()
   const { colors } = useColors()
 
-  const textColor = color === 'default' ? colors.default600 : colors[color]
-
   return css`
-    position: absolute;
-    left: 12px;
-    color: ${textColor};
-    z-index: 10;
+    color: ${colors[color]};
   `
 })
 
@@ -109,25 +89,12 @@ export const ClearPressable = styled.Pressable(() => {
   const { color } = useInputContext()
   const { colors } = useColors()
 
-  const placeholderColor =
-    color === 'default' ? colors.default500 : colors[color]
-
-  return css`
-    margin-left: auto;
-    color: ${placeholderColor};
-  `
+  return css``
 })
 
 export const Description = styled.Text(() => {
   const { size } = useInputContext()
   const { colors } = useColors()
 
-  const fontSize = size === 'lg' ? 16 : 14
-
-  return css`
-    padding: 4px;
-    width: 100%;
-    font-size: ${fontSize}px;
-    color: ${colors.default400};
-  `
+  return css``
 })

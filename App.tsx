@@ -57,7 +57,7 @@ export default function App() {
           description="We`ll never share your email with anyone else."
           color="secondary"
           isClearable
-          labelPlacement="inside"
+          labelPlacement="outside"
           size="md"
           // defaultValue="text"
         />
