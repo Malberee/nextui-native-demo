@@ -42,7 +42,10 @@ const Input: FC<InputProps> = ({
     (!!isFocused || !!placeholder || !!inputValue || !!startContent) &&
     labelPlacement === 'inside'
 
-  const { animatedLabelStyles } = useInputAnimation(shouldChangeLabelPosition)
+  const { animatedLabelStyles } = useInputAnimation(
+    shouldChangeLabelPosition,
+    size,
+  )
   const inputRef = useRef<TextInput>(null)
 
   const handleClear = () => {

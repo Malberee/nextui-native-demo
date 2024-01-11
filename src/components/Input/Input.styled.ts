@@ -49,7 +49,7 @@ export const InputInner = styled.Pressable(() => {
 
 export const TextFieldWrapper = styled.View(() => {
   return css`
-    flex-grow: 1;
+    flex: 1;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -71,6 +71,7 @@ export const StyledTextInput = styled.TextInput(() => {
   const { colors } = useColors()
 
   return css`
+    flex-grow: 1;
     color: ${colors[color]};
   `
 })
