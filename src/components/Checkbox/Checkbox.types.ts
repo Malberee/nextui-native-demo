@@ -37,6 +37,7 @@ export interface CheckboxContextProps
         | 'onValueChange'
         | 'defaultSelected'
         | 'isSelected'
+        | 'styles'
       >
     >,
     Pick<CheckboxProps, 'isSelected' | 'defaultSelected'> {

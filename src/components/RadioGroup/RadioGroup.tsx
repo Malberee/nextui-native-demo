@@ -8,7 +8,7 @@ import {
   Asterisk,
 } from './RadioGroup.styled'
 
-import { RadioGroupProps, RadioGroupStyles } from './RadioGroup.types'
+import { RadioGroupProps } from './RadioGroup.types'
 import { RadioGroupContext } from './hooks/useRadioGroupContext'
 
 const RadioGroup: FC<RadioGroupProps> = ({

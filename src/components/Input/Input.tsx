@@ -9,7 +9,6 @@ import {
   Label,
   Placeholder,
   Description,
-  ClearPressable,
 } from './Input.styled'
 
 import { InputProps } from './Input.types'
@@ -17,7 +16,7 @@ import { InputContext } from './hooks/useInputContext'
 import useInputProps from './hooks/useInputProps'
 import useColors from '../ThemeProvider/hooks/useColors'
 import useInputAnimation from './hooks/useInputAnimation'
-import { LayoutChangeEvent, TextInput, View } from 'react-native'
+import { LayoutChangeEvent, Pressable, TextInput, View } from 'react-native'
 import { getSize } from '../../utils/getSize'
 import { paddings } from './Input.constants'
 
@@ -104,9 +103,9 @@ const Input: FC<InputProps> = ({
             </TextFieldWrapper>
             {endContent}
             {isClearable && inputValue && (
-              <ClearPressable onPress={handleClear}>
+              <Pressable onPress={handleClear}>
                 <CloseCircle color={accentColor} />
-              </ClearPressable>
+              </Pressable>
             )}
           </InputInner>
         </InputWrapper>

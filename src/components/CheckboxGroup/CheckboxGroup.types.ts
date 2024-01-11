@@ -40,6 +40,7 @@ export interface CheckboxGroupContextProps
       | 'isSelected'
       | 'defaultSelected'
       | 'onValueChange'
+      | 'styles'
     >
   > {
   selectCheckbox?: (value: string) => void

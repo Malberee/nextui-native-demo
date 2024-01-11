@@ -6,6 +6,7 @@ export const defaultProps: RadioContextProps = {
   color: 'primary',
   isDisabled: false,
   isInvalid: false,
+  isReadOnly: false,
   value: '',
 }
 

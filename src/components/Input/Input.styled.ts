@@ -67,7 +67,7 @@ export const Placeholder = styled.Text(() => {
 })
 
 export const StyledTextInput = styled.TextInput(() => {
-  const { color, size } = useInputContext()
+  const { color } = useInputContext()
   const { colors } = useColors()
 
   return css`
@@ -84,16 +84,13 @@ export const Label = styled(Animated.Text)(() => {
   `
 })
 
-export const ClearPressable = styled.Pressable(() => {
-  const { color } = useInputContext()
-  const { colors } = useColors()
-
-  return css``
-})
-
 export const Description = styled.Text(() => {
-  const { size } = useInputContext()
+  const { labelPlacement } = useInputContext()
   const { colors } = useColors()
 
-  return css``
+  return css`
+    width: ${labelPlacement !== 'outside-left' ? '100%' : 'auto'};
+    color: ${colors.default400};
+    text-align: left;
+  `
 })

@@ -58,8 +58,7 @@ export default function App() {
           color="secondary"
           isClearable
           labelPlacement="outside"
-          size="md"
-          // defaultValue="text"
+          size="lg"
         />
         <Input
           startContent={<Sms color="black" />}
@@ -70,10 +69,10 @@ export default function App() {
           color="secondary"
           isClearable
           labelPlacement="outside-left"
-          // defaultValue="text"
+          size="lg"
         />
         <Input
-          startContent={<Sms color="black" />}
+          // startContent={<Sms color="black" />}
           endContent={<Text>@gmail.com</Text>}
           // placeholder="Enter your email"
           label="Email"
@@ -81,7 +80,7 @@ export default function App() {
           color="secondary"
           isClearable
           labelPlacement="inside"
-          // defaultValue="text"
+          size="lg"
         />
       </Container>
     </ThemeProvider>
