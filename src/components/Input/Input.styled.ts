@@ -19,12 +19,12 @@ export const InputContainer = styled.View(() => {
   `
 })
 
-export const InputWrapper = styled.View(() => {
+export const InputWrapper = styled.Pressable(() => {
   const { color, size, radius, labelPlacement } = useInputContext()
   const { colors } = useColors()
 
   return css`
-    flex-grow: 1;
+    flex-shrink: 1;
     min-height: ${getSize(sizes, size)}px;
     padding: ${getSize(paddings, size)}px 12px;
 
@@ -39,9 +39,9 @@ export const InputWrapper = styled.View(() => {
 
 export const InputInner = styled.Pressable(() => {
   return css`
+    flex-grow: 1;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
     align-items: center;
     gap: 6px;
   `
@@ -62,7 +62,6 @@ export const Placeholder = styled.Text(() => {
 
   return css`
     position: absolute;
-
     color: ${colors[color]};
   `
 })
@@ -72,7 +71,7 @@ export const StyledTextInput = styled.TextInput(() => {
   const { colors } = useColors()
 
   return css`
-    flex-grow: 1;
+    color: ${colors[color]};
   `
 })
 

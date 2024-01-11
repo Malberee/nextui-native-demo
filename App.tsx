@@ -74,7 +74,7 @@ export default function App() {
         />
         <Input
           startContent={<Sms color="black" />}
-          // endContent={<Text>@gmail.com</Text>}
+          endContent={<Text>@gmail.com</Text>}
           // placeholder="Enter your email"
           label="Email"
           description="We`ll never share your email with anyone else."

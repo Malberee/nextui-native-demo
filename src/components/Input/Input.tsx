@@ -17,9 +17,9 @@ import { InputContext } from './hooks/useInputContext'
 import useInputProps from './hooks/useInputProps'
 import useColors from '../ThemeProvider/hooks/useColors'
 import useInputAnimation from './hooks/useInputAnimation'
-import { TextInput } from 'react-native'
-import { View } from 'react-native'
-import Animated from 'react-native-reanimated'
+import { LayoutChangeEvent, TextInput, View } from 'react-native'
+import { getSize } from '../../utils/getSize'
+import { paddings } from './Input.constants'
 
 const Input: FC<InputProps> = ({
   placeholder,
@@ -35,10 +35,14 @@ const Input: FC<InputProps> = ({
 }) => {
   const [inputValue, setInputValue] = useState(value || defaultValue || '')
   const [isFocused, setIsFocused] = useState(false)
+  const [labelHeight, setLabelHeight] = useState(0)
   const inputProps = useInputProps(props)
-  const { color, isClearable, labelPlacement } = inputProps
+  const { color, isClearable, labelPlacement, size } = inputProps
   const { colors } = useColors()
-  const shouldChangeLabelPosition = !!isFocused || !!placeholder || !!inputValue
+  const shouldChangeLabelPosition =
+    (!!isFocused || !!placeholder || !!inputValue || !!startContent) &&
+    labelPlacement === 'inside'
+
   const { animatedLabelStyles } = useInputAnimation(shouldChangeLabelPosition)
   const inputRef = useRef<TextInput>(null)
 
@@ -51,6 +55,13 @@ const Input: FC<InputProps> = ({
     inputRef.current?.clear()
   }
 
+  const handleLayout = (event: LayoutChangeEvent) => {
+    if (!labelHeight) {
+      setLabelHeight(event.nativeEvent.layout.height)
+    }
+    return
+  }
+
   useEffect(() => {
     onValueChange?.(inputValue)
   }, [inputValue, onValueChange])
@@ -61,15 +72,42 @@ const Input: FC<InputProps> = ({
     <InputContext.Provider value={inputProps}>
       <InputContainer>
         {label && labelPlacement !== 'inside' && <Label>{label}</Label>}
-        <InputWrapper>
-          {label && labelPlacement === 'inside' && <Label>{label}</Label>}
+        <InputWrapper onPress={() => inputRef.current?.focus()}>
+          {label && labelPlacement === 'inside' && (
+            <>
+              <Label onLayout={handleLayout} style={animatedLabelStyles}>
+                {label}
+              </Label>
+              <View
+                style={{
+                  height: labelHeight - getSize(paddings, size),
+                  zIndex: 10,
+                  width: 100,
+                }}
+              ></View>
+            </>
+          )}
           <InputInner>
             {startContent}
             <TextFieldWrapper>
-              {placeholder && <Placeholder>{placeholder}</Placeholder>}
-              <StyledTextInput />
+              {placeholder && !inputValue && (
+                <Placeholder>{placeholder}</Placeholder>
+              )}
+              <StyledTextInput
+                cursorColor={accentColor}
+                onChangeText={(_value) => setInputValue(_value)}
+                onFocus={() => setIsFocused(true)}
+                onBlur={() => setIsFocused(false)}
+                // @ts-ignore
+                ref={inputRef}
+              />
             </TextFieldWrapper>
             {endContent}
+            {isClearable && inputValue && (
+              <ClearPressable onPress={handleClear}>
+                <CloseCircle color={accentColor} />
+              </ClearPressable>
+            )}
           </InputInner>
         </InputWrapper>
       </InputContainer>
