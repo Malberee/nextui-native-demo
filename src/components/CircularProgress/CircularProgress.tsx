@@ -1,29 +1,71 @@
 import React, { FC } from 'react'
-import { CircularProgress as CircularProgressIcon } from 'nextui-native-icons'
-import { CircularProgressWrapper } from './CircularProgress.styled'
+import {
+  CircularProgressWrapper,
+  ValueLabel,
+  ValueLabelWrapper,
+} from './CircularProgress.styled'
 
 import { CircularProgressProps } from './CircularProgress.types'
 import useColors from '../ThemeProvider/hooks/useColors'
 import useCircularProgressProps from './hooks/useCircularProgressProps'
 import { getSize } from '../../utils/getSize'
 import { sizes } from './CircularProgress.constants'
+import { Circle, Svg } from 'react-native-svg'
+import { View } from 'react-native'
+import Animated from 'react-native-reanimated'
+import useCircularProgressAnimation from './hooks/useCircularProgressAnimation'
 
-const CircularProgress: FC<CircularProgressProps> = (props) => {
-  const { size, color } = useCircularProgressProps(props)
+const CircularProgress: FC<CircularProgressProps> = ({
+  label,
+  value,
+  valueLabel,
+  maxValue,
+  minValue,
+  ...props
+}) => {
+  const { size, color, showValueLabel } = useCircularProgressProps(props)
   const { colors } = useColors()
+
   const Size = getSize(sizes, size)
+  const CIRCLE_LENGTH = Size * 0.9
+  const R = CIRCLE_LENGTH / (2 * Math.PI)
+
+  const { animatedProps, progressText } = useCircularProgressAnimation(
+    CIRCLE_LENGTH,
+    value,
+    maxValue,
+    minValue,
+  )
+
+  const AnimatedCircle = Animated.createAnimatedComponent(Circle)
 
   return (
-    <CircularProgressWrapper>
-      <CircularProgressIcon
-        trackColor={colors.default300}
-        fillerColor={colors[color]}
-        width={Size}
-        height={Size}
-        trackProps={{ strokeDasharray: 50 }}
-        fillerProps={{ strokeDasharray: 50 }}
-      />
-    </CircularProgressWrapper>
+    <View
+      style={{
+        width: Size,
+        height: Size,
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
+    >
+      {showValueLabel && (
+        <ValueLabelWrapper>
+          <ValueLabel text={progressText} />
+        </ValueLabelWrapper>
+      )}
+      <Svg fill="none" viewBox="0 0 32 32" strokeWidth={size === 'sm' ? 2 : 3}>
+        <Circle cx="50%" cy="50%" r={R} stroke={colors.default300} />
+        <AnimatedCircle
+          cx="50%"
+          cy="50%"
+          r={R}
+          stroke={colors[color]}
+          strokeLinecap="round"
+          strokeDasharray={CIRCLE_LENGTH}
+          animatedProps={animatedProps}
+        />
+      </Svg>
+    </View>
   )
 }
 
