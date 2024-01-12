@@ -6,7 +6,7 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler'
 
 import useColors from './src/components/ThemeProvider/hooks/useColors'
 
-import { ThemeProvider } from './src'
+import { ThemeProvider, CircularProgress } from './src'
 
 const Container = styled(GestureHandlerRootView)(() => {
   const { colors } = useColors()
@@ -22,7 +22,9 @@ const Container = styled(GestureHandlerRootView)(() => {
 export default function App() {
   return (
     <ThemeProvider>
-      <Container></Container>
+      <Container>
+        <CircularProgress  />
+      </Container>
     </ThemeProvider>
   )
 }
