@@ -20,6 +20,7 @@ const CircularProgress: FC<CircularProgressProps> = (props) => {
         fillerColor={colors[color]}
         width={Size}
         height={Size}
+        trackProps={{ strokeDasharray: 50 }}
         fillerProps={{ strokeDasharray: 50 }}
       />
     </CircularProgressWrapper>
