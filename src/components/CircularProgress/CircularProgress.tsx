@@ -1,4 +1,7 @@
 import React, { FC } from 'react'
+import { Svg, Circle } from 'react-native-svg'
+import { View } from 'react-native'
+import Animated from 'react-native-reanimated'
 import {
   CircularProgressWrapper,
   ValueLabel,
@@ -10,20 +13,16 @@ import useColors from '../ThemeProvider/hooks/useColors'
 import useCircularProgressProps from './hooks/useCircularProgressProps'
 import { getSize } from '../../utils/getSize'
 import { sizes } from './CircularProgress.constants'
-import { Circle, Svg } from 'react-native-svg'
-import { View } from 'react-native'
-import Animated from 'react-native-reanimated'
 import useCircularProgressAnimation from './hooks/useCircularProgressAnimation'
 
 const CircularProgress: FC<CircularProgressProps> = ({
   label,
   value,
   valueLabel,
-  maxValue,
-  minValue,
   ...props
 }) => {
-  const { size, color, showValueLabel } = useCircularProgressProps(props)
+  const { size, color, showValueLabel, formatOptions, maxValue, minValue } =
+    useCircularProgressProps(props)
   const { colors } = useColors()
 
   const Size = getSize(sizes, size)
@@ -32,9 +31,10 @@ const CircularProgress: FC<CircularProgressProps> = ({
 
   const { animatedProps, progressText } = useCircularProgressAnimation(
     CIRCLE_LENGTH,
-    value,
-    maxValue,
+    formatOptions,
     minValue,
+    maxValue,
+    value,
   )
 
   const AnimatedCircle = Animated.createAnimatedComponent(Circle)

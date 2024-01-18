@@ -6,8 +6,7 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler'
 
 import useColors from './src/components/ThemeProvider/hooks/useColors'
 
-import { ThemeProvider, CircularProgress } from './src'
-import { Text } from 'react-native'
+import { ThemeProvider, CircularProgress, Button } from './src'
 
 const Container = styled(GestureHandlerRootView)(() => {
   const { colors } = useColors()
@@ -23,21 +22,36 @@ const Container = styled(GestureHandlerRootView)(() => {
 export default function App() {
   const [value, setValue] = useState(0)
 
-  React.useEffect(() => {
-    const interval = setInterval(() => {
-      setValue((v) => (v >= 100 ? 0 : v + 10))
-    }, 1000)
+  // React.useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     if (value < 100) {
+  //       setValue((prevState) => prevState + 10)
+  //     }
+  //   }, 500)
 
-    return () => clearInterval(interval)
-  }, [])
+  //   return () => clearInterval(interval)
+  // }, [])
 
   return (
     <ThemeProvider>
       <Container>
+        <Button onPress={() => setValue((prevState) => prevState + 10)}>
+          add
+        </Button>
         <CircularProgress
+        
+          color="danger"
           size={100}
           showValueLabel
+          formatOptions={{
+            options: {
+              style: 'currency',
+              currency: 'USD',
+            },
+          }}
           value={value}
+          minValue={0}
+          maxValue={100}
           // valueLabel={<Text>100%</Text>}
         />
       </Container>

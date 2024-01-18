@@ -3,31 +3,39 @@ import {
   useAnimatedProps,
   useDerivedValue,
   useSharedValue,
-  withRepeat,
-  withSequence,
   withTiming,
 } from 'react-native-reanimated'
+import { FormatOptions } from '../../../types'
 
 const useCircularProgressAnimation = (
   circleLength: number,
+  formatOptions: FormatOptions,
+  minValue: number,
+  maxValue: number,
   value: number = 0,
-  minValue: number = 0,
-  maxValue: number = 100,
 ) => {
+  const range = maxValue - minValue
+
+  const valueInPercent = ((value - minValue) * 100) / range
+
   const progress = useSharedValue(0)
 
-  const Value = (value - minValue) / (maxValue - minValue)
   useEffect(() => {
-    progress.value = withTiming(Value, { duration: 1000 })
-  }, [progress, Value])
+    progress.value = withTiming(valueInPercent, { duration: 1000 })
+  })
 
   const animatedProps = useAnimatedProps(() => ({
-    strokeDashoffset: circleLength * (1 - progress.value),
+    strokeDashoffset: circleLength * (1 - progress.value / 100),
   }))
 
-  const progressText = useDerivedValue(
-    () => `${Math.floor(progress.value * 100)}`,
-  )
+  const progressText = useDerivedValue(() => {
+    const string = Math.floor(progress.value)
+
+    if (formatOptions?.options?.style === 'percent') {
+      return `${string}%`
+    }
+    return string.toLocaleString(formatOptions.locale, formatOptions.options)
+  })
 
   return { animatedProps, progressText }
 }

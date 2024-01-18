@@ -46,6 +46,6 @@ export type Variants = {
 export type StylesProp<T extends string> = Partial<Record<T, CSSProp>>
 
 export type FormatOptions = {
-  locale: string
+  locale?: string
   options?: Intl.NumberFormatOptions
 }

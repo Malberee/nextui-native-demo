@@ -9,9 +9,12 @@ export interface CircularProgressProps {
   valueLabel?: ReactNode
   minValue?: number
   maxValue?: number
+  strokeWidth?: number
   formatOptions?: FormatOptions
   isIndeterminate?: boolean
   showValueLabel?: boolean
-  strokeWidth?: boolean
   isDisabled?: boolean
 }
+
+export interface CircularProgressContextProps
+  extends Omit<CircularProgressProps, 'label' | 'value' | 'valueLabel'> {}
