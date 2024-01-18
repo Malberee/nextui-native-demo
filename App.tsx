@@ -39,7 +39,8 @@ export default function App() {
           add
         </Button>
         <CircularProgress
-        
+          // isDisabled
+          isIndeterminate
           color="danger"
           size={100}
           showValueLabel
@@ -49,7 +50,7 @@ export default function App() {
               currency: 'USD',
             },
           }}
-          value={value}
+          value={10}
           minValue={0}
           maxValue={100}
           // valueLabel={<Text>100%</Text>}

@@ -1,6 +1,6 @@
 import { CircularProgressContextProps } from '../CircularProgress.types'
 
-const defaultProps: Required<CircularProgressContextProps> = {
+export const defaultProps: Required<CircularProgressContextProps> = {
   size: 'md',
   color: 'primary',
   showValueLabel: false,
