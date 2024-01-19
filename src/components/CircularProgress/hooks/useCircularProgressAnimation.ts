@@ -22,23 +22,14 @@ const useCircularProgressAnimation = (
 
   const valueInPercent = ((value - minValue) * 100) / range
 
-  const progress = useSharedValue(0)
+  const progress = useSharedValue(isIndeterminate ? 20 : 0)
   const rotate = useSharedValue(0)
 
   useEffect(() => {
-    if (isIndeterminate) {
-      progress.value = withTiming(20, { duration: 1000 })
-    } else {
+    if (!isIndeterminate) {
       progress.value = withTiming(valueInPercent, { duration: 1000 })
     }
-    rotate.value = withRepeat(
-      withSequence(
-        withTiming(0, { duration: 1000 }),
-        withTiming(360, { duration: 1000 }),
-      ),
-      -1,
-      true,
-    )
+    rotate.value = withRepeat(withTiming(360, { duration: 1000 }), -1)
   })
 
   const animatedCircleProps = useAnimatedProps(() => ({
