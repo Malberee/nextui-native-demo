@@ -6,7 +6,7 @@ export interface CircularProgressProps {
   size?: Extract<SizeName, 'sm' | 'md' | 'lg'> | number
   color?: ColorName
   value?: number
-  valueLabel?: ReactNode
+  // valueLabel?: ReactNode
   minValue?: number
   maxValue?: number
   strokeWidth?: number

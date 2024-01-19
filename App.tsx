@@ -7,6 +7,8 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import useColors from './src/components/ThemeProvider/hooks/useColors'
 
 import { ThemeProvider, CircularProgress, Button } from './src'
+import { Text } from 'react-native'
+import { ReText } from 'react-native-redash'
 
 const Container = styled(GestureHandlerRootView)(() => {
   const { colors } = useColors()
@@ -53,7 +55,7 @@ export default function App() {
           value={10}
           minValue={0}
           maxValue={100}
-          // valueLabel={<Text>100%</Text>}
+          label={<Text style={{ color: 'white' }}>Loading...</Text>}
         />
       </Container>
     </ThemeProvider>

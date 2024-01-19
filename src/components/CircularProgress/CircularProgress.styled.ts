@@ -32,3 +32,9 @@ export const ValueLabel = styled(ReText)(() => {
     text-align: center;
   `
 })
+
+export const LabelWrapper = styled.View(() => {
+  return css`
+    margin-top: 4px;
+  `
+})

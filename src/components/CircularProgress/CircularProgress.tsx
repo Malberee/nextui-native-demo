@@ -5,6 +5,7 @@ import {
   CircularProgressWrapper,
   ValueLabel,
   ValueLabelWrapper,
+  LabelWrapper,
 } from './CircularProgress.styled'
 
 import { CircularProgressProps } from './CircularProgress.types'
@@ -37,14 +38,15 @@ const CircularProgress: FC<CircularProgressProps> = ({
   const CIRCLE_LENGTH = Size * 0.9
   const R = CIRCLE_LENGTH / (2 * Math.PI)
 
-  const { animatedCircleProps, animatedSvgStyles, progressText } = useCircularProgressAnimation(
-    CIRCLE_LENGTH,
-    formatOptions,
-    isIndeterminate,
-    minValue,
-    maxValue,
-    value,
-  )
+  const { animatedCircleProps, animatedSvgStyles, progressText } =
+    useCircularProgressAnimation(
+      CIRCLE_LENGTH,
+      formatOptions,
+      isIndeterminate,
+      minValue,
+      maxValue,
+      value,
+    )
 
   const AnimatedCircle = Animated.createAnimatedComponent(Circle)
   const AnimatedSvg = Animated.createAnimatedComponent(Svg)
@@ -80,6 +82,7 @@ const CircularProgress: FC<CircularProgressProps> = ({
           />
         </AnimatedSvg>
       </CircularProgressWrapper>
+      <LabelWrapper>{label}</LabelWrapper>
     </CircularProgressContext.Provider>
   )
 }
