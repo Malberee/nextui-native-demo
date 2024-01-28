@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components/native'
 import { DividerProps } from './Divider.types'
-import useColors from '../ThemeProvider/hooks/useColors'
+import { useColors } from '../ThemeProvider'
 
 export const DividerWrapper = styled.View<DividerProps>(({ orientation }) => {
   const { colors } = useColors()

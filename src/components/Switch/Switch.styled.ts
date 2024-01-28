@@ -3,7 +3,7 @@ import Animated from 'react-native-reanimated'
 import { useSwitchContext } from './hooks/useSwitchContext'
 import { getSize } from '../../utils/getSize'
 import { switchSizes, thumbSizes } from './Switch.constants'
-import useColors from '../ThemeProvider/hooks/useColors'
+import { useColors } from '../ThemeProvider'
 
 interface SwitchWrapperProps {
   isChecked?: boolean

@@ -12,7 +12,7 @@ import {
 } from './AccordionItem.styled'
 
 import { AccordionItemProps } from './AccordionItem.types'
-import useColors from '../ThemeProvider/hooks/useColors'
+import { useColors } from '../ThemeProvider'
 import useAccordionItemAnimation from './hooks/useAccordionItemAnimation'
 import { useAccordionItemProps } from './hooks/useAccordionItemProps'
 import { AccordionItemContext } from './hooks/useAccordionItemContext'

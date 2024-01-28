@@ -12,7 +12,7 @@ import { BadgeProps } from './Badge.types'
 import { BadgeContext } from './hooks/useBadgeContext'
 import { useBadgeProps } from './hooks/useBadgeProps'
 import { getShadow } from '../../utils/getShadow'
-import useColors from '../ThemeProvider/hooks/useColors'
+import { useColors } from '../ThemeProvider'
 
 const Badge: FC<BadgeProps> = ({ children, content, ...props }) => {
   const [width, setWidth] = useState(0)

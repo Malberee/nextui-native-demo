@@ -1,12 +1,13 @@
 import { FC, ReactNode, useState } from 'react'
 import Colors, { TColors } from '../../colors'
 import { ThemeContext } from './ThemeContext'
+import { Container } from './ThemeProvider.styled'
 
 type Props = {
   children?: ReactNode
 }
 
-const ThemeProvider: FC<Props> = ({ children }) => {
+const NextUIProvider: FC<Props> = ({ children }) => {
   const [colors, setColors] = useState(Colors.dark)
 
   const applyColors = (colorTheme: TColors) => {
@@ -15,9 +16,9 @@ const ThemeProvider: FC<Props> = ({ children }) => {
 
   return (
     <ThemeContext.Provider value={{ applyColors, colors }}>
-      {children}
+      <Container>{children}</Container>
     </ThemeContext.Provider>
   )
 }
 
-export { ThemeContext, ThemeProvider }
+export { ThemeContext, NextUIProvider }

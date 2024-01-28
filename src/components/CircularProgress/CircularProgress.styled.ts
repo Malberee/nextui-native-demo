@@ -1,7 +1,7 @@
 import { ReText } from 'react-native-redash'
 import { css } from 'styled-components'
 import styled from 'styled-components/native'
-import useColors from '../ThemeProvider/hooks/useColors'
+import { useColors } from '../ThemeProvider'
 import { useCircularProgressContext } from './hooks/useCircularProgressContext'
 
 export const CircularProgressWrapper = styled.View(() => {

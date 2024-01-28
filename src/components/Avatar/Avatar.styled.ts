@@ -3,7 +3,7 @@ import { useAvatarContext } from './hooks/useAvatarContext'
 import { getSize } from '../../utils/getSize'
 import { getRadius } from '../../utils/getRadius'
 import { radii, sizes } from './Avatar.constants'
-import useColors from '../ThemeProvider/hooks/useColors'
+import { useColors } from '../ThemeProvider'
 
 export const AvatarWrapper = styled.View(() => {
   const { radius, size, isDisabled } = useAvatarContext()

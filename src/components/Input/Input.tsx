@@ -14,7 +14,7 @@ import {
 import { InputProps } from './Input.types'
 import { InputContext } from './hooks/useInputContext'
 import useInputProps from './hooks/useInputProps'
-import useColors from '../ThemeProvider/hooks/useColors'
+import { useColors } from '../ThemeProvider'
 import useInputAnimation from './hooks/useInputAnimation'
 import { LayoutChangeEvent, Pressable, TextInput, View } from 'react-native'
 import { getSize } from '../../utils/getSize'

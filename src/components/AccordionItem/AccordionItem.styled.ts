@@ -1,7 +1,7 @@
 import { css } from 'styled-components'
 import styled from 'styled-components/native'
 import { useAccordionItemContext } from './hooks/useAccordionItemContext'
-import useColors from '../ThemeProvider/hooks/useColors'
+import { useColors } from '../ThemeProvider'
 import Animated from 'react-native-reanimated'
 import { Text } from 'react-native'
 import useAccordionVariantStyles from '../Accordion/hooks/useAccordionVariantStyles'

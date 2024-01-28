@@ -10,7 +10,7 @@ import { ButtonProps } from './Button.types'
 import { ButtonContext } from './hooks/useButtonContext'
 import { useButtonProps } from './hooks/useButtonProps'
 import { getShadow } from '../../utils/getShadow'
-import useColors from '../ThemeProvider/hooks/useColors'
+import { useColors } from '../ThemeProvider'
 import { useButtonAnimation } from './hooks/useButtonAnimation'
 import { PanGestureHandler } from 'react-native-gesture-handler'
 

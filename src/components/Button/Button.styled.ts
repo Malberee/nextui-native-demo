@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components/native'
 import Animated from 'react-native-reanimated'
-import useColors from '../ThemeProvider/hooks/useColors'
+import { useColors } from '../ThemeProvider'
 import { useTextColor } from '../../hooks/useTextColor'
 import { getRadius } from '../../utils/getRadius'
 import { useVariantStyles } from '../../hooks/useVariantStyles'

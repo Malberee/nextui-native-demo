@@ -9,7 +9,7 @@ import {
 } from './CircularProgress.styled'
 
 import { CircularProgressProps } from './CircularProgress.types'
-import useColors from '../ThemeProvider/hooks/useColors'
+import { useColors } from '../ThemeProvider'
 import useCircularProgressProps from './hooks/useCircularProgressProps'
 import { getSize } from '../../utils/getSize'
 import { sizes } from './CircularProgress.constants'
@@ -19,7 +19,6 @@ import { CircularProgressContext } from './hooks/useCircularProgressContext'
 const CircularProgress: FC<CircularProgressProps> = ({
   label,
   value,
-  valueLabel,
   ...props
 }) => {
   const circularProgressProps = useCircularProgressProps(props)

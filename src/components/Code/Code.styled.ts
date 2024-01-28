@@ -3,7 +3,7 @@ import { CodeProps } from './Code.types'
 import { radii, sizes } from './Code.constants'
 import { getSize } from '../../utils/getSize'
 import { getRadius } from '../../utils/getRadius'
-import useColors from '../ThemeProvider/hooks/useColors'
+import { useColors } from '../ThemeProvider'
 
 export const CodeWrapper = styled.View<Pick<CodeProps, 'color' | 'radius'>>(
   ({ color = 'default', radius = 'sm' }) => {

@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components/native'
-import useColors from '../ThemeProvider/hooks/useColors'
+import { useColors } from '../ThemeProvider'
 
 export const UserWrapper = styled.View(() => {
   return css`

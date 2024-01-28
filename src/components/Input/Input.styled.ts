@@ -1,7 +1,7 @@
 import { css } from 'styled-components'
 import styled from 'styled-components/native'
 import Animated from 'react-native-reanimated'
-import useColors from '../ThemeProvider/hooks/useColors'
+import { useColors } from '../ThemeProvider'
 import { useInputContext } from './hooks/useInputContext'
 import { getRadius } from '../../utils/getRadius'
 import { paddings, radii, sizes } from './Input.constants'

@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components/native'
-import useColors from '../ThemeProvider/hooks/useColors'
+import { useColors } from '../ThemeProvider'
 import { useChipContext } from './hooks/useChipContext'
 import { getRadius } from '../../utils/getRadius'
 import { getSize } from '../../utils/getSize'

@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components/native'
-import useColors from '../ThemeProvider/hooks/useColors'
+import { useColors } from '../ThemeProvider'
 import { RadioGroupProps } from './RadioGroup.types'
 import { useRadioGroupContext } from './hooks/useRadioGroupContext'
 

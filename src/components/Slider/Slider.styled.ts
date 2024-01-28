@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components/native'
 import { useSliderContext } from './hooks/useSliderContext'
 import { getSize } from '../../utils/getSize'
 import { thumbSizes, trackSizes } from './Slider.constants'
-import useColors from '../ThemeProvider/hooks/useColors'
+import { useColors } from '../ThemeProvider'
 import Animated from 'react-native-reanimated'
 
 export const SliderWrapper = styled.View(() => {
